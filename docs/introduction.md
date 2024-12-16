@@ -52,7 +52,7 @@ The key requirements for an open multi-agent architecture are:
 The key features of LMOS are:
 
 - **Simplified AI Agent Development:**  
-   LMOS provides a framework called [Agent ReaCtor (ARC)](https://eclipse-lmos.github.io/arc/) to abstract the intricacies of large language models (LLMs), memory management, and tool integration. Just as an operating system manages applications and hardware, the LMOS framework acts as a virtual "OS" for AI agents, allowing developers to focus on creating intelligent, adaptable agents without getting bogged down by infrastructure complexity.
+   LMOS provides a framework called [Agent ReaCtor (ARC)](/lmos/docs/arc/index) to abstract the intricacies of large language models (LLMs), memory management, and tool integration. Just as an operating system manages applications and hardware, the LMOS framework acts as a virtual "OS" for AI agents, allowing developers to focus on creating intelligent, adaptable agents without getting bogged down by infrastructure complexity.
 
 - **Open, Interoperable Architecture:**  
    Built on the principles of openness and interoperability, LMOS supports seamless integration of AI agents across diverse platforms and networks. By embracing open standards, LMOS ensures that agents from various platforms can communicate, share knowledge, and collaborate, fostering innovation across industries. You can leverage LMOS’s multi-agent capabilities with frameworks like Agent ReaCtor (ARC), Langchain4j, LlamaIndex or LangChain, seamlessly integrating them into the LMOS platform without being tied to a specific development language or framework. 

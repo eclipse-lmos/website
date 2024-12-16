@@ -49,7 +49,7 @@ subscription {
     }
 }
 ```
-See the [Arc API](/docs/11-api.md) for more details on the data models and interfaces.
+See the [Arc API](/docs/arc/11-api.md) for more details on the data models and interfaces.
 
 
 ### Agent Query
@@ -115,7 +115,7 @@ arc:
       enable: true
 ```
 
-See the [Arc View](/docs/14-view.md) for more details on the UI.
+See the [Arc View](/docs/arc/14-view.md) for more details on the UI.
 
 
 ### Graphiql

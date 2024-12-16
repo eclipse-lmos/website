@@ -9,7 +9,7 @@ or the Arc Runner, which will automatically set up the framework for you.
 However, if you want to set up the framework manually and use it in a different frameworks or environments, 
 you can do so by following the steps below.
 
-> Also: read the [Component Overview](/docs/component_overview) page for a better understanding of core components of the Framework.
+> Also: read the [Component Overview](/docs/arc/component_overview) page for a better understanding of core components of the Framework.
 
 
 ### Loading Agents

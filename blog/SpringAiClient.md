@@ -1,8 +1,7 @@
 ---
 slug: Spring.AI-integration
-title: Sptring.ai integration using the SpringChatClient
-authors:  
-- name: Max
+title: Spring.ai Integration
+date: 2024-07-10
 tags: ["spring", "Spring.AI", "feature"]
 ---
 
@@ -15,13 +14,14 @@ and creation of AI in your existing services as seamless as possible
 it only made sense to integrate Spring.AI to work in a plug and play 
 fashion.
  
+<!-- truncate -->
 
 In this blog post, we'll explore how to implement a new adapter for 
 Spring.AI to work within ARC.
 To expand its capabilities and make it easier to incorporate various 
 AI services into your projects.
 
-**What is an the `SpringChatClient` Adapter in ARC?**
+## What is an the `SpringChatClient` Adapter in ARC?
 
 In ARC, the `SpringChatClient` acts like a bridge between the framework and 
 external Spring.AI models/ APIs. It enables you to seamlessly integrate any 
@@ -30,7 +30,7 @@ functionality. These Adapters/ ChatClients can be used to connect to various
 AI platforms, such as Google VertexAI, Amazon Comprehend, Grog, Mistral.Ai, 
 IBM Watson or many [more](https://docs.spring.io/spring-ai/reference/api/chatmodel.html).
 
-**Why use the New Adapter?**
+## Why use the New Adapter?
 
 The Adapter allows for quick ruse of existing AI model API's written by Spring.AI.
 This will allow any developer familiar with Spring.AI to get a head start to further
@@ -42,7 +42,7 @@ Since they are not written with re-loadability and DSL in mind not all
 key features will work.
 
 
-**Step-by-Step Guide to Implementing a New Adapter:**
+## Step-by-Step Guide to Implementing a New Adapter
 
 To implement a new adapter for Spring.AI, follow these steps:
 
@@ -76,7 +76,7 @@ open class YourApplication {
 
 }
 ```
-**Conclusion:**
+## Conclusion
 
 Using the new adapter for Spring.AI `SpringChatClient` can greatly reduce
 the time of implementation for anyone who has used Spring.AI before. 

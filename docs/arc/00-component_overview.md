@@ -7,7 +7,7 @@ sidebar_position: 2
 
 The following explains the main components of the Arc Agent Framework.
 
-See the [Manual Setup](/docs/manual_setup) section for an example on how these components work together.
+See the [Manual Setup](/docs/arc/manual_setup) section for an example on how these components work together.
 
 ### Agent Interface
 
@@ -86,7 +86,7 @@ The most common implementation is the `ChatAgentFactory` which creates `ChatAgen
 A `ChatCompleter` generates a response to a given message.
 In most cases, this interface is implemented by an LLM client.
 
-See the [Clients](/docs/clients) section for a list of supported clients.
+See the [Clients](/docs/arc/clients) section for a list of supported clients.
 
 
 ### ChatCompleterProvider Interface
@@ -97,7 +97,7 @@ The model id is defined in the `model` field of an Agent.
 Note: It is up to the implementation of the `ChatCompleterProvider` to decide 
 how to handle cases where a `ChatCompleter` is not found for a given model id.
 
-Checkout the [LangChain4J](/docs/clients/langchain4j) client for an example of a `ChatCompleterProvider`.
+Checkout the [LangChain4J](/docs/arc/clients/langchain4j) client for an example of a `ChatCompleterProvider`.
 
 
 ### BeanProvider Interface

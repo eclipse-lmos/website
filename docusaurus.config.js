@@ -59,27 +59,37 @@ const config = {
     ({
       image: 'img/lmos.png',
       navbar: {
-        title: 'LMOS',
+        title: 'Eclipse LMOS',
         logo: {
-          alt: 'LMOS',
+          alt: 'Eclipse LMOS',
           src: 'img/lmos.svg',
         },
         items: [
           {
             type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            sidebarId: 'lmosSidebar',
             position: 'left',
-            label: 'Documentation',
+            label: 'Platform',
           },
           {
-            to: '/about_us', // Link to the markdown page
-            label: 'About us',    // Label in the navbar
-            position: 'right',        // Position of the link (left or right)
+            to: '/arc',
+            position: 'left',
+            label: 'ARC',
           },
           {
-            to: '/contribute', // Link to the markdown page
-            label: 'Contribute',    // Label in the navbar
-            position: 'right',        // Position of the link (left or right)
+            to: '/about_us',
+            label: 'About us',
+            position: 'right',
+          },
+          {
+            to: '/blog',
+            label: 'Blog',
+            position: 'right',
+          },
+          {
+            to: '/contribute',
+            label: 'Contribute',
+            position: 'right',
           },
           {
             href: 'https://www.youtube.com/@eclipse-lmos',

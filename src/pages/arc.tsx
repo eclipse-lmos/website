@@ -9,9 +9,9 @@ import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import Features from '../components/ArcFeatures';
 import Heading from '@theme/Heading';
-import styles from './index.module.css';
+import styles from './arc.module.css';
 import Head from '@docusaurus/Head';
 
 function HomepageHeader() {
@@ -34,7 +34,7 @@ function HomepageHeader() {
                             <span className="arc-text-underline"><span className="arc-text">C</span></span>
                             <span className='arc-text-complete'>tor</span><br/>
                             Build AI Agents.<br/> Faster. Together.<br/>
-                            <Link className="button button--primary button--lg" to="/docs/quickstart">
+                            <Link className="button button--primary button--lg" to="/docs/arc/quickstart">
                                 My First Agent - 5min ⏱️
                             </Link>
                         </span>
@@ -62,7 +62,7 @@ export default function Home(): JSX.Element {
             description="Description will go into a meta tag in <head />">
             <HomepageHeader/>
             <main>
-                <HomepageFeatures/>
+                <Features/>
                 <div className={"arc-row"}>
                     <div style={{"width": "400px"}}>
                         <h3>Easy Chat with the Arc View</h3>

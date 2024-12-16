@@ -156,7 +156,7 @@ Output:
 You will see that the weather-agent has responded. 
 
 
-## Deploy LMOS on your Kubernetes cluster
+## Deploy LMOS on Your Kubernetes Cluster
 
 This guides provides instructions to install `lmos-operator` and `lmos-runtime` on your Kubernetes cluster.
 
@@ -195,7 +195,7 @@ Now, install `lmos-runtime` using Helm. Replace the environment variables with t
 
 ```bash
 helm upgrade --install lmos-runtime oci://ghcr.io/eclipse-lmos/lmos-runtime-chart \
-  --version 0.0.8-SNAPSHOT \
+  --version 0.1.0-SNAPSHOT \
   --set openaiApiUrl="$OPENAI_API_URL" \
   --set openaiApiModel=GPT4o-mini \
   --set agentRegistryUrl=http://lmos-operator.default.svc.cluster.local:8080
@@ -210,8 +210,8 @@ kubectl get pods
 
 You should see both lmos-operator and lmos-runtime pods in a running state.
 
-## Develop your own agent
+## Develop Your Own Agent
 
 With ARC, we offer a Kotlin-based framework for developing agents. 
-ARC comes with its own dedicated [documentation](https://eclipse-lmos.github.io/arc/docs/index).
+There is an extensive [documentation](/lmos/docs/arc/index) about ARC.
 

@@ -133,3 +133,52 @@ code {
 [data-theme='dark'] img[src$='#light-mode-only'] {
   display: none;
 }
+
+.arc-text {
+  background: linear-gradient(135deg, cyan, #48CAE4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 70px;
+  font-weight: bold;
+}
+.arc-text-underline {
+  text-decoration: underline;
+  text-decoration-color: #48CAE4;
+}
+
+.arc-text-complete{
+  background: linear-gradient(135deg, #1176a2, #4ee3ff);
+  background-clip: text;
+  text-fill-color: transparent;
+  color: transparent;
+  text-align: left;
+  font-size: 65px;
+  opacity: .9;
+
+}
+
+.navbar__logo {
+  aspect-ratio: 1/1;
+}
+
+.hero__title {
+    display: flex;
+}
+
+.code {
+  margin: 35px 0 40px 135px;
+}
+
+html[data-theme='light'] .code {
+  box-shadow: 5px 5px 4px #888;
+}
+
+.arc-row {
+  display: flex;
+  flex-wrap: nowrap;
+ }
+
+.arc-row > div {
+  margin: 32px;
+  text-align: start;
+}

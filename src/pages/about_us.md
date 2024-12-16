@@ -2,14 +2,14 @@
 title: About us
 ---
 
-**An Open Letter about us, Our Journey, and the Direction we are headed**
+## An Open Letter about us, Our Journey, and the Direction we are headed
 
 > **"The art of a great painting is not in any one idea, nor in a multitude of separate tricks for placing all those pigment spots, but in the great network of relationships among its parts. Similarly, the agents, raw, that make our minds are by themselves as valueless as aimless, scattered daubs of paint. What counts is what we make of them."**  
 > — Marvin Minsky, *The Society of Mind* (1987)
 
 ---
 
-**To the Supporters of Open Ecosystems and Builders of a Collaborative Technology Future,**
+## To the Supporters of Open Ecosystems and Builders of a Collaborative Technology Future
 
 When I first interacted with **Large Language Models (LLMs)**, it felt like engaging with microprocessors made of magical silicon that compute intelligence with instructions delivered in natural language. It was clear that computing had crossed a significant threshold. This wasn’t just a technological leap—it marked the beginning of a new paradigm for building computing applications. But with that realization came a critical question: **How can we build an open ecosystem for AI computing** before its utility is locked away in closed ecosystems, as we’ve seen with mobile computing, fragmented IoT and Smart Home ecosystems when compared to the openness and interoperability of the web/internet.
 
@@ -17,7 +17,7 @@ It was around the time that I joined Deutsche Telekom's AI task force to explore
 
 By mid-2023, existing frameworks for LLMs were largely focused on **RAG use cases**, with limited emphasis on the **foundational abstractions needed for scale, concurrency, and modularization**. Building a **robust, layered architecture** was essential to handle the complexity of solving **large-scale use cases across 10 countries**, with **diverse languages, business units, and regulatory requirements**. Drawing on **best practices from complex systems** like **network architectures and operating systems**, we aimed to create a **scalable foundation for multi-agent systems**—beyond mere **use-case-driven development**.
 
-### **The Vision**
+### The Vision
 
 If we wanted to truly scale AI across these domains, we needed more than just early success with existing tools. We had to **rethink everything from the ground up**: building new computing models that combined **deterministic, instruction-based systems with non-deterministic elements**, figuring out how to parallelize development across teams, and ensuring that these fragile prompt driven AI systems could be managed, scaled, and evolved.
 
@@ -25,17 +25,17 @@ If we wanted to truly scale AI across these domains, we needed more than just ea
 
 To build something foundational like this would require not just technical skills but brilliant, principled minds working toward a shared goal. I was privileged to find the right team within Telekom—engineers and architects with diverse expertise, ranging from integrating hundreds of device types from various vendors using Web of Things (WoT), to building orchestration engines, operating platforms at scale, and fostering open-source communities.
 
-### **The Founders and Builders**
+### The Founders and Builders
 
 
-**The founding team was formed with:**
+The founding team was formed with:
 
 1. [**Robert Winkler**](https://www.linkedin.com/in/robert-winkler-36b69b31a/), creator of [Resilience4J](https://resilience4j.readme.io) and an expert in building Web of Things (WoT) platforms;
 2. [**Jasbir Singh**](https://www.linkedin.com/in/jasbir-singh-9135b666/), an expert in orchestration systems and a contributor to [Netflix Conductor](https://github.com/Netflix/conductor);
 3. [**Patrick Whelan**](https://www.linkedin.com/in/patrick-whelan-069180b0/), open-source maintainer of several Kotlin frameworks and a builder of Web of Things services at scale;
 4. [**Amant Kumar**](https://www.linkedin.com/in/amant-kumar-a7811548/), a relentless problem-solver with a hacker's mindset.
 
-**As our vision grew, we were later joined by other brilliant minds, each contributing their unique expertise and passion to push the boundaries of what we could achieve:**
+As our vision grew, we were later joined by other brilliant minds, each contributing their unique expertise and passion to push the boundaries of what we could achieve:
 
 5. [**Patrick Schwager**](https://link-to-patrick-schwager), platform engineer who built and operated IoT platforms at scale;
 6. [**Kai Kreuzer**](https://www.linkedin.com/in/kai-kreuzer-9445294/), creator of the [openHAB](https://www.openHAB.org) home automation OSS ecosystem, who has built an open-source community across the globe towards an open ecosystem for home automation;
@@ -44,7 +44,7 @@ To build something foundational like this would require not just technical skill
 9. [**Maximilian Erren**](https://www.linkedin.com/in/maximilian-erren-2b3755292/), a versatile engineer acting as our open-source gatekeeper.
 
 
-### **Building the Platform**
+### Building the Platform
 
 Together, we started betting on **Kotlin as our preferred language** and **JVM as our runtime**, foreseeing the concurrency needs of agents at scale. Our vision was to **democratize AI agent development** within Telekom using **Domain-Specific Languages (DSLs)** that reduce the entry barrier for AI agent development and a platform that would handle all the complexities of **running, maintaining, communicating, and discovering agents**.
 
@@ -80,11 +80,11 @@ Our mission is to set the standards for an open ecosystem where **agents become 
 3. How do we ensure that the **developers and innovators who build these systems are fairly rewarded**?
 4. How do we embed **governance models and regulations** as a fundamental part of these systems, **baked in by design**?
 
-This is the mission of LMOS
+This is the mission of LMOS.
 
 ### **Join Us**
 
-We believe that, much like **Linux** and the **internet**, LMOS has the potential to shape or inspire ideas on  how applied AI evolves to be open and collaborative, driven by shared innovation and incentives.
+We believe that, much like **Linux** and the **Internet**, LMOS has the potential to shape or inspire ideas on how applied AI evolves to be open and collaborative, driven by shared innovation and incentives.
 
 If you look at the parallels, Linux emerged from Europe, and the internet was born at CERN in Switzerland. In that same spirit of innovation, we hope that the foundations we've built for LMOS across **Europe and India** will pave the way for a new era in open and collaborative AI development.
 

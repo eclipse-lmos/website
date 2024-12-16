@@ -13,7 +13,7 @@ that allows you to interact with the Arc Agents.
 ![Arc View](chat_view.png)
 
 (Event Subscriptions must be enabled in the Arc application to view events,
-see [Event Subscriptions](/docs/spring/graphql#event-subscriptions)).
+see [Event Subscriptions](/docs/arc/spring/graphql#event-subscriptions)).
 
 Once enabled, the Arc Events can be displayed in performance charts to better 
 asses the performance of the Agents and LLMs.
@@ -25,7 +25,7 @@ Currently, the Arc View is deployed as part of the Arc GraphQL package.
 Meaning that applications using the package can be configured to serve 
 the Arc View as a web application. 
 
-See the [Arc GraphQL](/docs/spring/graphql) for more details.
+See the [Arc GraphQL](/docs/arc/spring/graphql) for more details.
 
 
 ### Where to find it

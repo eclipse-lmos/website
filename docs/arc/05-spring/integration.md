@@ -27,7 +27,7 @@ implementation("io.micrometer:micrometer-registry-prometheus")
 The `arc-spring-boot-starter` library will set up the necessary beans and configurations
 to run the Arc Agents within the Spring Boot application.
 
-To better understand what Arc Agents components are loaded see [Manual Setup](/docs/manual_setup).
+To better understand what Arc Agents components are loaded see [Manual Setup](/docs/arc/manual_setup).
 
 
 ### Agent Scripting
@@ -55,7 +55,7 @@ Now any Agent and Agent Functions defined in the `./agents` folder will be loade
 
 ### Agents Beans
 
-Agents can also be defined as Spring Beans, see the [Spring Beans](/docs/spring/agent-beans) documentation for more information.
+Agents can also be defined as Spring Beans, see the [Spring Beans](/docs/arc/spring/agent-beans) documentation for more information.
 
 
 ### Adding the Azure OpenAI Client
@@ -106,7 +106,7 @@ arc:
 The Arc Framework can also use LangChain4J clients to connect to different language models.
 Simply add the `langchain4j` libraries that are required for your project.
 
-Check [LangChain4J](/docs/clients/langchain4j) for the list of available clients.
+Check [LangChain4J](/docs/arc/clients/langchain4j) for the list of available clients.
 
 For example:
 ```kts
@@ -153,4 +153,4 @@ val agentProvider: AgentProvider
 agentProvider.getAgents()
 ```
 
-Alternatively, you can use the Agent GraphQL API. See the [GraphQL API](/docs/spring/graphql) documentation for more information.
+Alternatively, you can use the Agent GraphQL API. See the [GraphQL API](/docs/arc/spring/graphql) documentation for more information.

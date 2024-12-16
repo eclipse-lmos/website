@@ -108,4 +108,4 @@ See the chapter on [Memory](memory) for available implementations.
 Eventing is a great way to decouple communication between different parts of an application. 
 Agents can emit multiple events during the precessing of a request.
 
-See the [Eventing](/docs/eventing) for more details.
+See the [Eventing](/docs/arc/eventing) for more details.
