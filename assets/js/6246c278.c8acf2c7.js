@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklmos_website=self.webpackChunklmos_website||[]).push([[6347],{7207:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/lmos/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}}')}}]);

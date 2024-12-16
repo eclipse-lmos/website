@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunklmos_website=self.webpackChunklmos_website||[]).push([[1903],{1912:s=>{s.exports=JSON.parse('{"blogBasePath":"/lmos/blog","blogTitle":"Blog","authorsListPath":"/lmos/blog/authors"}')}}]);
