@@ -74,7 +74,7 @@ export default function Home(): JSX.Element {
                         </p>
                     </div>
                     <div>
-                        <img src={"img/chat_view.png"} style={{height: "400px", borderRadius: "10px"}}
+                        <img src={"/img/chat_view.png"} style={{height: "400px", borderRadius: "10px"}}
                              alt={"Screenshot of the Arc View UI."}/>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ export default function Home(): JSX.Element {
                         </p>
                     </div>
                     <div>
-                        <img src={"img/chart_view.png"} style={{height: "400px", borderRadius: "10px"}}
+                        <img src={"/img/chart_view.png"} style={{height: "400px", borderRadius: "10px"}}
                              alt={"Screenshot of the Arc View UI."}/>
                     </div>
                 </div>
