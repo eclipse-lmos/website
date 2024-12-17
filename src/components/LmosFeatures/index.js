@@ -94,7 +94,7 @@ const FeatureList = [
               Our vision is to create a sovereign and open platform and ecosystem where AI agents can be developed, deployed, and integrated seamlessly across networks and platforms.
               Built on top of open standards and Kubernetes, it enables developers to build intelligent, scalable, and adaptive multi-agent systems.
             </p>
-            <img src="/img/lmos-overview.png" alt="LMOS Overview" />
+            <img src={require('@site/static/img/lmos-overview.png').default} alt="LMOS Overview" />
           </div>
 
           <div className="col col--8 col--sm-12 padding--md">

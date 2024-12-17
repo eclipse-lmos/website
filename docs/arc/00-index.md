@@ -17,7 +17,7 @@ But let's start with an abstract definition of what an Agent is.
 
 ## What is an Agent?
 
-![](agents.svg)
+![](/img/agents.svg)
 
 ### Agents
 

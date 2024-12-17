@@ -78,5 +78,5 @@ By promoting an open, scalable, and interoperable architecture, **LMOS** enables
 
 The name **LMOS** stands for **Language Model Operating System**. Just as an operating system abstracts hardware and manages software applications, LMOS abstracts reduces the complexity to develop AI Agents by providing APIs and libraries to interact with infrastructure and tools to manage the lifecycle of AI Agents. 
 
-![Operating System Analogy](./assets/os-analogy-light.png#light-mode-only)
-![Operating System Analogy](./assets/os-analogy-dark.png#dark-mode-only)
+![Operating System Analogy](/img//os-analogy-light.png#light-mode-only)
+![Operating System Analogy](/img/os-analogy-dark.png#dark-mode-only)

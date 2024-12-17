@@ -74,4 +74,4 @@ The LMOS Operator enables defining which capabilities should be provided through
 
 The following diagram illustrates how the lmos-operator dynamically manages and resolves capabilities within a Kubernetes environment. It shows the interaction between Channel, Agent, Repository, and the reconciler processes to ensure that required capabilities are matched with installed Agent resources.
 
-![LMOS](../assets/operator_design.png)
+![LMOS](/img/operator_design.png)

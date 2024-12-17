@@ -9,7 +9,7 @@ sidebar_position: 1
 
 LMOS (Language Model Operating System) currently addresses the **application layer**, focusing on **AI agent collaboration and lifecycle management** in the cloud-native environment. 
 
-![LMOS](../assets/lmos-overview.png)
+![LMOS](/img/lmos-overview.png)
 
 
 ### 1. Kubernetes for Orchestration & Scalability
@@ -37,7 +37,7 @@ ArgoCD and Argo Rollouts implement GitOps workflows to automate the deployment o
 
 To realize its vision of simplifying AI agent development, LMOS introduces several core components:
 
-![LMOS](../assets/lmos-detail.png)
+![LMOS](/img/lmos-detail.png)
 
 ### 1. Agent ReaCtor
 
