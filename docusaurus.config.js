@@ -108,29 +108,6 @@ const config = {
       },
       footer: {
         style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Introduction',
-                to: '/docs/introduction',
-              },
-              {
-                label: 'Multi-Agent System',
-                to: '/docs/multi_agent_system/overview',
-              },
-              {
-                label: 'Architecture',
-                to: '/docs/architecture/overview',
-              },
-              {
-                label: 'Getting Started',
-                to: '/docs/getting_started',
-              }
-            ],
-          }
-        ],
         copyright: `Copyright © ${new Date().getFullYear()} Deutsche Telekom AG`,
       },
       prism: {
