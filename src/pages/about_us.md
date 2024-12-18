@@ -2,7 +2,8 @@
 title: About us
 ---
 
-## An Open Letter about us, our Journey, and our direction 
+## An Open Letter about Us, Our Journey, and Our Direction 
+
 — *from [**Arun Joseph**](https://www.linkedin.com/in/arun-joseph-ab47102a/)*
 
 > **"The art of a great painting is not in any one idea, nor in a multitude of separate tricks for placing all those pigment spots, but in the great network of relationships among its parts. Similarly, the agents, raw, that make our minds are by themselves as valueless as aimless, scattered daubs of paint. What counts is what we make of them."**  
