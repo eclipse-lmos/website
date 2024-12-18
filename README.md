@@ -1,6 +1,8 @@
-# Website
+[![Deploy website](https://github.com/eclipse-lmos/website/actions/workflows/deploy.yml/badge.svg)](https://github.com/eclipse-lmos/website/actions/workflows/deploy.yml)
 
-This LMOS website is built using [Docusaurus](https://docusaurus.io/).
+# Eclipse LMOS Website
+
+This website is built using [Docusaurus](https://docusaurus.io/).
 
 ## Prerequisites
 
