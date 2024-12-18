@@ -2,7 +2,9 @@
 title: About us
 ---
 
-## An Open Letter about us, Our Journey, and the Direction we are headed
+## An Open Letter about Us, Our Journey, and Our Direction 
+
+— *from [**Arun Joseph**](https://www.linkedin.com/in/arun-joseph-ab47102a/)*
 
 > **"The art of a great painting is not in any one idea, nor in a multitude of separate tricks for placing all those pigment spots, but in the great network of relationships among its parts. Similarly, the agents, raw, that make our minds are by themselves as valueless as aimless, scattered daubs of paint. What counts is what we make of them."**  
 > — Marvin Minsky, *The Society of Mind* (1987)
@@ -28,7 +30,7 @@ To build something foundational like this would require not just technical skill
 ### The Founders and Builders
 
 
-The founding team was formed with:
+I formed the founding team with:
 
 1. [**Robert Winkler**](https://www.linkedin.com/in/robert-winkler-36b69b31a/), creator of [Resilience4J](https://resilience4j.readme.io) and an expert in building Web of Things (WoT) platforms;
 2. [**Jasbir Singh**](https://www.linkedin.com/in/jasbir-singh-9135b666/), an expert in orchestration systems and a contributor to [Netflix Conductor](https://github.com/Netflix/conductor);
