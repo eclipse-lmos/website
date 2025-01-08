@@ -7,6 +7,7 @@
 
 On Linux, macOS, and Windows (using WSL or bash compatible shell like Cygwin or MinGW)
 ```
+curl -Ls https://sh.jbang.dev | bash -s - trust add https://github.com/eclipse-lmos/arc/
 curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force https://github.com/eclipse-lmos/arc/blob/main/arc-runner/arc.java
 ```
 
