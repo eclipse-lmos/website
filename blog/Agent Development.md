@@ -117,6 +117,7 @@ This flow of prompts is usually defined via prompt templates , and we have promp
 For every new agent, accessing RAG knowledge is all about writing a single line of code, and specifying the tenant since this platform natively supports multi-tenancy and decides, on the basis of tenant input, as to which RAG database to query for embeddings.
 However, with each new agent, we have to supplement the RAG with new knowledge of the domain. Some of this knowledge is available from pdfs, some from help and support pages and some from pre-existing anonymized conversations.
 In each case, we have dedicated knowledge pipelines which is integrated with our search services and these knowledge sources are connected to these pipelines to extract and transform the data into embedding representations stored in our vector databases. This is a task that is undertaken by our Knowledge Operations team who scour the available resources for the best source of knowledge and  integrate those to our pipelines.
+RAG is a big topic and you can read more about it. <https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview>
 
 
 ### Backend APIs: 
