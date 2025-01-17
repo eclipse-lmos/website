@@ -9,6 +9,8 @@ tags: ["AI", "LMOS", "Agents"]
 
 # Agent Development
 
+In a world increasingly powered by AI, creating reliable and efficient agents isn’t just about technology but also about processes, strucutures and methodologies. This blog will take you behind the scenes of our development process, and the various phases involved until production rollout.
+
 The development of an AI agent, much like a traditional development, begins with a requirements elicitation and documentation phase. However, the agent development has many different and additional phases which we briefly will touch upon in this article. A simplified diagrammatic view of agent development might look something as this:
 
 
