@@ -34,6 +34,7 @@ const sidebars = {
         'multi_agent_system/agent_lifecycle'
       ],
     },
+    "lmos_protocol",
     {
       type: 'category',
       label: 'Architecture',
