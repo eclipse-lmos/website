@@ -4,7 +4,6 @@ title: LMOS Protocol
 
 # LMOS Protocol
 
-
 ## Abstract
 
 This document outlines the use cases and requirements for the LMOS Protocol (Language Model Operating System Protocol). Designed as an ontology and sub-protocol within the [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/), the LMOS Protocol aims to establish interoperability between AI agents, tools, and other resources, bridging organizational boundaries and diverse ecosystems.
@@ -22,15 +21,36 @@ By defining standardized communication patterns, metadata models, and interactio
 
 
 ## Status of This Document
-This specification is published by the Eclipse Foundation LMOS Working Group. It is not an official W3C Standard nor is it part of the Eclipse Foundation Specification Process (EFSP). 
+This document is published by the Eclipse LMOS Working Group. It is not yet a W3C Standard nor is it on the W3C Standards Track. However, we plan to initiate the formal W3C process once the document reaches a mature state.
+
+Please note that this document is a work in progress and contains empty sections.
 
 GitHub Issues are preferred for discussion of this specification. Alternatively, you can join our Discord channel.
+
+
+**Latest published version:**  
+[https://eclipse.dev/lmos/docs/lmos_protocol](https://eclipse.dev/lmos/docs/lmos_protocol)  
+
+**GitHub Repository:**  
+[https://github.com/eclipse-lmos/lmos-protocol](https://github.com/eclipse-lmos/lmos-protocol)  
+
+**Issue Tracker:**  
+[https://github.com/eclipse-lmos/lmos-protocol/issues](https://github.com/eclipse-lmos/lmos-protocol/issues)  
+
+**Commit History:**  
+[https://github.com/eclipse-lmos/lmos-protocol/commits/main/](https://github.com/eclipse-lmos/lmos-protocol/commits/main/)  
+
+**Editors:**  
+* Robert Winkler (Deutsche Telekom AG)  
+
+**Contributors:**   
+https://github.com/eclipse-lmos/lmos-protocol/graphs/contributors
 
 ## Introduction 
 
 The LMOS Protocol is designed to standardize communication between AI agents, their tools, and consumers, providing a universal interface for seamless integration. Similar to how a USB-C port enables a wide variety of devices and accessories to connect, the LMOS Protocol allows tools to be easily plugged into agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications, regardless of the underlying technologies. This flexibility fosters an ecosystem where diverse AI capabilities can be easily interconnected and utilized in a wide range of scenarios.
 
-The goal of Web of Things (WoT) architecture is to address fragmentation across the Internet of Things (IoT) by building upon widely adopted web technologies. By introducing standardized metadata and reusable technological building blocks, W3C WoT facilitates seamless integration across platforms and application domains. A cornerstone of WoT is the Thing Description (TD), which provides an information model and JSON-LD representation format for describing the capabilities of "things".
+The goal of [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/) is to address fragmentation across the Internet of Things (IoT) by building upon widely adopted web technologies. By introducing standardized metadata and reusable technological building blocks, W3C WoT facilitates seamless integration across platforms and application domains. A cornerstone of WoT is the Thing Description (TD), which provides an information model and JSON-LD representation format for describing the capabilities of "things".
 
 By leveraging the Thing Description (TD) abstraction from the WoT, the LMOS Protocol simplifies the discovery, description, and interaction of agents and tools, while remaining transport-agnostic. This enables developers to switch communication standards (e.g., from HTTP to MQTT or WebSocket) or media types (e.g., from JSON to CBOR) without requiring changes to application logic.
 
@@ -93,6 +113,9 @@ Below are use cases for the LMOS protocol:
    - **Outcome**: The security agent uses an external tool to verify and alert the homeowner about potential security threats, enhancing the security system’s effectiveness.
 
 
+## Terminology
+Fundamental WoT terminology such as Thing, Consumer or WoT Consumer, WoT Thing Description or Thing Description, Interaction Model, Interaction Affordance, Property, Action and Event are defined in the Terminology section of the [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/).
+
 ## Namespace
 
 The LMOS Protocol Vocabulary will be identified under the following IRI:
@@ -107,6 +130,11 @@ https://eclipse.dev/lmos/protocol/v1
 
 #### Agent Description Format
 
+
+The Agent Description Format builds on top of the Thing Description (TD) format from the Web of Things (WoT) specification and extends it by specifying an additional schema tailored to the needs of intelligent  agents. 
+
+The format is structured similarly to the Thing Description but includes LMOS-specific properties to describe the agent’s capabilities and metadata. These additional properties are defined within the "lmos" namespace, ensuring they are clearly differentiated from standard WoT terms.
+
 Here is the table and description for an **Agent** in the context of the **LMOS Protocol Vocabulary**:
 
 | **Vocabulary Term** | **Value** | **Assignment** | **Type** |
@@ -119,13 +147,21 @@ Example:
 
 ```
 {
-    "@context": [
-        "https://www.w3.org/2022/wot/td/v1.1",
-        {
-            "lmos": "https://eclipse.dev/lmos/protocol/v1",
+   "@context": [
+      "https://www.w3.org/2022/wot/td/v1.1",
+      {
+         "lmos": "https://eclipse.dev/lmos/protocol/v1",
+      }
+   ],
+   "@type": "lmos:Agent",
+   "id": "urn:uuid:6f1d3a7a-1f97-4e6b-b45f-f3c2e1c84c77",
+   "title": "Agent Name",
+   "lmos:metadata": {
+        "lmos:vendor": {
+            "lmos:name": "Deutsche Telekom AG",
+            "lmos:url": "https://telekom.de"
         }
-    ],
-    "@type": "lmos:Agent"
+   }
 }
 ```
 
@@ -159,6 +195,8 @@ A Tool in the LMOS Protocol refers to a resource or system that an agent can uti
 
 #### Tools Description Format
 
+The Tool Description Format builds on top of the Thing Description (TD) format from the Web of Things (WoT) specification, similar to the Agent Description Format.
+
 Here is the table and description for a **Tool** in the context of the **LMOS Protocol Vocabulary**:
 
 
@@ -172,13 +210,21 @@ Example:
 
 ```
 {
-    "@context": [
-        "https://www.w3.org/2022/wot/td/v1.1",
-        {
-            "lmos": "https://eclipse.dev/lmos/protocol/v1",
+   "@context": [
+      "https://www.w3.org/2022/wot/td/v1.1",
+      {
+         "lmos": "https://eclipse.dev/lmos/protocol/v1",
+      }
+   ],
+   "@type": "lmos:Tool"
+   "id": "urn:uuid:3f1d3a7a-4f97-2e6b-c45f-f3c2e1c84c77",
+   "title": "Tool Name",
+   "lmos:metadata": {
+        "lmos:vendor": {
+            "lmos:name": "Deutsche Telekom AG",
+            "lmos:url": "https://telekom.de"
         }
-    ],
-    "@type": "lmos:Tool"
+   }
 }
 ```
 
@@ -199,10 +245,61 @@ To ensure interaction between agents and tools, the following communication patt
 
 ## 
 
-## Security Considerations
+## Security & Privacy Considerations
 
-## Privacy Considerations
+Security & Privacy in the **LMOS Protocol** is aligned with the principles and best practices outlined in the **Web of Things (WoT) Architecture**. The **WoT Security & Privacy Considerations**, as defined by the W3C, provide a comprehensive framework to ensure secure interactions within interconnected "Things".
+
+### Key Security Principles
+
+1. **Authentication and Authorization**:  
+      - Ensure that all agents and tools interacting through LMOS are authenticated, and access is granted based on clearly defined permissions.
+      - Use token-based or certificate-based mechanisms, following WoT’s best practices.
+
+2. **Data Confidentiality and Integrity**:  
+      - All communications must use secure transport protocols (e.g., HTTPS, WebSockets over TLS) to protect data from interception and tampering.
+      - Adopt mechanisms such as digital signatures or encryption to maintain the integrity and confidentiality of data exchanged between agents.
+
+3. **Privacy and Data Minimization**:  
+      - Collect and store only the data that is essential for operation, adhering to principles of data minimization.
+      - Ensure compliance with privacy standards (e.g., GDPR) by implementing clear policies for data retention, anonymization, and user consent.
+
+4.  **Access Control**: 
+      - Restrict access to sensitive data based on roles and permissions, ensuring only authorized agents or tools can view or modify private information.
 
 ## Out of Scope
 
+### New Transport Protocols
+
+The LMOS Protocol does not aim to create a new transport protocol. Instead, it relies on existing, widely adopted transport protocols such as HTTP, WebSocket, and other standards, ensuring compatibility with established technologies. The focus is solely on defining an application model that operates on top of these protocols.
+
+
+### New Security Mechanisms
+
+LMOS does not introduce new security mechanisms. Instead, it leverages proven and standardized security practices such as TLS for secure communication, OAuth 2.0 for authorization, and existing encryption methods to ensure secure interactions. T
+
+### New Media Types
+
+The LMOS Protocol does not define new media types. Instead, it supports existing formats such as JSON, JSON-LD, and CBOR, ensuring flexibility and compatibility with a wide range of applications and systems.
+
+## IANA Considerations
+
+This specification proposes the registration of a sub-protocol in the IANA "WebSocket Subprotocol Name Registry". The name of the sub-protocol and the published URL of its definition are to be confirmed. Currently, the name "lmosprotocol" and this document are used as a placeholder and draft proposal.
+
+- **Subprotocol Identifier**:  
+  `lmosprotocol`
+  
+- **Subprotocol Common Name**:  
+  LMOS Protocol
+  
+- **Subprotocol Definition**:  
+  This document
+
 ## References
+
+[THINGDESC]
+
+Web of Things (WoT) Thing Description. Michael Koster; Sebastian Käbisch; Zoltan Kis; Victor Charpenay; Matthias Kovatsch. W3C Recommendation. URL: https://www.w3.org/TR/wot-thing-description/
+
+[WOTARCH]
+
+Web of Things (WoT) Architecture. Sebastian Käbisch; Michael Koster; Victor Charpenay; Kunihiko Toumura; Matthias Kovatsch. W3C Recommendation. URL: https://www.w3.org/TR/wot-architecture/
