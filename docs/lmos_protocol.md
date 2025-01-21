@@ -404,10 +404,77 @@ All date and time values MUST use the `date-time` format defined in [[RFC3339]].
 
 The `messageType` member MUST have a value from the following table:
 
-| **Message Type**   | **Description**                         | **Entity**            | **Direction**      |
-|---------------------|-----------------------------------------|-----------------------|---------------------|
-| `readProperty`      | Request a property reading from a Thing | `PropertyAffordance`  | Consumer ➡ Thing    |
-| `propertyReading`   | A property reading from a Thing         | `PropertyAffordance`  | Thing ➡ Consumer    |
+| **Message Type**             | **Description**                                         | **Entity**            | **Direction**        |
+|------------------------------|---------------------------------------------------------|-----------------------|----------------------|
+| `invokeAction`                | Invoke an action on a Thing                             | `ActionAffordance`    | Consumer ➡ Thing     |
+| `actionStatus`                | Status of a previously invoked action                   | `ActionAffordance`    | Thing ➡ Consumer     |
+| `subscribeEvent`              | Subscribe to a specific event from a Thing              | `EventAffordance`     | Consumer ➡ Thing     |
+| `unsubscribeEvent`            | Unsubscribe from a specific event from a Thing          | `EventAffordance`     | Consumer ➡ Thing     |
+| `subscribeAllEvents`          | Subscribe to all events from a Thing                    | `EventAffordance`     | Consumer ➡ Thing     |
+| `unsubscribeAllEvents`        | Unsubscribe from all events from a Thing                | `EventAffordance`     | Consumer ➡ Thing     |
+| `readProperty`                | Request a property reading from a Thing                 | `PropertyAffordance`  | Consumer ➡ Thing     |
+| `propertyReading`             | A property reading from a Thing                         | `PropertyAffordance`  | Thing ➡ Consumer     |
+| `writeProperty`               | Write a property value to a Thing                       | `PropertyAffordance`  | Consumer ➡ Thing     |
+| `writeMultipleProperties`     | Write multiple property values to a Thing               | `PropertyAffordance`  | Consumer ➡ Thing     |
+| `observeProperty`             | Start observing a property value change in a Thing      | `PropertyAffordance`  | Consumer ➡ Thing     |
+| `unobserveProperty`           | Stop observing a property value change in a Thing       | `PropertyAffordance`  | Consumer ➡ Thing     |
+| `error`                       | Error response from a Thing                             | `ErrorAffordance`     | Thing ➡ Consumer     |
+
+### Interaction Patterns Realization
+
+#### **1. One-Way (Fire-and-Forget)**  
+The **One-Way (Fire-and-Forget)** pattern is where a message or command is sent, and no response is expected from the recipient. This pattern is useful when you want to perform an action or notify an agent without waiting for any acknowledgment or further communication.
+
+**Message Types Used**:
+- **`invokeAction`**: Used to initiate an action on a Thing without expecting a response, like sending a command to reboot or reset a device.
+- **`writeProperty`**, **`writeMultipleProperties`**, **`writeAllProperties`**: These message types can be used to set properties without waiting for a response.
+- **`unsubscribeEvent`**: The act of unsubscribing to an event without expecting any response.
+- **`unobserveProperty`**: Stopping the observation of a property without receiving a response.
+
+
+#### **2. Request-Reply**  
+In this pattern, an agent sends a request and expects a single response, typically with the requested information or acknowledgment.
+
+**Message Types Used**:
+- **`readProperty`** and **`propertyReading`**: Requesting the current value of a property, expecting a reply with the value. 
+- **`invokeAction`** and **`actionStatus`**: You can invoke an action and then expect the action status (e.g., completed, failed) as a reply.
+- **`writeProperty`**, **`writeMultipleProperties`**: After writing a property, the system cmust respond with a **`propertyReadings`** message indicating that the properties have been written.
+- **`invokeAction`** and `actionStatus`: A request to invoke an action that might take time to complete. The Thing returns multiple response messages that provide the status of the invoked action, typically with updates until the action completes (e.g., pending, in progress, completed).
+
+### **3. One Request-Multiple Responses**  
+This pattern is useful for cases where a single request may result in multiple responses over time, like ongoing updates or multiple pieces of information. 
+In some cases, a request may initiate an action, and the status of that action may be reported multiple times until the action completes. This is useful when long-running or asynchronous operations are involved, and intermediate status updates are needed.
+
+**Message Types Used**:
+- **`subscribeEvent`**: When subscribing to events, the system sends multiple event notifications over time as the event occurs.
+- **`event`**: This message type provides the event notifications as responses to the subscription.
+- **`observeProperty`**: If an agent observes a property, it will receive multiple updates about the property value over time.
+- **`propertyReading`**: Multiple readings of a property over time (e.g., temperature sensor sending periodic updates).
+
+### **4. Event-Driven/Notifications**  
+This pattern allows an agent to send events without expecting a reply. The agent informs other agents about events or property status changes.
+
+**Message Types Used**:
+- **`event`**: This is the notification sent by the Thing when an event occurs, such as a temperature alert or an error condition.
+- **`error`**: Sent to inform the consumer of any issues or failures that have occurred.
+
+### **5. Publish-Subscribe**  
+In this pattern, agents can **publish** events and other agents **subscribe** to receive those messages. It supports loose coupling and real-time communication.
+
+**Message Types Used**:
+- **`subscribeEvent`**: Allows agents to subscribe to specific events emitted by a Thing. Once subscribed, the agent will receive notifications (event messages) whenever the event occurs.
+- **`event`**: The published event message sent to all subscribers.
+- **`subscribeAllEvents`**: Allows agents to subscribe to all events emitted by a Thing, enabling broad notifications from the Thing.
+
+#### Summary
+
+| **Interaction Pattern**                 | **Message Type(s)**                                          | **Description**                                                                                   | **Example Scenarios**                                                                                                 |
+|-----------------------------------------|--------------------------------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| **One-Way (Fire-and-Forget)**        | `invokeAction`, `writeProperty`, `writeMultipleProperties`   | Messages sent without expecting a response. Typically used for commands or updates where no acknowledgment is required. | A content generation agent receives a prompt to create a background image for a website theme and generates it without further input or confirmation, saving it directly to a shared repository. |
+| **Request-Reply**                    | `readProperty` / `propertyReading`, `invokeAction` / `actionStatus`, `writeProperty` / `propertyReading` | The sender requests information or performs an action and waits for a single response from the receiver. | A marketing agent requests a generative AI agent to draft ad copy based on specific keywords. The AI responds with the completed draft for approval. |
+| **One Request-Multiple Responses**   | `invokeAction` /  `actionStatus`, `observeProperty` / `propertyReading`, `subscribeEvent` / `event`                                             | A request is made, and the system sends multiple responses over time (e.g., progress updates) until completion. | A video editing agent requests an AI agent to generate multiple versions of a video thumbnail. The AI agent sends updates as it creates each design, followed by a final batch of all thumbnails for review. |
+| **Event-Driven / Notifications**     | `subscribeEvent`/`event`, `observerProperty` / `propertyReading`                                    | Notifications are sent to inform other agents about an event or status change, without expecting a reply. | A generative AI agent detects when a trending topic emerges and notifies a social media agent, which then requests the creation of relevant posts (text, images, and videos). |
+| **Publish-Subscribe**                | `subscribeEvent`/`event`, `observerProperty` / `propertyReading`                                        | Agents subscribe to events and receive updates whenever those events occur.                         | A news publishing agent subscribes to updates from a generative AI summarization agent. Whenever the summarization agent processes a breaking news article, it publishes the summary, which the news agent formats and distributes in text and video formats. |
 
 
 ### Properties
@@ -578,9 +645,6 @@ To stop observing a specific property of a Thing.
 }
 ```
 
-
-
-
 ### Actions
 
 #### invokeAction
@@ -606,8 +670,6 @@ To invoke an action on a Thing, send this message.
 }
 ```
 
----
-
 #### actionStatus
 Provides the status of a previously invoked action.
 
@@ -631,8 +693,6 @@ Provides the status of a previously invoked action.
 }
 ```
 
----
-
 ### Events
 
 #### subscribeEvent
@@ -652,7 +712,6 @@ To subscribe to a specific event on a Thing.
   "event": "userFeedbackReceived"
 }
 ```
-
 
 #### event
 Provides event notifications from a Thing.
@@ -700,6 +759,41 @@ To unsubscribe from a specific event on a Thing.
   "event": "userFeedbackReceived"
 }
 ```
+
+#### subscribeAllEvents
+To subscribe to all events emitted by a Thing.
+
+| **Member**    | **Type**    | **Description**                                        |
+|---------------|-------------|--------------------------------------------------------|
+| `messageType`      | string              | Always "subscribeAllEvents".                               |
+
+##### **Example Request:**
+```json
+{
+  "thingId": "urn:uuid:3f1d3a7a-4f97-2e6b-c45f-f3c2e1c84c77",
+  "messageId": "abcd1234-5678-90ef-ghij-klmnopqrstuv",
+  "messageType": "subscribeAllEvents"
+}
+```
+
+---
+
+#### unsubscribeAllEvents
+To unsubscribe from all events emitted by a Thing.
+
+| **Member**    | **Type**    | **Description**                                        |
+|---------------|-------------|--------------------------------------------------------|
+| `messageType`      | string              | Always "unsubscribeAllEvents".                             |
+
+##### Example Request
+```json
+{
+  "thingId": "urn:uuid:3f1d3a7a-4f97-2e6b-c45f-f3c2e1c84c77",
+  "messageId": "xyz1234-5678-90ef-abcd-efghijklmnop",
+  "messageType": "unsubscribeAllEvents"
+}
+```
+
 
 ### Error Handling
 
