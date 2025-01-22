@@ -47,7 +47,7 @@ const sidebars = {
         'lmos_protocol/communication_protocol',
         'lmos_protocol/observability',
         'lmos_protocol/security',
-        'lmos_protocol/iana'
+        'lmos_protocol/websocket_binding'
       ],
     },
     {

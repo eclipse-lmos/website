@@ -191,4 +191,4 @@ To ensure interaction between agents, the following communication patterns must 
    - A mechanism must be in place to allow agents to publish messages or events and for other agents to subscribe and receive those messages.
 
 5. **Request-Stream / Response-Stream**  
-   - Continuous or real-time data streams must be supported, allowing agents to receive ongoing information as it becomes available.
+   - Continuous or real-time data streams must be supported, allowing agents to receive voice streams and response with voice streams.

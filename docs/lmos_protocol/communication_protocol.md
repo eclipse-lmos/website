@@ -5,6 +5,8 @@ sidebar_position: 3
 
 # Communication Protocol
 
+The LMOS communication protocol is designed around the Web of Things information model, but specifically designed for AI use cases. 
+
 ## Common Message Requirements
 - Every message MUST contain:
   - `thingID`: A unique identifier of the Thing. If the Thing Description contains an `id` member, its value MUST be used. Otherwise, the URL from which the Thing Description was retrieved MAY be used. The value MUST be a valid URI.
