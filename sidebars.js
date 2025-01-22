@@ -34,7 +34,22 @@ const sidebars = {
         'multi_agent_system/agent_lifecycle'
       ],
     },
-    "lmos_protocol",
+    {
+      type: 'category',
+      label: 'LMOS Protocol',
+      collapsible: true,
+      collapsed: false,
+      items: [
+        'lmos_protocol/introduction',
+        'lmos_protocol/requirements',
+        'lmos_protocol/agent_description',
+        'lmos_protocol/tool_description',
+        'lmos_protocol/communication_protocol',
+        'lmos_protocol/observability',
+        'lmos_protocol/security',
+        'lmos_protocol/iana'
+      ],
+    },
     {
       type: 'category',
       label: 'Architecture',
