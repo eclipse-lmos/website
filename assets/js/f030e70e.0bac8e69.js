@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunklmos_website=self.webpackChunklmos_website||[]).push([[4573],{6583:e=>{e.exports=JSON.parse('{"tags":[{"label":"spring","permalink":"/lmos/blog/tags/spring","count":1},{"label":"Spring.AI","permalink":"/lmos/blog/tags/spring-ai","count":1},{"label":"feature","permalink":"/lmos/blog/tags/feature","count":1}]}')}}]);
