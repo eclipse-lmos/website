@@ -873,19 +873,35 @@ LMOS supports **distributed tracing**, allowing for the tracking of messages as 
 
 ### Contextual Metadata
 
-- **`traceparent` Header**: Used for linking different services in a trace. This header includes the `TraceId`, `SpanId`, and `TraceFlags` to ensure consistency and traceability across the system.
+- **`traceparent`**: Used for linking different services in a trace. This header includes the `TraceId`, `SpanId`, and `TraceFlags` to ensure consistency and traceability across the system.
   
+
   **Example**:
   ```text
-  traceparent: 00-4bf92f3577b34da6a4f1e1f3b98d5f47-00f067aa0ba902b7-01
+  traceparent: 00-<trace-id>-<span-id>-<trace-flags>
   ```
 
-- **`tracestate` Header**: This optional header can carry vendor-specific or system-specific trace information, enhancing observability by incorporating metadata that reflects the capabilities of different tracing systems.
+- **`tracestate`**: This optional header can carry vendor-specific or system-specific trace information, enhancing observability by incorporating metadata that reflects the capabilities of different tracing systems.
   
   **Example**:
   ```text
-  tracestate: vendor1=opentelemetry, vendor2=specialtracing
+  tracestate: <key1>=<value1>,<key2>=<value2>
   ```
+
+**Message Example**:
+```json
+{
+   "thingID": "urn:uuid:3f1d3a7a-4f97-2e6b-c45f-f3c2e1c84c77",
+   "messageID": "c370da58-69ae-4e83-bb5a-ac6cfb2fed54",
+   "messageType": "readProperty",
+   "name": "modelConfiguration",
+   "correlationID": "5afb752f-8be0-4a3c-8108-1327a6009cbd",
+   "traceparent": "00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01",
+   "tracestate": "congo=BleGNlZWRzIHRohbCBwbGVhc3VyZS4"
+}
+```
+
+  
 
 
 ### Trace IDs vs Message and Correlation IDs
