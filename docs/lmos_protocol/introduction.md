@@ -14,11 +14,11 @@ Much like Bluetooth enables a variety of devices to be discovered, connect and e
 
 By defining standardized interaction patterns, metadata and information models, and a communication protocol, the LMOS Protocol enables:
 
-* Interoperability: Ensuring agents and tools from different ecosystems can understand and interact with each other.
-* Discoverability: Facilitating the discovery of agents and tools that match specific needs.
-* Scalability: Supporting the addition of new agents and tools without disruption.
-* Transport Agnosticism: Allowing developers to use diverse communication protocols (e.g., HTTP, WebSocket, MQTT) without modifying application logic.
-* Ecosystem Collaboration: Empowering organizations to publish their AI Agent and Tools into a larger ecosystem.
+* **Interoperability:** Ensuring agents and tools from different ecosystems can understand and interact with each other.
+* **Discoverability:** Facilitating the discovery of agents and tools that match specific needs.
+* **Scalability:** Supporting the addition of new agents and tools without disruption.
+* **Transport Agnosticism:** Allowing developers to use diverse communication protocols (e.g., HTTP, WebSocket, MQTT) without modifying application logic.
+* **Ecosystem Collaboration:** Empowering organizations to publish their AI Agent and Tools into a larger ecosystem.
 
 The goal of [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/) is to address fragmentation across the Internet of Things (IoT) by building upon widely adopted web technologies. By introducing standardized metadata and reusable technological building blocks, W3C WoT facilitates seamless integration across platforms and application domains. A cornerstone of WoT is the Thing Description (TD), which provides an information model and JSON-LD representation format for describing the capabilities of "things".
 
@@ -29,9 +29,9 @@ The LMOS Protocol (Language Model Operating System Protocol) extends this concep
 Unlike other protocols, like the Model Context Protocol (MCP) by Anthropic, that tie communication to specific technologies (JSON-RPC), LMOS Protocol offers the adaptability needed for modern distributed systems. For example, developers can seamlessly switch from HTTP to WebSocket or from JSON to CBOR, ensuring future-proof and scalable implementations. Furthermore, the protocol addresses challenges in ad-hoc interoperability by defining an HTTP sub-protocol for REST-based interactions and a WebSocket sub-protocol for real-time communication. These sub-protocols ensure compatibility with existing web standards, enabling real-time communication, secure data exchange, and scalable interoperability for multi-agent systems. By supporting both synchronous and asynchronous communication patterns, the LMOS protocol adapts to a broad range of use cases.
 
 ## Status of the LMOS Protocol
-The LMOS Protocol is published by the Eclipse LMOS Working Group. It is not yet a W3C Standard nor is it on the W3C Standards Track. However, we plan to initiate the formal W3C process once the protocol reaches a mature state.
+The LMOS Protocol is published by the Eclipse LMOS project. It is not a W3C Standard nor is it on the W3C Standards Track. However, we plan to initiate the formal W3C process once the protocol reaches a mature state.
 
-Please note that this protocol is a work in progress and contains empty sections.
+Please note that this protocol is work in progress and contains empty sections.
 
 GitHub Issues are preferred for discussion of this specification. Alternatively, you can join our Discord channel.
 
