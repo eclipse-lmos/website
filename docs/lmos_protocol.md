@@ -383,11 +383,11 @@ To ensure interaction between agents and tools, the following communication patt
 ### Common Message Requirements
 - Every message MUST contain:
   - `thingID`: A unique identifier of the Thing. If the Thing Description contains an `id` member, its value MUST be used. Otherwise, the URL from which the Thing Description was retrieved MAY be used. The value MUST be a valid URI.
-  - `messageID`: A unique identifier for the current message in UUIDv4 format [[RFC9562]].
+  - `messageID`: A unique identifier for the current message in UUIDv4 format [RFC9562](https://datatracker.ietf.org/doc/html/rfc9562).
   - `messageType`: A string denoting the type of message, based on the [LMOS message types](#lmos-message-types).
   - `correlationID` (Optional): A unique identifier in UUIDv4 format shared between messages related to the same operation (e.g., request and response).
 
-All date and time values MUST use the `date-time` format defined in [[RFC3339]].
+All date and time values MUST use the `date-time` format defined in [RFC 9557](https://datatracker.ietf.org/doc/html/rfc9557).
 
 ### Common Message Members Table
 | Member         | Type   | Assignment | Description                                                                                 |
@@ -664,7 +664,7 @@ To invoke an action on a Thing, send this message.
 }
 ```
 
-### queryAction
+#### queryAction
 To query the latest status of an action on a Thing, send this message.
 
 | Member         | Type      |  Assignment     | Description |
@@ -672,7 +672,7 @@ To query the latest status of an action on a Thing, send this message.
 | `action`      | string    | Mandatory | The name of the action to query.                               |
 | `messageType`   | string    | "queryAction" | Always "queryAction".                                                     |
 
-#### Example Request
+##### Example Request
 ```json
 {
   "thingId": "urn:uuid:6f1d3a7a-1f97-4e6b-b45f-f3c2e1c84c77",
@@ -682,7 +682,7 @@ To query the latest status of an action on a Thing, send this message.
 }
 ```
 
-### cancelAction
+#### cancelAction
 To cancel an ongoing or scheduled action on a Thing, send this message.
 
 | Member         | Type      |  Assignment     | Description |
@@ -691,7 +691,7 @@ To cancel an ongoing or scheduled action on a Thing, send this message.
 | `reason`        | string    | Optional | (Optional) The reason for cancellation.                                     |
 | `messageType`   | string    | "cancelAction" | Always "cancelAction".                                                    |
 
-#### Example Request
+##### Example Request
 ```json
 {
   "thingId": "urn:uuid:6f1d3a7a-1f97-4e6b-b45f-f3c2e1c84c77",
@@ -954,9 +954,9 @@ The LMOS Protocol does not define new media types. Instead, it supports existing
 
 ## IANA Considerations
 
-> EDITOR’S NOTE: Sub-protocol name <br>
+> EDITOR’S NOTE: Sub-protocol name <br></br>
 The name of the WebSocket sub-protocol should be defined here and eventually registered with IANA. 
-Sub-protocol name is to be determined.  <br>
+Sub-protocol name is to be determined.  <br></br>
 Example potentialsub-protocol values:
 > * lmos
 > * v1.lmos
