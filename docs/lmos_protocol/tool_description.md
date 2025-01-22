@@ -9,7 +9,7 @@ A Tool in the LMOS Protocol refers to a resource or system that an agent can uti
 
 The LMOS Tool Description Format builds on top of the Thing Description (TD) format from the Web of Things (WoT) specification, similar to the Agent Description Format.
 
-Here is the table and description for a **Tool** in the context of the **LMOS Protocol Vocabulary**:
+Here is the table and description for a **Tool** in the context of the **LMOS Protocol vocabulary**:
 
 
 | **Vocabulary Term** | **Value** | **Assignment** | **Type** |
@@ -44,8 +44,8 @@ Example:
 
 > EDITOR’S NOTE: 
 In order to guarantee interoperability we may want to prescribe which discovery mechanisms (defined in the WoT Discovery specification) must be supported by Tools and Consumers.
-As a minimum I suggest that we may want to require that Conformant Tools can serve their Thing Description from an HTTP URL. 
-For more details see [LMOS Discovery](https://eclipse.dev/lmos/docs/multi_agent_system/agent_discovery)
+As a minimum we suggest that we may want to require that conformant Tools can serve their Thing Description from an HTTP URL.
+For more details see [LMOS Discovery](https://eclipse.dev/lmos/docs/multi_agent_system/agent_discovery).
 
 
 ## Tool Communication

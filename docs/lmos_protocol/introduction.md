@@ -108,11 +108,11 @@ The LMOS Protocol is particularly designed for multi-agent systems, where intero
 
 
 ## Terminology
-Fundamental WoT terminology such as Thing, Consumer or WoT Consumer, WoT Thing Description or Thing Description, Interaction Model, Interaction Affordance, Property, Action and Event are defined in the Terminology section of the [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/).
+Fundamental WoT terminology such as Thing, Consumer or WoT Consumer, WoT Thing Description or Thing Description, Interaction Model, Interaction Affordance, Property, Action and Event are defined in the terminology section of the [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/).
 
 ## Namespace
 
-The LMOS Protocol Vocabulary will be identified under the following IRI:
+The LMOS Protocol vocabulary will be identified under the following URI:
 
-* Namespace IRI:
+* Namespace URI:
 https://eclipse.dev/lmos/protocol/v1
