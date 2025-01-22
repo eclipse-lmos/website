@@ -10,7 +10,7 @@ The LMOS Agent Description Format builds on top of the Thing Description (TD) fo
 
 The format is structured similarly to the Thing Description but includes LMOS-specific properties to describe the agent’s capabilities and metadata. These additional properties are defined within the "lmos" namespace, ensuring they are clearly differentiated from standard WoT terms.
 
-Here is the table and description for an **Agent** in the context of the **LMOS Protocol Vocabulary**:
+Here is the table and description for an **Agent** in the context of the **LMOS Protocol vocabulary**:
 
 | **Vocabulary Term** | **Value** | **Assignment** | **Type** |
 |---------------------|-----------------|----------------|----------|
@@ -170,8 +170,8 @@ Full example:
 
 > EDITOR’S NOTE: 
 In order to guarantee interoperability we may want to prescribe which discovery mechanisms (defined in the WoT Discovery specification) must be supported by Agents and Consumers.
-As a minimum I suggest that we may want to require that Conformant Agents can serve their Thing Description from an HTTP URL. 
-For more details see [LMOS Discovery](https://eclipse.dev/lmos/docs/multi_agent_system/agent_discovery)
+As a minimum we suggest that we may want to require that conformant Agents can serve their Thing Description from an HTTP URL. 
+For more details see [LMOS Discovery](https://eclipse.dev/lmos/docs/multi_agent_system/agent_discovery).
 
 
 ## Agent Communication

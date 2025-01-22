@@ -3,14 +3,14 @@ title: WebSocket Sub-Protocol
 sidebar_position: 4
 ---
 
-# WebSocket Sub-Protocol
+# WebSocket Subprotocol
 
 WebSockets provide a mechanism to upgrade a standard HTTP request into a full-duplex, persistent communication channel over a single TCP connection. 
 This enables efficient, two-way communication between LMOS agents, tools, and consumers. However, since WebSockets offer a raw TCP socket with no inherent semantics, the LMOS protocol defines a specialized sub-protocol to structure and standardize the communication. 
 
 ## IANA Considerations
 
-We propose the registration of a sub-protocol in the IANA "WebSocket Subprotocol Name Registry". The name of the sub-protocol and the published URL of its definition are to be confirmed. Currently, the name "lmosprotocol" and this document are used as a placeholder and draft proposal.
+We propose the registration of a subprotocol in the IANA "WebSocket Subprotocol Name Registry". The name of the subprotocol and the published URL of its definition are to be confirmed. Currently, the name "lmosprotocol" and this document are used as a placeholder and draft proposal.
 
 - **Subprotocol Identifier**:  
   `lmosprotocol`
@@ -22,7 +22,7 @@ We propose the registration of a sub-protocol in the IANA "WebSocket Subprotocol
   This document
 
   
-> EDITOR’S NOTE: Sub-protocol name is to be determined.  <br></br>
+> EDITOR’S NOTE: Subprotocol name is to be determined.  <br></br>
 Other names:
 > * lmos
 > * v1.lmos
@@ -31,13 +31,13 @@ Other names:
 
 ## WebSocket Protocol Handshake
 
-To communicate using the LMOS protocol, an LMOS Consumer **MUST** locate one or more communication endpoints provided by an agent or tool for a given set of interaction affordances. The specific requirements are as follows:  
+To communicate using the LMOS protocol, an LMOS consumer **MUST** locate one or more communication endpoints provided by an Agent or Tool for a given set of interaction affordances. The specific requirements are as follows:
 
 - The URL of an endpoint to be used for a given interaction **MUST** be obtained from an Agent or Tool description:  
   - After being resolved against a base URL where applicable, the URI scheme [RFC3986] of the value of its `href` member is a valid transport protocol (e.g., `ws`, `wss`, `http`, `https`, or other supported transports).  
   - Its `subprotocol` member has a value of `lmosprotocol`.  
 
-- To establish a connection over WebSocket with an LMOS-compatible agent or tool, an HTTP GET request **MUST** be upgraded to a WebSocket connection using a standard WebSocket protocol handshake and the `lmosprotocol` subprotocol.  
+- To establish a connection over WebSocket with an LMOS-compatible Agent or Tool, an HTTP GET request **MUST** be upgraded to a WebSocket connection using a standard WebSocket protocol handshake and the `lmosprotocol` subprotocol.  
 
 This handshake ensures that communication adheres to LMOS's communication protocol specification.  
 

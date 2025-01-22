@@ -5,7 +5,7 @@ sidebar_position: 2
 
 # Security & Privacy Considerations
 
-Security & Privacy in the LMOS Protocol is aligned with the principles and best practices outlined in the Web of Things (WoT) Architecture. The WoT Security & Privacy Considerations, as defined by the W3C, provide a comprehensive framework to ensure secure interactions within interconnected "Things".
+Security and privacy in the LMOS Protocol is aligned with the principles and best practices outlined in the Web of Things (WoT) architecture. The WoT security and privacy considerations, as defined by the W3C, provide a comprehensive framework to ensure secure interactions within interconnected "Things".
 
 ## Key Security Principles
 

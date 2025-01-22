@@ -9,7 +9,7 @@ sidebar_position: 2
 - **Requirement**: Define a standardized mechanism for agents and tools to describe their capabilities and interface in a machine-readable format.  
 - **Purpose**: Facilitate consistent discovery between agents, tools, and consumers, regardless of their platform or implementation.  
 
-### Transport Protocol flexibility
+### Transport Protocol Flexibility
 - **Requirement**: Ensure compatibility with a wide range of transport protocols (e.g., HTTP, MQTT, WebSockets) through protocol-agnostic design principles.  
 - **Purpose**: Enable communication and collaboration across agents, tools, and systems implemented on different platforms and technologies.  
 
@@ -21,7 +21,7 @@ sidebar_position: 2
 - **Requirement**: Incorporate robust security frameworks that ensure encrypted communication, authentication, and authorization.  
 - **Purpose**: Protect sensitive data, maintain trustworthiness, and ensure secure interactions within the ecosystem for both agents and tools.  
 
-### Interaction  Patterns flexibility
+### Interaction Pattern Flexibility
 - **Requirement**: Provide support for multiple interaction patterns, including request-response, request-multiple responses and publish-subscribe.  
 - **Purpose**: Allow agents and tools to select the most suitable interaction model for specific scenarios.  
 
