@@ -67,25 +67,19 @@ This pattern is useful for cases where a single request may result in multiple r
 In some cases, a request may initiate an action, and the status of that action may be reported multiple times until the action completes. This is useful when long-running or asynchronous operations are involved, and intermediate status updates are needed.
 
 **Message Types Used**:
-- **`subscribeEvent`**: When subscribing to events, the system sends multiple event notifications over time as the event occurs.
-- **`event`**: This message type provides the event notifications as responses to the subscription.
-- **`observeProperty`**: If an agent observes a property, it will receive multiple updates about the property value over time.
-- **`propertyReading`**: Multiple readings of a property over time (e.g., temperature sensor sending periodic updates).
-
-### Event-Driven/Notifications  
-This pattern allows an agent to send events without expecting a reply. The agent informs other agents about events or property status changes.
-
-**Message Types Used**:
-- **`event`**: This is the notification sent by the Thing when an event occurs, such as a temperature alert or an error condition.
-- **`error`**: Sent to inform the consumer of any issues or failures that have occurred.
+- **`invokeAction`** and **`actionStatus`**: You can invoke an action and then expect the action status (e.g., pending, in progress, completed, or failed) as a reply. The Thing can return multiple response messages providing updates on the status of the action until it is completed.  
+- **`subscribeEvent`** and **`event`**: When subscribing to events, the system sends multiple event notifications over time as the event occurs.
+- **`observeProperty`** and **`propertyReading`**: If an agent observes a property, it will receive multiple updates about the property value over time.
 
 ### Publish-Subscribe  
 In this pattern, agents can **publish** events and other agents **subscribe** to receive those messages. It supports loose coupling and real-time communication.
 
 **Message Types Used**:
 - **`subscribeEvent`**: Allows agents to subscribe to specific events emitted by a Thing. Once subscribed, the agent will receive notifications (event messages) whenever the event occurs.
+- **`unsubscribeEvent`**: Allows agents to unsubscribe from specific events they previously subscribed to, stopping further notifications for those events.
 - **`event`**: The published event message sent to all subscribers.
-- **`subscribeAllEvents`**: Allows agents to subscribe to all events emitted by a Thing, enabling broad notifications from the Thing.
+- **`subscribeAllEvents`**: Allows agents to subscribe to all events emitted by a Thing.
+- **`unsubscribeAllEvents`**: Allows agents to unsubscribe from all events.
 
 ### Summary
 
