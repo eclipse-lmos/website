@@ -303,22 +303,19 @@ For more details see [LMOS Discovery](https://eclipse.dev/lmos/docs/multi_agent_
 
 To ensure interaction between agents, the following communication patterns must be supported:
 
-1. **One-Way (Fire-and-Forget)**  
-   - The system should allow agents to send messages or commands without expecting any acknowledgment or response.
-
-2. **Request-Reply**  
+1. **Request-Reply**  
    - Agents must be able to send requests and receive a single response, providing the requested information or acknowledgment.
 
-3. **One Request-Multiple Responses**  
+2. **One Request-Multiple Responses**  
    - Agents must be able to handle requests that return multiple responses over time, accommodating ongoing updates or multiple pieces of information.
 
-4. **Event-Driven/Notifications**  
+3. **Event-Driven/Notifications**  
    - Agents must support the ability to send notifications without expecting a reply, allowing for status updates.
 
-5. **Publish-Subscribe**  
+4. **Publish-Subscribe**  
    - A mechanism must be in place to allow agents to publish messages or events and for other agents to subscribe and receive those messages.
 
-6. **Request-Stream / Response-Stream**  
+5. **Request-Stream / Response-Stream**  
    - Continuous or real-time data streams must be supported, allowing agents to receive ongoing information as it becomes available.
 
 ### Tools
@@ -399,6 +396,9 @@ All date and time values MUST use the `date-time` format defined in [[RFC3339]].
 | `messageID`    | string | Mandatory  | A unique identifier (UUID) for the current message.                                         |
 | `messageType`  | string | Mandatory  | A string denoting the type of message, based on the [WebSocket message types](#websocket-message-types). |
 | `correlationID`| string | Optional   | A unique identifier (UUID) shared between messages for the same operation, e.g., request and response. |
+| `traceparent`    | string    | Optional              | A trace context header that carries the trace information across service boundaries. It includes the `traceId`, `spanId`, and trace flags. Example: `"00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01"`. |
+| `tracestate`     | string    | Optional              | A trace context header that provides additional vendor-specific or system-specific trace information. Example: `"congo=BleGNlZWRzIHRohbCBwbGVhc3VyZS4"`. |
+
 
 ### LMOS Message Types
 
@@ -406,7 +406,9 @@ The `messageType` member MUST have a value from the following table:
 
 | **Message Type**             | **Description**                                         | **Entity**            | **Direction**        |
 |------------------------------|---------------------------------------------------------|-----------------------|----------------------|
-| `invokeAction`                | Invoke an action on a Thing                             | `ActionAffordance`    | Consumer ➡ Thing     |
+| `invokeAction`               | Invoke an action on a Thing                             | `ActionAffordance`    | Request              |
+| `cancelAction`               | Cancel an ongoing or scheduled action                  | `ActionAffordance`    | Request              |
+| `queryAction`                | Retrieve the latest status of an action                | `ActionAffordance`    | Request              |Consumer ➡ Thing     |
 | `actionStatus`                | Status of a previously invoked action                   | `ActionAffordance`    | Thing ➡ Consumer     |
 | `subscribeEvent`              | Subscribe to a specific event from a Thing              | `EventAffordance`     | Consumer ➡ Thing     |
 | `unsubscribeEvent`            | Unsubscribe from a specific event from a Thing          | `EventAffordance`     | Consumer ➡ Thing     |
@@ -422,26 +424,18 @@ The `messageType` member MUST have a value from the following table:
 
 ### Interaction Patterns Realization
 
-#### **1. One-Way (Fire-and-Forget)**  
-The **One-Way (Fire-and-Forget)** pattern is where a message or command is sent, and no response is expected from the recipient. This pattern is useful when you want to perform an action or notify an agent without waiting for any acknowledgment or further communication.
-
-**Message Types Used**:
-- **`invokeAction`**: Used to initiate an action on a Thing without expecting a response, like sending a command to reboot or reset a device.
-- **`writeProperty`**, **`writeMultipleProperties`**, **`writeAllProperties`**: These message types can be used to set properties without waiting for a response.
-- **`unsubscribeEvent`**: The act of unsubscribing to an event without expecting any response.
-- **`unobserveProperty`**: Stopping the observation of a property without receiving a response.
-
-
-#### **2. Request-Reply**  
+#### **Request-Reply**  
 In this pattern, an agent sends a request and expects a single response, typically with the requested information or acknowledgment.
 
-**Message Types Used**:
-- **`readProperty`** and **`propertyReading`**: Requesting the current value of a property, expecting a reply with the value. 
-- **`invokeAction`** and **`actionStatus`**: You can invoke an action and then expect the action status (e.g., completed, failed) as a reply.
-- **`writeProperty`**, **`writeMultipleProperties`**: After writing a property, the system cmust respond with a **`propertyReadings`** message indicating that the properties have been written.
-- **`invokeAction`** and `actionStatus`: A request to invoke an action that might take time to complete. The Thing returns multiple response messages that provide the status of the invoked action, typically with updates until the action completes (e.g., pending, in progress, completed).
+**Message Types Used**:  
+- **`readProperty`** and **`propertyReading`**: Requesting the current value of a property, expecting a reply with the value.  
+- **`invokeAction`** and **`actionStatus`**: You can invoke an action and then expect the action status (e.g., pending, in progress, completed, or failed) as a reply. The Thing can return multiple response messages providing updates on the status of the action until it is completed.  
+- **`writeProperty`**, **`writeMultipleProperties`**: After writing a property, the system must respond with a **`propertyReadings`** message confirming that the properties have been successfully written.  
+- **`cancelAction`**: Request to cancel an ongoing or scheduled action. The system responds with an **`actionStatus`** message indicating whether the cancellation was successful or if the action could not be canceled (e.g., already completed).  
+- **`queryAction`**: Request to retrieve the latest status of a previously invoked action. The system replies with an **`actionStatus`** message showing the most recent state of the action (e.g., pending, in progress, completed, failed).  
 
-### **3. One Request-Multiple Responses**  
+
+#### **One Request-Multiple Responses**  
 This pattern is useful for cases where a single request may result in multiple responses over time, like ongoing updates or multiple pieces of information. 
 In some cases, a request may initiate an action, and the status of that action may be reported multiple times until the action completes. This is useful when long-running or asynchronous operations are involved, and intermediate status updates are needed.
 
@@ -451,14 +445,14 @@ In some cases, a request may initiate an action, and the status of that action m
 - **`observeProperty`**: If an agent observes a property, it will receive multiple updates about the property value over time.
 - **`propertyReading`**: Multiple readings of a property over time (e.g., temperature sensor sending periodic updates).
 
-### **4. Event-Driven/Notifications**  
+#### **Event-Driven/Notifications**  
 This pattern allows an agent to send events without expecting a reply. The agent informs other agents about events or property status changes.
 
 **Message Types Used**:
 - **`event`**: This is the notification sent by the Thing when an event occurs, such as a temperature alert or an error condition.
 - **`error`**: Sent to inform the consumer of any issues or failures that have occurred.
 
-### **5. Publish-Subscribe**  
+#### **Publish-Subscribe**  
 In this pattern, agents can **publish** events and other agents **subscribe** to receive those messages. It supports loose coupling and real-time communication.
 
 **Message Types Used**:
@@ -470,21 +464,19 @@ In this pattern, agents can **publish** events and other agents **subscribe** to
 
 | **Interaction Pattern**                 | **Message Type(s)**                                          | **Description**                                                                                   | **Example Scenarios**                                                                                                 |
 |-----------------------------------------|--------------------------------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| **One-Way (Fire-and-Forget)**        | `invokeAction`, `writeProperty`, `writeMultipleProperties`   | Messages sent without expecting a response. Typically used for commands or updates where no acknowledgment is required. | A content generation agent receives a prompt to create a background image for a website theme and generates it without further input or confirmation, saving it directly to a shared repository. |
-| **Request-Reply**                    | `readProperty` / `propertyReading`, `invokeAction` / `actionStatus`, `writeProperty` / `propertyReading` | The sender requests information or performs an action and waits for a single response from the receiver. | A marketing agent requests a generative AI agent to draft ad copy based on specific keywords. The AI responds with the completed draft for approval. |
-| **One Request-Multiple Responses**   | `invokeAction` /  `actionStatus`, `observeProperty` / `propertyReading`, `subscribeEvent` / `event`                                             | A request is made, and the system sends multiple responses over time (e.g., progress updates) until completion. | A video editing agent requests an AI agent to generate multiple versions of a video thumbnail. The AI agent sends updates as it creates each design, followed by a final batch of all thumbnails for review. |
-| **Event-Driven / Notifications**     | `subscribeEvent`/`event`, `observerProperty` / `propertyReading`                                    | Notifications are sent to inform other agents about an event or status change, without expecting a reply. | A generative AI agent detects when a trending topic emerges and notifies a social media agent, which then requests the creation of relevant posts (text, images, and videos). |
-| **Publish-Subscribe**                | `subscribeEvent`/`event`, `observerProperty` / `propertyReading`                                        | Agents subscribe to events and receive updates whenever those events occur.                         | A news publishing agent subscribes to updates from a generative AI summarization agent. Whenever the summarization agent processes a breaking news article, it publishes the summary, which the news agent formats and distributes in text and video formats. |
-
+| **Request-Reply**                    | `readProperty` / `propertyReading`, `invokeAction` / `actionStatus`, `writeProperty` / `propertyReading`, `queryAction` / `actionStatus` | The sender requests information or performs an action and waits for a single response from the receiver. | A marketing agent requests a generative AI agent to draft ad copy based on specific keywords. The AI responds with the completed draft.  |
+| **One Request-Multiple Responses**   | `invokeAction` / `actionStatus`, `observeProperty` / `propertyReading`, `subscribeEvent` / `event`                                             | A request is made, and the system sends multiple responses over time (e.g., progress updates) until completion. | A video editing software requests an Image Generator agent to generate multiple versions of an image. The agent sends periodic updates as it creates each design, followed by a final batch of all thumbnails for review. |
+| **Event-Driven / Notifications**     | `subscribeEvent` / `event`, `observerProperty` / `propertyReading`                               | Notifications are sent to inform other agents about an event or status change, without expecting a reply. | An AI agent detects when a trending topic emerges and notifies a social media agent, which then requests the creation of relevant posts. |
+| **Publish-Subscribe**                | `subscribeEvent` / `event`, `observerProperty` / `propertyReading`                                  | Agents subscribe to events and receive updates whenever those events occur.                         | A news publishing agent subscribes to updates from a generative AI summarization agent. Whenever the summarization agent processes a breaking news article, it publishes the summary, which the news agent formats and distributes in text and video formats.  |
 
 ### Properties
 
 #### readProperty
 To request a property reading from a Thing, a Consumer MUST send a message containing the following members:
 
-| **Member**       | **Type** | **Assignment**     | **Description**                                                                 |
-|------------------|----------|--------------------|---------------------------------------------------------------------------------|
-| `messageType`    | string   | `"readProperty"`   | Indicates the request is for a `readProperty` operation.                        |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `messageType`    | string   | "readProperty"   | Indicates the request is for a `readProperty` operation.                        |
 | `name`           | string   | Mandatory          | The name of the Property to read, as per its key in the `properties` member of the Thing Description. |
 
 ##### Example 
@@ -504,11 +496,12 @@ When the Thing receives a `readProperty` message and successfully reads the valu
 #### writeProperty
 To update a property value on a Thing.
 
-| Member         | Type      | Description                                                                  |
-|-----------------|-----------|------------------------------------------------------------------------------|
-| `name`     | string    | The name of the property to update.                                          |
-| `data`         | JsonNode  | The new value for the property.                                              |
-| `messageType`  | string    | Always `"writeProperty"`.                                                    |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `messageType`  | string    | "writeProperty | Indicates the request is for a writeProperty operation.         
+| `name`     | string    | Mandatory | The name of the property to update.                                          |
+| `data`         | object  | Mandatory | The new value for the property.                                              |
+
 
 ##### Example 
 ```json
@@ -529,10 +522,11 @@ To update a property value on a Thing.
 #### **writeMultipleProperties**
 To update multiple properties on a Thing.
 
-| **Member**    | **Type**    | **Description**                                               |
-|---------------|-------------|---------------------------------------------------------------|
-| `data`        | `object`    | Map of property names and their new values.                    |
-| `messageType` | `string`    | Always "writeMultipleProperties".                              |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `messageType` | `string`    | "writeMultipleProperties" |  Indicates the request is for a writeMultipleProperties operation.   |       |
+| `data`        | `object`    | Mandatory | Map of property names and their new values.                    |
+
 
 ##### Example 
 ```json
@@ -554,12 +548,12 @@ To update multiple properties on a Thing.
 #### propertyReading
 To notify a Consumer of the value of a Property, a Thing MUST send a message containing the following members:
 
-| **Member**       | **Type** | **Assignment**       | **Description**                                                                 |
-|------------------|----------|----------------------|---------------------------------------------------------------------------------|
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
 | `messageType`    | string   | `"propertyReading"`  | Indicates this message provides the value of a Property.                        |
 | `name`           | string   | Mandatory            | The name of the Property being read.                                           |
 | `value`          | any      | Mandatory            | The current value of the Property, matching the data schema in the Thing Description. |
-| `timestamp`      | string   | Optional             | A timestamp in `date-time` format indicating when the property was read.        |
+| `timestamp`      | string   | Mandatory             | A timestamp in `date-time` format indicating when the property was read.        |
 
 If the `propertyReading` message is sent in response to a message containing a `correlationID`, the response SHOULD include the same `correlationID`.
 
@@ -583,11 +577,11 @@ If the `propertyReading` message is sent in response to a message containing a `
 #### **propertyReadings**
 To notify a Consumer of the value of a multiple properties, a Thing MUST send a message containing the following members:
 
-| **Member**      | **Type**    | **Description**                                                     |
-|-----------------|-------------|---------------------------------------------------------------------|
-| `data`          | `object`    | Map of property names and their corresponding readings.             |
-| `timestamp`     | `string`    | Timestamp when the property readings were taken.                    |
-| `messageType`   | `string`    | Always "propertyReadings".                                          |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `data`          | `object`    | Mandatory | Map of property names and their corresponding readings.             |
+| `timestamp`     | `string`    | Mandatory |Timestamp when the property readings were taken.                    |
+| `messageType`   | `string`    | "propertyReadings" | Always "propertyReadings".                                          |
 
 ##### Example 
 ```json
@@ -610,10 +604,10 @@ To notify a Consumer of the value of a multiple properties, a Thing MUST send a 
 #### observeProperty
 To begin observing a specific property of a Thing.
 
-| **Member**        | **Type**    | **Description**                                                |
-|-------------------|-------------|----------------------------------------------------------------|
-| `name`        | `string`    | The name of the property to observe.                           |
-| `messageType`     | `string`    | Always "observeProperty".                                      |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `name`        | `string`    | Mandatory | The name of the property to observe.                           |
+| `messageType`     | `string`    | "observeProperty" | Always "observeProperty".                                      |
 
 ##### Example 
 ```json
@@ -628,8 +622,8 @@ To begin observing a specific property of a Thing.
 #### unobserveProperty
 To stop observing a specific property of a Thing.
 
-| **Member**    | **Type**    | **Description**                                              |
-|---------------|-------------|------------------------------------------------------------|
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
 | `thingId`     | `string`    | Identifier of the Thing to stop observing the property.     |
 | `messageId`   | `string`    | Unique identifier for this message.                         |
 | `name`    | `string`    | The name of the property to stop observing.                 |
@@ -650,11 +644,11 @@ To stop observing a specific property of a Thing.
 #### invokeAction
 To invoke an action on a Thing, send this message.
 
-| Member         | Type      | Description                                                                  |
-|-----------------|-----------|------------------------------------------------------------------------------|
-| `action`       | string    | The name of the action to invoke.                                            |
-| `input`        | data  | (Optional) Input data required by the action.                                |
-| `messageType`  | string    | Always `"invokeAction"`.                                                     |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `action`       | string    | Mandatory | The name of the action to invoke.                                            |
+| `input`        | data  | Optional | Input data required by the action.                                |
+| `messageType`  | string    | Mandatory | Always "invokeAction".                                                     |
 
 ##### Example Request
 ```json
@@ -670,15 +664,53 @@ To invoke an action on a Thing, send this message.
 }
 ```
 
+### queryAction
+To query the latest status of an action on a Thing, send this message.
+
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `action`      | string    | Mandatory | The name of the action to query.                               |
+| `messageType`   | string    | "queryAction" | Always "queryAction".                                                     |
+
+#### Example Request
+```json
+{
+  "thingId": "urn:uuid:6f1d3a7a-1f97-4e6b-b45f-f3c2e1c84c77",
+  "messageId": "c67a2e10-8834-4d12-ab23-d8f5ccad3e9f",
+  "messageType": "queryAction",
+  "action": "getWeather"
+}
+```
+
+### cancelAction
+To cancel an ongoing or scheduled action on a Thing, send this message.
+
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `action`      | string    | Mandatory | The name of the action to cancel.                                |
+| `reason`        | string    | Optional | (Optional) The reason for cancellation.                                     |
+| `messageType`   | string    | "cancelAction" | Always "cancelAction".                                                    |
+
+#### Example Request
+```json
+{
+  "thingId": "urn:uuid:6f1d3a7a-1f97-4e6b-b45f-f3c2e1c84c77",
+  "messageId": "d92c4f20-1284-4f92-bc99-f6e3ccbc4f9d",
+  "messageType": "cancelAction",
+  "action": "getWeather",
+  "reason": "User requested cancellation before completion."
+}
+```
+
 #### actionStatus
 Provides the status of a previously invoked action.
 
-| Member          | Type        | Description                                                                |
-|------------------|-------------|----------------------------------------------------------------------------|
-| `action`        | string      | The name of the action being reported.                                     |
-| `status`        | string      | The status of the action (`pending`, `completed`, `failed`).               |
-| `output`        | data    | (Optional) Output data from the action, if available.                      |
-| `messageType`   | string      | Always `"actionStatus"`.                                                   |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `action`        | string      | Mandatory | The name of the action being reported.                                     |
+| `status`        | string      |  Mandatory |  The status of the action (`pending`, `completed`, `failed`).               |
+| `output`        | data    | Optional |  Output data from the action, if available.                      |
+| `messageType`   | string      |  "actionStatus" |  Always "actionStatus".                                                   |
 
 ##### Example Response
 ```json
@@ -698,10 +730,10 @@ Provides the status of a previously invoked action.
 #### subscribeEvent
 To subscribe to a specific event on a Thing.
 
-| Member         | Type      | Description                                                                  |
-|-----------------|-----------|------------------------------------------------------------------------------|
-| `event`        | string    | The name of the event to subscribe to.                                       |    |
-| `messageType`  | string    | Always `"subscribeEvent"`.                                                   |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `event`        | string    | Mandatory | The name of the event to subscribe to.                                       |    |
+| `messageType`  | string    | "subscribeEvent" | Always "subscribeEvent".                                                   |
 
 ##### Example Request
 ```json
@@ -709,27 +741,28 @@ To subscribe to a specific event on a Thing.
   "thingId": "urn:uuid:3f1d3a7a-4f97-2e6b-c45f-f3c2e1c84c77",
   "messageId": "abcd1234-5678-90ef-ghij-klmnopqrstuv",
   "messageType": "subscribeEvent",
-  "event": "userFeedbackReceived"
+  "event": "userFeedbackReceived",
+  "correlationId": "b45e8f90-8824-4c23-bc37-c6c4ddad4b2c"
 }
 ```
 
 #### event
 Provides event notifications from a Thing.
 
-| Member          | Type        | Description                                                                |
-|------------------|-------------|----------------------------------------------------------------------------|
-| `correlationId` | string      | (Optional) Identifier linking this event to a subscription.                |
-| `event`         | string      | The name of the event being reported.                                      |
-| `href`          | string      | (Optional) URI to the event details.                                       |
-| `data`          | JsonNode    | Event-specific data.                                                       |
-| `timestamp`     | Instant     | Timestamp of the event occurrence.                                         |
-| `messageType`   | string      | Always `"event"`.                                                          |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `correlationId` | string      | Mandatory | Identifier linking this event to a subscription.                |
+| `event`         | string      | Mandatory |  The name of the event being reported.                                      |
+| `data`          | JsonNode    | Mandatory |  Event-specific data.                                                       |
+| `timestamp`     | Instant     | Mandatory |  Timestamp of the event occurrence.                                         |
+| `messageType`   | string      | Mandatory |  Always `"event"`.                                                          |
 
 ##### Example 
 ```json
 {
   "thingId": "urn:uuid:3f1d3a7a-4f97-2e6b-c45f-f3c2e1c84c77",
   "messageId": "defg4567-8901-2345-hijk-lmnopqrstuvw",
+  "correlationId": "b45e8f90-8824-4c23-bc37-c6c4ddad4b2c",
   "messageType": "event",
   "event": "userFeedbackReceived",
   "data": {
@@ -743,12 +776,10 @@ Provides event notifications from a Thing.
 #### unsubscribeEvent
 To unsubscribe from a specific event on a Thing.
 
-| **Member**    | **Type**    | **Description**                                        |
-|---------------|-------------|--------------------------------------------------------|
-| `thingId`     | `string`    | Identifier of the Thing to unsubscribe from the event. |
-| `messageId`   | `string`    | Unique identifier for this message.                    |
-| `event`       | `string`    | The name of the event to unsubscribe from.             |
-| `messageType` | `string`    | Always "unsubscribeEvent".                             |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `event`       | `string`    | Mandatory | The name of the event to unsubscribe from.             |
+| `messageType` | `string`    | "unsubscribeEvent" | Always "unsubscribeEvent".                             |
 
 ##### Example 
 ```json
@@ -763,9 +794,9 @@ To unsubscribe from a specific event on a Thing.
 #### subscribeAllEvents
 To subscribe to all events emitted by a Thing.
 
-| **Member**    | **Type**    | **Description**                                        |
-|---------------|-------------|--------------------------------------------------------|
-| `messageType`      | string              | Always "subscribeAllEvents".                               |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `messageType`      | string              | "subscribeAllEvents" | Always "subscribeAllEvents".                               |
 
 ##### **Example Request:**
 ```json
@@ -781,9 +812,9 @@ To subscribe to all events emitted by a Thing.
 #### unsubscribeAllEvents
 To unsubscribe from all events emitted by a Thing.
 
-| **Member**    | **Type**    | **Description**                                        |
-|---------------|-------------|--------------------------------------------------------|
-| `messageType`      | string              | Always "unsubscribeAllEvents".                             |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `messageType`      | string              | "unsubscribeAllEvents" | Always "unsubscribeAllEvents".                             |
 
 ##### Example Request
 ```json
@@ -800,14 +831,14 @@ To unsubscribe from all events emitted by a Thing.
 #### error
 To notify about an error that occurred during processing.
 
-| **Member**    | **Type**    | **Description**                                               |
-|---------------|-------------|---------------------------------------------------------------|
-| `type`         | `string`    | URI reference to the type of error.                           |
-| `title`        | `string`    | A short, human-readable summary of the error.                 |
-| `status`       | `string`    | HTTP status code associated with the error.                   |
-| `detail`       | `string`    | Detailed explanation of the error.                            |
-| `instance`     | `string`    | URI reference to the specific occurrence of the error.        |
-| `messageType`  | `string`    | Always "error".                                               |
+| Member         | Type      |  Assignment     | Description |
+|-----------------|-----------|------------------------------------------------------------------------------|------------|
+| `type`         | `string`    | Mandatory | URI reference to the type of error.                           |
+| `title`        | `string`    | Mandatory |  A short, human-readable summary of the error.                 |
+| `status`       | `string`    | Mandatory |  Error status code associated with the error.                   |
+| `detail`       | `string`    | Mandatory |  Detailed explanation of the error.                            |
+| `instance`     | `string`    | Mandatory |  URI reference to the specific occurrence of the error.        |
+| `messageType`  | `string`    | "error" | Always "error".                                               |
 
 **Example Response**
 ```json
@@ -823,6 +854,51 @@ To notify about an error that occurred during processing.
   "instance": "urn:uuid:abcd1234-5678-90ef-ghij-klmnopqrstuv"
 }
 ```
+
+## Observability Considerations
+
+In multi-agent systems, multiple Agents (and Tools) interact with each other, often across different platforms and protocols. Without observability, debugging issues, identifying performance bottlenecks, and ensuring overall system reliability becomes exceedingly difficult.
+
+Key reasons why observability is important:
+- **Real-time Monitoring**: Allows operators to monitor the health of the overall system and detect anomalies early.
+- **Performance Optimization**: Provides insights into where delays or inefficiencies occur in the system.
+- **Fault Isolation**: Helps pinpoint the exact location of failures or errors, speeding up the troubleshooting process.
+
+### Distributed Tracing
+
+LMOS supports **distributed tracing**, allowing for the tracking of messages as they traverse multiple Agents and Tools. 
+
+- **Trace Context Integration**: LMOS protocol messages are designed to propagate trace context (via `traceparent` and `tracestate`).
+- **Propagation of Trace Metadata**: The trace information includes the **trace ID**, **span ID**, and **trace flags**, ensuring that each component participating in the interaction can log its part of the trace.
+
+### Contextual Metadata
+
+- **`traceparent` Header**: Used for linking different services in a trace. This header includes the `TraceId`, `SpanId`, and `TraceFlags` to ensure consistency and traceability across the system.
+  
+  **Example**:
+  ```text
+  traceparent: 00-4bf92f3577b34da6a4f1e1f3b98d5f47-00f067aa0ba902b7-01
+  ```
+
+- **`tracestate` Header**: This optional header can carry vendor-specific or system-specific trace information, enhancing observability by incorporating metadata that reflects the capabilities of different tracing systems.
+  
+  **Example**:
+  ```text
+  tracestate: vendor1=opentelemetry, vendor2=specialtracing
+  ```
+
+
+### Trace IDs vs Message and Correlation IDs
+
+LMOS supports message correlation using **Message IDs** and **Correlation IDs**, which help track the lifecycle of specific messages or interactions across the system. While these IDs are not as comprehensive as distributed traces, they provide an additional layer of tracking for individual request-response pairs.
+
+- **Message ID**: Used to identify and track individual messages within the system.
+- **Correlation ID**: Useful for grouping related messages or interactions, particularly in request-response patterns. While it doesn't carry the full trace context, it serves to link messages that are part of the same process.
+
+**Difference Between Trace and Message IDs**:
+- **Message IDs** are typically limited to a specific interaction, whereas trace IDs provide end-to-end visibility across multiple systems or components.
+- **Trace IDs** give a hierarchical view of requests, allowing developers to track multiple interactions (spans) that are part of a larger workflow.
+
 
 ## Security & Privacy Considerations
 
