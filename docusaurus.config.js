@@ -39,7 +39,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/eclipse-lmos/website/edit/main',
+            'https://github.com/eclipse-lmos/website/edit/source',
         },
         blog: {
           showReadingTime: true,
