@@ -18,6 +18,7 @@ const sidebars = {
     "introduction",
     "who_is_it_for",
     "agent",
+    "tool",
     "getting_started",
     {
       type: 'category',

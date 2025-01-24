@@ -46,37 +46,37 @@ This example illustrates how a Weather Agent can be modeled using a Thing Descri
         "https://www.w3.org/2022/wot/td/v1.1",
         {
             "htv": "http://www.w3.org/2011/http#",
-            "ex": "https://weatherai.example.com",
+            "lmos": "https://eclipse.dev/lmos/protocol/v1",
         },
         "https://schema.org/"
     ],
     "id": "urn:uuid:6f1d3a7a-1f97-4e6b-b45f-f3c2e1c84c77",
     "title": "WeatherAgent",
-    "@type": "ex:Agent",
-    "ex:metadata": {
-        "ex:vendor": {
-            "ex:name": "WeatherAI Inc.",
-            "ex:url": "https://weatherai.example.com"
+    "@type": "lmos:Agent",
+    "lmos:metadata": {
+        "lmos:vendor": {
+            "lmos:name": "WeatherAI Inc.",
+            "lmos:url": "https://weatherai.example.com"
         },
-        "ex:model": {
-            "ex:name": "gpt-4o",
-            "ex:provider": "Azure"
+        "lmos:model": {
+            "lmos:name": "gpt-4o",
+            "lmos:provider": "Azure"
         },
-        "ex:serviceIntegration": {
-            "ex:weatherAPI": "OpenWeatherMap",
-            "ex:apiVersion": "v2.5",
-            "ex:apiDocumentation": "https://openweathermap.org/api"
+        "lmos:serviceIntegration": {
+            "lmos:weatherAPI": "OpenWeatherMap",
+            "lmos:apiVersion": "v2.5",
+            "lmos:apiDocumentation": "https://openweathermap.org/api"
         },
-        "ex:dataPrivacy": {
-            "ex:dataRetentionPeriod": "30 days",
-            "ex:anonymizationMethod": "HASHING"
+        "lmos:dataPrivacy": {
+            "lmos:dataRetentionPeriod": "30 days",
+            "lmos:anonymizationMethod": "HASHING"
         },
-        "ex:interaction": {
-            "ex:supportedLanguages": ["en_US", "de_DE"],
-            "ex:interactionMode": ["text", "voice"]
+        "lmos:interaction": {
+            "lmos:supportedLanguages": ["en_US", "de_DE"],
+            "lmos:interactionMode": ["text", "voice"]
         },
-        "ex:compliance": {
-            "ex:regulatoryCompliance": "GDPR"
+        "lmos:compliance": {
+            "lmos:regulatoryCompliance": "GDPR"
         }
     },
     "securityDefinitions": {
@@ -122,9 +122,47 @@ This example illustrates how a Weather Agent can be modeled using a Thing Descri
 }
 ```
 
-### Node.js example
+### Kotlin-wot example
 
-Here's a simple example of how you can interact with the Weather Agent from a Node.js application using `node-wot`, without needing to know whether it's an AI Agent or a traditional device.
+Here's a simple example of how you can interact with the Weather Agent from a Kotlin application using [kotlin-wot](https://github.com/RobWin/kotlin-wot) from Eclipse LMOS.
+
+```javascript
+suspend fun fetchWeather(question: String, interactionMode: String) {
+    try {
+        // Initialize the protocols which should be supported
+        val servient = Servient(
+            clientFactories = listOf(HttpProtocolClientFactory())
+        )
+
+        // Initialize the WoT client
+        val wot = Wot.create(servient)
+
+        // Request the Thing Description from the Weather Agent
+        val td: ThingDescription = wot.requestThingDescription("http://weatheragent.example.com/td")
+
+        // Consume the Thing Description
+        val thing = wot.consume(td)
+
+        // Prepare input parameters for the action
+        val inputParams = mapOf(
+            "question" to question,
+            "interactionMode" to interactionMode
+        )
+
+        // Invoke the getWeather action
+        val weatherResponse = thing.invokeAction("getWeather", inputParams.toInteractionInputValue())
+        val weatherData = weatherResponse.value();
+
+        println("Weather data: $weatherData")
+    } catch (err: Exception) {
+        println("Error fetching weather: ${err.message}")
+    }
+}
+```
+
+### Node-wot example
+
+Here's a simple example of how you can interact with the Weather Agent from a Node.js application using [node-wot](https://github.com/eclipse-thingweb/node-wot) from [Eclipse ThingWeb](https://thingweb.io/).
 
 ```javascript
 const WoT = require('@node-wot/core');
@@ -132,6 +170,10 @@ const HttpClientFactory = require('@node-wot/binding-http');
 
 async function fetchWeather(question, interactionMode) {
     try {
+        // Initialize the protocols which should be supported
+        const servient = new Servient();
+        servient.addClientFactory(new HttpClientFactory());
+
         // Request the Thing Description from the Weather Agent
         const td = await WoT.requestThingDescription("http://weatheragent.example.com/td");
         
@@ -158,7 +200,7 @@ const interactionMode = 'text';
 fetchWeather(question, interactionMode);
 ```
 
-### Semantic Web
+## Semantic Web
 
 Semantic Web technologies can significantly enhance Thing Descriptions (TDs) and provide valuable benefits for Multi-Agent Systems (MAS).
 

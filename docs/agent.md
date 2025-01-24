@@ -16,7 +16,7 @@ Some examples:
 * A sales agent might respond to inquiries about product availability by fetching data from inventory databases.
 
 Key principles:
-- **Identifiable**: Each agent has a unique identifier.
+- **Identifiable:** Each agent has a unique identifier.
 - **Single-Responsibility:** Each agent is created to fulfill a particular purpose or solve a defined problem.
 - **Autonomy:** The agent strives to achieve its goal with minimal human supervision.
 - **Adaptability:** Depending on the environment or feedback, the agent may adjust its behavior to meet its goal more effectively.

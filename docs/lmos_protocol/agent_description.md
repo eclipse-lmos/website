@@ -3,8 +3,11 @@ title: Agents
 sidebar_position: 3
 ---
 
-## Agent Description Format
+In the context of the LMOS protocol an agent is a specialized software program that uses the capabilities of a machine learning model to perform specific tasks. An agent typically has a clear goal or objective it aims to achieve, which is dependent on the task it's designed to perform. The goal drives how the agent interacts with data, models, or APIs to accomplish its task.
 
+LMOS agents can have a state (properties), can perform actions and emit events. State represents the agent’s current configuration or context. Actions define the tasks the agent can perform. Events allow the agent to proactively notify users or other agents.
+
+## Agent Description Format
 
 The LMOS Agent Description Format builds on top of the Thing Description (TD) format from the Web of Things (WoT) specification and extends it by specifying an additional schema tailored to the needs of intelligent  agents. 
 
@@ -15,7 +18,7 @@ Here is the table and description for an **Agent** in the context of the **LMOS 
 | **Vocabulary Term** | **Value** | **Assignment** | **Type** |
 |---------------------|-----------------|----------------|----------|
 | **@context**         | https://eclipse.dev/lmos/protocol/v1 | Mandatory | URI |
-| **@type**            | ns:Agent  | Mandatory | string
+| **@type**            | Agent  | Mandatory | string
 
 
 Example:
