@@ -5,6 +5,8 @@ sidebar_position: 4
 
 A Tool in the LMOS Protocol refers to a resource or system that an agent can utilize to accomplish a specific task. For example, a weather API is a tool that an agent might interact with to get weather data.
 
+LMOS Tools, similar to Agents, can have a state (properties), can perform actions and emit events. State represents the Tools’s current configuration. Actions define the tasks the Tool can perform. Events allow the Tool to proactively notify event consumers about important changes.
+
 ## Tool Description Format
 
 The LMOS Tool Description Format builds on top of the Thing Description (TD) format from the Web of Things (WoT) specification, similar to the Agent Description Format.

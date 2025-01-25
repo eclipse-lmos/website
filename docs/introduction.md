@@ -21,23 +21,23 @@ By aligning our development with these core principles, we aim to create a trust
 
 ## An open multi-agent architecture
 
-In an open multi-agent architecture, the goal is to enable agents to easily discover each other’s capabilities and services and to communicate efficiently across different networks, regardless of the language or framework used for their implementation. <br/>
+In an open multi-agent architecture, the goal is to enable agents to easily discover each other’s capabilities and to communicate efficiently across different networks, regardless of the language or framework used for their implementation. <br/>
 The key requirements for an open multi-agent architecture are:
 
-- **Agent Description Format**  
-   A standardized format is essential for describing the capabilities and metadata of intelligent agents. This specification should offer an appropriate level of abstraction to ensure interoperability across a wide range of agent platforms and domains.
+- **Agent & Tool Description Format**  
+   A standardized format is essential for describing the capabilities and metadata of Agents and Tools. This specification should offer an appropriate level of abstraction to ensure interoperability across a wide range of agent platforms and domains.
 
-- **Agent Discovery Process**  
-   A discovery mechanism is needed for obtaining agent descriptions, supporting both local and global networks. It must accommodate updates to agent descriptions and handle the dynamic nature of agents, allowing for their constant evolution.
+- **Agent & Tool Discovery Process**  
+   A discovery mechanism is needed for obtaining agent and tool descriptions, supporting both local and global networks. It must accommodate updates to descriptions and handle the dynamic nature of agents, allowing for their constant evolution.
 
 - **Metadata Propagation Protocol**  
-   Agents should be able to propagate metadata using suitable protocols. For local network discovery and registration, mDNS (Multicast DNS) can be used. For broader network discovery, agents can publish their metadata to a centralized Agent Registry.
+   Agents and Tools should be able to propagate metadata using suitable protocols. For local network discovery and registration, mDNS (Multicast DNS) can be used. For broader network discovery, agents can publish their metadata to a centralized Agent Registry.
 
-- **Agent Registry**  
-   A centralized Agent Registry is necessary, serving as a repository where agents can register themselves and query information about other registered agents. This would facilitate easy discovery and integration across networks.
+- **Agent & Tool Registry**  
+   A centralized Registry is necessary, serving as a repository where Agents and Tools can register themselves and query information about other registered Agents and Tools. This would facilitate easy discovery and integration across networks.
 
-- **Dynamic Agent Discovery**  
-   Agents should have the ability to dynamically discover other agents. They can query the Agent Registry based on specific criteria, such as capabilities or metadata, ensuring the right agents are matched for a given task.
+- **Dynamic Agent & Tool Discovery**  
+   Agents should have the ability to dynamically discover other agents and tools. They can query the Registry based on specific criteria, such as capabilities or metadata, ensuring the right Agents or Tools are matched for a given task.
 
 - **Agent Communication Protocol**  
    Agents should be able to communicate using open protocols, but the architecture must provide flexibility in choosing the best protocol for each agent’s purpose. Rather than enforcing a single transport protocol like HTTP, MQTT, or AMQP, the system should allow agents to select and adapt protocols based on their needs.
