@@ -114,6 +114,12 @@ const config = {
           { label: 'Website Terms of Use', href: 'https://www.eclipse.org/legal/terms-of-use/' },
           { label: 'Compliance', href: 'https://www.eclipse.org/legal/compliance/' },
           { label: 'Legal', href: 'https://www.eclipse.org/legal/' },
+          {
+            html: `
+              <img src="img/incubation.png" alt="Incubation" class="light-mode-only" style="float:right;width:60px;margin-left:20px;" />
+              <img src="img/incubation_darkbg.png" alt="Incubation" class="dark-mode-only" style="float:right;width:60px;margin-left:20px;" />
+            `,
+          },
         ],
         copyright: 'Copyright © Eclipse Foundation AISBL. All Rights Reserved.',
       },
