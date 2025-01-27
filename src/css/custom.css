@@ -134,6 +134,11 @@ code {
   display: none;
 }
 
+[data-theme='light'] .dark-mode-only,
+[data-theme='dark'] .light-mode-only {
+  display: none;
+}
+
 .arc-text {
   background: linear-gradient(135deg, cyan, #48CAE4);
   -webkit-background-clip: text;
