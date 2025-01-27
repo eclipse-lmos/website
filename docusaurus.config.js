@@ -108,7 +108,14 @@ const config = {
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} Deutsche Telekom AG`,
+        links: [
+          { label: 'Eclipse Foundation Website', href: 'https://www.eclipse.org' },
+          { label: 'Privacy Policy', href: 'https://www.eclipse.org/legal/privacy/' },
+          { label: 'Website Terms of Use', href: 'https://www.eclipse.org/legal/terms-of-use/' },
+          { label: 'Compliance', href: 'https://www.eclipse.org/legal/compliance/' },
+          { label: 'Legal', href: 'https://www.eclipse.org/legal/' },
+        ],
+        copyright: 'Copyright © Eclipse Foundation AISBL. All Rights Reserved.',
       },
       prism: {
         theme: prismThemes.github,
