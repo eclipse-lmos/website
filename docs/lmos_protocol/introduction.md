@@ -33,26 +33,14 @@ The LMOS Protocol is published by the Eclipse LMOS project. It is not a W3C Stan
 
 Please note that this protocol is work in progress and contains empty sections.
 
-GitHub Issues are preferred for discussion of this specification. Alternatively, you can join our Discord channel.
+[GitHub Issues](https://github.com/eclipse-lmos/website/issues) are preferred for discussion of this specification. Alternatively, you can [join our Discord channel](https://discord.gg/RDTHpAQG).
 
 
 **Latest published version:**  
 [https://eclipse.dev/lmos/docs/lmos_protocol](https://eclipse.dev/lmos/docs/lmos_protocol)  
 
-**GitHub Repository:**  
-[https://github.com/eclipse-lmos/lmos-protocol](https://github.com/eclipse-lmos/lmos-protocol)  
-
-**Issue Tracker:**  
-[https://github.com/eclipse-lmos/lmos-protocol/issues](https://github.com/eclipse-lmos/lmos-protocol/issues)  
-
-**Commit History:**  
-[https://github.com/eclipse-lmos/lmos-protocol/commits/main/](https://github.com/eclipse-lmos/lmos-protocol/commits/main/)  
-
 **Editors:**  
 * Robert Winkler (Deutsche Telekom AG)  
-
-**Contributors:**   
-https://github.com/eclipse-lmos/lmos-protocol/graphs/contributors
 
 ## Use Cases
 
