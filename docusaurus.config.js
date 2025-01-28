@@ -117,8 +117,8 @@ const config = {
           { label: 'Legal', href: 'https://www.eclipse.org/legal/' },
           {
             html: `
-              <img src="img/incubation.png" alt="Incubation" class="light-mode-only" style="float:right;width:60px;margin-left:20px;" />
-              <img src="img/incubation_darkbg.png" alt="Incubation" class="dark-mode-only" style="float:right;width:60px;margin-left:20px;" />
+              <img src="/lmos/img/incubation.png" alt="Incubation" class="light-mode-only" style="float:right;width:60px;margin-left:20px;" />
+              <img src="/lmos/img/incubation_darkbg.png" alt="Incubation" class="dark-mode-only" style="float:right;width:60px;margin-left:20px;" />
             `,
           },
         ],
