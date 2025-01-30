@@ -100,24 +100,6 @@ arc:
       enable: true
 ```
 
-### Arc View
-
-The Arc View is available at `http://localhost:8080/chat/index.html`.
-
-Add the following to your `application.yml` to enable it:
-```yaml
-arc:
-  chat:
-    ui:
-     enabled: true
-  subscriptions:
-    events:
-      enable: true
-```
-
-See the [Arc View](/docs/arc/14-view.md) for more details on the UI.
-
-
 ### Graphiql
 
 The Graphiql UI is available at `http://localhost:8080/graphiql?path=/graphql`.
