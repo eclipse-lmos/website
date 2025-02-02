@@ -37,6 +37,9 @@ function HomepageHeader() {
                             <Link className="button button--primary button--lg" to="/docs/arc/quickstart">
                                 My First Agent - 5min ⏱️
                             </Link>
+                             <Link className="button button--secondary button--lg" to="/docs/arc/manual_setup">
+                                Learn more about ARC
+                            </Link>
                         </span>
                         <div>
                             <img height={300} className={"code"} src={require('@site/static/img/arc.png').default}
