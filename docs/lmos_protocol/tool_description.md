@@ -17,7 +17,7 @@ Here is the table and description for a **Tool** in the context of the **LMOS Pr
 | **Vocabulary Term** | **Value** | **Assignment** | **Type** |
 |---------------------|-----------------|----------------|----------|
 | **@context**         | https://eclipse.dev/lmos/protocol/v1 | Mandatory | URI |
-| **@type**            | ns:Tool  | Mandatory | string
+| **@type**            | Tool  | Mandatory | string
 
 
 Example:

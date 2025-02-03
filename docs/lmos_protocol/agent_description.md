@@ -55,7 +55,7 @@ Full example:
    ],
    "id": "urn:uuid:6f1d3a7a-1f97-4e6b-b45f-f3c2e1c84c77",
    "title": "WeatherAgent",
-   "@type": "ex:Agent",
+   "@type": "lmos:Agent",
    "links": [{
       "rel": "service-doc",
       "href": "https://weatherai.example.com/manual.pdf",
