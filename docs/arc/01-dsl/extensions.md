@@ -5,7 +5,7 @@ title: Extensions
 Extensions are functions that can be called throughout 
 the Arc Agent DSL and provide additional functionality, such as reading data, logging, and more.
 
-`Redaers` are also functions. They are described in the [Readers](../readers) section.
+`Redaers` are also functions. They are described in the [Readers](/docs/arc/readers) section.
 
 ## System and User Context
 
@@ -21,7 +21,7 @@ and provide them as beans to your Arc Agents.
 If running Arc in Spring Boot, then these can be implemented as beans in your Spring Boot configuration.
 
 If using the GraphQL package, then these values are taken from the GraphQL request, 
-see [GraphQL](../spring/graphql).
+see [GraphQL](/docs/arc/spring/graphql).
 
 ```kotlin
 interface SystemContextProvider {

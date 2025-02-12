@@ -63,7 +63,7 @@ Unlike `Providers`, an application may have multiple `Loader`s.
 The common `Loader`s are the `ScriptAgentLoader` and `ScriptingLLMFunctionLoader`
 that loads Agents and functions from Kotlin scripts.
 
-Agents and functions can also be loaded as Spring Beans. See [Spring Agent Beans](spring/agent-beans)
+Agents and functions can also be loaded as Spring Beans. See [Spring Agent Beans](/docs/arc/spring/agent-beans)
 
 ### AgentFactory Interface
 
