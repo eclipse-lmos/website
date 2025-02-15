@@ -18,8 +18,11 @@ const config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/lmos',
 
+  // Set to true because the webserver on eclipse.dev automatically adds trailing slashes (by 301-forwarding)
+  trailingSlash: true,
+
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you

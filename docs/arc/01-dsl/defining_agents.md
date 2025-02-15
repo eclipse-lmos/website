@@ -33,8 +33,8 @@ agent {
 ```
 
 See the following pages on how to load the agents into your application.
-- [Manual Setup](../manual_setup)
-- [Spring Boot Beans](../spring/agent-beans)
+- [Manual Setup](/docs/arc/manual_setup)
+- [Spring Boot Beans](/docs/arc/spring/agent-beans)
 
 
 ### Prompt templating

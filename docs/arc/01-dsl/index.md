@@ -9,5 +9,5 @@ intelligent entities capable of handling complex tasks and/or conversations.
 
 There are 2 ways to use the Arc Agent DSL:
 
-- [Manual Setup](../manual_setup)
-- [Spring Boot Beans](../spring/agent-beans)
+- [Manual Setup](/docs/arc/manual_setup)
+- [Spring Boot Beans](/docs/arc/spring/agent-beans)
