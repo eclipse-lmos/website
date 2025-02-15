@@ -133,19 +133,19 @@ const config = {
       mermaid: true,
     },
     themes: ['@docusaurus/theme-mermaid'],
-  stylesheets: [
-    {
-      href: 'css/cookieconsent.min.css',
-    },
-  ],
-  scripts: [
-    {
-      src: 'js/cookieconsent.min.js',
-    },
-    {
-      src: 'js/umami.js',
-    }
-  ],
-};
+    stylesheets: [
+      {
+        href: '/lmos/css/cookieconsent.min.css',
+      },
+    ],
+    scripts: [
+      {
+        src: '/lmos/js/cookieconsent.min.js',
+      },
+      {
+        src: '/lmos/js/umami.js',
+      }
+    ],
+  };
 
 export default config;
