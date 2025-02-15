@@ -1,0 +1,1 @@
+if("undefined"!=typeof window){(()=>{if(document.cookie.split(";").find((e=>"eclipse_cookieconsent_status=allow"===e.trim()))){const e=document.createElement("script");e.async=!0,e.defer=!0,e.src="https://cloud.umami.is/script.js",e.setAttribute("data-website-id","25595af3-f689-40eb-8d71-44702fb16891"),document.head.appendChild(e)}})()}
