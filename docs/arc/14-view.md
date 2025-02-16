@@ -4,6 +4,7 @@
 The Arc View is a graphical user interface 
 that allows you to interact with the Arc Agents.
 
+
 ### Features
 
 - Chat UI to communicate with the Agents.
@@ -20,12 +21,29 @@ asses the performance of the Agents and LLMs.
 
 ![Arc View](/img/chart_view.png)
 
-### How to access it
-Currently, the Arc View is deployed as part of the Arc GraphQL package. 
-Meaning that applications using the package can be configured to serve 
-the Arc View as a web application. 
+
+### How does it work
+
+The Arc View connects to Arc Applications that implement the GraphQL protocol.
 
 See the [Arc GraphQL](/docs/arc/spring/graphql) for more details.
+
+
+### How to access it
+
+There is a version of the Arc View hosted at `https://eclipse.dev/lmos/chat/index.html`.
+
+The Arc View can point to any Arc Agent Application by setting the Agent Url here https://eclipse.dev/lmos/chat/index.html#/settings.
+
+Or open the Arc with `https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080` to point the an Arc Agent running at http://localhost:8080.
+
+Don't forget to add the following to your `application.yml` to enable CORS:
+
+```yaml
+arc:
+  cors:
+    enabled: true
+```
 
 
 ### Where to find it
