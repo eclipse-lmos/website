@@ -111,3 +111,22 @@ spring:
    graphiql:
     enabled: true
 ```
+
+
+### Arc View
+
+The Arc View is available at `https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080`.
+
+(Note: The agentUrl is pointing to http://localhost:8080).
+
+The Arc View can point to any Arc Agent Application here https://eclipse.dev/lmos/chat/index.html#/settings.
+
+Add the following to your `application.yml` to enable CORS:
+
+```yaml
+arc:
+  cors:
+    enabled: true
+```
+
+
