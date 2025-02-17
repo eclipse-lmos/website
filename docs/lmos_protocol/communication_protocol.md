@@ -21,7 +21,7 @@ All date and time values MUST use the `date-time` format defined in [RFC 9557](h
 |----------------|--------|------------|---------------------------------------------------------------------------------------------|
 | `thingID`      | string | Mandatory  | The ID (URI) of the Thing to which the Property belongs.                                    |
 | `messageID`    | string | Mandatory  | A unique identifier (UUID) for the current message.                                         |
-| `messageType`  | string | Mandatory  | A string denoting the type of message, based on the [WebSocket message types](#websocket-message-types). |
+| `messageType`  | string | Mandatory  | A string denoting the type of message, based on the [LMOS message types](#lmos-message-types). |
 | `correlationID`| string | Optional   | A unique identifier (UUID) shared between messages for the same operation, e.g., request and response. |
 | `traceparent`    | string    | Optional              | A trace context header that carries the trace information across service boundaries. It includes the `traceId`, `spanId`, and trace flags. Example: `"00-0af7651916cd43dd8448eb211c80319c-b7ad6b7169203331-01"`. |
 | `tracestate`     | string    | Optional              | A trace context header that provides additional vendor-specific or system-specific trace information. Example: `"congo=BleGNlZWRzIHRohbCBwbGVhc3VyZS4"`. |
