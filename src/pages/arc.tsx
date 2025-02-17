@@ -75,6 +75,9 @@ export default function Home(): JSX.Element {
                             Spring Boot Starter project at <a href={"https://github.com/eclipse-lmos/arc-spring-init"}>Arc
                             Spring Starter</a> to get up and running in minutes.
                         </p>
+                        <p>
+                          Or use the hosted version here <a href={"https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080"}>Arc View</a>
+                        </p>
                     </div>
                     <div>                    
                         <img src={require('@site/static/img/chat_view.png').default} style={{height: "400px", borderRadius: "10px"}}
