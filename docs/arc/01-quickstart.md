@@ -16,7 +16,7 @@ This project can also be used a great starter for creating new Arc Agents Apps w
 
 Simply clone the repository and follow the instructions in the README.
 
-More information on the Agent DSL [here](dsl/defining_agents).
+More information on the Agent DSL [here](/docs/arc/dsl/defining_agents).
 
 :::info
 Another way to get started quickly without an API-KEY, is to use ollama to run models locally.

@@ -34,7 +34,9 @@ Interaction affordances define how you can interact with the Thing, which may in
 - **Actions:** Functions that can be invoked on the Thing .
 - **Events:** Notifications emitted by the Thing when certain conditions are met.
 
-The TD allows mapping of these interactions to various transport protocols (HTTP, MQTT, CoAP, etc.). This makes it possible to abstract away the underlying technical details of the protocol. For more details see [Agent Communication](./agent_communication).
+The TD allows mapping of these interactions to various transport protocols (HTTP, MQTT, CoAP, etc.). This makes it 
+possible to abstract away the underlying technical details of the protocol. For more details see [Agent 
+Communication](/docs/multi_agent_system/agent_communication).
 
 ### Thing Description example
 
