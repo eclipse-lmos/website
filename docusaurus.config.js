@@ -105,6 +105,12 @@ const config = {
             label: 'GitHub',
             position: 'right',
           }
+          ,
+          {
+            href: 'https://discord.gg/zGphr3DKKx',
+            label: 'Discord',
+            position: 'right',
+          }
         ],
       },
       colorMode: {
