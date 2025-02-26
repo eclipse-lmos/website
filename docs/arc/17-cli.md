@@ -3,7 +3,7 @@
 
 ## Install Arc CLI
 
-1. Install Arc Runner
+Install Arc CLI:
 
 On Linux, macOS, and Windows (using WSL or bash compatible shell like Cygwin or MinGW)
 ```
@@ -19,13 +19,7 @@ iex "& { $(iwr https://ps.jbang.dev) } app install --fresh --force https://githu
 ```
 (This will install everything you need to run the arc-runner, including JAVA)
 
-2. Open a new console window and install the Weather Agent
-```
-arc install weather
-```
-(This will install the weather agent located at https://github.com/eclipse-lmos/arc/blob/main/arc-runner/weather.agent.kts)
-
-3. Set environment variables
+## Setup LLM Access 
 
 On Linux, macOS, and Windows (using WSL or bash compatible shell like Cygwin or MinGW)
 ```
@@ -43,13 +37,19 @@ $env:ARC_CLIENT="openai" // or azure, ollama, etc.
 $env:ARC_MODEL="gpt-4o" // the name of the model to use
 ```
 
-4. Run Arc
+## Create an Agent
+
+```
+arc new my-agent
+```
+
+## Run Arc
 
 ```
 arc run
 ```
 
-4. Chat with the weather agent
+## Chat with the weather agent
 ```
-open browser at http://localhost:8080/chat/index.html
+arc view
 ```
