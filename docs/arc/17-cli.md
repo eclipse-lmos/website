@@ -57,7 +57,9 @@ arc run agents
 Start the Arc Server that will host your new Arc Agent.
 
 
-## Chat with the weather agent
+## Chat with your Agent
 ```
 arc view
 ```
+
+This will open the Arc View that contains a Chat Interface and much more...
