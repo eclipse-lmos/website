@@ -19,6 +19,7 @@ iex "& { $(iwr https://ps.jbang.dev) } app install --fresh --force https://githu
 ```
 (This will install everything you need to run the arc-runner, including JAVA)
 
+
 ## Setup LLM Access 
 
 On Linux, macOS, and Windows (using WSL or bash compatible shell like Cygwin or MinGW)
@@ -37,17 +38,24 @@ $env:ARC_CLIENT="openai" // or azure, ollama, etc.
 $env:ARC_MODEL="gpt-4o" // the name of the model to use
 ```
 
+
 ## Create an Agent
 
 ```
 arc new my-agent
 ```
 
+This will add a new agent under the folder "agents".
+
+
 ## Run Arc
 
 ```
-arc run
+arc run agents
 ```
+
+Start the Arc Server that will host your new Arc Agent.
+
 
 ## Chat with the weather agent
 ```
