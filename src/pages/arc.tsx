@@ -68,7 +68,7 @@ export default function Home(): JSX.Element {
                 <Features/>
                 <div className={"arc-row"}>
                     <div style={{"width": "400px"}}>
-                        <h3>Easy Chat with the Arc View</h3>
+                        <h3>First class tooling with the Arc View</h3>
                         <p>
                             Start chatting with your new AI Agent straight away using the built-in Chat interface.
                             Check out the
@@ -98,6 +98,22 @@ export default function Home(): JSX.Element {
                     <div>
                         <img src={require('@site/static/img/chart_view.png').default} style={{height: "400px", borderRadius: "10px"}}
                              alt={"Screenshot of the Arc View UI."}/>
+                    </div>
+                </div>
+                <div className={"arc-row"}>
+                    <div style={{"width": "400px"}}>
+                        <h3>Understand your Agent</h3>
+                        <p>
+                           Arc supports multiple Tracing frameworks, such as Zipkin, Wavefront, or OTLP.
+                        </p>
+                        <p>And creating custom spans could not be easier!</p>
+                        <p>
+                            <a href={"/lmos/docs/arc/tracing/"}>Learn More</a>
+                        </p>
+                    </div>
+                    <div>
+                        <img src={require('@site/static/img/trace.png').default} style={{height: "400px", borderRadius: "10px"}}
+                             alt={"Screenshot of the Zipkin UI."}/>
                     </div>
                 </div>
             </main>
