@@ -28,7 +28,9 @@ agent {
        if you cannot help the user, simply reply "I cant help you"
      """
     }
-    tools = listOf("get_weather")
+    tools {
+        +"get_weather"
+    }
 }
 ```
 
