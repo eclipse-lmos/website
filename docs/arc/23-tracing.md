@@ -10,6 +10,8 @@ The Arc Agent framework provides traces out of the box for most Agent operations
 
 The [Arc Agent Spring Boot Starter](/docs/arc/spring/integration/) provides support for tracing using Micrometer Tracing.
 
+This enables Arc to export traces to multiple Tracing frameworks, such as Zipkin, Wavefront, or OTLP.
+
 To activate tracing, simply add the required dependencies to your project.
 
 Read https://docs.spring.io/spring-boot/reference/actuator/tracing.html for more information on how to configure
