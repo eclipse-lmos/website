@@ -72,3 +72,8 @@ https://github.com/eclipse-lmos/arc-spring-init.
 Simply clone the repository and follow the instructions in the README.
 :::
 
+:::info Manual Setup
+If you want to integrate Arc Agents into your existing application,
+take a look at [Manual Setup](00-manual_setup.md).
+:::
+
