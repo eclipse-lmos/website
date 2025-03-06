@@ -187,3 +187,21 @@ html[data-theme='light'] .code {
   margin: 32px;
   text-align: start;
 }
+
+/*Font styling to be used for LMOS blogs*/
+.purple-bold-courier-new {
+  color: #7a77fc; /* Purple */
+  font-weight: bold;
+  font-family: 'Courier New', monospace; /* Custom Font */
+  font-size: 1.125em; /* Increases size by approximately 2pt */
+}
+
+.regular-courier-new {
+  font-family: 'Courier New', monospace; /* Custom Font */
+  font-size: 1.125em; /* Increases size by approximately 2pt */
+}
+
+.purple-bold {
+  color: #7a77fc; /* Purple */
+  font-weight: bold;
+}
