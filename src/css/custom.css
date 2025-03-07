@@ -187,3 +187,10 @@ html[data-theme='light'] .code {
   margin: 32px;
   text-align: start;
 }
+
+/*Font styling to be used for LMOS blogs*/
+.blue-bold {
+  color: #1ab2f7; /* Blue */
+  font-weight: bold;
+  font-size: 1.125em; /* Increases size by approximately 2pt */
+}
