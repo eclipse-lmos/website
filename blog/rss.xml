@@ -4,10 +4,35 @@
         <title>Eclipse LMOS Blog</title>
         <link>https://eclipse.dev/lmos/blog/</link>
         <description>Eclipse LMOS Blog</description>
-        <lastBuildDate>Fri, 17 Jan 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 06 Mar 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[LMOS - Accelerated Agent Development]]></title>
+            <link>https://eclipse.dev/lmos/blog/LMOS-Accelerated-Agent-Dev/</link>
+            <guid>https://eclipse.dev/lmos/blog/LMOS-Accelerated-Agent-Dev/</guid>
+            <pubDate>Thu, 06 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[.]]></description>
+            <content:encoded><![CDATA[<p><span class="blue-bold">LMOS</span> has been instrumental in the development and success of Deutsche Telekom’s chatbot, “Frag Magenta". In this blog, we showcase how LMOS has accelerated the journey of Frag Magenta chatbot with some key performance metrics.
+LMOS platform has been operational since 2023, helping the chatbot provide round-the-clock assistance on various topics, including contract inquiries, billing issues, and technical support through the deployed ARC agents. Advancements in LMOS have collectively contributed to the chatbot’s success in handling additional traffic and conversing on a wide range of topics.<br></p>
+<p><span class="blue-bold">Exponential traffic growth:</span> LMOS's scalable &amp; robust architecture ensures the platform can efficiently manage the increasing volume of traffic, supporting the chatbot’s continuous growth and reliability.</p>
+<p><img decoding="async" loading="lazy" alt="Alt text" src="https://eclipse.dev/lmos/assets/images/Conversations-graph-db3723b6a3b566aa254b04ea5b6be87e.png" width="986" height="784" class="img_ev3q"></p>
+<p><span class="blue-bold">Answer rate:</span> Leveraging the power of ARC DSL, LMOS helped build diverse set of agents where each agent specialized in a specific business domain such as Billing, Orders, Contracts, and Technical Support. As the system scaled to include multiple domain-specific agents, the platform not only improved its coverage across diverse customer queries but also significantly increased the answer rate — delivering more accurate and context-aware responses. This modular architecture ensures that each agent is optimized for its domain, enhancing both the quality and consistency of customer interactions.</p>
+<p><img decoding="async" loading="lazy" alt="Alt text" src="https://eclipse.dev/lmos/assets/images/AnswerRate-9c5c68c34456cc860ce66136d4079a05.png" width="1242" height="726" class="img_ev3q"></p>
+<p><span class="blue-bold">Less agent handovers:</span> LMOS has significantly contributed to the chatbot’s success by enabling it to seamlessly handle diverse types of customer interactions originating from multiple countries on increasingly new topics by helping create multiple agent personas using ARC.</p>
+<p><img decoding="async" loading="lazy" alt="Alt text" src="https://eclipse.dev/lmos/assets/images/Agents-handover-infographic-1ca779c4884e5fc0102b8ad5794be2c5.png" width="1726" height="704" class="img_ev3q"></p>
+<p><span class="blue-bold">Agent Development Time:</span>  The different modules available in the LMOS platform such as ARC have simplified the agent development, significantly reducing the agent development time to 2 days, enabling rapid iteration and deployment.</p>
+<p><img decoding="async" loading="lazy" alt="Alt text" src="https://eclipse.dev/lmos/assets/images/Agent-dev-time-graph-efd3b678203e588f10b8d5dcb8d0a7c1.png" width="1472" height="996" class="img_ev3q"></p>
+<p><span class="blue-bold">Beating Market solutions:</span> With its domain-specific agent based architecture, and capability to engage in fluid conversations, LMOS beats market solution by 38%.</p>
+<p><img decoding="async" loading="lazy" alt="Alt text" src="https://eclipse.dev/lmos/assets/images/LMOS-better-infographic-30957b9f4ad749dfb127834a4965ae0f.png" width="1768" height="630" class="img_ev3q"></p>
+<p>With its multi-agentic architecture, faster development cycles, and proven performance and scalability, LMOS isn't just about powering conversations but about redefining intelligent customer experiences at scale.</p>]]></content:encoded>
+            <category>AI</category>
+            <category>LMOS</category>
+            <category>Accelerate Agent Development</category>
+            <category>LLM</category>
+            <category>Agentic Framework</category>
+        </item>
         <item>
             <title><![CDATA[Agent Development]]></title>
             <link>https://eclipse.dev/lmos/blog/AgentDevelopment/</link>
