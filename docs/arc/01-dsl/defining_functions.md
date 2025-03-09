@@ -36,7 +36,7 @@ function(
   params = types(string("location", "a city to obtain the weather for."))
 ) { (location) ->
     """
-        The weather is good in $locationToUse. It is 20 degrees celsius.
+        The weather is good in $location. It is 20 degrees celsius.
     """
   }
 
@@ -44,6 +44,23 @@ function(
 
 Functions always return a string. This string can contain natural language text, JSON, or any other format
 or a combination of them.
+
+Complex parameters, such as arrays or objects, can also be defined using the `types` function.
+
+For example, an array of numbers can be defined as follows:
+
+```kts
+function(
+    name = "add_numbers",
+    description = "Returns the sum of 2 numbers.",
+    params = types(array("numbers", "The numbers to add.", itemType = "number"))
+) { (numbers) ->
+    val toAdd = numbers as List<Int> 
+    val sum = toAdd.sumOf { it }
+    "The sum of the numbers is $sum"
+}
+```
+
 
 ### Assigning Functions conditionally
 
