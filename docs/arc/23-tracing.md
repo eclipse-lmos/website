@@ -17,6 +17,9 @@ To activate tracing, simply add the required dependencies to your project.
 Read https://docs.spring.io/spring-boot/reference/actuator/tracing.html for more information on how to configure
 different tracers.
 
+
+#### Zipkin Tracing
+
 Example dependencies for Zipkin tracing:
 ```kts
 implementation("io.micrometer:micrometer-tracing-bridge-otel")
@@ -34,6 +37,28 @@ Open the Zipkin UI in your browser: http://localhost:9411/
 and watch the traces of your Arc Agents flow in.
 
 **Check out https://github.com/eclipse-lmos/arc-spring-init for a complete example.**
+
+
+#### OpenTelemetry Tracing
+
+```kts
+implementation("io.micrometer:micrometer-tracing-bridge-otel")
+implementation("io.opentelemetry:opentelemetry-exporter-otlp")
+implementation("com.google.protobuf:protobuf-java:3.23.4")
+implementation("io.opentelemetry.proto:opentelemetry-proto:1.3.2-alpha")
+```
+
+Then configure a OTLP exporter in your `application.yml`:
+
+```yml
+management:
+  otlp:
+    tracing:
+      endpoint: ${OTLP_ENDPOINT}
+      headers:
+        Authorization: Bearer ${OTLP_TOKEN}
+```
+
 
 :::info 
 When testing locally, dont forget to set the sampling probability to 1 to see all traces.
