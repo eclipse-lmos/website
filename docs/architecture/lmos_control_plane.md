@@ -17,6 +17,10 @@ The LMOS Control Plane extends the Kubernetes control plane to manage and orches
 ## LMOS Operator
 The **LMOS Operator** is a Kubernetes operator designed to dynamically resolve Channel requirements based on the capabilities of installed Agents within a Kubernetes cluster (environment). The main purpose of the operator is to create channel routing resources which are then used by the LMOS Router component.
 
+
+![LMOS Operator](/img/lmos_operator.png)
+
+
 The concept of the operator is heavily inspired by OSGi's Capability Model. In OSGi, modules (or bundles) provide and require capabilities, which are then resolved at runtime to manage module dependencies. The OSGi Capability Model is built around two key concepts:
 
 - **Capabilities:** Represent features or services that a module (bundle) provides.
@@ -25,6 +29,8 @@ The concept of the operator is heavily inspired by OSGi's Capability Model. In O
 The OSGi framework includes a resolver that calculates a set of resources based on a set of requirements. This allows for dynamic resolution of dependencies at runtime, enabling flexible and modular software architectures. The OSGi Capability Model therefore provides a robust foundation for building a modular, dynamic and adaptable system. We believe this concept is valuable in designing the LMOS operator, which needs to manage complex dependencies between Channels and Agents in a distributed environment.
 
 In LMOS a “Channel” refers to a digital interface that enables communication between an AI system and its users. Channels can be diverse, such as web, mobile apps, IVR systems, or messaging platforms, each potentially requiring different sets of capabilities.
+
+![Channel Management](/img/lmos_channel_management.png)
 
 For instance, a web channel might need a comprehensive set of customer support capabilities, while an IVR channel might only start with a subset of the customer support capabilities. The following diagram illustrates the relationship between channels and agents in LMOS. Each tenant can have multiple channels. In the environment, multiple agents can be installed, each providing one or more capabilities to support the required functionalities of the channels.
 
@@ -70,8 +76,3 @@ The LMOS Operator enables defining which capabilities should be provided through
 - **Dynamic Capability Resolution**: The Operator dynamically resolves which agents have the required capabilities for specific channels (e.g., web, mobile, IVR).
 - **Advanced Deployment Strategies**: It supports **canary releases** to gradually roll out new agent features.
 - **Channel Reconciler**: Watches for changes in channel resources and triggers reconciliation, matching capabilities with agents.
-
-
-The following diagram illustrates how the lmos-operator dynamically manages and resolves capabilities within a Kubernetes environment. It shows the interaction between Channel, Agent, Repository, and the reconciler processes to ensure that required capabilities are matched with installed Agent resources.
-
-![LMOS](/img/operator_design.png)
