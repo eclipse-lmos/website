@@ -4,10 +4,29 @@
         <title>Eclipse LMOS Blog</title>
         <link>https://eclipse.dev/lmos/blog/</link>
         <description>Eclipse LMOS Blog</description>
-        <lastBuildDate>Thu, 06 Mar 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 09 Mar 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Team Structure]]></title>
+            <link>https://eclipse.dev/lmos/blog/Team Structure/</link>
+            <guid>https://eclipse.dev/lmos/blog/Team Structure/</guid>
+            <pubDate>Sun, 09 Mar 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[.]]></description>
+            <content:encoded><![CDATA[<p>In the journey to accelerate AI agent development and enhance chatbot capabilities, the team structure that we put in place played a key role. Organizing teams in proper structures goes a long way in helping with faster development cycles and collaboration. Here is a simplified view of our team structure:</p>
+<p><img decoding="async" loading="lazy" alt="Alt text" src="https://eclipse.dev/lmos/assets/images/TeamStructure-8b97760b90ce7760fd8585f543d114e3.png" width="1750" height="1300" class="img_ev3q"></p>
+<p><span class="blue-bold">Collaboration &amp; Rapid Iteration:</span>  Collaboration and faster iteration was paramount. Given the dynamic nature of AI development, we structured our teams to allow closer collaboration &amp; quick feedback loops by organizing them into nimble pods where smaller cross-functional teams focus on specific business features or platform capabilities (e.g search service).</p>
+<p><span class="blue-bold">Clear Roles &amp; Responsibilities:</span> Well-defined roles and responsibilities were ensured in each horizontal and vertical function. This helped streamline decision-making and reduce bottlenecks.</p>
+<p><span class="blue-bold">Nimble, Agile, and Fast Execution:</span> By keeping PODs small and nimble, we fostered agility in execution. These teams are empowered to make decisions quickly, iterate based on feedback, and roll out improvements without being slowed down by unnecessary dependencies.</p>
+<p><span class="blue-bold">Overarching Roles for Cohesion:</span>  While PODs focus on specific business needs, we have some roles like ML Ops, Architecture that plays an overarching roles that cut across all PODs. These functions ensure alignment with long-term platform strategy, maintain consistency in implementations, and oversee governance.</p>
+<p>As we continue to scale, this structure will remain the backbone of our growth, ensuring our teams are able to focus on their areas, are able to collaborate quickly &amp; efficiently in delivering high-quality AI-driven chatbot solutions.</p>]]></content:encoded>
+            <category>AI</category>
+            <category>LMOS</category>
+            <category>LLM</category>
+            <category>AI ChatBot</category>
+            <category>Team Structure</category>
+        </item>
         <item>
             <title><![CDATA[LMOS - Accelerated Agent Development]]></title>
             <link>https://eclipse.dev/lmos/blog/LMOS-Accelerated-Agent-Dev/</link>
