@@ -10,6 +10,8 @@ The following pages outline the use cases and requirements for the LMOS Protocol
 The primary goal of the LMOS Protocol is to pave the way for an Internet of Agents (IoA) — a dynamic and interconnected ecosystem where AI agents and tools, developed by various organizations, can be easily published, discovered, and seamlessly utilized across platforms.
 This vision builds upon the evolution of the Internet of Things (IoT), extending its principles to internet-scale multi-agent systems. 
 
+![Internet of Agents](/img/internet_of_agents.png)
+
 Much like Bluetooth enables a variety of devices to be discovered, connect and exchange data regardless of the manufacturer or underlying hardware, the LMOS Protocol allows tools to be discovered and plugged into agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications, regardless of the underlying technologies. This flexibility fosters an ecosystem where diverse AI capabilities can be easily interconnected and utilized in a wide range of scenarios.
 
 By defining standardized interaction patterns, metadata and information models, and a communication protocol, the LMOS Protocol enables:
@@ -19,6 +21,8 @@ By defining standardized interaction patterns, metadata and information models, 
 * **Scalability:** Supporting the addition of new agents and tools without disruption.
 * **Transport Agnosticism:** Allowing developers to use diverse communication protocols (e.g., HTTP, WebSocket, MQTT) without modifying application logic.
 * **Ecosystem Collaboration:** Empowering organizations to publish their AI Agent and Tools into a larger ecosystem.
+
+![LMOS Protocoll](/img/lmos_protocoll.png)
 
 The goal of [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/) is to address fragmentation across the Internet of Things (IoT) by building upon widely adopted web technologies. By introducing standardized metadata and reusable technological building blocks, W3C WoT facilitates seamless integration across platforms and application domains. A cornerstone of WoT is the Thing Description (TD), which provides an information model and JSON-LD representation format for describing the capabilities of "things".
 

@@ -6,7 +6,13 @@ sidebar_position: 3
 # What is an Agent?
 
 In the context of LMOS an **agent** is a specialized software program that **uses the capabilities of a machine learning model** to perform specific tasks. 
-An agent typically has a clear goal or objective it aims to achieve, which is dependent on the task it's designed to perform. The goal drives how the agent interacts with data, models, or APIs to accomplish its task.
+An agent typically has a clear goal or objective it aims to achieve, which is dependent on the task it's designed to perform. The goal drives how the agent interacts with it's short-term memory, long-term memory and tools to accomplish its task.
+
+Example of an agent which is using a Large Language Model (LLMs) for planning:
+
+The Agent relies on memory, which includes both short-term and long-term memory for retaining knowledge over time. The agent utilizes tools to enhance its capabilities and perform actions to accomplish the objective. Through Planning by utilizing an LLM, the agent strategizes its next steps before executing Actions to accomplish the objective. This enables the agent to function intelligently, adapting based on memory, planning, and tool usage.
+
+![Single Agent](/img/single_agent.png)
 
 In LMOS agents can have a state (properties), can perform actions and emit events. State represents the agent’s current configuration or context. Actions define the tasks the agent can perform, making it interactive and task-oriented. Events allow the agent to proactively notify users or systems of significant changes. 
 
