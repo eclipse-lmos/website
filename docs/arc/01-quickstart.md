@@ -14,11 +14,17 @@ Simply install the Arc CLI, setup your API Key and you are ready to create and r
 curl -Ls https://sh.jbang.dev | bash -s - trust add https://github.com/eclipse-lmos/arc/
 curl -Ls https://sh.jbang.dev | bash -s - app install --fresh --force https://github.com/eclipse-lmos/arc/blob/main/arc-runner/arc.java
 ```
-Using windows, check out the instructions [here](/docs/arc/cli).
-
+Using windows, check out the instructions [here](/docs/arc/cli). <br/>
+JBang installation may take few minutes, do not close the terminal and let it complete. Upon installation completion, you will see the message to start new shell.
+```
+[jbang] Command installed: arc
+[jbang] Setting up JBang environment...
+Please start a new Shell for changes to take effect
+```
 
 ### 2. Setup LLM Access
 
+In the new shell, set the following environment variables.
 ```
 export ARC_AI_URL=https://gpt4-se-dev.openai.azure.com/ // The url hosting the models. Can be omitted if using openai.
 export ARC_AI_KEY=YOUR_OPENAI_KEY // The key to authenticate with the AI service. can be omitted if using Azure Login.
@@ -32,11 +38,11 @@ export ARC_MODEL=gpt-4o // the name of the model to use
 arc new my-agent
 ```
 
-This will add a new agent under the folder "agents".
+This will add a new agent under the folder "agents" with name `my-agent.agent.kts`.
 
 ```kt
 agent {
-  name = "my-agent"
+  name = "test-agent1"
   tools = AllTools
   prompt {
     """
@@ -57,13 +63,17 @@ agent {
 arc run agents
 arc view
 ```
+**NOTE: ** by default arc agents run on port 8080. Make sure the port is available.<br/>
 
 ![Arc View](/img/arc_view01.png)
 
 This will start the Arc Server that will host your new Arc Agent 
-and opens the Arc View that will enable you to chat with your Agent.
+and opens the Arc View that will enable you to chat with your Agent. In case arc view does not open, you can access it at https://eclipse.dev/lmos/chat/index.html#/chat.
 
-and that is it! You have created and run your first Arc Agent.
+In case no Agent is visible on Arc chat tab then open settings and select url: http://localhost:8080 in available agent URLs.<br/>
+![Arc View settings](/img/arc_view02.png)
+
+That is it! You have created and run your first Arc Agent.
 
 :::info Spring into Action
 If you want more, try out our Spring Boot Setup Project
