@@ -41,7 +41,7 @@ By defining standardized metadata, data models, interaction patterns and a commu
 
 ## LMOS Platform
 
-On top, Eclipse LMOS provides the reference implementation for a **sovereign and open platform** where developers and organizations can **create, deploy, and interconnect AI agents** across different industries and networks. 
+In addition, Eclipse LMOS provides an open-source, vendor-neutral [cloud platform](/lmos/docs/lmos_platform/overview) to build and run enterprise-ready multi-agent systems on cloud or on-prem. It also serves as the reference implementation of the LMOS protocol, providing a standardized platform for multi-agent systems.
 The key features of the LMOS platform are:
 
 - **Simplified AI Agent Development:**  
