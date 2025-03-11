@@ -14,7 +14,7 @@ Key reasons why observability is important:
 
 ## Distributed Tracing
 
-LMOS supports **distributed tracing**, allowing for the tracking of messages as they traverse multiple Agents and Tools. 
+LMOS protocol supports **distributed tracing**, allowing for the tracking of messages as they traverse multiple Agents and Tools. 
 
 - **Trace Context Integration**: LMOS protocol messages are designed to propagate trace context (via `traceparent` and `tracestate`).
 - **Propagation of Trace Metadata**: The trace information includes the **trace ID**, **span ID**, and **trace flags**, ensuring that each component participating in the interaction can log its part of the trace.
