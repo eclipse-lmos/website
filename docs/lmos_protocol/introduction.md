@@ -18,9 +18,8 @@ By defining standardized interaction patterns, metadata and information models, 
 
 * **Interoperability:** Ensuring agents and tools from different ecosystems can understand and interact with each other.
 * **Discoverability:** Facilitating the discovery of agents and tools that match specific needs.
-* **Scalability:** Supporting the addition of new agents and tools without disruption.
+* **Adaptability:** Supporting the addition of new agents and tools without disruption.
 * **Transport Agnosticism:** Allowing developers to use diverse communication protocols (e.g., HTTP, WebSocket, MQTT) without modifying application logic.
-* **Ecosystem Collaboration:** Empowering organizations to publish their AI Agent and Tools into a larger ecosystem.
 
 ![LMOS Protocoll](/img/lmos_protocoll.png)
 
