@@ -8,15 +8,18 @@ The Kubernetes control plane is the central component of a Kubernetes cluster, r
 
 The LMOS Control Plane extends the Kubernetes control plane to manage and orchestrate intelligent agents. It builds upon Kubernetes' native capabilities while adding specific features to support the development, deployment and management of AI agents.
 
+![LMOS Platform](/img/lmos_platform.png)
+
+## LMOS Operator
+The **LMOS Operator** is a Kubernetes operator designed to dynamically resolve Channel requirements based on the capabilities of installed Agents within a Kubernetes cluster (environment). The main purpose of the operator is to create channel routing resources which are then used by the LMOS Router component.
+
+The operator introduces new LMOS-specific Kubernetes resources definitions:
+
 **Custom Resource Definitions (CRDs) for Agents:** LMOS introduces a new resource type called **Agent**. This allows agents to be treated as first-class citizens within the Kubernetes ecosystem, similar to pods and services, enabling their discovery and lifecycle management. The Agent resource stores agent metadata within the Kubernetes registry, ensuring that essential information about each agent is easily accessible via the Kubernetes API.
 
 **Custom Resource Definitions (CRDs) for Channels:**  LMOS allows agents to form groups, which are called **Channel**. Channels can be tenant-based or task-specific. Agents can be wired to multiple channels.
 
 **Custom Resource Definitions (CRDs) for ChannelRoutings:** LMOS introduces a new resource type known as **ChannelRouting**. This resource is created by the operator when a channel is successfully resolved. The ChannelRouting resource specifies the agents that are wired to the channel, allowing the LMOS Router to effectively distribute tasks among them. 
-
-## LMOS Operator
-The **LMOS Operator** is a Kubernetes operator designed to dynamically resolve Channel requirements based on the capabilities of installed Agents within a Kubernetes cluster (environment). The main purpose of the operator is to create channel routing resources which are then used by the LMOS Router component.
-
 
 ![LMOS Operator](/img/lmos_operator.png)
 
