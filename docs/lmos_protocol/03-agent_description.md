@@ -10,7 +10,6 @@ A standardized format is essential for describing the capabilities and metadata 
 Agent metadata is essential for several reasons:
 * **Discovery:** It allows agents to find each other based on capabilities, making it easier to assemble multi-agent systems for complex tasks.
 * **Interoperability:** By specifying input/output formats and API endpoints, metadata ensures that agents can communicate effectively.
-* **Resource Management:** Information about an agent's resource requirements helps in efficient allocation and deployment.
 * **Version information:** Version information aids in managing updates and ensuring compatibility between different agent versions.
 * **Security:** Metadata about authentication and encryption capabilities helps maintain a secure multi-agent environment.
 * **Autonomy:** With comprehensive metadata, agents can make informed decisions about which other agents to interact with, enhancing the system's autonomy.
@@ -21,7 +20,25 @@ In the context of the LMOS protocol an agent is a specialized software program t
 
 LMOS agents can have a state (properties), can perform actions and emit events. State represents the agent’s current configuration or context. Actions define the tasks the agent can perform. Events allow the agent to proactively notify users or other agents.
 
-The LMOS Agent Description Format builds on top of the Thing Description (TD) format from the Web of Things (WoT) specification and extends it by specifying an additional schema tailored to the needs of intelligent  agents. 
+The LMOS Agent Description Format builds on top of the [Thing Description (TD)](https://www.w3.org/TR/wot-thing-description11/) format from the Web of Things (WoT) specification and extends it by specifying an additional schema tailored to the needs of intelligent  agents. This allows agents to express their capabilities and services in a consistent, machine-readable way. TDs are usually encoded in JSON format that supports JSON-LD.
+
+A Thing Description typically contains:
+- Metadata about the Thing
+- A longer explanation of what the Thing does or represents.
+- Interaction affordances (Properties, Actions, and Events)
+- Data JSON schemas for machine-understandability
+- Information about the version of the Thing
+- Security definitions
+- Web links to related Things or resources
+
+Interaction affordances define how you can interact with the Thing, which may include:
+- **Properties:** The state or attributes of the Thing, which can be read.
+- **Actions:** Functions that can be invoked on the Thing .
+- **Events:** Notifications emitted by the Thing when certain conditions are met.
+
+The TD allows mapping of these interactions to various transport protocols (HTTP, MQTT, CoAP, etc.). This makes it 
+possible to abstract away the underlying technical details of the protocol. For more details see [Agent 
+Communication](/docs/multi_agent_system/agent_communication).
 
 The format is structured similarly to the Thing Description but includes LMOS-specific properties to describe the agent’s capabilities and metadata. These additional properties are defined within the "lmos" namespace, ensuring they are clearly differentiated from standard WoT terms.
 
@@ -180,14 +197,6 @@ Full example:
     }
 }
 ```
-
-## Agent Discovery
-
-> EDITOR’S NOTE: 
-In order to guarantee interoperability we may want to prescribe which discovery mechanisms (defined in the WoT Discovery specification) must be supported by Agents and Consumers.
-As a minimum we suggest that we may want to require that conformant Agents can serve their Thing Description from an HTTP URL. 
-For more details see [LMOS Discovery](https://eclipse.dev/lmos/docs/multi_agent_system/agent_discovery).
-
 
 ## Agent Communication
 

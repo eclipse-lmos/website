@@ -40,14 +40,6 @@ Example:
 }
 ```
 
-## Tool Discovery
-
-> EDITOR’S NOTE: 
-In order to guarantee interoperability we may want to prescribe which discovery mechanisms (defined in the WoT Discovery specification) must be supported by Tools and Consumers.
-As a minimum we suggest that we may want to require that conformant Tools can serve their Thing Description from an HTTP URL.
-For more details see [LMOS Discovery](https://eclipse.dev/lmos/docs/multi_agent_system/agent_discovery).
-
-
 ## Tool Communication
 
 To ensure interaction between agents and tools, the following communication patterns must be supported:

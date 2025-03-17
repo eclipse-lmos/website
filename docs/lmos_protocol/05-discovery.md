@@ -9,7 +9,7 @@ A discovery mechanism is needed for obtaining agent descriptions, supporting bot
 
 Agent metadata can be propagated across the network using various transport mechanisms:
 
-* **Centralized Registry:** Agents can publish their metadata to a centralized Agent Registry, which serves as a repository for agent information.
+* **Centralized Registry:** Agents can publish their metadata to a registry, which serves as a repository for agent information.
 * **Local Network Discovery:** For local networks, protocols like mDNS (Multicast DNS) can be used to propagate agent metadata and enable discovery,
 * **P2P Network:**  In a decentralized solution, agents can propagate metadata using peer-to-peer (P2P) networks without relying on centralized authorities.
 

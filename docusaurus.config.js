@@ -84,7 +84,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'protocolSidebar',
             position: 'left',
-            label: 'Specifications',
+            label: 'LMOS Protocol',
           },
           {
             to: '/about_us',

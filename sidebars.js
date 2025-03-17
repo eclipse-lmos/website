@@ -37,7 +37,7 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'LMOS Specifications',
+      label: 'LMOS Protocol',
       collapsible: true,
       collapsed: true,
       items: [
