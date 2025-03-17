@@ -24,13 +24,13 @@ By defining standardized metadata, data models, interaction patterns and a commu
    A discovery mechanism for obtaining agent and tool descriptions, supporting both local and global networks. It accommodates updates to descriptions and handles the dynamic nature of agents, allowing for their constant evolution.
 
 - **Metadata Propagation Protocol**  
-   Agents and Tools are able to propagate metadata using suitable protocols. For local network discovery and registration, mDNS (Multicast DNS) can be used. For broader network discovery, agents can publish their metadata to a centralized Agent Registry.
+   Agents and Tools are able to propagate metadata using suitable protocols. For local network discovery and registration, mDNS (Multicast DNS) can be used. For broader network discovery, agents can publish their metadata to Agent registries. Additionally, peer-to-peer (P2P) protocols could be leveraged to enable decentralized metadata propagation.
 
-- **Agent & Tool Registry**  
-   A centralized Registry serving as a repository where Agents and Tools can register themselves and query information about other registered Agents and Tools. This  facilitates easy discovery and integration across networks.
+- **Decentralized Agent & Tool Registries**  
+   Decentralized registries act as a distributed repository where agents and tools autonomously register and query information about others. This enables discovery across networks without relying on centralized authorities.
 
 - **Dynamic Agent & Tool Discovery**  
-   Agents have the ability to dynamically discover other agents and tools. They can query the Registry based on specific criteria, such as capabilities or metadata, ensuring the right Agents or Tools are matched for a given task.
+   Agents have the ability to dynamically discover other agents and tools. They can query registries based on specific criteria, such as capabilities or metadata, ensuring the right Agents or Tools are matched for a given task.
 
 - **Agent Communication Protocol**  
    Agents are able to communicate using open protocols, but the LMOS protocol also provides flexibility in choosing the best transport protocol for each agent’s purpose. Rather than enforcing a single transport protocol like HTTP, MQTT, or AMQP, the LMOS protocol allows agents to select and adapt protocols based on their needs.
@@ -38,6 +38,8 @@ By defining standardized metadata, data models, interaction patterns and a commu
 - **Group Management**  
    The LMOS protocol supports the creation and management of agent groups. This functionality allows the formation, management, and dissolution of agent groups while enforcing trust relationships among agents within the group. It enhances collaboration and coordination across agents in the system.
 
+- **Decentralized Digital Identifiers**  
+   Agents and tools can leverage W3C Decentralized Identifiers (DIDs) for secure, verifiable, and self-sovereign authentication. This ensures cryptographic identity validation without relying on centralized authorities, enhancing trust, security, and interoperability across networks.
 
 ## LMOS Platform
 

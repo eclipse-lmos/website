@@ -5,25 +5,57 @@ sidebar_position: 1
 
 ## Abstract
 
-The following pages outline the use cases and requirements for the LMOS Protocol. 
-
-The primary goal of the LMOS Protocol is to pave the way for an Internet of Agents (IoA) — a dynamic and interconnected ecosystem where AI agents and tools, developed by various organizations, can be easily published, discovered, and seamlessly utilized across platforms.
+The primary goal of the LMOS Specifications and Protocol is to pave the way for an Internet of Agents (IoA) — a dynamic and interconnected ecosystem where AI agents and tools, developed by various organizations, can be easily published, discovered, and seamlessly utilized across platforms.
 This vision builds upon the evolution of the Internet of Things (IoT), extending its principles to internet-scale multi-agent systems. 
 
 ![Internet of Agents](/img/internet_of_agents.png)
 
 Much like Bluetooth enables a variety of devices to be discovered, connect and exchange data regardless of the manufacturer or underlying hardware, the LMOS Protocol allows tools to be discovered and plugged into agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications, regardless of the underlying technologies. This flexibility fosters an ecosystem where diverse AI capabilities can be easily interconnected and utilized in a wide range of scenarios.
 
-By defining standardized interaction patterns, metadata and information models, and a communication protocol, the LMOS Protocol enables:
+By defining standardized metadata, data models, interaction patterns and a communication protocol on top of WoT, the **LMOS Protocol** provides:
 
-* **Interoperability:** Ensuring agents and tools from different ecosystems can understand and interact with each other.
-* **Discoverability:** Facilitating the discovery of agents and tools that match specific needs.
-* **Adaptability:** Supporting the addition of new agents and tools without disruption.
-* **Transport Agnosticism:** Allowing developers to use diverse communication protocols (e.g., HTTP, WebSocket, MQTT) without modifying application logic.
+- **Agent & Tool Description Format**  
+   A standardized format for describing the capabilities and metadata of Agents and Tools. This specification offers an appropriate level of abstraction to ensure interoperability across a wide range of agent platforms and domains.
+
+- **Agent & Tool Discovery Process**  
+   A discovery mechanism for obtaining agent and tool descriptions, supporting both local and global networks. It accommodates updates to descriptions and handles the dynamic nature of agents, allowing for their constant evolution.
+
+- **Metadata Propagation Protocol**  
+   Agents and Tools are able to propagate metadata using suitable protocols. For local network discovery and registration, mDNS (Multicast DNS) can be used. For broader network discovery, agents can publish their metadata to Agent registries. Additionally, peer-to-peer (P2P) protocols could be leveraged to enable decentralized metadata propagation.
+
+- **Decentralized Agent & Tool Registries**  
+   Decentralized registries act as a distributed repository where agents and tools autonomously register and query information about others. This enables discovery across networks without relying on centralized authorities.
+
+- **Dynamic Agent & Tool Discovery**  
+   Agents have the ability to dynamically discover other agents and tools. They can query registries based on specific criteria, such as capabilities or metadata, ensuring the right Agents or Tools are matched for a given task.
+
+- **Agent Communication Protocol**  
+   Agents are able to communicate using open protocols, but the LMOS protocol also provides flexibility in choosing the best transport protocol for each agent’s purpose. Rather than enforcing a single transport protocol like HTTP, MQTT, or AMQP, the LMOS protocol allows agents to select and adapt protocols based on their needs.
+
+- **Group Management**  
+   The LMOS protocol supports the creation and management of agent groups. This functionality allows the formation, management, and dissolution of agent groups while enforcing trust relationships among agents within the group. It enhances collaboration and coordination across agents in the system.
+
+- **Decentralized Digital Identifiers**  
+   Agents and tools can leverage W3C Decentralized Identifiers (DIDs) for secure, verifiable, and self-sovereign authentication. This ensures cryptographic identity validation without relying on centralized authorities, enhancing trust, security, and interoperability across networks.
+
+## Protocol layers
+
+To achieve this, we have designed a structured three-layer protocol architecture, as illustrated below:
+
+- **Application Protocol Layer**  
+   This layer defines discovery mechanisms, an agent and tool description format, a semantic data model and a websocket subprotocol. It standardizes agent and tool metadata for interoperability and supports dynamic discovery across local and global networks. 
+
+- **Transport Protocol Layer**  
+   This layer defines how agents negotiate and establish communication protocols for exchanging data and messages. By supporting multiple transport protocols agents can dynamically select and adapt the best protocol for each interaction, ensuring flexibility and reliability across networks.
+
+- **Identity and Security Layer**  
+   This layer establishes standards for secure identity authentication and encrypted communication between agents, especially in cross-platform environments. It includes a decentralized identity authentication scheme based on W3C DID, but also supports OAuth2, Bearer, and other security schemes.
 
 ![LMOS Protocoll](/img/lmos_protocoll.png)
 
-The goal of [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/) is to address fragmentation across the Internet of Things (IoT) by building upon widely adopted web technologies. By introducing standardized metadata and reusable technological building blocks, W3C WoT facilitates seamless integration across platforms and application domains. A cornerstone of WoT is the Thing Description (TD), which provides an information model and JSON-LD representation format for describing the capabilities of "things".
+## Protocol design
+
+The LMOS Protocol is designed to leverage the established [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/) which addresses fragmentation across the Internet of Things (IoT) by building upon widely adopted web technologies. By introducing standardized metadata and reusable technological building blocks, W3C WoT facilitates seamless integration across platforms and application domains. A cornerstone of WoT is the Thing Description (TD), which provides an information model and JSON-LD representation format for describing the capabilities of "things".
 
 By leveraging the Thing Description (TD) abstraction from the WoT, the LMOS Protocol simplifies the discovery, description, and interaction of agents and tools, while remaining transport-agnostic. This enables developers to switch communication standards (e.g., from HTTP to MQTT or WebSocket) or media types (e.g., from JSON to CBOR) without requiring changes to application logic.
 

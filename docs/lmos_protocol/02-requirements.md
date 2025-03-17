@@ -14,7 +14,7 @@ sidebar_position: 2
 - **Purpose**: Enable communication and collaboration across agents, tools, and systems implemented on different platforms and technologies.  
 
 ### Dynamic Discovery and Metadata Propagation  
-- **Requirement**: Implement mechanisms for agents and tools to dynamically register and propagate their metadata to a centralized Registry for efficient querying.  
+- **Requirement**: Implement mechanisms for agents and tools to dynamically register and propagate their metadata to registries for efficient querying.  
 - **Purpose**: Allow real-time discovery of agents and tools based on specific needs, capabilities, or roles.  
 
 ### Security and Trust  

@@ -1,8 +1,7 @@
 ---
-title: Agent Discovery
+title: Discovery Mechanisms
+sidebar_position: 5
 ---
-
-# Agent Discovery
 
 ## Problem statement
 
@@ -14,13 +13,13 @@ Agent metadata can be propagated across the network using various transport mech
 * **Local Network Discovery:** For local networks, protocols like mDNS (Multicast DNS) can be used to propagate agent metadata and enable discovery,
 * **P2P Network:**  In a decentralized solution, agents can propagate metadata using peer-to-peer (P2P) networks without relying on centralized authorities.
 
-## Web of Things
+## Solution
 
 W3C Web of Things offers a mechanism that things can dynamically propagate metadata using protocols like mDNS for local discovery and/or can register themselves on registries for broader access. In LMOS, this approach can be adapted for agent discovery, where agents dynamically register and propagate their metadata to a registry for efficient querying. This allows LMOS agents to discover each other in real time based on specific needs or capabilities.
 
 ![Agent Communication](/img/agent_communication.png)
 
-### Centralized Registry
+### Registry approach
 
 [W3C Web of Things (WoT) Discovery](https://www.w3.org/TR/wot-discovery/#architecture) describes how things can register themselves in a central directory, known as a Thing Description Directory (TDD), through a process that involves several steps:
 
