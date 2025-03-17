@@ -81,6 +81,12 @@ const config = {
             label: 'ARC',
           },
           {
+            type: 'docSidebar',
+            sidebarId: 'protocolSidebar',
+            position: 'left',
+            label: 'Specifications',
+          },
+          {
             to: '/about_us',
             label: 'About us',
             position: 'right',

@@ -1,11 +1,11 @@
 ---
-title: Communication Protocol
-sidebar_position: 3
+title: WebSocket Messages
+sidebar_position: 10
 ---
 
-# Communication Protocol
+# WebSocket Messages
 
-The LMOS communication protocol is designed around the Web of Things information model, but specifically designed for AI use cases. 
+The LMOS websocket subprotocol is designed around the Web of Things information model, but specifically designed for AI use cases. 
 
 ## Common Message Requirements
 - Every message MUST contain:
