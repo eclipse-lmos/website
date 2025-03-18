@@ -8,7 +8,8 @@ The **LMOS Router** is a vital component of the LMOS architecture. The LMOS Runt
 
 Upon receiving a query, the LMOS Runtime loads relevant channel routing configurations (agent metadata) via the LMOS Operator based on the specific channel and tenant involved. This enables the LMOS Runtime to make an informed routing decision through the LMOS Router, which leverages either a Vector Database or a Large Language Model (LLM) for this purpose. Once a routing decision is made, the Supervisor Agent coordinates with multiple specialized AI Agents to execute the necessary tasks.
 
-![LMOS Router](/img/supervisor_agent.png)
+![LMOS Router](/img/supervisor_agent-light.png#light-mode-only)
+![LMOS Router](/img/supervisor_agent-dark.png#dark-mode-only)
 
 The LMOS Router relies on agent metadata to identify the most appropriate agent for a given task, based on the agent's capabilities. To achieve this, the Router offers three distinct methods:
 

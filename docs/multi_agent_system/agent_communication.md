@@ -8,7 +8,8 @@ title: Agent Communication
 
 Agents should be able to communicate using open protocols, but the architecture must provide flexibility in choosing the best protocol for each agent’s purpose. Rather than enforcing a single transport protocol like HTTP, MQTT, or AMQP, the system should allow agents to select and adapt protocols based on their needs.
 
-![Agent Communication](/img/agent_communication.png)
+![Agent Discovery](/img/agent_discovery-light.png#light-mode-only)
+![Agent Discovery](/img/agent_discovery-dark.png#dark-mode-only)
 
 A higher abstraction layer on top of the actual transport protocols can significantly enhance the flexibility and efficiency of multi-agent systems:
 

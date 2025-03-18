@@ -8,7 +8,8 @@ The Kubernetes control plane is the central component of a Kubernetes cluster, r
 
 The LMOS Control Plane extends the Kubernetes control plane to manage and orchestrate intelligent agents. It builds upon Kubernetes' native capabilities while adding specific features to support the development, deployment and management of AI agents.
 
-![LMOS Platform](/img/lmos_platform.png)
+![LMOS Platform](/img/lmos_platform-light.png#light-mode-only)
+![LMOS Platform](/img/lmos_platform-dark.png#dark-mode-only)
 
 ## LMOS Operator
 
@@ -18,7 +19,8 @@ The **LMOS Operator** is a Kubernetes operator designed to monitor the deploymen
 For example. whenver an Agent is installed, it fetches the Thing Description and stores it in the registry and creates an Agent custom resource. 
 Whenver an Agent is uninstalled, the resource is deleted.
 
-![LMOS Operator](/img/lmos_operator.png)
+![LMOS Operator](/img/lmos_operator_discovery-light.png#light-mode-only)
+![LMOS Operator](/img/lmos_operator_discovery-dark.png#dark-mode-only)
 
 ### Channel Management
 
@@ -28,11 +30,14 @@ The LMOS Operator enables defining which capabilities should be provided through
 
 For instance, an App channel might need a comprehensive set of customer support capabilities, while a Web channel might only start with a subset of the customer support capabilities. 
 
-![Requirements](/img/lmos_requirement_capabilities.png)
+![LMOS Channel Management](/img/lmos_channel_management-light.png#light-mode-only)
+![LMOS Channel Management](/img/lmos_channel_management-dark.png#dark-mode-only)
+
 
 When a Channel Resource is applied using [Kubectl](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/), it automatically loads all Agent Resources from the registry and resolves the Channel requirements based on the capabilities of the installed Agents within the Kubernetes cluster. The LMOS Operator then generates a custom resource for channel routing, which is used by the [LMOS Router](/lmos/docs/lmos_platform/lmos_router) component to make routing decisions. This process ensures that tasks are routed to the appropriate agents based on their capabilities and the Channel's requirements.
 
-![Channel Management](/img/lmos_channel_management.png)
+![LMOS Operator](/img/lmos_operator-light.png#light-mode-only)
+![LMOS Operator](/img/lmos_operator-dark.png#dark-mode-only)
 
 The following diagram illustrates the relationship between channels and agents in LMOS. Each tenant can have multiple channels. In the environment, multiple agents can be installed, each providing one or more capabilities to support the required functionalities of the channels.
 

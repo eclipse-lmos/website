@@ -19,7 +19,8 @@ Similarly, the **Bluesky AT Protocol**, which is a federated social media networ
 
 The **LMOS Protocol** shares these goals of decentralization and flexibility. It enables tools to be discovered and connected to agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications — **regardless of the underlying technologies**. This creates an ecosystem where diverse AI capabilities can easily interact and be applied in various scenarios, ensuring that the system is not restricted by specific providers or technologies.
 
-![Internet of Agents](/img/internet_of_agents_intro.png)
+![Internet of Agents](/img/internet_of_agents_intro-light.png#light-mode-only)
+![Internet of Agents](/img/internet_of_agents_intro-dark.png#dark-mode-only)
 
 By defining standardized metadata, metadata propagation, metadata discovery, data models, interaction patterns and a communication protocol, the **LMOS Protocol** provides:
 
@@ -81,5 +82,5 @@ Our principles — **Openness, Interoperability, Security and Transparency** —
 
 The name **LMOS** stands for **Language Model Operating System**. Just as an operating system abstracts hardware and manages software applications, LMOS abstracts reduces the complexity to develop AI Agents by providing APIs and libraries to interact with infrastructure and tools to manage the lifecycle of AI Agents. 
 
-![Operating System Analogy](/img//os-analogy-light.png#light-mode-only)
+![Operating System Analogy](/img/os-analogy-light.png#light-mode-only)
 ![Operating System Analogy](/img/os-analogy-dark.png#dark-mode-only)

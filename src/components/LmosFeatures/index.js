@@ -1,4 +1,6 @@
 import styles from './styles.module.css';
+import ThemedImage from '@theme/ThemedImage';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 import { FaGlobe, FaPlug, FaUsers, FaCloud, FaPuzzlePiece, FaLayerGroup, FaBuilding } from 'react-icons/fa';
 
@@ -81,7 +83,7 @@ const FeatureList = [
         </div>
     );
   }
-  
+
   export default function Features() {
     return (
       <div className="container--fluid padding--lg">
@@ -94,9 +96,14 @@ const FeatureList = [
               Our vision is to create a sovereign and open platform and ecosystem where AI agents can be developed, deployed, and integrated seamlessly across networks and platforms.
               Built on top of open standards and Kubernetes, it enables developers to build intelligent, scalable, and adaptive multi-agent systems.
             </p>
-            <img src={require('@site/static/img/lmos-overview.png').default} alt="LMOS Overview" />
+            <ThemedImage
+              sources={{
+                light: useBaseUrl('/img/internet_of_agents-light.png'),
+                dark: useBaseUrl('/img/internet_of_agents-dark.png'),
+              }}
+            />
           </div>
-
+         
           <div className="col col--8 col--sm-12 padding--md">
             {FeatureList.map((feature, idx) => (
               <Feature

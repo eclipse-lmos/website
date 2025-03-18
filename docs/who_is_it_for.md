@@ -14,15 +14,18 @@ LMOS is designed for individuals and organizations aiming to develop individual 
 - **Collaborative Companies**: Multiple organizations working together, desiring a platform that facilitates seamless integration of their AI agents.
 
 
-The following diagram illustrates the path from a single-agent system to a multi-agent system.
-
-![Multi Agents](/img/multi_agent.png)
-
 ## Single-Agent System
 In a single-agent system, a single Agent is responsible for processing a Query and generating an Output. The agent might interact with multiple tools to complete its objective. The tools provide additional capabilities, but all decision-making and execution rely on a single entity. This system is simple but limited in scalability, as one agent must handle all tasks independently.
 
+![Single Agent](/img/single_agent-light.png#light-mode-only)
+![Single Agent](/img/single_agent-dark.png#dark-mode-only)
+
+
 ## Multi-Agent System
 In a multi-agent system, the process is decentralized. For example in a hierarchical topology, a Supervisor might manage the incoming Query and delegates tasks to specialized Agents (FAQ Agent, Billing Agent, Sales Agent). Each agent focuses on a specific function, allowing for more efficient and scalable processing. The results from these agents are then compiled into an Output. This structure improves task specialization, parallel processing, and flexibility in handling diverse queries.
+
+![Multi Agent](/img/multi_agent-light.png#light-mode-only)
+![Multi Agent](/img/multi_agent-dark.png#dark-mode-only)
 
 ## Example Scenario
 
