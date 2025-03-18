@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/lmos/css/cookieconsent.min.css">
 <script src="/lmos/js/cookieconsent.min.js"></script>
 <script src="/lmos/js/umami.js"></script><link rel="stylesheet" href="/lmos/assets/css/styles.40fc2846.css">
-<script src="/lmos/assets/js/runtime~main.5220965f.js" defer="defer"></script>
+<script src="/lmos/assets/js/runtime~main.12bb9fb8.js" defer="defer"></script>
 <script src="/lmos/assets/js/main.707c0096.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -35,12 +35,14 @@ JBang installation may take few minutes, do not close the terminal and let it co
 <p>(More information on the Agent DSL <a href="/lmos/docs/arc/dsl/defining_agents/">here</a>.)</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="3-chat-with-your-agent">3. Chat with your Agent!<a href="#3-chat-with-your-agent" class="hash-link" aria-label="Direct link to 3. Chat with your Agent!" title="Direct link to 3. Chat with your Agent!">​</a></h3>
 <div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#F8F8F2;--prism-background-color:#282A36"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#F8F8F2;background-color:#282A36"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#F8F8F2"><span class="token plain">arc run agents</span><br></span><span class="token-line" style="color:#F8F8F2"><span class="token plain">arc view</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
-<p>**NOTE: ** by default arc agents run on port 8080. Make sure the port is available.<br></p>
-<p><img decoding="async" loading="lazy" alt="Arc View" src="/lmos/assets/images/arc_view01-3e77bc138144f4c8b5ec2e1da51f97d3.png" width="2494" height="1362" class="img_ev3q"></p>
+<p><strong>NOTE:</strong> by default arc agents run on port 8080. Make sure the port is available.<br>
+<strong>NOTE:</strong> The Safari browser does not supported connecting to localhost. Please use Chrome, Firefox or Edge.</p>
+<p><img decoding="async" loading="lazy" alt="Arc View" src="/lmos/assets/images/arc_view01-ce2b2e5efa50ab30dc715edf2d51b388.png" width="2248" height="1568" class="img_ev3q"></p>
 <p>This will start the Arc Server that will host your new Arc Agent
-and opens the Arc View that will enable you to chat with your Agent. In case arc view does not open, you can access it at <a href="https://eclipse.dev/lmos/chat/index.html#/chat" target="_blank" rel="noopener noreferrer">https://eclipse.dev/lmos/chat/index.html#/chat</a>.</p>
-<p>In case no Agent is visible on Arc chat tab then open settings and select url: <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">http://localhost:8080</a> in available agent URLs.<br>
-<img decoding="async" loading="lazy" alt="Arc View settings" src="/lmos/assets/images/arc_view02-2fd1f7a8b62904b87f07cb90fc94a768.png" width="1908" height="986" class="img_ev3q"></p>
+and opens the Arc View that will enable you to chat with your Agent. In case arc view does not open, you can access it at <a href="https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080#/chat" target="_blank" rel="noopener noreferrer">https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080#/chat</a>.</p>
+<p>If you have started the Agent under a different url or port, you can change the url
+using the url button on the top right corner of the Arc View.
+<img decoding="async" loading="lazy" alt="Arc View settings" src="/lmos/assets/images/arc_view03-6c2e1f7e1bc64d38ec1883c96a9cef75.png" width="1548" height="740" class="img_ev3q"></p>
 <p>That is it! You have created and run your first Arc Agent.</p>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Spring into Action</div><div class="admonitionContent_BuS1"><p>If you want more, try out our Spring Boot Setup Project
 <a href="https://github.com/eclipse-lmos/arc-spring-init" target="_blank" rel="noopener noreferrer">https://github.com/eclipse-lmos/arc-spring-init</a>.</p><p>Simply clone the repository and follow the instructions in the README.</p></div></div>
