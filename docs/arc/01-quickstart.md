@@ -63,15 +63,17 @@ agent {
 arc run agents
 arc view
 ```
-**NOTE: ** by default arc agents run on port 8080. Make sure the port is available.<br/>
+**NOTE:** by default arc agents run on port 8080. Make sure the port is available.<br/>
+**NOTE:** The Safari browser does not supported connecting to localhost. Please use Chrome, Firefox or Edge.
 
 ![Arc View](/img/arc_view01.png)
 
 This will start the Arc Server that will host your new Arc Agent 
-and opens the Arc View that will enable you to chat with your Agent. In case arc view does not open, you can access it at https://eclipse.dev/lmos/chat/index.html#/chat.
+and opens the Arc View that will enable you to chat with your Agent. In case arc view does not open, you can access it at https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080#/chat.
 
-In case no Agent is visible on Arc chat tab then open settings and select url: http://localhost:8080 in available agent URLs.<br/>
-![Arc View settings](/img/arc_view02.png)
+If you have started the Agent under a different url or port, you can change the url 
+using the url button on the top right corner of the Arc View.
+![Arc View settings](/img/arc_view03.png)
 
 That is it! You have created and run your first Arc Agent.
 
