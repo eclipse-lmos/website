@@ -13,7 +13,8 @@ Similarly, the **Bluesky AT Protocol**, which is a federated social media networ
 
 The **LMOS Protocol** shares these goals of decentralization and flexibility. It enables tools to be discovered and connected to agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications — **regardless of the underlying technologies**. This creates an ecosystem where diverse AI capabilities can easily interact and be applied in various scenarios, ensuring that the system is not restricted by specific providers or technologies.
 
-![Internet of Agents](/img/internet_of_agents.png)
+![Internet of Agents](/img/internet_of_agents-light.png#light-mode-only)
+![Internet of Agents](/img/internet_of_agents-dark.png#dark-mode-only)
 
 By defining standardized metadata, metadata propagation, metadata discovery, data models, interaction patterns and a communication protocol, the **LMOS Protocol** provides:
 
@@ -49,7 +50,8 @@ To achieve this, we have designed a structured three-layer protocol architecture
 - **Identity and Security Layer**  
    This layer establishes standards for secure identity authentication and encrypted communication between agents, especially in cross-platform environments. It includes a decentralized identity authentication scheme based on W3C DID, but also supports OAuth2, Bearer, and other security schemes.
 
-![LMOS Protocoll](/img/lmos_protocoll.png)
+![LMOS Protocol](/img/lmos_protocol-light.png#light-mode-only)
+![LMOS Protocol](/img/lmos_protocol-dark.png#dark-mode-only)
 
 ## Protocol design
 
@@ -68,12 +70,6 @@ Please note that this protocol is work in progress and contains empty sections.
 
 [GitHub Issues](https://github.com/eclipse-lmos/website/issues) are preferred for discussion of this specification. Alternatively, you can [join our Discord channel](https://discord.gg/RDTHpAQG).
 
-
-**Latest published version:**  
-[https://eclipse.dev/lmos/docs/lmos_protocol](https://eclipse.dev/lmos/docs/lmos_protocol)  
-
-**Editors:**  
-* Robert Winkler (Deutsche Telekom AG)  
 
 ## Use Cases
 

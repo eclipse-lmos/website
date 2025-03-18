@@ -17,7 +17,8 @@ Agent metadata can be propagated across the network using various transport mech
 
 W3C Web of Things offers a mechanism that things can dynamically propagate metadata using protocols like mDNS for local discovery and/or can register themselves on registries for broader access. In LMOS, this approach can be adapted for agent discovery, where agents dynamically register and propagate their metadata to a registry for efficient querying. This allows LMOS agents to discover each other in real time based on specific needs or capabilities.
 
-![Agent Communication](/img/agent_communication.png)
+![Agent Discovery](/img/agent_discovery-light.png#light-mode-only)
+![Agent Discovery](/img/agent_discovery-dark.png#dark-mode-only)
 
 ### Registry approach
 

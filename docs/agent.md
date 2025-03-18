@@ -23,7 +23,8 @@ For example, Large Language Model (LLM)-based agents leverage the capabilities o
 **Tool Usage:** To extend their functionality, LLM-based agents can interact with external tools and systems. For instance, they can execute commands, retrieve information from databases, or interact with other software applications, thereby enhancing their ability to perform complex tasks.
 
 
-![Single Agent](/img/single_agent.png)
+![Single Agent](/img/agent_design-light.png#light-mode-only)
+![Single Agent](/img/agent_design-dark.png#dark-mode-only)
 
 ## LMOS Agent Design
 
