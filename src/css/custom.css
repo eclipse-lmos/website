@@ -194,3 +194,44 @@ html[data-theme='light'] .code {
   font-weight: bold;
   font-size: 1.125em; /* Increases size by approximately 2pt */
 }
+
+.arc-hero-panel {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.arc-hero {
+  background-image: url("/img/arc-hero.svg");
+  background-color: rgba(0,0,0,0.3);
+  background-blend-mode: darken;
+  background-size: cover;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+.arc-panel-code {
+  background: url("/img/arc.svg") no-repeat;
+  background-size: cover;
+  width: 78%;
+}
+
+.arc-panel {
+  color: #f4f4f4;
+  background-color: #262a2d;
+  height: 380px;
+  margin-right: 20px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.arc-panel h1 {
+  font-size: 72px;
+  text-align: left;
+}
+
+.arc-panel h2 {
+  font-size: 28px;
+  text-align: left;
+}
