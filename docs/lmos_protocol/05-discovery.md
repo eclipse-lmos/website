@@ -62,3 +62,35 @@ Things that match this service type respond with their mDNS records, allowing th
 3. **Retrieving Thing Descriptions:**
 Once a client has discovered a WoT-compatible agent, it can retrieve the agents's Thing Description using the URL provided in the TXT records.
 The Thing Description provides detailed information about the agents's properties, actions, and events.
+
+
+### P2P Network
+
+Decentralized protocols like the **AT Protocol** or **dat protocol** could provide an efficient way to propagate agent and tool descriptions while enabling peer-to-peer (P2P) discovery. 
+Instead of relying on centralized registries, a **P2P protocol** can be used to distribute metadata across the network. 
+
+#### 1. Propagating Agent & Tool Descriptions
+
+##### Using the AT Protocol
+- Agents and tools **sign their metadata** (e.g., description, capabilities, endpoints) using **DIDs** and publish them on the AT Protocol’s distributed network.
+- The metadata is stored in **Personal Data Repositories (PDRs)**, ensuring that each agent or tool has control over its own information while allowing federated discovery.
+- These records are replicated across different nodes, ensuring redundancy and resilience without a single point of failure.
+
+##### Using Other P2P Protocols
+- Metadata can be hashed and stored on a distributed hash table (DHT).
+- Each agent or tool publishes metadata to a P2P storage layer.
+- Cryptographic signatures ensure that only the agent/tool owner can modify its metadata.
+
+
+#### 2. Searching & Discovering Agents and Tools in a P2P Registry
+Once metadata is propagated, clients can search and discover agent/tool descriptions:
+
+##### Federated Search via AT Protocol
+- Clients query relay servers or indexers that aggregate and cache agent/tool metadata.
+- Since records are signed by their owners, the integrity of the retrieved metadata is guaranteed.
+- Search results can be ranked based on factors like relevance, reputation, or availability.
+
+###### Decentralized Lookup (DHT-based)
+- Clients perform DHT queries to find metadata entries matching specific criteria (e.g., capabilities, API interfaces, location).
+- Nodes in the network collaboratively route the query to find the closest match.
+- The client retrieves metadata and verifies authenticity via DID signatures.

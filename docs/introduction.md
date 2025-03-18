@@ -7,39 +7,40 @@ sidebar_position: 1
 
 ## Our vision of an Internet of Agents
 
-Eclipse LMOS is paving the way for an **Internet of Agents (IoA)** — an internet-scale multi-agent system where AI agents and tools from different organizations can be easily **published, discovered, and interconnected**, regardless of the technologies they are built on. This vision builds upon the evolution of the Internet of Things (IoT), extending its principles to web-based multi-agent systems. 
+Eclipse LMOS is paving the way for an **Internet of Agents (IoA)** — an internet-scale multi-agent system where AI agents and tools from different organizations can be easily **published, discovered, and interconnected**, regardless of the technologies they are built on. This vision builds upon the evolution of the Internet of Things (IoT), extending its principles to web-based multi-agent systems.
 
 ## LMOS Protocol
 
-To realize this, Eclipse LMOS incorporates **well-established W3C protocols and patterns** from the Internet of Things (IoT), adapting them to the realm of web-based multi-agent systems. This adaptation is formalized in the [LMOS Protocol](/lmos/docs/lmos_protocol/introduction), which builds upon the [W3C Web of Things (WoT) architecture](https://www.w3.org/TR/wot-architecture11/). By leveraging WoT's standardized metadata and abstraction layers, LMOS ensures discoverability, interoperability and transport protocol flexibility for AI agents and tools. 
+To achieve this vision, Eclipse LMOS incorporates **well-established W3C protocols and patterns** from the Internet of Things (IoT), the Semantic Web, and decentralized protocols. This adaptation is formalized in the [LMOS Protocol](/lmos/docs/lmos_protocol/introduction). The LMOS Protocol is designed to establish a distributed, open ecosystem that eliminates vendor lock-in, ensuring that users are not bound to major corporations or central authorities.
+
+The **LMOS Protocol** draws inspiration from existing decentralized technologies. For example, **Matter/Thread** enables smart home devices from different manufacturers to connect and work together seamlessly through a **mesh network**. In this network, devices communicate directly with one another, ensuring reliability and resilience without relying on a central hub. If one device fails, the network automatically reroutes the communication through other devices, providing a flexible and robust solution for smart homes.
+
+Similarly, the **Bluesky AT Protocol**, which is a federated social media networking protocol, allows users to interact across different social media networks while maintaining control over their data. It enables interoperability, ensuring that users are not locked into a single platform or provider, fostering an open and connected ecosystem. The analogy to social media networks is especially relevant, because agents should also be able to interact, share information, and collaborate in a decentralized manner. Just as humans can engage across various social media networks, agents should be able to discover and work with others in a flexible, open ecosystem. 
+
+The **LMOS Protocol** shares these goals of decentralization and flexibility. It enables tools to be discovered and connected to agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications — **regardless of the underlying technologies**. This creates an ecosystem where diverse AI capabilities can easily interact and be applied in various scenarios, ensuring that the system is not restricted by specific providers or technologies.
 
 ![Internet of Agents](/img/internet_of_agents_intro.png)
 
-By defining standardized metadata, data models, interaction patterns and a communication protocol on top of WoT, the **LMOS Protocol** provides:
+By defining standardized metadata, metadata propagation, metadata discovery, data models, interaction patterns and a communication protocol, the **LMOS Protocol** provides:
 
 - **Agent & Tool Description Format**  
    A standardized format for describing the capabilities and metadata of Agents and Tools. This specification offers an appropriate level of abstraction to ensure interoperability across a wide range of agent platforms and domains.
 
-- **Agent & Tool Discovery Process**  
-   A discovery mechanism for obtaining agent and tool descriptions, supporting both local and global networks. It accommodates updates to descriptions and handles the dynamic nature of agents, allowing for their constant evolution.
-
 - **Metadata Propagation Protocol**  
-   Agents and Tools are able to propagate metadata using suitable protocols. For local network discovery and registration, mDNS (Multicast DNS) can be used. For broader network discovery, agents can publish their metadata to Agent registries. Additionally, peer-to-peer (P2P) protocols could be leveraged to enable decentralized metadata propagation.
+   Agents and Tools are able to propagate metadata using different protocols. For local network discovery and registration, DNS-SD/mDNS can be used. For broader network discovery, agents can publish their metadata to Agent registries. Additionally, peer-to-peer (P2P) protocols could be leveraged to enable decentralized metadata propagation.
 
-- **Decentralized Agent & Tool Registries**  
-   Decentralized registries act as a distributed repository where agents and tools autonomously register and query information about others. This enables discovery across networks without relying on centralized authorities.
+- **Agent & Tool Discovery Process**  
+   A discovery mechanism for obtaining agent and tool descriptions, supporting both local and global networks. It accommodates updates to descriptions and handles the dynamic nature of agents, allowing for their constant evolution. Agents have the ability to dynamically discover other agents and tool descriptions. They can query centralized registries based on specific criteria, such as capabilities or metadata, ensuring the right Agents or Tools are matched for a given task.
+   Alternatively, peer-to-peer (P2P) protocols can be used for discovery, eliminating reliance on centralized registries. Using techniques like Distributed Hash Tables (DHTs) or gossip protocols, agents can search for peers in a distributed network. Queries are efficiently routed based on specific criteria, ensuring relevant agents or tools are found in a decentralized manner. Cryptographic signatures guarantee authenticity and trustworthiness in the discovery process.
 
-- **Dynamic Agent & Tool Discovery**  
-   Agents have the ability to dynamically discover other agents and tools. They can query registries based on specific criteria, such as capabilities or metadata, ensuring the right Agents or Tools are matched for a given task.
+- **Decentralized Digital Identifiers**  
+   Agents and tools can leverage W3C Decentralized Identifiers (DIDs) for secure, verifiable, and self-sovereign authentication. This ensures cryptographic identity validation without relying on centralized authorities, enhancing trust, security, and interoperability across networks.
 
 - **Agent Communication Protocol**  
    Agents are able to communicate using open protocols, but the LMOS protocol also provides flexibility in choosing the best transport protocol for each agent’s purpose. Rather than enforcing a single transport protocol like HTTP, MQTT, or AMQP, the LMOS protocol allows agents to select and adapt protocols based on their needs.
 
 - **Group Management**  
    The LMOS protocol supports the creation and management of agent groups. This functionality allows the formation, management, and dissolution of agent groups while enforcing trust relationships among agents within the group. It enhances collaboration and coordination across agents in the system.
-
-- **Decentralized Digital Identifiers**  
-   Agents and tools can leverage W3C Decentralized Identifiers (DIDs) for secure, verifiable, and self-sovereign authentication. This ensures cryptographic identity validation without relying on centralized authorities, enhancing trust, security, and interoperability across networks.
 
 ## LMOS Platform
 
