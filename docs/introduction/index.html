@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/lmos/css/cookieconsent.min.css">
 <script src="/lmos/js/cookieconsent.min.js"></script>
 <script src="/lmos/js/umami.js"></script><link rel="stylesheet" href="/lmos/assets/css/styles.40fc2846.css">
-<script src="/lmos/assets/js/runtime~main.097999cf.js" defer="defer"></script>
+<script src="/lmos/assets/js/runtime~main.5220965f.js" defer="defer"></script>
 <script src="/lmos/assets/js/main.707c0096.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -21,29 +21,29 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="our-vision-of-an-internet-of-agents">Our vision of an Internet of Agents<a href="#our-vision-of-an-internet-of-agents" class="hash-link" aria-label="Direct link to Our vision of an Internet of Agents" title="Direct link to Our vision of an Internet of Agents">​</a></h2>
 <p>Eclipse LMOS is paving the way for an <strong>Internet of Agents (IoA)</strong> — an internet-scale multi-agent system where AI agents and tools from different organizations can be easily <strong>published, discovered, and interconnected</strong>, regardless of the technologies they are built on. This vision builds upon the evolution of the Internet of Things (IoT), extending its principles to web-based multi-agent systems.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="lmos-protocol">LMOS Protocol<a href="#lmos-protocol" class="hash-link" aria-label="Direct link to LMOS Protocol" title="Direct link to LMOS Protocol">​</a></h2>
-<p>To realize this, Eclipse LMOS incorporates <strong>well-established W3C protocols and patterns</strong> from the Internet of Things (IoT), adapting them to the realm of web-based multi-agent systems. This adaptation is formalized in the <a href="/lmos/docs/lmos_protocol/introduction/">LMOS Protocol</a>, which builds upon the <a href="https://www.w3.org/TR/wot-architecture11/" target="_blank" rel="noopener noreferrer">W3C Web of Things (WoT) architecture</a>. By leveraging WoT&#x27;s standardized metadata and abstraction layers, LMOS ensures discoverability, interoperability and transport protocol flexibility for AI agents and tools.</p>
+<p>To achieve this vision, Eclipse LMOS incorporates <strong>well-established W3C protocols and patterns</strong> from the Internet of Things (IoT), the Semantic Web, and decentralized protocols. This adaptation is formalized in the <a href="/lmos/docs/lmos_protocol/introduction/">LMOS Protocol</a>. The LMOS Protocol is designed to establish a distributed, open ecosystem that eliminates vendor lock-in, ensuring that users are not bound to major corporations or central authorities.</p>
+<p>The <strong>LMOS Protocol</strong> draws inspiration from existing decentralized technologies. For example, <strong>Matter/Thread</strong> enables smart home devices from different manufacturers to connect and work together seamlessly through a <strong>mesh network</strong>. In this network, devices communicate directly with one another, ensuring reliability and resilience without relying on a central hub. If one device fails, the network automatically reroutes the communication through other devices, providing a flexible and robust solution for smart homes.</p>
+<p>Similarly, the <strong>Bluesky AT Protocol</strong>, which is a federated social media networking protocol, allows users to interact across different social media networks while maintaining control over their data. It enables interoperability, ensuring that users are not locked into a single platform or provider, fostering an open and connected ecosystem. The analogy to social media networks is especially relevant, because agents should also be able to interact, share information, and collaborate in a decentralized manner. Just as humans can engage across various social media networks, agents should be able to discover and work with others in a flexible, open ecosystem.</p>
+<p>The <strong>LMOS Protocol</strong> shares these goals of decentralization and flexibility. It enables tools to be discovered and connected to agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications — <strong>regardless of the underlying technologies</strong>. This creates an ecosystem where diverse AI capabilities can easily interact and be applied in various scenarios, ensuring that the system is not restricted by specific providers or technologies.</p>
 <p><img decoding="async" loading="lazy" alt="Internet of Agents" src="/lmos/assets/images/internet_of_agents_intro-dcd8308322fd48836c7a52b6967513e3.png" width="1110" height="621" class="img_ev3q"></p>
-<p>By defining standardized metadata, data models, interaction patterns and a communication protocol on top of WoT, the <strong>LMOS Protocol</strong> provides:</p>
+<p>By defining standardized metadata, metadata propagation, metadata discovery, data models, interaction patterns and a communication protocol, the <strong>LMOS Protocol</strong> provides:</p>
 <ul>
 <li>
 <p><strong>Agent &amp; Tool Description Format</strong><br>
 <!-- -->A standardized format for describing the capabilities and metadata of Agents and Tools. This specification offers an appropriate level of abstraction to ensure interoperability across a wide range of agent platforms and domains.</p>
 </li>
 <li>
-<p><strong>Agent &amp; Tool Discovery Process</strong><br>
-<!-- -->A discovery mechanism for obtaining agent and tool descriptions, supporting both local and global networks. It accommodates updates to descriptions and handles the dynamic nature of agents, allowing for their constant evolution.</p>
-</li>
-<li>
 <p><strong>Metadata Propagation Protocol</strong><br>
-<!-- -->Agents and Tools are able to propagate metadata using suitable protocols. For local network discovery and registration, mDNS (Multicast DNS) can be used. For broader network discovery, agents can publish their metadata to Agent registries. Additionally, peer-to-peer (P2P) protocols could be leveraged to enable decentralized metadata propagation.</p>
+<!-- -->Agents and Tools are able to propagate metadata using different protocols. For local network discovery and registration, DNS-SD/mDNS can be used. For broader network discovery, agents can publish their metadata to Agent registries. Additionally, peer-to-peer (P2P) protocols could be leveraged to enable decentralized metadata propagation.</p>
 </li>
 <li>
-<p><strong>Decentralized Agent &amp; Tool Registries</strong><br>
-<!-- -->Decentralized registries act as a distributed repository where agents and tools autonomously register and query information about others. This enables discovery across networks without relying on centralized authorities.</p>
+<p><strong>Agent &amp; Tool Discovery Process</strong><br>
+<!-- -->A discovery mechanism for obtaining agent and tool descriptions, supporting both local and global networks. It accommodates updates to descriptions and handles the dynamic nature of agents, allowing for their constant evolution. Agents have the ability to dynamically discover other agents and tool descriptions. They can query centralized registries based on specific criteria, such as capabilities or metadata, ensuring the right Agents or Tools are matched for a given task.
+Alternatively, peer-to-peer (P2P) protocols can be used for discovery, eliminating reliance on centralized registries. Using techniques like Distributed Hash Tables (DHTs) or gossip protocols, agents can search for peers in a distributed network. Queries are efficiently routed based on specific criteria, ensuring relevant agents or tools are found in a decentralized manner. Cryptographic signatures guarantee authenticity and trustworthiness in the discovery process.</p>
 </li>
 <li>
-<p><strong>Dynamic Agent &amp; Tool Discovery</strong><br>
-<!-- -->Agents have the ability to dynamically discover other agents and tools. They can query registries based on specific criteria, such as capabilities or metadata, ensuring the right Agents or Tools are matched for a given task.</p>
+<p><strong>Decentralized Digital Identifiers</strong><br>
+<!-- -->Agents and tools can leverage W3C Decentralized Identifiers (DIDs) for secure, verifiable, and self-sovereign authentication. This ensures cryptographic identity validation without relying on centralized authorities, enhancing trust, security, and interoperability across networks.</p>
 </li>
 <li>
 <p><strong>Agent Communication Protocol</strong><br>
@@ -52,10 +52,6 @@
 <li>
 <p><strong>Group Management</strong><br>
 <!-- -->The LMOS protocol supports the creation and management of agent groups. This functionality allows the formation, management, and dissolution of agent groups while enforcing trust relationships among agents within the group. It enhances collaboration and coordination across agents in the system.</p>
-</li>
-<li>
-<p><strong>Decentralized Digital Identifiers</strong><br>
-<!-- -->Agents and tools can leverage W3C Decentralized Identifiers (DIDs) for secure, verifiable, and self-sovereign authentication. This ensures cryptographic identity validation without relying on centralized authorities, enhancing trust, security, and interoperability across networks.</p>
 </li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="lmos-platform">LMOS Platform<a href="#lmos-platform" class="hash-link" aria-label="Direct link to LMOS Platform" title="Direct link to LMOS Platform">​</a></h2>
