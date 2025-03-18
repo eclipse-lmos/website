@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/lmos/css/cookieconsent.min.css">
 <script src="/lmos/js/cookieconsent.min.js"></script>
 <script src="/lmos/js/umami.js"></script><link rel="stylesheet" href="/lmos/assets/css/styles.40fc2846.css">
-<script src="/lmos/assets/js/runtime~main.12bb9fb8.js" defer="defer"></script>
+<script src="/lmos/assets/js/runtime~main.52fd4816.js" defer="defer"></script>
 <script src="/lmos/assets/js/main.707c0096.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -22,7 +22,8 @@
 <p>To achieve this, the <strong>LMOS Protocol</strong> draws inspiration from existing decentralized technologies. For example, <strong>Matter/Thread</strong> enables smart home devices from different manufacturers to connect and work together seamlessly through a <strong>mesh network</strong>. In this network, devices communicate directly with one another, ensuring reliability and resilience without relying on a central hub. If one device fails, the network automatically reroutes the communication through other devices, providing a flexible and robust solution for smart homes.</p>
 <p>Similarly, the <strong>Bluesky AT Protocol</strong>, which is a federated social media networking protocol, allows users to interact across different social media networks while maintaining control over their data. It enables interoperability, ensuring that users are not locked into a single platform or provider, fostering an open and connected ecosystem. The analogy to social media networks is especially relevant, because agents should also be able to interact, share information, and collaborate in a decentralized manner. Just as humans can engage across various social media networks, agents should be able to discover and work with others in a flexible, open ecosystem.</p>
 <p>The <strong>LMOS Protocol</strong> shares these goals of decentralization and flexibility. It enables tools to be discovered and connected to agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications — <strong>regardless of the underlying technologies</strong>. This creates an ecosystem where diverse AI capabilities can easily interact and be applied in various scenarios, ensuring that the system is not restricted by specific providers or technologies.</p>
-<p><img decoding="async" loading="lazy" alt="Internet of Agents" src="/lmos/assets/images/internet_of_agents-20d8dae63430818e805050230bf61367.png" width="785" height="652" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="Internet of Agents" src="/lmos/assets/images/internet_of_agents-light-05bfca8e9681205692379c13ad15413a.png#light-mode-only" width="620" height="568" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="Internet of Agents" src="/lmos/assets/images/internet_of_agents-dark-0d0e46faff06da8581c628bad052a952.png#dark-mode-only" width="620" height="568" class="img_ev3q"></p>
 <p>By defining standardized metadata, metadata propagation, metadata discovery, data models, interaction patterns and a communication protocol, the <strong>LMOS Protocol</strong> provides:</p>
 <ul>
 <li>
@@ -67,7 +68,8 @@ Alternatively, peer-to-peer (P2P) protocols can be used for discovery, eliminati
 <!-- -->This layer establishes standards for secure identity authentication and encrypted communication between agents, especially in cross-platform environments. It includes a decentralized identity authentication scheme based on W3C DID, but also supports OAuth2, Bearer, and other security schemes.</p>
 </li>
 </ul>
-<p><img decoding="async" loading="lazy" alt="LMOS Protocoll" src="/lmos/assets/images/lmos_protocoll-3d6a55c1063694feafcd68ba52e9502a.png" width="570" height="699" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="LMOS Protocol" src="/lmos/assets/images/lmos_protocol-light-8e7aad82eb07a290da78856173a19079.png#light-mode-only" width="672" height="829" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="LMOS Protocol" src="/lmos/assets/images/lmos_protocol-dark-1208898c377790108624750becafa5e2.png#dark-mode-only" width="672" height="829" class="img_ev3q"></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="protocol-design">Protocol design<a href="#protocol-design" class="hash-link" aria-label="Direct link to Protocol design" title="Direct link to Protocol design">​</a></h2>
 <p>The LMOS Protocol is designed to leverage the established <a href="https://www.w3.org/TR/wot-architecture11/" target="_blank" rel="noopener noreferrer">W3C Web of Things (WoT) architecture</a> which addresses fragmentation across the Internet of Things (IoT) by building upon widely adopted web technologies. By introducing standardized metadata and reusable technological building blocks, W3C WoT facilitates seamless integration across platforms and application domains. A cornerstone of WoT is the Thing Description (TD), which provides an information model and JSON-LD representation format for describing the capabilities of &quot;things&quot;.</p>
 <p>By leveraging the Thing Description (TD) abstraction from the WoT, the LMOS Protocol simplifies the discovery, description, and interaction of agents and tools, while remaining transport-agnostic. This enables developers to switch communication standards (e.g., from HTTP to MQTT or WebSocket) or media types (e.g., from JSON to CBOR) without requiring changes to application logic.</p>
@@ -77,12 +79,6 @@ Alternatively, peer-to-peer (P2P) protocols can be used for discovery, eliminati
 <p>The LMOS Protocol is published by the Eclipse LMOS project. It is not a W3C Standard nor is it on the W3C Standards Track. However, we plan to initiate the formal W3C process once the protocol reaches a mature state.</p>
 <p>Please note that this protocol is work in progress and contains empty sections.</p>
 <p><a href="https://github.com/eclipse-lmos/website/issues" target="_blank" rel="noopener noreferrer">GitHub Issues</a> are preferred for discussion of this specification. Alternatively, you can <a href="https://discord.gg/RDTHpAQG" target="_blank" rel="noopener noreferrer">join our Discord channel</a>.</p>
-<p><strong>Latest published version:</strong><br>
-<a href="https://eclipse.dev/lmos/docs/lmos_protocol" target="_blank" rel="noopener noreferrer">https://eclipse.dev/lmos/docs/lmos_protocol</a></p>
-<p><strong>Editors:</strong></p>
-<ul>
-<li>Robert Winkler (Deutsche Telekom AG)</li>
-</ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="use-cases">Use Cases<a href="#use-cases" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases">​</a></h2>
 <p>The LMOS Protocol is particularly designed for multi-agent systems, where interoperability and flexibility are critical.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="customer-service">Customer Service<a href="#customer-service" class="hash-link" aria-label="Direct link to Customer Service" title="Direct link to Customer Service">​</a></h3>
