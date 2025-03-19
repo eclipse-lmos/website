@@ -27,12 +27,12 @@ function HomepageHeader() {
                                   content="A nimble framework & DSL for building LLM powered AI Agents."/>
                         </Head>
                         <div className="arc-hero-panel">
-                            <div className="arc-panel">
+                            <div className="arc-panel arc-panel-arc">
                                 <h1>ARC</h1>
                                 <hr/>
                                 <h2>The AI Agent DSL for the JVM and beyond.</h2>
                             </div>
-                            <div className="arc-panel arc-panel-code">
+                            <div className="arc-panel arc-panel-code arc-collapse">
 
                             </div>
 
