@@ -65,7 +65,6 @@ arc run agents
 arc view
 ```
 **NOTE:** by default arc agents run on port 8080. Make sure the port is available.<br/>
-**NOTE:** The Safari and Brave browsers do not supported connecting to localhost. Please use Chrome, Firefox or Edge.
 
 ![Arc View](/img/arc_view01.png)
 
