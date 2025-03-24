@@ -41,7 +41,7 @@ function HomepageHeader() {
                     <Link className="button button--primary button--lg" to="/docs/arc/quickstart">
                         My First Agent - 5min ⏱️
                     </Link> &nbsp;&nbsp;
-                    <Link className="button button--secondary button--lg" to="/docs/arc/manual_setup">
+                    <Link className="button button--secondary button--lg" to="/docs/arc/index">
                         Learn more about ARC
                     </Link>
                     <p className="hero__subtitle"></p>
