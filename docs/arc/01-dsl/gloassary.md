@@ -13,7 +13,7 @@ A list of functions that ca be used within the DSL.
 | system                       | Returns a system property.                 | [More](../Features/extensions/#system-and-user-context) |
 | limit                        | Rate limiter                               | [More](../Features/rate_limiter)                        |
 | getData                      | Returns a data set that was stored.        | [More](../Features/data)                                |
-| setData                      | Sets a data set that was loaded.           | [More](../Features/data)                                |
+| addData                      | Sets a data set that was loaded.           | [More](../Features/data)                                |
 | time                         | Returns the current time.                  | [More](../Features/extensions/#time-date-year)          |
 | debug, info, warn, and error | Logs messages to the logging system        | [More](../Features/extensions/#logging)                 |
 | tracer                       | Returns the AgentTracer.                   | [More](../../tracing/#adding-custom-traces)             |
