@@ -49,7 +49,7 @@ subscription {
     }
 }
 ```
-See the [Arc API](/docs/arc/11-api.md) for more details on the data models and interfaces.
+See the [Arc API](/docs/arc/02-ccore/11-api.md) for more details on the data models and interfaces.
 
 
 ### Agent Query
