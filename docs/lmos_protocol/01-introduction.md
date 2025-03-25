@@ -5,37 +5,20 @@ sidebar_position: 1
 
 ## Abstract
 
-The primary goal of the **LMOS Protocol** is to pave the way for an **Internet of Agents (IoA)** — a dynamic and interconnected ecosystem where AI agents and tools, developed by various organizations, can be easily published, discovered, and seamlessly utilized across platforms. This vision builds upon the evolution of the **Internet of Things (IoT)**, extending its principles to internet-scale multi-agent systems.
+The primary goal of the **LMOS Protocol** is to pave the way for an **Internet of Agents (IoA)** — an internet-scale multi-agent system where AI agents and tools from different organizations can be easily **published, discovered, and interconnected**, regardless of the technologies they are built on. This vision builds upon the evolution of the **Social Web** and the **Internet of Things (IoT)**, extending its principles to web-based multi-agent systems.
 
-To achieve this, the **LMOS Protocol** draws inspiration from existing decentralized technologies. For example, **Matter/Thread** enables smart home devices from different manufacturers to connect and work together seamlessly through a **mesh network**. In this network, devices communicate directly with one another, ensuring reliability and resilience without relying on a central hub. If one device fails, the network automatically reroutes the communication through other devices, providing a flexible and robust solution for smart homes.
+To achieve this, the **LMOS Protocol** draws inspiration from existing technologies. For example, **Matter/Thread** enables smart home devices from different manufacturers to connect and work together seamlessly through a **mesh network**. In this network, devices communicate directly with one another, ensuring reliability and resilience without relying on a central hub. If one device fails, the network automatically reroutes the communication through other devices, providing a flexible and robust solution for smart homes.
 
-Similarly, the **Bluesky AT Protocol**, which is a federated social media networking protocol, allows users to interact across different social media networks while maintaining control over their data. It enables interoperability, ensuring that users are not locked into a single platform or provider, fostering an open and connected ecosystem. The analogy to social media networks is especially relevant, because agents should also be able to interact, share information, and collaborate in a decentralized manner. Just as humans can engage across various social media networks, agents should be able to discover and work with others in a flexible, open ecosystem. 
+Similarly, the [ActivityPub Protocol](https://activitypub.rocks/), which is a federated social media networking protocol, allows users to interact across different social media networks. It enables interoperability, ensuring that users are not locked into a single platform or provider, fostering an open and connected ecosystem. The analogy to social media networks is especially relevant, because agents should also be able to interact, share information, and collaborate in a decentralized manner. Just as humans can engage across various social media networks, agents should be able to discover and work with others in a flexible, open ecosystem. 
 
-The **LMOS Protocol** shares these goals of decentralization and flexibility. It enables tools to be discovered and connected to agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications — **regardless of the underlying technologies**. This creates an ecosystem where diverse AI capabilities can easily interact and be applied in various scenarios, ensuring that the system is not restricted by specific providers or technologies.
+The **LMOS Protocol** shares these goals of federation and flexibility. It's designed for "big world" use cases. It enables tools to be discovered and connected to agents, agents to collaborate within multi-agent systems, and agents to be integrated into existing applications — **regardless of the underlying technologies**. This creates an ecosystem where diverse AI capabilities can easily interact and be applied in various scenarios, ensuring that the system is not restricted by specific providers or technologies.
 
 ![Internet of Agents](/img/internet_of_agents-light.png#light-mode-only)
 ![Internet of Agents](/img/internet_of_agents-dark.png#dark-mode-only)
 
-By defining standardized metadata, metadata propagation, metadata discovery, data models, interaction patterns and a communication protocol, the **LMOS Protocol** provides:
+import Standards from './_standards.mdx';
 
-- **Agent & Tool Description Format**  
-   A standardized format for describing the capabilities and metadata of Agents and Tools. This specification offers an appropriate level of abstraction to ensure interoperability across a wide range of agent platforms and domains.
-
-- **Metadata Propagation Protocol**  
-   Agents and Tools are able to propagate metadata using different protocols. For local network discovery and registration, DNS-SD/mDNS can be used. For broader network discovery, agents can publish their metadata to Agent registries. Additionally, peer-to-peer (P2P) protocols could be leveraged to enable decentralized metadata propagation.
-
-- **Agent & Tool Discovery Process**  
-   A discovery mechanism for obtaining agent and tool descriptions, supporting both local and global networks. It accommodates updates to descriptions and handles the dynamic nature of agents, allowing for their constant evolution. Agents have the ability to dynamically discover other agents and tool descriptions. They can query centralized registries based on specific criteria, such as capabilities or metadata, ensuring the right Agents or Tools are matched for a given task.
-   Alternatively, peer-to-peer (P2P) protocols can be used for discovery, eliminating reliance on centralized registries. Using techniques like Distributed Hash Tables (DHTs) or gossip protocols, agents can search for peers in a distributed network. Queries are efficiently routed based on specific criteria, ensuring relevant agents or tools are found in a decentralized manner. Cryptographic signatures guarantee authenticity and trustworthiness in the discovery process.
-
-- **Decentralized Digital Identifiers**  
-   Agents and tools can leverage W3C Decentralized Identifiers (DIDs) for secure, verifiable, and self-sovereign authentication. This ensures cryptographic identity validation without relying on centralized authorities, enhancing trust, security, and interoperability across networks.
-
-- **Agent Communication Protocol**  
-   Agents are able to communicate using open protocols, but the LMOS protocol also provides flexibility in choosing the best transport protocol for each agent’s purpose. Rather than enforcing a single transport protocol like HTTP, MQTT, or AMQP, the LMOS protocol allows agents to select and adapt protocols based on their needs.
-
-- **Group Management**  
-   The LMOS protocol supports the creation and management of agent groups. This functionality allows the formation, management, and dissolution of agent groups while enforcing trust relationships among agents within the group. It enhances collaboration and coordination across agents in the system.
+<Standards  />
 
 ## Protocol layers
 
@@ -61,7 +44,7 @@ By leveraging the Thing Description (TD) abstraction from the WoT, the LMOS Prot
 
 The LMOS Protocol (Language Model Operating System Protocol) extends this concept to the realm of multi-agent systems and AI-driven applications. It offers a standardized way for agents, tools, data sources, and applications to interact with one another, leveraging the flexibility and protocol-agnostic nature of WoT. 
 
-Unlike other protocols, like the Model Context Protocol (MCP) by Anthropic, that tie communication to specific technologies (JSON-RPC), LMOS Protocol offers the adaptability needed for modern distributed systems. For example, developers can seamlessly switch from HTTP to WebSocket or from JSON to CBOR, ensuring future-proof and scalable implementations. Furthermore, the protocol addresses challenges in ad-hoc interoperability by defining an HTTP sub-protocol for REST-based interactions and a WebSocket sub-protocol for real-time communication. These sub-protocols ensure compatibility with existing web standards, enabling real-time communication, secure data exchange, and scalable interoperability for multi-agent systems. By supporting both synchronous and asynchronous communication patterns, the LMOS protocol adapts to a broad range of use cases.
+It offers the adaptability needed for modern distributed systems. For example, developers can seamlessly switch from HTTP to WebSocket or from JSON to CBOR, ensuring future-proof and scalable implementations. Furthermore, the protocol addresses challenges in ad-hoc interoperability by defining an HTTP sub-protocol for REST-based interactions and a WebSocket sub-protocol for real-time communication. These sub-protocols ensure compatibility with existing web standards, enabling real-time communication, secure data exchange, and scalable interoperability for multi-agent systems. By supporting both synchronous and asynchronous communication patterns, the LMOS protocol adapts to a broad range of use cases.
 
 ## Status of the LMOS Protocol
 The LMOS Protocol is published by the Eclipse LMOS project. It is not a W3C Standard nor is it on the W3C Standards Track. However, we plan to initiate the formal W3C process once the protocol reaches a mature state.

@@ -11,7 +11,7 @@ Agent metadata can be propagated across the network using various transport mech
 
 * **Centralized Registry:** Agents can publish their metadata to a registry, which serves as a repository for agent information.
 * **Local Network Discovery:** For local networks, protocols like mDNS (Multicast DNS) can be used to propagate agent metadata and enable discovery,
-* **P2P Network:**  In a decentralized solution, agents can propagate metadata using peer-to-peer (P2P) networks without relying on centralized authorities.
+* **Decentralized Networks:**  In a decentralized networks, agents can propagate metadata without relying on centralized authorities.
 
 ## Solution
 
@@ -65,10 +65,10 @@ Once a client has discovered a WoT-compatible agent, it can retrieve the agents'
 The Thing Description provides detailed information about the agents's properties, actions, and events.
 
 
-### P2P Network
+### Decentralized Networks
 
-Decentralized protocols like the **AT Protocol** or **dat protocol** could provide an efficient way to propagate agent and tool descriptions while enabling peer-to-peer (P2P) discovery. 
-Instead of relying on centralized registries, a **P2P protocol** can be used to distribute metadata across the network. 
+Federated, decentralized protocols like the **AT Protocol** or **dat protocol** could provide an efficient way to propagate agent and tool descriptions. 
+Instead of relying on centralized registries, a federated protocol could be used to distribute metadata across the network. 
 
 #### 1. Propagating Agent & Tool Descriptions
 
