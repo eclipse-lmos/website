@@ -64,7 +64,7 @@ they require perform their tasks.
 
 For example, a Travel Agent may need to know the current Holiday packages that are available.
 
-There are 2 ways to dynamically inject knowledge into an Agent, [Readers](/docs/arc/readers) and [Functions](/docs/arc/dsl/defining_functions).
+There are 2 ways to dynamically inject knowledge into an Agent, [Readers](/docs/arc/ccore/readers) and [Functions](/docs/arc/dsl/defining_functions).
 Both mechanisms enable Agents to access real-time data.
 
 Static Knowledge can simply be added to the System Prompt of the Agent.
@@ -101,11 +101,11 @@ There are 2 types of memory:
 
 Each information stored in memory is associated with an owner, usually the user defined in the conversation.
 
-See the chapter on [Memory](/docs/arc/memory) for available implementations.
+See the chapter on [Memory](/docs/arc/ccore/memory) for available implementations.
 
 ### Eventing
 
 Eventing is a great way to decouple communication between different parts of an application. 
 Agents can emit multiple events during the precessing of a request.
 
-See the [Eventing](/docs/arc/eventing) for more details.
+See the [Eventing](/docs/arc/ccore/eventing) for more details.

@@ -5,7 +5,7 @@ title: Extensions
 Extensions are functions that can be called throughout 
 the Arc Agent DSL and provide additional functionality, such as reading data, logging, and more.
 
-`Redaers` are also functions. They are described in the [Readers](/docs/arc/readers) section.
+`Redaers` are also functions. They are described in the [Readers](/docs/arc/ccore/readers) section.
 
 ## System and User Context
 

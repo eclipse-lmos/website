@@ -16,5 +16,5 @@ A list of functions that ca be used within the DSL.
 | addData                      | Sets a data set that was loaded.           | [More](../Features/data)                                |
 | time                         | Returns the current time.                  | [More](../Features/extensions/#time-date-year)          |
 | debug, info, warn, and error | Logs messages to the logging system        | [More](../Features/extensions/#logging)                 |
-| tracer                       | Returns the AgentTracer.                   | [More](../../tracing/#adding-custom-traces)             |
-| memory                       | Stores and retrieves values from memory.   | [More](../../memory)                                    |
+| tracer                       | Returns the AgentTracer.                   | [More](../../ccore/tracing/#adding-custom-traces)       |
+| memory                       | Stores and retrieves values from memory.   | [More](../../ccore/memory)                                    |
