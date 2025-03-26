@@ -52,7 +52,7 @@ Here is the table and description for an **Agent** in the context of the **LMOS 
 
 Example:
 
-```
+```json
 {
    "@context": [
       "https://www.w3.org/2022/wot/td/v1.1",
@@ -74,7 +74,7 @@ Example:
 
 Full example:
 
-```
+```json
 {
    "@context": [
       "https://www.w3.org/2022/wot/td/v1.1",

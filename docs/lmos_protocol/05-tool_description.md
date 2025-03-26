@@ -20,7 +20,7 @@ Here is the table and description for a **Tool** in the context of the **LMOS Pr
 
 Example:
 
-```
+```json
 {
    "@context": [
       "https://www.w3.org/2022/wot/td/v1.1",
