@@ -211,8 +211,8 @@ html[data-theme='light'] .code {
 }
 
 .arc-panel-code {
-    background: url("/img/arc.svg") no-repeat;
-    background-size: cover;
+    background: url("/img/codev2.png") no-repeat;
+    background-size: contain;
     width: 78%;
 }
 
@@ -227,12 +227,12 @@ html[data-theme='light'] .code {
 }
 
 .arc-panel h1 {
-    font-size: 68px;
+    font-size: 48px;
     text-align: left;
 }
 
 .arc-panel h2 {
-    font-size: 21px;
+    font-size: 18px;
     text-align: left;
 }
 
