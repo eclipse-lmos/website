@@ -76,7 +76,7 @@ const config = {
             label: 'Platform',
           },
           {
-            to: '/arc',
+            to: 'https://eclipse.dev/lmos/arc2/index.html',
             position: 'left',
             label: 'ARC',
           },
