@@ -17,10 +17,58 @@ To activate tracing, simply add the required dependencies to your project.
 Read https://docs.spring.io/spring-boot/reference/actuator/tracing.html for more information on how to configure
 different tracers.
 
+**Check out https://github.com/eclipse-lmos/arc-spring-init for a complete example.**
 
-#### Zipkin Tracing
+:::info
+When testing locally, dont forget to set the sampling probability to 1 to see all traces.
+```properties
+management.tracing.sampling.probability=1
+```
+:::
 
-Example dependencies for Zipkin tracing:
+### OpenTelemetry Tracing
+
+Add the following dependencies to your project:
+
+```kts
+implementation(platform("io.micrometer:micrometer-tracing-bom:1.4.4"))
+implementation("io.micrometer:micrometer-tracing")
+implementation("io.opentelemetry:opentelemetry-exporter-otlp")
+implementation("io.micrometer:micrometer-tracing-bridge-otel")
+```
+
+Then configure a OTLP exporter in your `application.yml`:
+
+```yml
+management:
+  otlp:
+    tracing:
+      endpoint: ${OTLP_ENDPOINT}
+      headers:
+        Authorization: Bearer ${OTLP_TOKEN}
+```
+
+Start a Phoenix server using docker (https://docs.arize.com/phoenix/deployment/docker):
+
+Configure the server:
+
+```yml
+management:
+  otlp:
+    tracing:
+      endpoint: http://phoenix:6006/v1/traces
+```
+
+```shell
+docker run -p 6006:6006 -p 4317:4317 -i -t arizephoenix/phoenix:latest
+```
+
+Open the Phoenix UI in your browser: http://localhost:6006
+and watch the traces of your Arc Agents flow in.
+
+### Zipkin Tracing
+
+Add the following dependencies to your project:
 ```kts
 implementation("io.micrometer:micrometer-tracing-bridge-otel")
 implementation("io.opentelemetry:opentelemetry-exporter-zipkin")
@@ -35,37 +83,6 @@ docker run -d -p 9411:9411 openzipkin/zipkin
 
 Open the Zipkin UI in your browser: http://localhost:9411/
 and watch the traces of your Arc Agents flow in.
-
-**Check out https://github.com/eclipse-lmos/arc-spring-init for a complete example.**
-
-
-#### OpenTelemetry Tracing
-
-```kts
-implementation("io.micrometer:micrometer-tracing-bridge-otel")
-implementation("io.opentelemetry:opentelemetry-exporter-otlp")
-implementation("com.google.protobuf:protobuf-java:3.23.4")
-implementation("io.opentelemetry.proto:opentelemetry-proto:1.3.2-alpha")
-```
-
-Then configure a OTLP exporter in your `application.yml`:
-
-```yml
-management:
-  otlp:
-    tracing:
-      endpoint: ${OTLP_ENDPOINT}
-      headers:
-        Authorization: Bearer ${OTLP_TOKEN}
-```
-
-
-:::info 
-When testing locally, dont forget to set the sampling probability to 1 to see all traces.
-```properties
-management.tracing.sampling.probability=1
-```
-:::
 
 
 ### Adding Custom Traces
