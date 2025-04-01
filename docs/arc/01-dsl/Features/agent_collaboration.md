@@ -1,8 +1,9 @@
----
+_---
 title: Agent Collaboration
 ---
+# Agent Collaboration
 
-From version 0.122.0
+**COMING SOON** in version 0.122.0
 
 This page describes ways in which multiple agents can communicate and collaborate with each other.
 
@@ -11,28 +12,29 @@ please check out our parent Project [LMOS](https://eclipse.dev/lmos/).
 
 ## Calling another Agent
 
-The `callAgent` or `askAgent` functions allows you to call another agent from anywhere within the Agent DSL.
-This is useful for creating Supervisor Agents or simply 
+The `callAgent` or `askAgent` functions allow you to call another agent from anywhere within the Agent DSL.
+This is useful for creating Supervisor Agents or simply delegating specific tasks to specialized agents.
 
 ```kotlin
-
+// Using callAgent when you need the full conversation context
 val result: Conversation = callAgent("assistant-agent", input = "a question".toConversation()).getOrNull()
-// or
-val result: String = askAgent("assistant-agent", input = "a question").getOrNull()
 
+// Using askAgent when you only need the text response
+val result: String = askAgent("assistant-agent", input = "a question").getOrNull()
 ```
 
-> Note: An Agent is not allowed to call itself. This will result in a exception.
+> Note: An Agent is not allowed to call itself. This will result in an exception.
 
 A common use case is to place the `callAgent` function in an LLM Function
-and let the Agent decide itself when to call the other agent.
+and let the Agent decide itself when to call the other agent. This creates a more dynamic and flexible system
+where agents can autonomously determine when they need assistance from other specialized agents.
 
-Example:
+Example of a supervisor agent that can call other agents:
 
 ```kts
    agent {
     name = "supervisor-agent"
-    tools { +"call_agent" }
+    tools { +"call_agent" }   
     prompt {
         """
         You are a supervisor agent. 
@@ -43,6 +45,7 @@ Example:
     }
 }
 
+// Define a function that the agent can use to call other agents
 function(
     name = "call_agent",
     description = "Calls an Agent.",
@@ -50,6 +53,7 @@ function(
 ) { (name) ->
     val currentConversation = get<Conversation>()
     val result = callAgent(name.toString(), input = currentConversation).getOrNull()
+    // Extract just the content from the assistant's message or return an error message
     result?.latest<AssistantMessage>()?.content ?: "Failed to call agent $name!"
 }
 
@@ -58,54 +62,66 @@ function(
 ## Handing over to another Agent
 
 The `nextAgent` function allows you to hand over the conversation to another agent.
-That agent will receive the output of the current agent as input.
+That agent will receive the output of the current agent as input, creating a chain of agent interactions.
 
-If the current agent fails or throws an exception, then the next agent will not be called.
+If the current agent fails or throws an exception, then the next agent will not be called, breaking the chain.
 
-The `nextAgent` function can be used in the `filterOutput` block or as a top level function.
+The `nextAgent` function can be used in two ways:
+
+1. **As a top-level function** - Always hands over to the specified agent after the current agent completes
+2. **In the `filterOutput` block** - Conditionally hands over based on specific criteria
 
 ```kts
-
 agent {
     name = "booking-agent"
-    nextAgent("weather-agent") // here 
+    nextAgent("weather-agent")
     filterOutput {
+        // Conditional handover based on some condition
         if (someCondition) {
-            nextAgent("weather-agent") // or here
+            nextAgent("weather-agent") 
         }
     }
 }
 ```
 
-> Note: The limit of Agent Hand-Overs to 20. This is to prevent infinite loops.
+> Note: There is a limit of 20 Agent Hand-Overs in a chain. This is to prevent infinite loops that could occur if agents keep handing over to each other indefinitely.
+
 
 ## Implementing complex Agent workflows 
 
-More complex agent workflows can simply be implemented in normal Kotlin or Java code.
+More complex agent workflows can be implemented in standard Kotlin or Java code, 
+giving you full control over the orchestration logic and error handling.
 
-Here is a simple example of a HolidayPlanner Spring Bean that uses multiple agents to find a good date for a holiday.
 
 ```kts
-
 @Component
 class HolidayPlanner(private val agentProvider: AgentProvider) {
 
     suspend fun findAGoodDate() {
+        // Get references to the required agents
         val weatherAgent = agentProvider.getAgentByName("weather-agent") as ChatAgent
         val bookingAgent = agentProvider.getAgentByName("booking-agent") as ChatAgent
         val calendarAgent = agentProvider.getAgentByName("calendar-agent") as ChatAgent
 
+        // Initialize variables to track our search
         var weather = ""
         var available = ""
         var date = "today"
 
+        // Keep searching until we find a date with good weather where the user is available
         while (weather != "good" && available != "yes") {
+            // Ask the booking agent to find an available hotel date
             date =
                 bookingAgent.ask("Find a hotel in Berlin for 2 nights. Return the first available date after $date.")
                     .getOrThrow()
+
+            // Check the weather for that date
             weather = weatherAgent.ask("What is the weather like in Berlin on $date? Return good or bad.").getOrThrow()
+
+            // Check if the user is available on that date
             available = calendarAgent.ask("Check if i am available on the $date? Return yes or no.").getOrThrow()
         }
+
         println("Hotel can be booked on the $date")
     }
 }
@@ -118,11 +134,11 @@ Agents running in the same JVM can call each other with no extra configuration.
 However, if you want to call agents running on other servers, or written in other languages or frameworks, 
 then a custom `AgentLoader` is required.
 
-Simple add one or more `AgentLoader`s for each remote agent you want to call.
+Simply add one or more `AgentLoader` implementations for each remote agent you want to call. 
 
-Example:
+Here's an example of a custom `AgentLoader` that integrates with a remote agent:
+
 ```kts
-
 @Component
 class RemoteAgentLoader : AgentLoader {
 
@@ -130,7 +146,8 @@ class RemoteAgentLoader : AgentLoader {
         return listOf(
             object : ChatAgent {
                 override val name = "remote-agent"
-                override val description = "Remote agent"
+                override val description = "Remote agent that runs on a different server"
+
                 override suspend fun execute(input: Conversation, context: Set<Any>): Result<Conversation, AgentFailedException> {
                     TODO("Call the remote agent here")
                 }
@@ -139,3 +156,6 @@ class RemoteAgentLoader : AgentLoader {
     }
 }
 ```
+
+Once registered, remote agents can be called using the same `callAgent` or `askAgent` functions as local agents, 
+providing a seamless experience regardless of where the agent is actually running.
