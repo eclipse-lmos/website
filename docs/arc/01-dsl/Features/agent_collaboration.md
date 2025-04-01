@@ -1,4 +1,4 @@
-_---
+---
 title: Agent Collaboration
 ---
 # Agent Collaboration
