@@ -24,11 +24,11 @@ Please start a new Shell for changes to take effect
 
 ### 2. Setup LLM Access
 
-In the new shell, set the following environment variables.
+Set the following variables:
 ```
-export ARC_AI_KEY=YOUR_OPENAI_KEY // The key to authenticate with the AI service. can be omitted if using Azure Login.
-export ARC_CLIENT=openai // or azure, ollama, etc.
-export ARC_MODEL=gpt-4o // the name of the model to use
+arc set ARC_AI_KEY YOUR_OPENAI_KEY // The key to authenticate with the AI service. can be omitted if using Azure Login.
+arc set ARC_CLIENT openai // or azure, ollama, etc.
+arc set ARC_MODEL gpt-4o // the name of the model to use
 ```
 
 The `ARC_AI_URL` can be used to provide a different URL for the LLM Model. Not required when connecting to OpenAI.

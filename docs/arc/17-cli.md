@@ -22,22 +22,13 @@ iex "& { $(iwr https://ps.jbang.dev) } app install --fresh --force https://githu
 
 ## Setup LLM Access 
 
-On Linux, macOS, and Windows (using WSL or bash compatible shell like Cygwin or MinGW)
-```
-export ARC_AI_URL=https://gpt4-se-dev.openai.azure.com/ // The url hosting the models. Can be omitted if using openai.
-export ARC_AI_KEY=YOUR_OPENAI_KEY // The key to authenticate with the AI service. can be omitted if using Azure Login.
-export ARC_CLIENT=openai // or azure, ollama, etc.
-export ARC_MODEL=gpt-4o // the name of the model to use
-```
+Set the following variables:
 
-On Windows using Powershell:
 ```
-$env:ARC_AI_URL="https://gpt4-se-dev.openai.azure.com/" // The url hosting the models. Can be omitted if using openai.
-$env:ARC_AI_KEY="YOUR_OPENAI_KEY" // The key to authenticate with the AI service. can be omitted if using Azure Login.
-$env:ARC_CLIENT="openai" // or azure, ollama, etc.
-$env:ARC_MODEL="gpt-4o" // the name of the model to use
+arc set ARC_AI_KEY YOUR_OPENAI_KEY // The key to authenticate with the AI service. can be omitted if using Azure Login.
+arc set ARC_CLIENT openai // or azure, ollama, etc.
+arc set ARC_MODEL gpt-4o // the name of the model to use
 ```
-
 
 ## Create an Agent
 
@@ -63,3 +54,9 @@ arc view
 ```
 
 This will open the Arc View that contains a Chat Interface and much more...
+
+
+## List more commands
+``` 
+arc 
+```
