@@ -3,8 +3,10 @@ title: Glossary
 sidebar_position: 1
 ---
 
+The Arc Framework DSL provides a rich set of functions 
+that can be used to implement complex logic in a concise and readable manner.
 
-A list of functions that ca be used within the DSL.
+The following list some of the most common functions that can be used in the DSL.
 
 | Name                         | Description                                                                                        | Details                                                 |
 |------------------------------|----------------------------------------------------------------------------------------------------|---------------------------------------------------------|
@@ -20,3 +22,5 @@ A list of functions that ca be used within the DSL.
 | tracer                       | Returns the AgentTracer.                                                                           | [More](../../ccore/tracing/#adding-custom-traces)       |
 | memory                       | Stores and retrieves values from memory.                                                           | [More](../../ccore/memory)                              |
 | emitMessage                  | Returns a message to the client. Multiple messages can be returned to the client in a single turn. |                                                         |
+| breakWith                    | The `breakWith` function can be used to stop the agent from further processing the message and a return a dedicated response. | [More](../filters/#the-breakwith-function)              |
+

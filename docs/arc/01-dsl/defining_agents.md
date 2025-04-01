@@ -4,22 +4,14 @@ sidebar_position: 1
 ---
 
 Agents are defined using the Arc Agent DSL.
-The following fields are mandatory when defining an agent.
 
-- **name**: the name of the Agent. There should be a unique identifier. Preferably without special characters.
-- **model (optional)**: the model that should be provided to the Agent.
-- **description**: a short description of what the Agent does.
-- **prompt**: the System Prompt of the Agent.
-  The `prompt` defines the objective, goals and instructions for Agents.
-  They are built dynamically an every request.
-- **tools**: a list of tools/functions that the Agent uses. Tools are referenced by their group name.
-- **filterInput**: definition of filter logic. 
+Example
 
 ```kts
 agent {
     name = "weather"
-    model = { "gemma:7b" }
     description = "Agent that provides weather data."
+    model { "gemma:7b" }
     prompt { """
        You are a professional weather service.
        You have access to real-time weather data with the get_weather function.
@@ -33,6 +25,20 @@ agent {
     }
 }
 ```
+
+### Overview
+
+| Name         | Description                                                                                                 |  
+|--------------|-------------------------------------------------------------------------------------------------------------| 
+| name         | The name of the Agent. This should be a unique identifier. Preferably without special characters.           |  
+| model        | The model that should be provided to the Agent.                                                             |                                     
+| description  | A short description of what the Agent does.                                                                 |  
+| prompt       | The System Prompt of the Agent. The `prompt` defines the core objective, goals and instructions for Agents. |  
+| tools        | A list of tools/functions that the Agent uses, [see](../defining_functions).                                |  
+| filterInput  | Defines filter logic, [see](../filters).                                                                    |  
+| filterOutput | Defines filter logic, [see](../filters).                                                               |  
+| limit        | Defines a rate limiter, [see](../Features/rate_limiter).                                                    |
+
 
 See the following pages on how to load the agents into your application.
 - [Manual Setup](/docs/arc/manual_setup)
