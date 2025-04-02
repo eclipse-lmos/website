@@ -13,71 +13,6 @@ The LMOS Control Plane extends the Kubernetes control plane to manage and orches
 
 ## LMOS Operator
 
-### Lifecycle Management
-
-The **LMOS Operator** is a Kubernetes operator designed to monitor the deployments of Agents and Tools in the system. 
-For example. whenver an Agent is installed, it fetches the Thing Description and stores it in the registry and creates an Agent custom resource. 
-Whenver an Agent is uninstalled, the resource is deleted.
-
-![LMOS Operator](/img/lmos_operator_discovery-light.png#light-mode-only)
-![LMOS Operator](/img/lmos_operator_discovery-dark.png#dark-mode-only)
-
-### Channel Management
-
-In LMOS a “Channel” refers to a digital interface that enables communication between an AI system and its users. Channels can be diverse, such as web, mobile apps, IVR systems, or messaging platforms, each potentially requiring different sets of capabilities.
-
-The LMOS Operator enables defining which capabilities should be provided through channels and dynamically resolves which Agents are providing these capabilities. This dynamic resolution ensures that the right capabilities are always available in the Kubernetes cluster (environment). If the operator cannot resolve all required capabilities of a channel, the channel would be unresolved and the changes would not be activated. If the channel can be resolved, the operator is created a ChannelRouting resource which can be used by the LMOS Router.
-
-For instance, an App channel might need a comprehensive set of customer support capabilities, while a Web channel might only start with a subset of the customer support capabilities. 
-
-![LMOS Channel Management](/img/lmos_channel_management-light.png#light-mode-only)
-![LMOS Channel Management](/img/lmos_channel_management-dark.png#dark-mode-only)
-
-
-When a Channel Resource is applied using [Kubectl](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/), it automatically loads all Agent Resources from the registry and resolves the Channel requirements based on the capabilities of the installed Agents within the Kubernetes cluster. The LMOS Operator then generates a custom resource for channel routing, which is used by the [LMOS Router](/lmos/docs/lmos_platform/lmos_router) component to make routing decisions. This process ensures that tasks are routed to the appropriate agents based on their capabilities and the Channel's requirements.
-
-![LMOS Operator](/img/lmos_operator-light.png#light-mode-only)
-![LMOS Operator](/img/lmos_operator-dark.png#dark-mode-only)
-
-The following diagram illustrates the relationship between channels and agents in LMOS. Each tenant can have multiple channels. In the environment, multiple agents can be installed, each providing one or more capabilities to support the required functionalities of the channels.
-
-```mermaid
-classDiagram
-
-Tenant --> "0..*" Channel
-
-Agent *--> "1..*" Capability: provides
-
-Channel o--> "1..*" Capability: requires
-
-class App{
-    <<Channel>>
-}
-class web{
-    <<Channel>>
-}
-class DE{
-    <<Tenant>>
-}
-
-class WeatherAgent{
-    <<Agent>>
-    getForecast()
-}
-class NewsAgent{
-    <<Agent>>
-    summarize()
-}
-
-DE --> App
-DE --> web
-
-App ..> WeatherAgent: requires
-web ..> WeatherAgent: requires
-web ..> NewsAgent: requires
-```
-
-
 ### Custom Resource Definitions
 
 The LMOS operator introduces new Kubernetes resources definitions:
@@ -87,6 +22,126 @@ The LMOS operator introduces new Kubernetes resources definitions:
 *  **Custom Resource Definitions (CRDs) for Channels:**  LMOS allows agents to form groups, which are called **Channel**. Channels can be tenant-based or task-specific. Agents can be wired to multiple channels.
 
 *  **Custom Resource Definitions (CRDs) for ChannelRoutings:** LMOS introduces a new resource type known as **ChannelRouting**. This resource is created by the operator when a channel is successfully resolved. The ChannelRouting resource specifies the agents that are wired to the channel, allowing the LMOS Router to effectively distribute tasks among them. 
+
+### Lifecycle Management
+
+The **LMOS Operator** is a Kubernetes operator designed to monitor the deployments of Agents and Tools in the system. 
+For example. whenver an Agent is installed, it fetches the Thing Description and stores it in the registry and creates an Agent custom resource. 
+Whenver an Agent is uninstalled, the resource is deleted.
+
+![LMOS Operator](/img/lmos_operator_discovery-light.png#light-mode-only)
+![LMOS Operator](/img/lmos_operator_discovery-dark.png#dark-mode-only)
+
+
+### Channel Management
+
+In LMOS, a **Channel** is a digital interface that facilitates communication between an AI system and its users. Channels can vary in type, e.g. web platforms, mobile applications, IVR (Interactive Voice Response) systems, and messaging services. Each channel may require specific capabilities to function effectively.
+
+A DevOps engineer can create channel resource definitions, and the LMOS Operator is dynamically resolving which Agents provide these capabilities.
+
+LMOS Agents provide their capabilities in the following form:
+
+```json
+{ 
+   "lmos:capabilities": [
+      {
+         "id": "urn:telekom:capability:billing:view",
+         "name": "View Bills",
+         "version": "1.0",
+         "description": "Allows a customer to retrieve and view their latest bills.",
+         "examples": [
+            "show my bill",
+            "view my invoice",
+            "how much do I owe?",
+            "billing details"
+         ]
+      },
+      {
+         "id": "urn:telekom:capability:billing:change-address",
+         "name": "Change Address",
+         "version": "1.0",
+         "description": "Allows a customer to change their billing address.",
+         "examples": [
+            "Update my billing address.",
+            "Change my address to 123 Main St.",
+            "Modify my billing details.",
+            "Where can I update my address?"
+         ]
+      }
+   ]
+}
+```
+
+For instance, an App channel might need a comprehensive set of customer support capabilities, while a Web channel might only start with a subset of the customer support capabilities. 
+
+![LMOS Channel Management](/img/lmos_channel_management-light.png#light-mode-only)
+![LMOS Channel Management](/img/lmos_channel_management-dark.png#dark-mode-only)
+
+A Channel in LMOS is defined as a Kubernetes resource.
+Below is an example of the Kubernetes Channel resource file `acme-web-channel.yml`:
+
+```yaml
+apiVersion: "lmos.eclipse/v1"
+kind: "Channel"
+metadata:
+  name: "acme-web-stable"
+  labels:
+    channel: "web"
+    version: "1.0.0"
+    tenant: "acme"
+    subset: "stable"
+spec:
+  requiredCapabilities:
+    - id: "urn:telekom:capability:billing:view-bill"
+      version: "1.0.0"
+    - id: "urn:telekom:capability:billing:change-address"
+      version: ">=1.0.0"
+      strategy: HIGHEST
+```
+
+The LMOS Operator ensures that the right capabilities are always available in the Kubernetes cluster (environment). If the operator cannot resolve all required capabilities of a channel, the channel would be unresolved and the changes would not be activated. If the channel can be resolved, the operator is created a ChannelRouting resource which can be used by the LMOS Router.
+
+When a Channel Resource is applied using [Kubectl](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/), it automatically loads all Agent Resources from the registry and resolves the Channel requirements based on the capabilities of the installed Agents within the Kubernetes cluster. 
+
+``` 
+kubectl apply -f acme-web-channel.yml
+```
+
+Once the LMOS Operator resolves a channel, it generates a ChannelRouting resource, which the [LMOS Router](/lmos/docs/lmos_platform/lmos_router) uses to route tasks to appropriate Agents. This process ensures that tasks are routed to the appropriate agents based on their capabilities and the Channel's requirements.
+
+![LMOS Operator](/img/lmos_operator-light.png#light-mode-only)
+![LMOS Operator](/img/lmos_operator-dark.png#dark-mode-only)
+
+
+Below is an example of the generated ChannelRouting resource `acme-web-channel.yml`.
+
+```yaml
+apiVersion: "lmos.eclipse/v1"
+kind: "ChannelRouting"
+metadata:
+  name: "acme-web-stable"
+  namespace: "test"
+  labels:
+    version: "1.0.0"
+    tenant: "acme"
+    channel: "web"
+    subset: "stable"
+spec:
+  capabilityGroups:
+  - name: "acme-billing-agent"
+    description: "This is the billing agent description"
+    capabilities:
+    - id: "urn:telekom:capability:billing:view-bill"
+      requiredVersion: "1.0.0"
+      providedVersion: "1.0.0"
+      description: "Capability to view a bill"
+      host: "acme-billing-agent-stable-svc"
+    - id: "urn:telekom:capability:billing:change-addres"
+      requiredVersion: ">=1.0.0"
+      providedVersion: "1.1.0"
+      description: "Capability to change the bill address"
+      host: "acme-billing-agent-stable-svc"
+```
 
 ### Requirement/Capability Model
 
