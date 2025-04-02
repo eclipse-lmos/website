@@ -1,6 +1,6 @@
 # Model Context Protocol (MCP)
 
-**COMING SOON** in version 0.122.0
+From version 0.122.0
 
 The Model Context Protocol (MCP) is an open protocol that enables the 
 integration of LLM Agents with external tools and data sources. 

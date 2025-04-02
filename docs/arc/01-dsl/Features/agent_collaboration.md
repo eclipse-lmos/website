@@ -3,7 +3,7 @@ title: Agent Collaboration
 ---
 # Agent Collaboration
 
-**COMING SOON** in version 0.122.0
+From version 0.122.0
 
 This page describes ways in which multiple agents can communicate and collaborate with each other.
 
@@ -27,12 +27,14 @@ val result: String = askAgent("assistant-agent", input = "a question").getOrNull
 
 A common use case is to place the `callAgent` function in an LLM Function
 and let the Agent decide itself when to call the other agent. This creates a more dynamic and flexible system
-where agents can autonomously determine when they need assistance from other specialized agents.
+where agents can autonomously determine when they need assistance from other agents.
 
 Example of a supervisor agent that can call other agents:
 
 ```kts
-   agent {
+
+ // supervisor-agent.agent.kts 
+ agent {
     name = "supervisor-agent"
     tools { +"call_agent" }   
     prompt {
@@ -42,10 +44,22 @@ Example of a supervisor agent that can call other agents:
         Call the "weather-agent" if you need weather information.
         Call the "booking-agent" if you need to book a hotel.
         """
-    }
-}
+    } 
+ }
+ 
+ // weather-agent.agent.kts 
+ agent { 
+      name = "weather-agent"
+      // ...
+ }
 
-// Define a function that the agent can use to call other agents
+ // booking-agent.agent.kts 
+ agent {
+     name = "booking-agent"
+     // ... 
+ }
+
+// call_agent.functions.kts - Define a function that the agent can use to call other agents. 
 function(
     name = "call_agent",
     description = "Calls an Agent.",
@@ -53,6 +67,7 @@ function(
 ) { (name) ->
     val currentConversation = get<Conversation>()
     val result = callAgent(name.toString(), input = currentConversation).getOrNull()
+    
     // Extract just the content from the assistant's message or return an error message
     result?.latest<AssistantMessage>()?.content ?: "Failed to call agent $name!"
 }
