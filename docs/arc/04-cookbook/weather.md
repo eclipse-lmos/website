@@ -48,7 +48,7 @@ function(
     description = "Returns real-time weather information for any location",
     params = types(string("location", "a city to obtain the weather for."))
 ) { (arg) ->
-    val location = arg.toString() // Type conversion required, because arg can be any type depending on the params definition.
+    val location = arg?.toString() // Type conversion required, because arg can be any type depending on the params definition.
     val locationSpecified = location != "unknown" && location?.isNotEmpty() == true
     val locationToUse = if (locationSpecified) location else memory("weather_location")
     if (locationToUse == null) {
