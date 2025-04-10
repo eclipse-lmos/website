@@ -1,6 +1,6 @@
 ---
 title: Digital Identities
-sidebar_position: 3
+description: Secure agent identity management.
 ---
 
 ## Problem Statement

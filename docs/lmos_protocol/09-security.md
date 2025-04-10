@@ -1,6 +1,6 @@
 ---
 title: Security & Privacy
-sidebar_position: 8
+description: Secure agent communication protocols.
 ---
 
 # Security & Privacy Considerations
@@ -83,4 +83,4 @@ Example of a DID that includes a `serviceEndpoint` to an Agent:
 - **controller**: Specifies who controls the DID.  
 - **verificationMethod**: Contains a **public key** used for cryptographic verification.  
 - **authentication**: References the **public key** that can be used for authentication .  
-- **assertionMethod**: Defines which keys can be used to **issue and sign verifiable credentials**.  
+- **assertionMethod**: Defines which keys can be used to **issue and sign verifiable credentials**.

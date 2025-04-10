@@ -1,8 +1,9 @@
 ---
-title: Getting Started
+title: Demo guide
+description: Setup and test LMOS Kubernetes cluster locally
 ---
 
-# Getting Started
+# Demo guide
 
 ## Test LMOS locally
 

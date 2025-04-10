@@ -1,5 +1,6 @@
 ---
-title: WebSocket Sub-Protocol
+title: WebSocket Binding
+description: WebSocket protocol for agents.
 sidebar_position: 9
 ---
 
@@ -60,4 +61,4 @@ Upgrade: websocket
 Connection: Upgrade  
 Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=  
 Sec-WebSocket-Protocol: lmosprotocol  
-```  
+```

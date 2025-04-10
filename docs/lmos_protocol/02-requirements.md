@@ -1,6 +1,6 @@
 ---
 title: Requirements
-sidebar_position: 2
+description: LMOS protocol requirements overview.
 ---
 
 ## In Scope

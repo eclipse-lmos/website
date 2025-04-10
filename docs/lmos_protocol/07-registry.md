@@ -1,6 +1,6 @@
 ---
 title: Registry
-sidebar_position: 6
+description: Agent and tool registry.
 ---
 
 ## Problem statement

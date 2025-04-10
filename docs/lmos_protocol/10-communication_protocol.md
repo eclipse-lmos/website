@@ -1,6 +1,6 @@
 ---
-title: WebSocket Messages
-sidebar_position: 10
+title: Communication Protocol
+description: Defines the websocket messages.
 ---
 
 # WebSocket Messages

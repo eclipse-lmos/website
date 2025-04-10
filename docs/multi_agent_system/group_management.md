@@ -1,5 +1,6 @@
 ---
 title: Group Management
+description: Manages agent groups and collaboration.
 ---
 
 # Group Management

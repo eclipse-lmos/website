@@ -1,5 +1,6 @@
 ---
 title: Agent Lifecycle Management
+description: Lifecycle and release strategies.
 ---
 
 # Agent Lifecycle Management
