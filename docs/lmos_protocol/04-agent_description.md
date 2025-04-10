@@ -1,5 +1,6 @@
 ---
 title: Agent Description Format
+description: Standardized agent metadata format.
 sidebar_position: 3
 ---
 

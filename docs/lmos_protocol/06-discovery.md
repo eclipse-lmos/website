@@ -1,6 +1,6 @@
 ---
-title: Discovery Mechanisms
-sidebar_position: 5
+title: Discovery
+description: Mechanisms for agent discovery.
 ---
 
 ## Problem statement

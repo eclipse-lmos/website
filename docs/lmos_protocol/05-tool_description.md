@@ -1,5 +1,6 @@
 ---
 title: Tool Description Format
+description: Metadata format for tools.
 sidebar_position: 4
 ---
 

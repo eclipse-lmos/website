@@ -1,5 +1,6 @@
 ---
 title: Agent Registry
+description: Role of agent registries.
 ---
 
 # Agent Registry

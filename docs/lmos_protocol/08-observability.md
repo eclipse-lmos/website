@@ -1,6 +1,6 @@
 ---
 title: Observability
-sidebar_position: 7
+description: Monitoring agent interactions with OpenTelemetry.
 ---
 
 # Observability Considerations

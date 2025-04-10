@@ -1,5 +1,6 @@
 ---
 title: Agent Discovery
+description: Mechanisms for agent discovery.
 ---
 
 # Agent Discovery

@@ -1,5 +1,6 @@
 ---
 title: LMOS Runtime
+description: Covers LMOS runtime environment.
 ---
 
 # LMOS Runtime

@@ -1,5 +1,6 @@
 ---
-title: Overview
+title:  Introduction
+description: Overview of LMOS platform.
 sidebar_position: 1
 ---
 

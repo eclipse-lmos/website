@@ -1,5 +1,6 @@
 ---
 title: LMOS Router
+description: Explains LMOS router functionality.
 ---
 
 # LMOS Router

@@ -19,10 +19,25 @@ const sidebars = {
     "who_is_it_for",
     "agent",
     "tool",
-    "getting_started",
+    {
+      type: 'category',
+      label: 'Getting Started',
+      link: {
+        type: 'generated-index',
+      },
+      collapsible: true,
+      collapsed: true,
+      items: [
+        'getting_started/getting_started',
+        'getting_started/kotlin_sdk'
+      ],
+    },
     {
       type: 'category',
       label: 'Multi-Agent System',
+      link: {
+        type: 'generated-index',
+      },
       collapsible: true,
       collapsed: true,
       items: [
@@ -38,6 +53,9 @@ const sidebars = {
     {
       type: 'category',
       label: 'LMOS Protocol',
+      link: {
+        type: 'generated-index',
+      },
       collapsible: true,
       collapsed: true,
       items: [
@@ -50,6 +68,9 @@ const sidebars = {
     {
       type: 'category',
       label: 'LMOS Platform',
+      link: {
+        type: 'generated-index',
+      },
       collapsible: true,
       collapsed: true,
       items: [

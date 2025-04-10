@@ -1,5 +1,6 @@
 ---
 title: LMOS Control Plane
+description: Details LMOS control plane.
 ---
 
 # LMOS Control Plane

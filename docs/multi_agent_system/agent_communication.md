@@ -1,5 +1,6 @@
 ---
 title: Agent Communication
+description: Flexible communication protocols.
 ---
 
 # Agent Communication
