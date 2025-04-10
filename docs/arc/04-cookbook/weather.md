@@ -54,7 +54,7 @@ function(
     if (locationToUse == null) {
         "Please provide a location."
     } else {
-        if (locationSpecified) memory("weather_location", location, MemoryScope.LONG_TERM)
+        if (locationSpecified) memory("weather_location", location)
         if (!locationSpecified) +"Using your location preference of $locationToUse."
 
         """
