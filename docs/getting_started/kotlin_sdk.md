@@ -10,7 +10,7 @@ It walks you through developing an Agent.
 
 The LMOS Kotlin Server SDK allows you to create Agents based on [Spring Boot](https://spring.io/projects/spring-boot) and [Ktor](https://ktor.io/). The following diagram illustrates the technology stack of the LMOS Kotlin SDK.
 
-The LMOS Kotlin Server SDK enables the implementation of Agents by leveraging the LMOS protocol. It leverages Eclipse ThingWeb (kotlin-wot) to ensure semantic WoT compatibility and supports HTTP, WebSocket and MQTT protocol bindings for flexible communication. The Agent runs within a Spring Boot application, which internally uses Ktor to handle the underlying protocol bindings. For observability, the SDK integrates OpenTelemetry, providing comprehensive support for logs, metrics, and traces.
+The LMOS Kotlin Server SDK enables the implementation of Agents by leveraging the LMOS protocol. It leverages [Eclipse ThingWeb](https://github.com/eclipse-thingweb/kotlin-wot) to ensure semantic WoT compatibility and supports HTTP, WebSocket and MQTT protocol bindings for flexible communication. The Agent runs within a Spring Boot application, which internally uses Ktor to handle the underlying protocol bindings. For observability, the SDK integrates [OpenTelemetry](https://opentelemetry.io/), providing comprehensive support for logs, metrics, and traces.
 
 ![Technology Stack](/img/technology_stack-light.png#light-mode-only)
 ![Technology Stack](/img/technology_stack-dark.png#dark-mode-only)
@@ -76,11 +76,11 @@ The `AgentApplication` is the entry point of the Spring Boot application.
 
 ```kotlin
 fun main(args: Array<String>) {
-    runApplication<TestApplication>(*args)
+    runApplication<AgentApplication>(*args)
 }
 
 @SpringBootApplication
-class TestApplication {}
+class AgentApplication {}
 
 ```
 
@@ -100,6 +100,61 @@ class ChatAgent(private val arcAgent: ConversationalAgent) {
     suspend fun chat(message: AgentRequest) : AgentResult {
         return arcAgent.chat(message)
     }
+}
+```
+
+### Data Model
+The LMOS SDK currently utilizes the [ARC API Data Model](https://eclipse.dev/lmos/docs/arc/ccore/api/) for Conversational Agents. 
+The Data Classes can be found [here](https://github.com/eclipse-lmos/lmos-kotlin-sdk/tree/main/lmos-kotlin-sdk-base/src/main/kotlin/sdk/model)
+
+Please note that the LMOS SDK data model is subject to change once a standardized, interoperable data model for agent communication becomes available.
+
+However, you're not limited to using `AgentRequest` and `AgentResult`. You are free to define your own custom data model if it better suits your use case.
+
+Example of an AgentRequest message:
+
+```json
+{
+    "conversationContext": {
+        "conversationId": "1"
+    },
+    "systemContext": [
+        {
+            "key": "channelId",
+            "value": "web"
+        }
+    ],
+    "userContext": {
+        "userId": "1234",
+        "profile": [
+        {
+            "key": "name",
+            "value": "Max Mustermann"
+        }
+        ]
+    },
+    "messages": [
+        {
+        "role": "user",
+        "content": "What is the weather in London?",
+        "format": "text"
+        }
+    ]
+}
+```
+
+Example of an AgentResult message:
+
+```json
+{
+  "status": "success",
+  "messages": [
+    {
+      "role": "agent",
+      "content": "The weather is sunny.",
+      "format": "text"
+    }
+  ]
 }
 ```
 
