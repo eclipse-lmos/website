@@ -300,6 +300,63 @@ Example:
 }
 ```
 
+### Using Spring Boot to Create an OCI Image
+
+Spring Boot provides built-in support for creating OCI (Open Container Initiative) images from your application JAR file using Cloud Native Buildpacks (CNB). This can be done using either Gradle or Maven.
+
+#### Using Gradle
+
+To create an OCI image with Gradle, ensure that the `spring-boot` plugin is applied in your `build.gradle` file. Then, use the `bootBuildImage` task to generate the image.
+
+```gradle
+plugins {
+    id 'org.springframework.boot' version '3.0.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+
+springBoot {
+    buildImage {
+        imageName = 'your-docker-repo/your-app-name:latest'
+    }
+}
+
+To build the OCI image, run the following command:
+
+```bash
+gradle bootBuildImage
+```
+
+This will create an OCI image and push it to the specified Docker repository if configured.
+
+#### Using Maven
+
+To create an OCI image with Maven, ensure that the `spring-boot-maven-plugin` is configured in your `pom.xml` file. Then, use the `spring-boot:build-image` goal to generate the image.
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <configuration>
+                <image>
+                    <name>your-docker-repo/your-app-name:latest</name>
+                </image>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+To build the OCI image, run the following command:
+
+```bash
+mvn spring-boot:build-image
+```
+
+This will create an OCI image and push it to the specified Docker repository if configured.
 
 ### Adding the Kotlin Client SDK
 
@@ -381,7 +438,193 @@ agent.consumeEvent("agentEvent") {
 LMOS Arc View provides a graphical user interface that allows you to interact with the Arc Agent and get more insights.
 For more details see [Arc View](https://eclipse.dev/lmos/docs/arc/view/)
 
+### Create an OCI Image
 
+Spring Boot provides built-in support for creating OCI (Open Container Initiative) images from your application JAR file using Cloud Native Buildpacks (CNB). This can be done using either Gradle or Maven.
+
+#### Using Gradle
+
+To create an OCI image with Gradle, ensure that the `spring-boot` plugin is applied in your `build.gradle` file. Then, use the `bootBuildImage` task to generate the image.
+
+```gradle
+plugins {
+    java
+    id("org.springframework.boot") version "3.4.4"
+    id("org.jetbrains.kotlin.plugin.spring") version "2.1.20"
+    id("io.spring.dependency-management") version "1.1.7"
+    kotlin("jvm") version "2.1.20"
+}
+
+tasks.named<BootBuildImage>("bootBuildImage") {
+    group = "publishing"
+    if ((System.getenv("REGISTRY_URL") ?: project.findProperty("REGISTRY_URL")) != null) {
+        val registryUrl = getProperty("REGISTRY_URL")
+        val registryUsername = getProperty("REGISTRY_USERNAME")
+        val registryPassword = getProperty("REGISTRY_PASSWORD")
+        val registryNamespace = getProperty("REGISTRY_NAMESPACE")
+
+        imageName.set("$registryUrl/$registryNamespace/${rootProject.name}:${project.version}")
+        publish = true
+        docker {
+            publishRegistry {
+                url.set(registryUrl)
+                username.set(registryUsername)
+                password.set(registryPassword)
+            }
+        }
+    } else {
+        imageName.set("${rootProject.name}:${project.version}")
+        publish = false
+    }
+}
+```
+
+To build the OCI image, run the following command:
+
+```bash
+gradle bootBuildImage
+```
+
+This will create an OCI image and push it to the specified Docker repository if configured.
+
+#### Using Maven
+
+To create an OCI image with Maven, ensure that the `spring-boot-maven-plugin` is configured in your `pom.xml` file. Then, use the `spring-boot:build-image` goal to generate the image.
+
+```xml
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <configuration>
+                <image>
+                    <name>your-docker-repo/your-app-name:latest</name>
+                </image>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+To build the OCI image, run the following command:
+
+```bash
+mvn spring-boot:build-image
+```
+
+This will create an OCI image and push it to the specified Docker repository if configured.
+
+### Creating and Publishing a Helm Chart
+
+To create and publish a Helm chart using Gradle, you can use the `com.citi.helm` and `com.citi.helm-publish` plugins. Below is an example configuration:
+
+#### Step 1: Apply the Plugins
+
+Add the following plugins to your `build.gradle` file:
+
+```gradle
+plugins {
+    id("com.citi.helm") version "2.2.0"
+    id("com.citi.helm-publish") version "2.2.0"
+}
+```
+
+#### Step 2: Configure the Helm Chart
+
+Define the Helm chart configuration in your `build.gradle` file:
+
+```gradle
+helm {
+    charts {
+        create("main") {
+            chartName.set("${rootProject.name}-chart")
+            chartVersion.set("${project.version}")
+            sourceDir.set(file("src/main/helm"))
+        }
+    }
+}
+```
+
+#### Step 3: Replace Chart Version
+
+Create a task to replace the chart version dynamically in the `Chart.yaml` file:
+
+```gradle
+tasks.register("replaceChartVersion") {
+    doLast {
+        val chartFile = file("src/main/helm/Chart.yaml")
+        val content = chartFile.readText()
+        val updatedContent = content.replace("\${chartVersion}", "${project.version}")
+        chartFile.writeText(updatedContent)
+    }
+}
+```
+
+#### Step 4: Publish the Helm Chart
+
+Define a task to publish the Helm chart to an OCI registry:
+
+```gradle
+tasks.register("helmPush") {
+    description = "Push Helm chart to OCI registry"
+    group = "publishing"
+    dependsOn(tasks.named("helmPackageMainChart"))
+
+    doLast {
+        if ((System.getenv("REGISTRY_URL") ?: project.findProperty("REGISTRY_URL")) != null) {
+            val registryUrl = getProperty("REGISTRY_URL")
+            val registryUsername = getProperty("REGISTRY_USERNAME")
+            val registryPassword = getProperty("REGISTRY_PASSWORD")
+            val registryNamespace = getProperty("REGISTRY_NAMESPACE")
+
+            helm.execHelm("registry", "login") {
+                option("-u", registryUsername)
+                option("-p", registryPassword)
+                args(registryUrl)
+            }
+
+            helm.execHelm("push") {
+                args(
+                    tasks
+                        .named("helmPackageMainChart")
+                        .get()
+                        .outputs.files.singleFile
+                        .toString(),
+                )
+                args("oci://$registryUrl/$registryNamespace")
+            }
+
+            helm.execHelm("registry", "logout") {
+                args(registryUrl)
+            }
+        }
+    }
+}
+```
+
+#### Step 5: Build and Publish
+
+1. Run the `replaceChartVersion` task to update the chart version:
+
+   ```bash
+   ./gradlew replaceChartVersion
+   ```
+
+2. Package the Helm chart:
+
+   ```bash
+   ./gradlew helmPackageMainChart
+   ```
+
+3. Push the Helm chart to the OCI registry:
+
+   ```bash
+   ./gradlew helmPush
+   ```
+
+Ensure that the required environment variables (`REGISTRY_URL`, `REGISTRY_USERNAME`, `REGISTRY_PASSWORD`, `REGISTRY_NAMESPACE`) are set before running the `helmPush` task.
 
 
 
