@@ -19,10 +19,16 @@ The LMOS Kotlin Server SDK enables the implementation of Agents by leveraging th
 
 To use the LMOS Kotlin Server SDK in your project, you need to add the following dependency to your build configuration:
 
-#### Using Gradle
-
 ```kotlin
+plugins {
+    kotlin("jvm") version "2.0.20"
+    kotlin("plugin.spring") version "1.9.25"
+    id("org.springframework.boot") version "3.4.2"
+    id("io.spring.dependency-management") version "1.1.7"
+}
+
 dependencies {
+    implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.eclipse.lmos:lmos-kotlin-sdk-server:0.1.0-SNAPSHOT")
     implementation("org.eclipse.thingweb:kotlin-wot-binding-http:0.1.0-SNAPSHOT")
     // If you want to support websocket
@@ -34,40 +40,6 @@ repositories {
         url 'https://oss.sonatype.org/content/repositories/snapshots/'
     }
 }
-```
-
-#### Using Maven
-
-```xml
-<dependencies>
-    <dependency>
-        <groupId>org.eclipse.lmos</groupId>
-        <artifactId>lmos-kotlin-sdk-server</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-        <groupId>org.eclipse.lmos</groupId>
-        <artifactId>kotlin-wot-binding-http</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
-    </dependency>
-    <!--
-    <dependency>
-        <groupId>org.eclipse.lmos</groupId>
-        <artifactId>kotlin-wot-binding-websocket</artifactId>
-        <version>0.1.0-SNAPSHOT</version>
-    </dependency>  
-    -->     
-</dependencies>
-
-<repositories>
-    <repository>
-        <id>sonatype-snapshots</id>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-    </repository>
-</repositories>
 ```
 
 ### Create an AgentApplication
@@ -303,9 +275,6 @@ Example:
 ### Using Spring Boot to Create an OCI Image
 
 Spring Boot provides built-in support for creating OCI (Open Container Initiative) images from your application JAR file using Cloud Native Buildpacks (CNB). This can be done using either Gradle or Maven.
-
-#### Using Gradle
-
 To create an OCI image with Gradle, ensure that the `spring-boot` plugin is applied in your `build.gradle` file. Then, use the `bootBuildImage` task to generate the image.
 
 ```gradle
@@ -325,35 +294,6 @@ To build the OCI image, run the following command:
 
 ```bash
 gradle bootBuildImage
-```
-
-This will create an OCI image and push it to the specified Docker repository if configured.
-
-#### Using Maven
-
-To create an OCI image with Maven, ensure that the `spring-boot-maven-plugin` is configured in your `pom.xml` file. Then, use the `spring-boot:build-image` goal to generate the image.
-
-```xml
-<build>
-    <plugins>
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <version>3.0.0</version>
-            <configuration>
-                <image>
-                    <name>your-docker-repo/your-app-name:latest</name>
-                </image>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
-```
-
-To build the OCI image, run the following command:
-
-```bash
-mvn spring-boot:build-image
 ```
 
 This will create an OCI image and push it to the specified Docker repository if configured.
