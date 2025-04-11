@@ -452,8 +452,6 @@ plugins {
     id("org.springframework.boot") version "3.4.4"
     id("org.jetbrains.kotlin.plugin.spring") version "2.1.20"
     id("io.spring.dependency-management") version "1.1.7"
-    id("com.citi.helm") version "2.2.0"
-    id("com.citi.helm-publish") version "2.2.0"
     kotlin("jvm") version "2.1.20"
 }
 
