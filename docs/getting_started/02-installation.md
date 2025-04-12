@@ -10,6 +10,7 @@ Before installing the lmos-operator, ensure the following prerequisites are met:
 1. A working Kubernetes cluster is set up.
 2. `kubectl` is installed and configured to communicate with your cluster.
 3. `helm` is installed. You can download and install Helm from the official [Helm website](https://helm.sh/docs/intro/install/).
+4. `istio` is installed. You can download and install Isto from the official [Istio Website](https://istio.io/latest/docs/setup/getting-started/)
 
 ## Installation
 
