@@ -59,7 +59,9 @@ Example of a supervisor agent that can call other agents:
      // ... 
  }
 
-// call_agent.functions.kts - Define a function that the agent can use to call other agents. 
+// call_agent.functions.kts - Define a function that the agent can use to call other agents.
+import org.eclipse.lmos.arc.agents.conversation.*
+
 function(
     name = "call_agent",
     description = "Calls an Agent.",
