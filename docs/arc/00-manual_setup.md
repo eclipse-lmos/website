@@ -3,89 +3,117 @@ title: Manual Setup
 sidebar_position: 2
 ---
 
-Usually the Arc Agent Framework will be used with the Spring Boot Starter
-or the Arc Runner, which will automatically set up the framework for you.
+From version 0.123.0
 
-However, if you want to set up the framework manually and use it in a different frameworks or environments, 
-you can do so by following the steps below.
+The following section describes how to use the Arc Framework in any application.
 
-> Also: read the [Component Overview](/docs/arc/ccore/component_overview) page for a better understanding of core components of the Framework.
+For some examples, goto https://github.com/eclipse-lmos/arc/tree/main/examples/src/main/kotlin
 
+## Defining Agents
 
-### Loading Agents
+The following example shows how to use the `agents` function to define Arc Agents.
 
-The `DSLAgents` is a convenient way to load Agents that are defined with Kotlin DSL.
+The `agents` function provides many default values that can be overridden to customize the behavior of the framework.
+
+See the section on [Loading LLM Clients](#loading-llm-clients) for more information on how to load the correct LLM
+clients.
 
 ```kotlin
- val chatCompleterProvider = { AzureAIClient(...) } // or any other AIClient
 
- val agentBuilder = DSLAgents.init(chatCompleterProvider).apply {
-    define {
+fun main() = runBlocking {
+    // Set the OpenAI API key as a system property or environment variable.
+    System.setProperty("OPENAI_API_KEY", "1234")
+
+    val agents = agents(
+        functions = {
+            function(name = "get_weather", description = "Returns the current weather.") {
+                "the weather is sunny!"
+            }
+            // add more functions here
+        }
+    ) {
         agent {
-            name = "agent"
-            description = "agent description"
-            prompt { "Agent prompt goes here." }
+            name = "MyAgent"
+            model { "gpt-4o" }
+            tools { +"get_weather" }
+            prompt {
+                """
+                You are a weather assistant. Help the user with their questions about the weather.
+                """
+            }
         }
+        // add more agents here
     }
 
-    defineFunctions {
-        function(
-            name = "get_weather",
-            description = "the weather service",
-            params = types(string("location", "the location")),
-        ) {
-            httpGet("https://api.weather.com/$location")
-        }
-    }
+    val reply = agents.getChatAgent("MyAgent").ask("What is the weather like?").getOrNull()
+    println(reply)
 }
 
-val agents = agentBuilder.getAgents()
-
 ```
 
+The `agents` function provides many defaults that can be overridden to customize the behavior of the framework.
 
-### Loading Scripted Agents
+## Loading LLM Clients
 
-The `DSLScriptAgents` class can be used to load Agents that are defined with kotlin scripts.
+LLM Clients are loaded automatically based on the libraries on the classpath and the variables set.
 
-```kotlin
-val chatCompleterProvider = { AzureAIClient(...) } // or any other AIClient
+The following variables are used to load the LLM Clients:
 
- val agentBuilder = DSLScriptAgents.init(chatCompleterProvider).apply {
-    define(
-        """
-            agent {
-                name = "agent"
-                description = "agent description"
-                prompt { "Agent prompt goes here." }
-            }
-        """,
-    ).getOrThrow()
+| Name                 | Description                                                                         | Values                                 | Required                            |
+|----------------------|-------------------------------------------------------------------------------------|----------------------------------------|-------------------------------------|
+| ARC_CLIENT           | The client library to use.                                                          | azure, openai, ollama, gemini, bedrock | yes                                 |
+| ARC_MODEL_ALIAS      | An alias for the model name. If set, this value must be reference on the Agent DSL. |                                        | no                                  |
+| ARC_MODEL            | The name of the model.                                                              |                                        | only if ARC_MODEL_ALIAS is set.     |
+| ARC_AI_URL           | The endpoint of the model.                                                          |                                        | not required for openai nor ollama. |
+| ARC_AI_KEY           | The api key to access the model.                                                    |                                        |                                     |
+| ARC_AI_ACCESS_KEY    | The access key to access the model.                                                 |                                        | usually required for bedrock.       |
+| ARC_AI_ACCESS_SECRET | The access secret to access the model.                                              |                                        | usually required for bedrock.       |
 
-    defineFunctions(
-        """
-            function(
-                name = "get_weather",
-                description = "the weather service",
-                params = types(string("location", "the location")),
-            ) { location ->
-               httpGet("https://api.weather.com/${"$"}location")
-            }
-        """,
-    )
-}
+`OPENAI_API_KEY` can also be used to create an OpenAI client.
 
-val agents = agentBuilder.getAgents()
+Multiple clients can be defined by appending an index to the variable name, for example: ARC_CLIENT[0], ARC_CLIENT[1],
+etc..
+Max number of clients is 10.
 
+Variables are resolved in the following order:
+
+1. System properties
+2. Environment variables
+3. home/.arc/arc.properties
+
+### Dependencies
+
+The following shows the dependencies required to use the Arc Framework in your project.
+
+Base dependencies:
+
+```kts
+    implementation("org.eclipse.lmos:arc-agents:$arcVersion")
 ```
 
+Azure / Open AI
 
-### Executing Agents
-Once an Agent is loaded, it can be executed by passing a `Conversation` object to the `execute` method.
-
-```kotlin
- val agent = agentBuilder.getAgentByName(agentName) as ChatAgent? ?: error("Agent not found!")
- val conversation = Conversation(User("userOrClientId")) + UserMessage("My question")
- val result = agent.execute(conversation).getOrNull()
+```kts
+    implementation("org.eclipse.lmos:arc-azure-client:$arcVersion")
 ```
 
+Gemini
+
+```kts
+    implementation("org.eclipse.lmos:arc-langchain4j-client:$arcVersion")
+    implementation("dev.langchain4j:langchain4j-google-ai-gemini:$langchain4jVersion")
+```
+
+Ollama
+
+```kts
+    implementation("org.eclipse.lmos:arc-langchain4j-client:$arcVersion")
+    implementation("dev.langchain4j:langchain4j-ollama:$langchain4jVersion")
+```
+
+Bedrock
+
+```kts
+    implementation("org.eclipse.lmos:arc-langchain4j-client:$arcVersion")
+    implementation("dev.langchain4j:langchain4j-bedrock:$langchain4jVersion")
+```

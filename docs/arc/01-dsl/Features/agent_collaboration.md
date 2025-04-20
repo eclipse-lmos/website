@@ -104,6 +104,41 @@ agent {
 > Note: There is a limit of 20 Agent Hand-Overs in a chain. This is to prevent infinite loops that could occur if agents keep handing over to each other indefinitely.
 
 
+## The AgentChain
+
+If having an agent explicitly calling another agent, does not sit right, then enter the `AgentChain`.
+
+`AgentChain`s define a sequence of agents that should be called one after the other, 
+where the output of one agent is passed as input to the next agent in the chain.
+
+Unlike the `nextAgent` function, the `AgentChain` is defined outside the agent and then passed to 
+the agent as a parameter.
+
+The agent will then execute the chain of agents in the order they are defined.
+
+For example, Agent Chains can be defined as a System Context variable, when calling an agent.
+
+```json
+{
+  "systemContext": [
+    {
+      "key": "agent_chain",
+      "value": "agent01,agent02,agent03,agent04"
+    }
+  ]
+}
+
+```
+
+The `AgentChain` is accessible in the agent context and can be accessed using the `get<AgentChain>()` function.
+
+When calling agents directly, remember to use the `executeWithHandover` extension function to trigger this behaviour.
+
+```kts
+    agent.executeWithHandover(conversation, setOf(AgentChain(listOf("agent01,agent02,agent03,agent04"))))
+```
+
+
 ## Implementing complex Agent workflows 
 
 More complex agent workflows can be implemented in standard Kotlin or Java code, 
