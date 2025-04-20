@@ -25,6 +25,7 @@ fun main() = runBlocking {
     System.setProperty("OPENAI_API_KEY", "1234")
 
     val agents = agents(
+        functionLoaders = listOf(McpTools("https://mcp.host.com", null)), // Load further tools from MCP server
         functions = {
             function(name = "get_weather", description = "Returns the current weather.") {
                 "the weather is sunny!"
