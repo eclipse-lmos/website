@@ -15,6 +15,8 @@ please check out our parent Project [LMOS](https://eclipse.dev/lmos/).
 The `callAgent` or `askAgent` functions allow you to call another agent from anywhere within the Agent DSL.
 This is useful for creating Supervisor Agents or simply delegating specific tasks to specialized agents.
 
+See [Cookbook](/docs/arc/cookbook/supervisor) for an example Supervisor Agent.
+
 ```kotlin
 // Using callAgent when you need the full conversation context
 val result: Conversation = callAgent("assistant-agent", input = "a question".toConversation()).getOrNull()
