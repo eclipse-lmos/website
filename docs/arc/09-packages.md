@@ -4,7 +4,6 @@ title: Packages
 
 ## Basic Packages
 ```kts
-val arcVersion = "0.115.0"
 implementation("org.eclipse.lmos:arc-agents:$arcVersion")
 ```
 
@@ -31,6 +30,11 @@ implementation("org.eclipse.lmos:arc-spring-boot-starter:$arcVersion")
 implementation("org.eclipse.lmos:arc-memory-mongo-spring-boot-starter:$arcVersion")
 ```
 
+## Arc View
+```kts
+implementation("org.eclipse.lmos:arc-view-spring-boot-starter:$arcVersion")
+```
+
 ## GraphQL
 ```kts
 implementation("org.eclipse.lmos:arc-api:$arcVersion")
@@ -39,6 +43,5 @@ implementation("org.eclipse.lmos:arc-graphql-spring-boot-starter:$arcVersion")
 
 ## Extensions 
 ```kts
-implementation("org.eclipse.lmos:arc-reader-pdf:$arcVersion")
-implementation("org.eclipse.lmos:arc-reader-html:$arcVersion")
+implementation("org.eclipse.lmos:arc-readers:$arcVersion")
 ```

@@ -3,7 +3,6 @@ title: Manual Setup
 sidebar_position: 2
 ---
 
-From version 0.123.0
 
 The following section describes how to use the Arc Framework in any application.
 
@@ -22,10 +21,9 @@ clients.
 
 fun main() = runBlocking {
     // Set the OpenAI API key as a system property or environment variable.
-    System.setProperty("OPENAI_API_KEY", "1234")
+    System.setProperty("OPENAI_API_KEY", "****")
 
     val agents = agents(
-        functionLoaders = listOf(McpTools("https://mcp.host.com", null)), // Load further tools from MCP server
         functions = {
             function(name = "get_weather", description = "Returns the current weather.") {
                 "the weather is sunny!"

@@ -6,6 +6,22 @@ sidebar_position: 1
 The Arc Framework DSL provides a rich set of functions 
 that can be used to implement complex logic in a concise and readable manner.
 
+Example of the time and memory functions:
+
+```kotlin
+  agent {
+    name = "MyAgent"
+    prompt {
+        val name = memory<String>("user_name")
+        """
+         The user's name is $name.
+         The time is ${time()}
+        """
+    }
+  }
+
+```
+
 The following list some of the most common functions that can be used in the DSL.
 
 | Name                         | Description                                                                                        | Details                                                 |
