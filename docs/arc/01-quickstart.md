@@ -5,7 +5,38 @@ title: Quickstart
 
 Welcome to the Arc AI Agents framework!
 
-The quickest way to get started with Arc Agents is to check out one of the following projects:
+The Arc Framework is designed to help you build powerful AI Agents quickly and easily.
+
+This is a simple example of an Arc Agent that uses the OpenAI API.
+
+```kts
+fun main(): Unit = runBlocking {
+    // Set the OpenAI API as a System property or environment variable.
+    // System.setProperty("OPENAI_API_KEY", "****")
+
+    agents {
+        agent {
+            name = "MyAgent"
+            model { "gpt-4o" }
+            prompt {
+                """
+                Add your prompt here.
+                """
+            }
+        }
+    }.serve(devMode = true)
+}
+```
+
+Simply add the following dependencies to your `build.gradle.kts` file:
+
+```kts
+implementation("org.eclipse.lmos:arc-agents:$arcVersion")
+implementation("org.eclipse.lmos:arc-server:$arcVersion")
+implementation("org.eclipse.lmos:arc-azure-client:$arcVersion")
+```
+
+For a more comprehensive setup please check out the following projects:
 
 | Name                      | Description                                                                                                        | Location                                               |
 |---------------------------|--------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------|
