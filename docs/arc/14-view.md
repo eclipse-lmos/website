@@ -31,9 +31,33 @@ See the [Arc GraphQL](/docs/arc/spring/graphql) for more details.
 
 ### How to access it
 
-There is a version of the Arc View hosted at `https://eclipse.dev/lmos/chat/index.html`.
+The easiest way to access the Arc View is to bundle it with your Arc application.
 
-The Arc View can point to any Arc Agent Application by setting the Agent Url here https://eclipse.dev/lmos/chat/index.html#/settings.
+To do this, add the following dependency to your `gradle.build.kts` file:
+
+```kotlin
+    implementation("org.eclipse.lmos:arc-view-spring-boot-starter:$arcVersion")
+```
+
+This will make the Arc View available at `http://localhost:8080/chat/index.html#/chat`.
+
+When using the Arc Spring Boot Starter, the Arc View can be enabled / disabled with the following configuration:
+
+```yaml
+arc:
+  chat:
+    ui:
+      enabled: true
+  subscriptions:
+    events:
+      enable: true
+```
+
+(Subscriptions must be enabled to view events in the Arc View.)
+
+There is also a version of the Arc View hosted at `https://eclipse.dev/lmos/chat/index.html`.
+
+The Arc View can point to any Arc Agent Application by setting the Agent Url.
 
 Or open the Arc with `https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080` to point the an Arc Agent running at http://localhost:8080.
 
@@ -44,6 +68,10 @@ arc:
   cors:
     enabled: true
 ```
+
+:::info Browser Limitations
+Some browsers (like Safari) do not allow connecting to localhost from a different domain.
+:::
 
 
 ### Where to find it
