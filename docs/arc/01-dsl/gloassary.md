@@ -6,6 +6,9 @@ sidebar_position: 1
 The Arc Framework DSL provides a rich set of functions 
 that can be used to implement complex logic in a concise and readable manner.
 
+If you are looking for a description of the Agent Fields DSL, please
+check out the [Defining Agents](./defining_agents.md#overview).
+
 Example of the time and memory functions:
 
 ```kotlin
