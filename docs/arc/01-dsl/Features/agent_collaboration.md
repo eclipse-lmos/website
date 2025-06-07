@@ -3,8 +3,6 @@ title: Agent Collaboration
 ---
 # Agent Collaboration
 
-From version 0.122.0
-
 This page describes ways in which multiple agents can communicate and collaborate with each other.
 
 For a more elaborate Multi Agent setup with Agent Discovery and Routing, 

@@ -86,7 +86,7 @@ agent {
     name = "weather"
     onFail { 
         if (condition) {
-            retry(mapOf("key", "data"))
+            retry(reason = "Condition is not fulfilled.")
         } else if (anotherCondition) {
             AssistantMessage("New message!")
         } else null
@@ -95,7 +95,7 @@ agent {
         val retry = getOptional<RetrySignal>()
         if (retry != null) {
             // The details provided to the retry function can be accessed here.
-            """ Updated Instructions with ${retry.details}"""
+            """ Updated Instructions with ${retry.reason}"""
         } else {
             """ Instructions """
         }
@@ -112,11 +112,4 @@ The `onFail` block can either:
 - return null in which case the agent will rethrow the exception.
 - call the `retry` function which will cause the agent to be re-run. 
 
-When the `retry` function is called, the agent will be executed with the same parameters and state as the original run,
-with the only difference being that an instance of `RetrySignal` will be added to the context. 
-
-The `RetrySignal` bean can be accessed with the `get` function 
-and will contain the map of details provided to the `retry` function.
-
-**Warning:** There is no safety net for infinite loops! You should check the `RetrySignal.count` 
-field to check for the current retry count.
+For more details on the `retry` function, see [Retry](../Features/retry).
