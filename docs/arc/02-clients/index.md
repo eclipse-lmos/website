@@ -1,5 +1,6 @@
 ---
 title: AI Clients
+sidebar_position: 5
 ---
 
 The Arc Agent framework provides a number of clients to connect to AI services.
