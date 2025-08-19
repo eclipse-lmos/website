@@ -6,164 +6,205 @@
 -->
 <html>
 <head>
-	<title>Arc - AI Agent Framework</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<link rel="stylesheet" href="assets/css/cookieconsent.min.css" />
-	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <title>Arc - AI Agent Framework</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/main.css"/>
+    <link rel="stylesheet" href="assets/css/cookieconsent.min.css"/>
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css"/>
+    </noscript>
 </head>
 <body class="is-preload">
 
 <!-- Wrapper -->
 <div id="wrapper" class="divided">
 
-	<!-- One -->
-	<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
-		<div class="content">
-			<h1 style="color:#930101;">ARC</h1>
-			<p class="major">A Kotlin AI Agent Framework.</p>
-			<p>Streamlining Agent creation with Kotlin DSL and Scripting.</p>
-			<ul class="actions stacked">
-				<li><a href="#topics" class="primary button big wide smooth-scroll-middle">Learn more</a></li>
-				<li><a href="/lmos/docs/arc/quickstart/" class="button big wide smooth-scroll-middle">My First Agent - 5min ⏱️</a></li>
-			</ul>
-		</div>
-		<div class="image code-img">
-			<img src="images/codev2.png" alt="Arc DSL code" />
-		</div>
-	</section>
+    <!-- One -->
+    <section
+            class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+        <div class="content">
+            <h1 style="color:#930101;">ARC</h1>
+            <p class="major">A Kotlin AI Agent Framework.</p>
+            <p>Streamlining Agent creation with Kotlin DSL and Scripting.</p>
+            <ul class="actions stacked">
+                <li><a href="#topics" class="primary button big wide smooth-scroll-middle">Learn more</a></li>
+                <li><a href="/lmos/docs/arc/quickstart/" class="button big wide smooth-scroll-middle">My First Agent -
+                    5min ⏱️</a></li>
+            </ul>
+        </div>
+        <div class="image code-img">
+            <img src="images/codev2.png" alt="Arc DSL code"/>
+        </div>
+    </section>
 
-	<!-- Two -->
-	<section class="spotlight style2 orient-right color5 invert content-align-left image-position-center onscroll-image-fade-in" id="first">
-		<div class="content">
-			<h2>First class tooling with the Arc View</h2>
-			<p>
-				Start chatting with your new AI Agent straight away using the Arc Chat interface.
-				The UI can be run locally, or you can use our hosted version and point it to your local agent.
-				Don't worry, neither your Agent data nor LLM data is sent to our servers.
-				(Safari and Brave browsers do not allow connections to localhost.)
-			</p>
-			<ul class="actions stacked">
-				<li><a href="https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080" class="button">Open View</a></li>
-			</ul>
-		</div>
-		<div class="image">
-			<img src="images/chat_view.png" alt="" />
-		</div>
-	</section>
+    <!-- Two -->
+    <section
+            class="spotlight style2 orient-right color5 invert content-align-left image-position-center onscroll-image-fade-in"
+            id="first">
+        <div class="content">
+            <h2>First class tooling with the Arc View</h2>
+            <p>
+                Start chatting with your new AI Agent straight away using the Arc Chat interface.
+                The UI can be run locally, or you can use our hosted version and point it to your local agent.
+                Don't worry, neither your Agent data nor LLM data is sent to our servers.
+                (Safari and Brave browsers do not allow connections to localhost.)
+            </p>
+            <ul class="actions stacked">
+                <li><a href="https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080" class="button">Open
+                    View</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="images/chat_view.png" alt=""/>
+        </div>
+    </section>
 
-	<!-- Three -->
-	<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
-		<div class="content">
-			<h2>Observability is key.</h2>
-			<p>
-				Arc supports multiple Tracing frameworks, such as Arize Phoenix, Zipkin, Wavefront, or OTLP.
-				And creating custom spans could not be easier!
-			</p>
-			<p>
-				Image on the right is of the <a href="https://phoenix.arize.com/">Arize Phoenix</a> UI.
-			</p>
-			<ul class="actions stacked">
-				<li><a href="/lmos/docs/arc/ccore/tracing/" class="button">Learn More</a></li>
-			</ul>
-		</div>
-		<div class="image">
-			<img src="images/tracing.png" alt="" />
-		</div>
-	</section>
+    <!-- Three -->
+    <section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+        <div class="content">
+            <h2>Observability is key.</h2>
+            <p>
+                Arc supports multiple Tracing frameworks, such as Arize Phoenix, Zipkin, Wavefront, or OTLP.
+                And creating custom spans could not be easier!
+            </p>
+            <p>
+                Image on the right is of the <a href="https://phoenix.arize.com/">Arize Phoenix</a> UI.
+            </p>
+            <ul class="actions stacked">
+                <li><a href="/lmos/docs/arc/ccore/tracing/" class="button">Learn More</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="images/tracing.png" alt=""/>
+        </div>
+    </section>
 
-	<!-- Four -->
-	<section class="spotlight style1 color7 invert orient-right content-align-left image-position-center onscroll-image-fade-in">
-		<div class="content">
-			<h2>Understand your Agent's Performance</h2>
-			<p>
-				Get deeper insights into your Agent's performance during local testing and evaluation using the performance page.
-				Compare models and prompts before deploying to production..
-			</p>
-			<ul class="actions stacked">
-				<li><a href="https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080#/charts" class="button">Open View</a></li>
-			</ul>
-		</div>
-		<div class="image">
-			<img src="images/metrics.png" alt="" />
-		</div>
-	</section>
+    <section class="spotlight style1 color7 invert content-align-left image-position-center onscroll-image-fade-in">
+        <div class="content">
+            <h2>Agent Definition Language (ADL)</h2>
+            <p>
+                Prompting too time-consuming and unreliable? <br>
+                No problem! We have you covered with the Agent Definition Language (ADL).
+            </p>
+            <p>
+                A simple yet powerful language to enable you to define the behaviour of your AI Agents more reliably and
+                efficiently.
+            </p>
+            <ul class="actions stacked">
+                <li><a href="/lmos/docs/arc/adl" class="button">Learn More</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="images/adl.png" alt=""/>
+        </div>
+    </section>
 
-	<!-- topics -->
-	<section class="wrapper style1 align-center" >
-		<div class="inner" >
-			<h2 id="topics">Topics</h2>
-			<p>Here is an overview of some of the features that ARC provides.</p>
-			<div class="items style1 medium onscroll-fade-in">
-				<section>
-					<h3>Agent DSL</h3>
-					<p>Quick Overview of the Agent DSL Syntax.</p>
-					<p>
-						<a href="/lmos/docs/arc/dsl/defining_agents/#overview" class="button small smooth-scroll-middle">Agent DSL</a>
-					    <a href="/lmos/docs/arc/dsl/gloassary/" class="button small smooth-scroll-middle">Agent DSL functions</a>
-					</p>
-				</section>
-				<section>
-					<h3>The Arc CLI</h3>
-					<p>The Arc Command Line Client is a great way to get started quickly.</p>
-					<p><a href="/lmos/docs/arc/cli/" class="button small wide smooth-scroll-middle">ARC CLI</a></p>
-				</section>
-				<section>
-					<h3>Model Context Protocol</h3>
-					<p>The Arc Framework can act as an MCP client or server.</p>
-					<p><a href="/lmos/docs/arc/mcp/" class="button small wide smooth-scroll-middle">MCP</a></p>
-				</section>
-				<section>
-					<h3>Spring Boot Integration</h3>
-					<p>Arc provides multiple Spring Boot Starters and a Spring Boot starter project for a seamless Spring Boot integration.</p>
-					<p><a href="/lmos/docs/arc/spring/integration/" class="button small wide smooth-scroll-middle">Spring Boot Starter</a></p>
-				</section>
-				<section>
-					<h3>Manual Setup</h3>
-					<p>Add Arc Agents to any JVM application you are developing.</p>
-					<p><a href="/lmos/docs/arc/manual_setup/" class="button small wide smooth-scroll-middle">Manual Setup</a></p>
-				</section>
-				<section>
-					<h3>Agent Collaboration</h3>
-					<p>Find out the different ways agents can communicate with each other.</p>
-					<p>
-						<a href="/lmos/docs/arc/dsl/Features/agent_collaboration/" class="button small smooth-scroll-middle">Agent Collaboration</a>
-					</p>
-				</section>
-				<section>
-					<h3>Memory</h3>
-					<p>Extend the power of your AI Agent by providing it memory.</p>
-					<p><a href="/lmos/docs/arc/ccore/memory/" class="button small wide smooth-scroll-middle">Memory</a></p>
-				</section>
-				<section>
-					<h3>Missing a feature?</h3>
-					<p>The Arc Framework is fully open source. Just create a PR!</p>
-					<p><a href="https://github.com/eclipse-lmos/arc/" class="button small wide smooth-scroll-middle">GitHub</a></p>
-				</section>
-				<section>
-					<h3>Works well with others</h3>
-					<p>The Arc Framework builds on top of LangChain4j.</p>
-				</section>
-			</div>
-		</div>
-	</section>
+    <section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+        <div class="content">
+            <h2>Understand your Agent's Performance</h2>
+            <p>
+                Get deeper insights into your Agent's performance during local testing and evaluation using the
+                performance page.
+                Compare models and prompts before deploying to production..
+            </p>
+            <ul class="actions stacked">
+                <li><a href="https://eclipse.dev/lmos/chat/index.html?agentUrl=http://localhost:8080#/charts"
+                       class="button">Open View</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="images/metrics.png" alt=""/>
+        </div>
+    </section>
 
-	<footer class="wrapper style1 invert align-center">
-		<div class="inner">
-			<ul class="icons">
-				<li><a href="https://www.eclipse.org" class="  style2"><span class="label">Eclipse Foundation Website</span></a></li>
-				<li><a href="https://www.eclipse.org/legal/privacy/" class="  style2"><span class="label">Privacy Policy</span></a></li>
-				<li><a href="https://www.eclipse.org/legal/terms-of-use/" class="  style2"><span class="label">Website Terms of Use</span></a></li>
-				<li><a href="https://www.eclipse.org/legal/compliance/" class="  style2"><span class="label">Compliance</span></a></li>
-				<li><a href="https://www.eclipse.org/legal/" class="style2"><span class="label">Legal</span></a></li>
-			</ul>
-			<p>Copyright © Eclipse Foundation AISBL. All Rights Reserved. <img src="https://eclipse.dev/lmos/img/incubation_darkbg.png" alt="Eclipse Logo" style="float:right;width:60px;margin-left:20px;"/></p>
-			<p>Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-		</div>
-	</footer>
+    <!-- topics -->
+    <section class="wrapper style1 align-center">
+        <div class="inner">
+            <h2 id="topics">Topics</h2>
+            <p>Here is an overview of some of the features that ARC provides.</p>
+            <div class="items style1 medium onscroll-fade-in">
+                <section>
+                    <h3>Agent DSL</h3>
+                    <p>Quick Overview of the Agent DSL Syntax.</p>
+                    <p>
+                        <a href="/lmos/docs/arc/dsl/defining_agents/#overview"
+                           class="button small smooth-scroll-middle">Agent DSL</a>
+                        <a href="/lmos/docs/arc/dsl/gloassary/" class="button small smooth-scroll-middle">Agent DSL
+                            functions</a>
+                    </p>
+                </section>
+                <section>
+                    <h3>The Arc CLI</h3>
+                    <p>The Arc Command Line Client is a great way to get started quickly.</p>
+                    <p><a href="/lmos/docs/arc/cli/" class="button small wide smooth-scroll-middle">ARC CLI</a></p>
+                </section>
+                <section>
+                    <h3>Model Context Protocol</h3>
+                    <p>The Arc Framework can act as an MCP client or server.</p>
+                    <p><a href="/lmos/docs/arc/mcp/" class="button small wide smooth-scroll-middle">MCP</a></p>
+                </section>
+                <section>
+                    <h3>Spring Boot Integration</h3>
+                    <p>Arc provides multiple Spring Boot Starters and a Spring Boot starter project for a seamless
+                        Spring Boot integration.</p>
+                    <p><a href="/lmos/docs/arc/spring/integration/" class="button small wide smooth-scroll-middle">Spring
+                        Boot Starter</a></p>
+                </section>
+                <section>
+                    <h3>Manual Setup</h3>
+                    <p>Add Arc Agents to any JVM application you are developing.</p>
+                    <p><a href="/lmos/docs/arc/manual_setup/" class="button small wide smooth-scroll-middle">Manual
+                        Setup</a></p>
+                </section>
+                <section>
+                    <h3>Agent Collaboration</h3>
+                    <p>Find out the different ways agents can communicate with each other.</p>
+                    <p>
+                        <a href="/lmos/docs/arc/dsl/Features/agent_collaboration/"
+                           class="button small smooth-scroll-middle">Agent Collaboration</a>
+                    </p>
+                </section>
+                <section>
+                    <h3>Memory</h3>
+                    <p>Extend the power of your AI Agent by providing it memory.</p>
+                    <p><a href="/lmos/docs/arc/ccore/memory/" class="button small wide smooth-scroll-middle">Memory</a>
+                    </p>
+                </section>
+                <section>
+                    <h3>Missing a feature?</h3>
+                    <p>The Arc Framework is fully open source. Just create a PR!</p>
+                    <p><a href="https://github.com/eclipse-lmos/arc/" class="button small wide smooth-scroll-middle">GitHub</a>
+                    </p>
+                </section>
+                <section>
+                    <h3>Works well with others</h3>
+                    <p>The Arc Framework builds on top of LangChain4j.</p>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <footer class="wrapper style1 invert align-center">
+        <div class="inner">
+            <ul class="icons">
+                <li><a href="https://www.eclipse.org" class="  style2"><span
+                        class="label">Eclipse Foundation Website</span></a></li>
+                <li><a href="https://www.eclipse.org/legal/privacy/" class="  style2"><span
+                        class="label">Privacy Policy</span></a></li>
+                <li><a href="https://www.eclipse.org/legal/terms-of-use/" class="  style2"><span class="label">Website Terms of Use</span></a>
+                </li>
+                <li><a href="https://www.eclipse.org/legal/compliance/" class="  style2"><span
+                        class="label">Compliance</span></a></li>
+                <li><a href="https://www.eclipse.org/legal/" class="style2"><span class="label">Legal</span></a></li>
+            </ul>
+            <p>Copyright © Eclipse Foundation AISBL. All Rights Reserved. <img
+                    src="https://eclipse.dev/lmos/img/incubation_darkbg.png" alt="Eclipse Logo"
+                    style="float:right;width:60px;margin-left:20px;"/></p>
+            <p>Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </div>
+    </footer>
 </div>
-
 
 
 <!-- Scripts -->
