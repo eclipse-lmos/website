@@ -84,7 +84,7 @@ If the customer cannot access their email, escalate the issue to a higher tier o
 If the Agent has access to tools, such as `send_password_reset_link`, these would be called as part of this use case.
 
 
-### Guidelines
+### Overall Guidelines
 
 - Use consistent terms and language throughout the use case to ensure clarity and avoid confusion.
   For example, if you refer to the user as "customer" in one section, use "customer" throughout the document.
@@ -132,6 +132,29 @@ Provide the webpage https://www.example.com/business/reset-password.
 
 **Important** `Conditionals` are only supported in the body of `Steps`, `Solution`,
 `Alternative Solution` and `Fallback Solution`.
+
+
+### Tool calls
+
+Calls to tools / functions can be denoted using the following syntax `@my_function()`. 
+This is not mandatory, but does provide the following benefits:
+ - Enables the system to dynamically load the tools / functions.
+ - Enables the system to validate that the tools / functions are available.
+ - Enables the system to re-enforce the execution of the tools.
+
+Example
+```markdown
+### UseCase: password_reset
+#### Description
+Customer has forgotten their password and needs to reset it.
+
+#### Solution
+Call the function @password_reset_link() to obtain a password reset link.
+Then provide the customer with the link and guide them through the password reset process.
+
+```
+
+To re-enforce the execution of the tool, simply add "!" to the function call, like so: `@password_reset_link()!`.
 
 
 ### Adding the Use Case to an Agent
