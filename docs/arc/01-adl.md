@@ -138,8 +138,8 @@ Provide the webpage https://www.example.com/business/reset-password.
 
 Calls to tools / functions can be denoted using the following syntax `@my_function()`. 
 This is not mandatory, but does provide the following benefits:
- - Enables the system to dynamically load the tools / functions.
- - Enables the system to validate that the tools / functions are available.
+ - Enables the system to dynamically load any required the tools / functions.
+ - Enables the system to validate that the required tools / functions are available.
  - Enables the system to re-enforce the execution of the tools.
 
 Example
@@ -156,6 +156,27 @@ Then provide the customer with the link and guide them through the password rese
 
 To re-enforce the execution of the tool, simply add "!" to the function call, like so: `@password_reset_link()!`.
 
+
+### Use Cases References
+
+Use Cases can reference other use cases using the following syntax `#use_case_id`.
+
+This is not mandatory, but does provide the following benefits:
+- Enables the system to load uses cases that are stored in other location.
+- Enables the system to validate that the referenced use cases are available.
+
+Example
+```markdown
+### UseCase: password_reset
+#### Description
+Customer has forgotten their password and needs to reset it.
+
+#### Solution
+Call the function @password_reset_link() to obtain a password reset link.
+
+If the customer is a business customer, the use case #business_customer_support should be followed.
+
+```
 
 ## Trying out ADL
 
