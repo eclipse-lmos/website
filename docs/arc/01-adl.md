@@ -157,57 +157,26 @@ Then provide the customer with the link and guide them through the password rese
 To re-enforce the execution of the tool, simply add "!" to the function call, like so: `@password_reset_link()!`.
 
 
-### Adding the Use Case to an Agent
+## Trying out ADL
 
-To best utilize the use case format in an ARC Agent, the following steps are recommended:
+The quickest way to try out ADL is to check out the Arc Spring Demo 
+project here https://github.com/eclipse-lmos/arc-spring-init and start the application.
 
-1. Add `UseCaseResponseHandler` to the `filterOutput` section of the Agent DSL. This will enable the Agent to
-   track what solutions have been provided to the user and trigger the fallback solution if necessary.
+This will give you access to the Arc View at http://localhost:8080.
 
-2. Add instructions to the Agent's prompt that guide the Agent on how to handle the use cases.
-   The example below has a good balance between guiding the Agent, but allowing the Agent to
-   solve problems not listed as a use case.
+Here ADL Use Cases can be created and tested.
 
-3. Include the use cases in the prompt by calling the `useCases` function.
-   This function reads the use cases from a markdown file and formats them for display in the prompt.
-   The `fallbackLimit` parameter specifies the number of failed attempts before the fallback solution is triggered.
+1. Go to the "ADL" menu item to access the ADL overview screen and create new ADL Use Case file.
 
-:::info
-- Asking the Agent to provide the use case id is important for the `UseCaseResponseHandler` to work correctly.
-- The `UseCaseResponseHandler` uses the `memory` function to store the number of failed attempts for each use case.
-  Therefore, a appropriate memory implementation is required.
-  :::
+![ADL Overview Screen](/img/adl_overview.png)
 
-Example:
+2. Add your use cases.
 
-```kts
-agent {
-  name = "password-help-agent"
-  description = "Agent that helps customers with password-related issues."
-  filterOutput {
-     +UseCaseResponseHandler()
-  }
-  prompt {
-    """
-      You are a professional service agent. 
-        
-      ## Instructions
-      - Only provide information the user has explicitly asked for.
-      - Always start the message with the id of the use case id. Example, <ID:password_reset>" 
-      - Use the "Knowledge" section or llm functions to answer customers queries.
-      - Always follow the fallback solution for a problem if provided.
-      - If the customer's question is on a topic not described in the "Knowledge" section nor llm functions, reply with "NO_ANSWER".
-      - Always performed the steps stated in the "Steps" associated with the solution, if any, before providing the solution.
-      - Only perform one step at a time!
-      - If the customer does not accept the solution, reply with "NO_ANSWER".
+![ADL Details Screen](/img/adl_create.png)
 
-       ## Knowledge 
-       ${useCases("use_cases.md", fallbackLimit = 3)}
-       
-     """
-  }
-  tools {
-      +"send_password_reset_link"
-  }
-}
-```
+3. Then on the chat screen, select the ADL Use Case file and start asking questions.
+
+![ADL Chat Screen](/img/adl_chat.png)
+
+![ADL Chat Screen](/img/adl_chat_2.png)
+
