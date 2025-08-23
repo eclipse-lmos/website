@@ -162,7 +162,7 @@ To re-enforce the execution of the tool, simply add "!" to the function call, li
 The quickest way to try out ADL is to check out the Arc Spring Demo 
 project here https://github.com/eclipse-lmos/arc-spring-init and start the application.
 
-This will give you access to the Arc View at http://localhost:8080.
+This will give you access to the Arc View at http://localhost:8080/chat/index.html.
 
 Here ADL Use Cases can be created and tested.
 
