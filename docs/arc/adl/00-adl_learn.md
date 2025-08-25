@@ -1,4 +1,4 @@
-# Learn ARC ADL in 15 Minutes: Business/Product
+# Learn ARC ADL in 15 Minutes
 
 ADL (Agent Definition Language) gives you a **structured way to define how an agent behaves**—without needing to master prompt engineering.
 
