@@ -2,9 +2,9 @@
 sidebar_position: 2
 ---
 
-# Agent Definition Language (ADL)
+# Technical Details
 
-The goal of the Agent Definition Language (ADL) is to provide a reliable and efficient way 
+The goal of the Agent Definition Language (ADL) is to provide a reliable and efficient way
 to define and manage the behavior of an agent that is accessible to anyone, regardless of their technical background.
 
 Traditional prompting has grown into a discipline of its own, with many best practices and techniques.
@@ -28,7 +28,7 @@ that is then sent to the LLM.
 
 ## Breakdown of the Format
 
-The ADL structures the behavior of an agent into a set of use cases. Each use case defining how the agent should 
+The ADL structures the behavior of an agent into a set of use cases. Each use case defining how the agent should
 respond to a specific scenario or query.
 
 The use case format typically consists of the following components:
@@ -136,11 +136,11 @@ Provide the webpage https://www.example.com/business/reset-password.
 
 ### Tool calls
 
-Calls to tools / functions can be denoted using the following syntax `@my_function()`. 
+Calls to tools / functions can be denoted using the following syntax `@my_function()`.
 This is not mandatory, but does provide the following benefits:
- - Enables the system to dynamically load any required the tools / functions.
- - Enables the system to validate that the required tools / functions are available.
- - Enables the system to re-enforce the execution of the tools.
+- Enables the system to dynamically load any required the tools / functions.
+- Enables the system to validate that the required tools / functions are available.
+- Enables the system to re-enforce the execution of the tools.
 
 Example
 ```markdown
@@ -178,26 +178,5 @@ If the customer is a business customer, the use case #business_customer_support 
 
 ```
 
-## Trying out ADL
 
-The quickest way to try out ADL is to check out the Arc Spring Demo 
-project here https://github.com/eclipse-lmos/arc-spring-init and start the application.
-
-This will give you access to the Arc View at http://localhost:8080/chat/index.html.
-
-Here ADL Use Cases can be created and tested.
-
-1. Go to the "ADL" menu item to access the ADL overview screen and create new ADL Use Case file.
-
-![ADL Overview Screen](/img/adl_overview.png)
-
-2. Add your use cases.
-
-![ADL Details Screen](/img/adl_create.png)
-
-3. Then on the chat screen, select the ADL Use Case file and start asking questions.
-
-![ADL Chat Screen](/img/adl_chat.png)
-
-![ADL Chat Screen](/img/adl_chat_2.png)
 
