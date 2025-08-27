@@ -15,6 +15,9 @@ Add the following Agents and Functions to your application and try some of the f
 - Book a hotel in Berlin.
 - Book a hotel in Berlin, but only if the weather is good.
 
+**Note:** The `call_agent` function is located in the `org.eclipse.lmos.arc.agents.dsl.extensions` package.
+When using Arc DSL scripts, the package is imported automatically.
+
 ### Agents
 
 ```kts

@@ -8,6 +8,10 @@ This page describes ways in which multiple agents can communicate and collaborat
 For a more elaborate Multi Agent setup with Agent Discovery and Routing, 
 please check out our parent Project [LMOS](https://eclipse.dev/lmos/).
 
+**Note:** The `call_agent`, `nextAgent` and `askAgent` functions are located 
+in the `org.eclipse.lmos.arc.agents.dsl.extensions` package.
+When using Arc DSL scripts, the package is imported automatically.
+
 ## Calling another Agent
 
 The `callAgent` or `askAgent` functions allow you to call another agent from anywhere within the Agent DSL.
