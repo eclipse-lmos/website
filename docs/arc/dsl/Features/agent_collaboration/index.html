@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="/lmos/css/cookieconsent.min.css">
 <script src="/lmos/js/cookieconsent.min.js"></script>
 <script src="/lmos/js/umami.js"></script><link rel="stylesheet" href="/lmos/assets/css/styles.ebed098a.css">
-<script src="/lmos/assets/js/runtime~main.212da092.js" defer="defer"></script>
+<script src="/lmos/assets/js/runtime~main.06f7985c.js" defer="defer"></script>
 <script src="/lmos/assets/js/main.8f771f2b.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -21,6 +21,9 @@
 <p>This page describes ways in which multiple agents can communicate and collaborate with each other.</p>
 <p>For a more elaborate Multi Agent setup with Agent Discovery and Routing,
 please check out our parent Project <a href="https://eclipse.dev/lmos/" target="_blank" rel="noopener noreferrer">LMOS</a>.</p>
+<p><strong>Note:</strong> The <code>call_agent</code>, <code>nextAgent</code> and <code>askAgent</code> functions are located
+in the <code>org.eclipse.lmos.arc.agents.dsl.extensions</code> package.
+When using Arc DSL scripts, the package is imported automatically.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="calling-another-agent">Calling another Agent<a href="#calling-another-agent" class="hash-link" aria-label="Direct link to Calling another Agent" title="Direct link to Calling another Agent">​</a></h2>
 <p>The <code>callAgent</code> or <code>askAgent</code> functions allow you to call another agent from anywhere within the Agent DSL.
 This is useful for creating Supervisor Agents or simply delegating specific tasks to specialized agents.</p>
