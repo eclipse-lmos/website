@@ -47,18 +47,15 @@ If you have an idea for a new feature or an improvement, please open an issue in
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/eclipse-lmos/lmos-router.git
-    cd lmos-router
+    git clone https://github.com/eclipse-lmos/website.git
+    cd website
     ```
+2. Open the repository in Visual Studio Code:
 
-2. **Set environment variables**:
-    - `OPENAI_API_KEY`: Your OpenAI API key.
-    - `VECTOR_SEED_JSON_FILE_PATH`: Path to the JSON file containing seed vectors.
+3. Open the Command Palette (F1 or Ctrl+Shift+P) and select Remote-Containers: Reopen in Container. This will build and open the repository in a Docker-based development container and start the dev webserver.
 
-3. **Build the project**:
-    ```bash
-    ./gradlew build
-    ```
+4. Open http://localhost:3000/
+
 
 ## Development Workflow
 
