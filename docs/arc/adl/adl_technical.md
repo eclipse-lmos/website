@@ -178,5 +178,66 @@ If the customer is a business customer, the use case #business_customer_support 
 
 ```
 
+### Flow Options
 
+Flow Options enables Use Case authors to express decision trees within the Use Case markdown.
 
+To achieve this, the Use Case writer can simply add so called Flow Options to the bottom of any Use Case as follows:
+
+```markdown
+[option 1] command
+[option 2] command 2
+```
+
+**Option**	Used to match the user's input to the command that should be executed.
+
+**Command** This can be any instruction given to the LLM to perform. Examples include:
+- Tool calls
+- A reply to give to the user
+- A use case reference
+
+The options should be placed at the bottom of the solution section of a use case.
+
+There can be any number of options, i.e. from 1 to N.
+
+Example
+
+```markdown
+#### Use Case: buy_car
+Customer wants to buy a car Use Case.
+
+#### Description
+The customer wants to buy a car.
+
+#### Solution
+Ask the customer what type of car they would like to buy.
+
+[bmw] go to the case #buy_bmw
+[other] reply that we don't sell that type of car.
+
+#### Case: buy_bmw
+Ask the customer what color would they like.
+
+[color selected] go to the final  case #buy_bmw_with_color
+[other] reply with "ok, we need to know the color "
+
+#### Case: buy_bmw_with_color
+Call the tool @buy_car() to finalize the purchase.
+And reply to the customer that we are grateful for their businees.
+
+```
+
+In this flow, we start by asking the customer what type of car they would like to buy.
+
+Based on their response, the agent will either return the solution defined 
+in the #buy_bmw use case or reply that "We dont sell that type of car. "
+
+If the customer wants to buy a BMW, the agent will then ask what color they would like.
+If the customer provides a color, the agent will proceed to the final case #buy_bmw_with_color
+where it will call the tool @buy_car() to finalize the purchase 
+and reply to the customer that we are grateful for their business.
+
+By modularizing the flow in this way, the Use Case Compiler can re-enforce that the agent follows the defined flow.
+
+This feature also introduces "Cases". These are Use Cases that are only reachable via a Flow Option. 
+Unlike regular Use Cases, Cases do not have Examples nor a Description section.

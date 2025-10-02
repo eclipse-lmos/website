@@ -14,13 +14,35 @@
 
 ## ⚡ Advanced Features
 
-| **Feature** | **How it looks** | **Why it matters** |
-| --- | --- | --- |
-| **Conditionals** | `md<br>#### Solution<br><isBusinessCustomer>Provide https://example.com/business/reset<br>Provide https://example.com/reset.<isPrivateCustomer><br>` | Adjust response per customer type. |
-| **Tool Calls** | `md<br>#### Solution<br>Call @password_reset_link()! to generate a reset link.<br>` | Calls or enforces external functions. |
-| **Use Case References** | `md<br>If business customer, follow #business_customer_support<br>` | Reuse existing flows, stay modular. |
+**Conditionals**
 
----
+Similar to `if` conditionals, they let you tailor responses based on context.
+
+```
+#### Solution
+<isBusinessCustomer> Provide https://example.com/business/reset
+Provide https://example.com/reset. <isPrivateCustomer>
+```
+
+**Tool Calls**
+
+Calls or enforces external functions.
+
+```
+#### Solution
+Call @password_reset_link()! to generate a reset link.
+```
+
+**Use Case References**
+
+Reuse existing flows, stay modular.
+
+```
+#### Solution
+If business customer, follow #business_customer_support
+```
+
+----
 
 ✅ **Workflow in 15 minutes:**
 
