@@ -114,6 +114,29 @@ If the customer is a business customer, follow #business_customer_support.
 
 This keeps logic modular and reusable.
 
+## 7. Flow Options
+
+Sketch out the different ways a conversation might flow. 
+These aren’t rigid menus — the customer speaks freely, and the system uses your options as rough guides to decide what to do next.
+
+Example:
+
+```markdown
+#### Use Case: invoice_request
+Ask the customer how they want their invoice.
+
+[email] go to the case #invoice_email  
+[post] go to the case #invoice_post  
+[other] reply we only send invoices by email or post
+
+#### Case: invoice_email
+Send the invoice by email.
+
+#### Case: invoice_post
+Send the invoice by post.
+
+```
+
 ---
 
 # ✅ Summary: Learn ADL in 15 Minutes
