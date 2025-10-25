@@ -14,31 +14,73 @@
     <noscript>
         <link rel="stylesheet" href="/lmos/arc2/assets/css/noscript.css"/>
     </noscript>
+    <style>
+        .adl-nav{position:sticky;top:0;z-index:1000;background:#ffffff;border-bottom:1px solid #e6e6e6;box-shadow:none;transition:background-color .2s ease, box-shadow .2s ease, backdrop-filter .2s ease}
+        .adl-nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.04)}
+        .adl-nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+        .brand-wrap{display:flex;align-items:center}
+        .brand-logo{width:28px;height:28px;margin-right:10px;filter:grayscale(80%) brightness(.95)}
+        .adl-nav .brand{font-weight:600;letter-spacing:.02em;color:#0a6bb8;text-decoration:none}
+        .adl-nav .links a{margin-left:20px;color:#4a4a4a;text-decoration:none;opacity:.9}
+        .adl-nav .links a:hover{opacity:1;text-decoration:underline}
+        .adl-nav .links a.active{border-bottom:2px solid #1661A5;padding-bottom:2px}
+        .adl-hero .actions .button{border-color:#d0d0d0 !important}
+        .adl-hero .primary.button{background-color:#1661A5 !important;border-color:#1661A5 !important}
+        .adl-hero .primary.button:hover{filter:brightness(1.05)}
+        .code-img .code-caption{font-size:.85rem;color:#64748b;margin:0 0 .4rem .2rem}
+        .code-img img{border-radius:8px;box-shadow:0 1px 0 rgba(255,255,255,.06),0 14px 34px rgba(2,6,23,.25),0 0 36px rgba(22,97,165,.18)}
+        .adl-split{position:relative}
+        .adl-split:before{display:none}
+        .adl-split .content{position:relative;padding-right:48px;display:flex;flex-direction:column;justify-content:center}
+        .adl-split .content:after{content:"";position:absolute;right:-24px;top:40px;bottom:40px;width:1px;background:linear-gradient(transparent,rgba(255,255,255,.65),transparent);opacity:.6;pointer-events:none}
+        .adl-split .image{padding-left:48px}
+        .adl-split .image img{border-radius:10px;box-shadow:0 14px 34px rgba(2,6,23,.35)}
+        @media screen and (max-width: 980px){.adl-split .content:after{display:none}.adl-split .content,.adl-split .image{padding-left:0;padding-right:0}}
+        /* Remove Story theme white top/bottom separators for selected sections */
+        #wrapper.divided > .adl-clean:before,
+        #wrapper.divided > .adl-clean:after { display:none !important; }
+    </style>
 </head>
 <body class="is-preload">
+
+    <div class="adl-nav">
+        <div class="adl-nav-inner">
+            <div class="brand-wrap">
+                <img class="brand-logo" src="/lmos/img/lmos.svg" alt="Eclipse LMOS"/>
+                <a class="brand" href="/lmos/">Eclipse LMOS</a>
+            </div>
+            <div class="links">
+                <a href="/lmos/arc2/index.html">LMOS ARC</a>
+                <a href="/lmos/docs/category/lmos-platform/">LMOS Platform</a>
+                <a href="https://github.com/eclipse-lmos" target="_blank" rel="noopener">GitHub ↗</a>
+                <a href="https://discord.gg/zGphr3DKKx" target="_blank" rel="noopener">Discord ↗</a>
+            </div>
+        </div>
+    </div>
 
 <!-- Wrapper -->
 <div id="wrapper" class="divided">
 
     <!-- Hero -->
-    <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+    <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right adl-hero">
         <div class="content">
-            <p style="letter-spacing:.08em;text-transform:uppercase;color:#64748b;margin:0 0 .5rem 0;font-size:.9rem;">Eclipse LMOS</p>
+
             <h1 style="color:#0a6bb8;">LMOS ADL</h1>
-            <p>A structured, model-neutral language for defining reliable AI agents behaviour.</p>
-            <p class="blue-bold">For business experts, enabled by engineers.</p>
+            <p>A structured, model-neutral language and toolkit for defining and deploying reliable AI agents.</p>
+            <p class="blue-bold" style="margin-top:.5em;">For business experts, enabled by engineers.</p>
             <ul class="actions stacked">
                 <li><a href="https://adl.arcframework.dev/#/chat" class="primary button big wide">Try in Playground</a></li>
                 <li><a href="/lmos/docs/arc/adl/" class="button big wide">Learn more about ADL</a></li>
             </ul>
         </div>
         <div class="image code-img">
+
             <img src="/lmos/adl/images/adl.png" alt="ADL concept"/>
         </div>
     </section>
 
     <!-- Why ADL -->
-    <section class="spotlight style2 orient-left color5 invert content-align-left image-position-center onscroll-image-fade-in">
+    <section class="spotlight style2 orient-left color5 invert content-align-left image-position-center onscroll-image-fade-in adl-split adl-clean">
         <div class="content">
             <h2>Why ADL</h2>
             <p>ADL targets enterprise and business‑process complexity.</p>
@@ -70,7 +112,7 @@
             </ul>
         </div>
         <div class="image">
-            <img src="/lmos/adl/images/ADL-How-it-Workss.png"
+            <img src="/lmos/adl/images/ADL-How-it-Workss.png" alt="ADL diagram"/>
         </div>
     </section>
 
@@ -78,7 +120,7 @@
     
 
     <!-- Organization setup -->
-    <section class="spotlight style2 orient-left color7 invert content-align-left image-position-center onscroll-image-fade-in">
+    <section class="spotlight style2 orient-left color7 invert content-align-left image-position-center onscroll-image-fade-in adl-clean adl-split">
         <div class="content">
             <h2>Set up in your organization</h2>
             <p>Start with a simple Spring Boot app. Engineers configure once; business teams iterate on ADL.</p>
@@ -120,7 +162,7 @@
             </ul>
         </div>
         <div class="image">
-            <img src="/lmos/adl/images/ADL_Examples.png"
+            <img src="/lmos/adl/images/ADL_Examples.png" alt="ADL examples"/>
         </div>
     </section>
 
@@ -151,6 +193,18 @@
 <script src="/lmos/arc2/assets/js/util.js"></script>
 <script src="/lmos/arc2/assets/js/main.js"></script>
 <script src="/lmos/arc2/assets/js/cookieconsent.min.js"></script>
+<script>
+  (function(){
+    var nav=document.querySelector('.adl-nav');
+    function onScroll(){
+      if(window.scrollY>4){nav.classList.add('scrolled');} else {nav.classList.remove('scrolled');}
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
+    var arc=document.querySelector('.adl-nav .links a[href="/lmos/arc2/index.html"]');
+    if(arc && location.pathname.indexOf('/arc2/')!==-1){arc.classList.add('active');}
+  })();
+</script>
 
 </body>
 </html>
