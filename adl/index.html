@@ -1,0 +1,212 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Eclipse LMOS — ADL</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <link rel="stylesheet" href="/lmos/arc2/assets/css/main.css"/>
+    <link rel="stylesheet" href="/lmos/arc2/assets/css/cookieconsent.min.css"/>
+    <noscript>
+        <link rel="stylesheet" href="/lmos/arc2/assets/css/noscript.css"/>
+    </noscript>
+    <style>
+        .adl-nav{position:sticky;top:0;z-index:1000;background:#ffffff;border-bottom:1px solid #e6e6e6;box-shadow:none;transition:background-color .2s ease, box-shadow .2s ease, backdrop-filter .2s ease}
+        .adl-nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.04)}
+        .adl-nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+        .brand-wrap{display:flex;align-items:center}
+        .brand-logo{width:28px;height:28px;margin-right:10px;filter:grayscale(80%) brightness(.95)}
+        .adl-nav .brand{font-weight:600;letter-spacing:.02em;color:#0a6bb8;text-decoration:none}
+        .adl-nav .links a{margin-left:20px;color:#4a4a4a;text-decoration:none;opacity:.9}
+        .adl-nav .links a:hover{opacity:1;text-decoration:underline}
+        .adl-nav .links a.active{border-bottom:2px solid #1661A5;padding-bottom:2px}
+        .adl-hero .actions .button{border-color:#d0d0d0 !important}
+        .adl-hero .primary.button{background-color:#1661A5 !important;border-color:#1661A5 !important}
+        .adl-hero .primary.button:hover{filter:brightness(1.05)}
+        .code-img .code-caption{font-size:.85rem;color:#64748b;margin:0 0 .4rem .2rem}
+        .code-img img{border-radius:8px;box-shadow:0 1px 0 rgba(255,255,255,.06),0 14px 34px rgba(2,6,23,.25),0 0 36px rgba(22,97,165,.18)}
+        .adl-split{position:relative}
+        .adl-split:before{display:none}
+        .adl-split .content{position:relative;padding-right:48px;display:flex;flex-direction:column;justify-content:center}
+        .adl-split .content:after{content:"";position:absolute;right:-24px;top:40px;bottom:40px;width:1px;background:linear-gradient(transparent,rgba(255,255,255,.65),transparent);opacity:.6;pointer-events:none}
+        .adl-split .image{padding-left:48px}
+        .adl-split .image img{border-radius:10px;box-shadow:0 14px 34px rgba(2,6,23,.35)}
+        @media screen and (max-width: 980px){.adl-split .content:after{display:none}.adl-split .content,.adl-split .image{padding-left:0;padding-right:0}}
+        /* Remove Story theme white top/bottom separators for selected sections */
+        #wrapper.divided > .adl-clean:before,
+        #wrapper.divided > .adl-clean:after { display:none !important; }
+    </style>
+</head>
+<body class="is-preload">
+
+    <div class="adl-nav">
+        <div class="adl-nav-inner">
+            <div class="brand-wrap">
+                <img class="brand-logo" src="/lmos/img/lmos.svg" alt="Eclipse LMOS"/>
+                <a class="brand" href="/lmos/">Eclipse LMOS</a>
+            </div>
+            <div class="links">
+                <a href="/lmos/arc2/index.html">LMOS ARC</a>
+                <a href="/lmos/docs/category/lmos-platform/">LMOS Platform</a>
+                <a href="https://github.com/eclipse-lmos" target="_blank" rel="noopener">GitHub ↗</a>
+                <a href="https://discord.gg/zGphr3DKKx" target="_blank" rel="noopener">Discord ↗</a>
+            </div>
+        </div>
+    </div>
+
+<!-- Wrapper -->
+<div id="wrapper" class="divided">
+
+    <!-- Hero -->
+    <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right adl-hero">
+        <div class="content">
+
+            <h1 style="color:#0a6bb8;">LMOS ADL</h1>
+            <p>A structured, model-neutral language and toolkit for defining and deploying reliable AI agents.</p>
+            <p class="blue-bold" style="margin-top:.5em;">For business experts, enabled by engineers.</p>
+            <ul class="actions stacked">
+                <li><a href="https://adl.arcframework.dev/#/chat" class="primary button big wide">Try in Playground</a></li>
+                <li><a href="/lmos/docs/arc/adl/" class="button big wide">Learn more about ADL</a></li>
+            </ul>
+        </div>
+        <div class="image code-img">
+
+            <img src="/lmos/adl/images/adl.png" alt="ADL concept"/>
+        </div>
+    </section>
+
+    <!-- Why ADL -->
+    <section class="spotlight style2 orient-left color5 invert content-align-left image-position-center onscroll-image-fade-in adl-split adl-clean">
+        <div class="content">
+            <h2>Why ADL</h2>
+            <p>ADL targets enterprise and business‑process complexity.</p>
+            <ul>
+                <li>Lets business author flows & iterates quickly.engineers wire tools, policies, and data</li>
+                <li>Engineers wire tools, policies, and data</li>
+                <li>Replaces fragile prompting with governed, versionable Agent Business definitions</li>
+                <li>Built‑in validation, fallbacks, and recovery for reliable operations</li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="/lmos/adl/images/ADl-in-Action.png" alt="ADL in Playground"/>
+        </div>
+    </section>
+
+    <!-- What is ADL -->
+    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+        <div class="content">
+            <h2>What is ADL?</h2>
+            <p>
+                ADL is a declarative, model-agnostic language for defining agent behavior. It separates business logic
+                from prompts, making agents easier to build, change, and trust.
+            </p>
+            <p>
+                Think of it as the SQL of agent behavior: a shared language that standardizes how agents think, act, and recover.
+            </p>
+            <ul class="actions stacked">
+                <li><a href="/lmos/docs/arc/adl/" class="button">Read the docs</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="/lmos/adl/images/ADL-How-it-Workss.png" alt="ADL diagram"/>
+        </div>
+    </section>
+
+    
+    
+
+    <!-- Organization setup -->
+    <section class="spotlight style2 orient-left color7 invert content-align-left image-position-center onscroll-image-fade-in adl-clean adl-split">
+        <div class="content">
+            <h2>Set up in your organization</h2>
+            <p>Start with a simple Spring Boot app. Engineers configure once; business teams iterate on ADL.</p>
+            <h3>For engineers</h3>
+            <ul>
+                <li>Bootstrap with the <a href="https://github.com/eclipse-lmos/arc-spring-init">Arc Spring Starter</a></li>
+                <li>Wire tools/APIs, policies, and data sources</li>
+                <li>Expose ADL Playground at <code>/chat/index.html</code></li>
+            </ul>
+            <h3>For business teams</h3>
+            <ul>
+                <li>Access ADL Playground exposed by engineering team</code></li>
+                <li>Create ADL's for your agent usecases</li>
+                <li>Define steps, solutions, mock tools and fallbacks — no code</li>
+                <li>Test in Chat and iterate quickly</li>
+            </ul>
+            <p><strong>Note:</strong> Engineers can wire APIs or system tools; business users can mock tools. Once initialized, business teams own their use cases.</p>
+
+
+            <ul class="actions stacked">
+                <li><a href="https://github.com/eclipse-lmos/arc-spring-init" class="button">ADL Starter for Engineers</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="/lmos/adl/images/workflow-ADl.png" alt="ADL workflow "/>
+        </div>
+    </section>
+
+    <!-- Try it -->
+    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+
+        <div class="content">
+            <h2>Try it now</h2>
+            <p>
+                Open the Playground to test ADL interactively. Create a UseCase, validate responses, and iterate fast.
+            </p>
+            <ul class="actions stacked">
+                <li><a href="https://adl.arcframework.dev/#/chat" class="button">Open Playground</a></li>
+            </ul>
+        </div>
+        <div class="image">
+            <img src="/lmos/adl/images/ADL_Examples.png" alt="ADL examples"/>
+        </div>
+    </section>
+
+    <footer class="wrapper style1 invert align-center">
+        <div class="inner">
+            <ul class="icons">
+                <li><a href="https://www.eclipse.org" class="  style2"><span class="label">Eclipse Foundation Website</span></a></li>
+                <li><a href="https://www.eclipse.org/legal/privacy/" class="  style2"><span class="label">Privacy Policy</span></a></li>
+                <li><a href="https://www.eclipse.org/legal/terms-of-use/" class="  style2"><span class="label">Website Terms of Use</span></a></li>
+                <li><a href="https://www.eclipse.org/legal/compliance/" class="  style2"><span class="label">Compliance</span></a></li>
+                <li><a href="https://www.eclipse.org/legal/" class="style2"><span class="label">Legal</span></a></li>
+            </ul>
+            <p>Copyright © Eclipse Foundation AISBL. All Rights Reserved. <img
+                    src="https://eclipse.dev/lmos/img/incubation_darkbg.png" alt="Eclipse Logo"
+                    style="float:right;width:60px;margin-left:20px;"/></p>
+            <p>Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="/lmos/arc2/assets/js/jquery.min.js"></script>
+<script src="/lmos/arc2/assets/js/jquery.scrollex.min.js"></script>
+<script src="/lmos/arc2/assets/js/jquery.scrolly.min.js"></script>
+<script src="/lmos/arc2/assets/js/browser.min.js"></script>
+<script src="/lmos/arc2/assets/js/breakpoints.min.js"></script>
+<script src="/lmos/arc2/assets/js/util.js"></script>
+<script src="/lmos/arc2/assets/js/main.js"></script>
+<script src="/lmos/arc2/assets/js/cookieconsent.min.js"></script>
+<script>
+  (function(){
+    var nav=document.querySelector('.adl-nav');
+    function onScroll(){
+      if(window.scrollY>4){nav.classList.add('scrolled');} else {nav.classList.remove('scrolled');}
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
+    var arc=document.querySelector('.adl-nav .links a[href="/lmos/arc2/index.html"]');
+    if(arc && location.pathname.indexOf('/arc2/')!==-1){arc.classList.add('active');}
+  })();
+</script>
+
+</body>
+</html>
+
+
