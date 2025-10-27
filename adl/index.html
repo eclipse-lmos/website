@@ -17,10 +17,11 @@
     <style>
         .adl-nav{position:sticky;top:0;z-index:1000;background:#ffffff;border-bottom:1px solid #e6e6e6;box-shadow:none;transition:background-color .2s ease, box-shadow .2s ease, backdrop-filter .2s ease}
         .adl-nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.04)}
-        .adl-nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+        .adl-nav-inner{width:100%;max-width:none;margin:0;padding:14px 24px;box-sizing:border-box;display:flex;align-items:center;gap:20px}
         .brand-wrap{display:flex;align-items:center}
         .brand-logo{width:28px;height:28px;margin-right:10px;filter:grayscale(80%) brightness(.95)}
         .adl-nav .brand{font-weight:600;letter-spacing:.02em;color:#0a6bb8;text-decoration:none}
+        .adl-nav .links{margin-left:auto;display:flex;align-items:center}
         .adl-nav .links a{margin-left:20px;color:#4a4a4a;text-decoration:none;opacity:.9}
         .adl-nav .links a:hover{opacity:1;text-decoration:underline}
         .adl-nav .links a.active{border-bottom:2px solid #1661A5;padding-bottom:2px}
@@ -39,6 +40,24 @@
         /* Remove Story theme white top/bottom separators for selected sections */
         #wrapper.divided > .adl-clean:before,
         #wrapper.divided > .adl-clean:after { display:none !important; }
+        .adl-full .image{display:flex;align-items:center;justify-content:center;overflow:visible !important}
+        .adl-full .image:before{display:none !important}
+        .adl-full .image img{width:100%;height:auto;object-fit:contain}
+        @media screen and (min-width: 981px){.adl-full .image img{max-height:520px}}
+        /* Ensure full-bleed, unclipped image in the ADL-in-Action (Why ADL) section */
+        .adl-full .content:after{display:none !important}
+        .adl-full .image{display:block;align-items:unset;justify-content:unset;padding-left:0 !important;overflow:visible !important}
+        .adl-full .image:before{display:none !important}
+        .adl-full .image img{display:block;width:100%;max-width:100%;height:auto;object-fit:contain;border-radius:0 !important;box-shadow:none !important}
+        @media screen and (min-width: 981px){.adl-full .image img{max-height:none}}
+        /* Plain image wrapper to avoid theme cropping */
+        .adl-image { margin: 0; }
+        .adl-image img { display: block; width: 100%; height: auto; }
+        @media (min-width: 981px) { .adl-image img { max-height: 520px; object-fit: contain; } }
+        /* Align Why ADL with vertical divider and center the plain figure */
+        .adl-full .content:after{display:block !important}
+        .adl-image{display:flex;align-items:center;justify-content:center;padding-left:48px}
+        @media screen and (max-width: 980px){.adl-image{padding-left:0}}
     </style>
 </head>
 <body class="is-preload">
@@ -80,7 +99,7 @@
     </section>
 
     <!-- Why ADL -->
-    <section class="spotlight style2 orient-left color5 invert content-align-left image-position-center onscroll-image-fade-in adl-split adl-clean">
+    <section class="spotlight style2 orient-left color5 invert content-align-left image-position-center onscroll-image-fade-in adl-split adl-clean adl-full">
         <div class="content">
             <h2>Why ADL</h2>
             <p>ADL targets enterprise and business‑process complexity.</p>
@@ -91,9 +110,9 @@
                 <li>Built‑in validation, fallbacks, and recovery for reliable operations</li>
             </ul>
         </div>
-        <div class="image">
-            <img src="/lmos/adl/images/ADl-in-Action.png" alt="ADL in Playground"/>
-        </div>
+        <figure class="adl-image">
+            <img src="/lmos/adl/images/ADL-INACTION.png" alt="ADL in action"/>
+        </figure>
     </section>
 
     <!-- What is ADL -->
