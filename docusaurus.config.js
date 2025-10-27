@@ -81,6 +81,11 @@ const config = {
             label: 'ARC',
           },
           {
+            to: '/adl/index.html',
+            position: 'left',
+            label: 'ADL',
+          },
+          {
             type: 'docSidebar',
             sidebarId: 'protocolSidebar',
             position: 'left',
