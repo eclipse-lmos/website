@@ -81,7 +81,7 @@ const config = {
             label: 'ARC',
           },
           {
-            to: '/adl/index.html',
+            to: 'https://eclipse.dev/lmos/adl/index.html',
             position: 'left',
             label: 'ADL',
           },
