@@ -15,12 +15,13 @@
         <link rel="stylesheet" href="assets/css/noscript.css"/>
     </noscript>
     <style>
-        .adl-nav{position:sticky;top:0;z-index:1000;background:#ffffff;border-bottom:1px solid #e6e6e6;box-shadow:none}
+        .adl-nav{position:sticky;top:0;z-index:1000;background:#ffffff;border-bottom:1px solid #e6e6e6;box-shadow:none;transition:background-color .2s ease, box-shadow .2s ease, backdrop-filter .2s ease}
         .adl-nav.scrolled{background:rgba(255,255,255,.85);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.04)}
-        .adl-nav-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+        .adl-nav-inner{width:100%;max-width:none;margin:0;padding:14px 24px;box-sizing:border-box;display:flex;align-items:center;gap:20px}
         .brand-wrap{display:flex;align-items:center}
         .brand-logo{width:28px;height:28px;margin-right:10px;filter:grayscale(80%) brightness(.95)}
         .adl-nav .brand{font-weight:600;letter-spacing:.02em;color:#0a6bb8;text-decoration:none}
+        .adl-nav .links{margin-left:auto;display:flex;align-items:center}
         .adl-nav .links a{margin-left:20px;color:#4a4a4a;text-decoration:none;opacity:.9}
         .adl-nav .links a:hover{opacity:1;text-decoration:underline}
         .adl-nav .links a.active{border-bottom:2px solid #1661A5;padding-bottom:2px}
