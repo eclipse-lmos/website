@@ -21,7 +21,20 @@ Similar to `if` conditionals, they let you tailor responses based on context.
 ```
 #### Solution
 <isBusinessCustomer> Provide https://example.com/business/reset
-Provide https://example.com/reset. <isPrivateCustomer>
+
+<isPrivateCustomer>Only available when the isPrivateCustomer flags is true.
+
+<!isPrivateCustomer>Only available when the isPrivateCustomer flags is NOT true.
+
+<isBeta, isBusiness> Only available when the isBeta and isBusiness flags are true.
+
+<isBusiness>
+   Multiple lines
+   Multiple lines
+</>
+
+<regex:.*business.*>Only available when the user input matches the regex ".*business.*".
+
 ```
 
 **Tool Calls**
@@ -30,6 +43,7 @@ Calls or enforces external functions.
 
 ```
 #### Solution
+// by adding ! the systen will make sure the tool is called.
 Call @password_reset_link()! to generate a reset link.
 ```
 

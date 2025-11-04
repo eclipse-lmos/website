@@ -98,7 +98,7 @@ If the Agent has access to tools, such as `send_password_reset_link`, these woul
 
 `Conditionals` is a feature that enables us to omit lines from the use cases based on certain conditions.
 `Conditionals` are defined in brackets, for example, `<condition1, condition2>`.
-Each line containing such a `conditional` is filtered out before being provided to the Agent unless all conditions
+Each line containing such a `conditional` is filtered out before being provided to the LLM unless all conditions
 are met. `Conditionals` can be placed anywhere within the line.
 
 Example:
@@ -134,6 +134,25 @@ Provide the webpage https://www.example.com/business/reset-password.
 **Important** `Conditionals` are only supported in the body of `Steps`, `Solution`,
 `Alternative Solution` and `Fallback Solution`.
 
+As mentioned, conditionals are applied to a single line.
+If a conditional should span multiple line, the `</>` tag can be used to denote the end of a conditional.
+
+```markdown
+### UseCase: password_reset
+#### Description
+Customer has forgotten their password and needs to reset it.
+
+#### Solution
+<isBusinessCustomer> 
+ Some solution for business customers.
+ Some more solutions for business customers.
+</>
+
+<isPrivateCustomer> 
+ Some solution for private customers.
+ Some more solutions for private customers.
+</>
+```
 
 #### Multiple Conditionals
 
@@ -167,6 +186,24 @@ Customer has forgotten their password and needs to reset it.
 ```
 
 In this case, the line is only filtered when the `isBusinessCustomer` is set.
+
+
+#### Regex Conditionals
+
+Conditionals can also contain regex expressions that are matched against the input.
+Regex conditionals are "true" when the input from the user matches the regex provided in the conditional.
+
+```markdown
+### UseCase: password_reset
+#### Description
+Customer has forgotten their password and needs to reset it.
+
+#### Solution
+<regex:.*business.*> Provide this line if the conditional is not set.
+
+```
+
+In this case, the line is only submitted to the LLM when the input contains the phrase "business". 
 
 
 ### Comments
@@ -234,7 +271,7 @@ If the customer is a business customer, the use case #business_customer_support 
 
 Flow Options enables Use Case authors to express decision trees within the Use Case markdown.
 
-To achieve this, the Use Case writer can simply add so called Flow Options to the bottom of any Use Case as follows:
+To achieve this, the Use Case writer can simply add so-called Flow Options to the bottom of any Use Case as follows:
 
 ```markdown
 [option 1] command
