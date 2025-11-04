@@ -113,7 +113,8 @@ Customer has forgotten their password and needs to reset it.
 Provide the webpage https://www.example.com/reset-password.<isPrivateCustomer>
 ```
 
-The conditions are passed to the `useCases` function as a set of strings.
+The conditions are defined outside of the use cases. Depending on the implementation, how conditionals are provided can vary.
+When using the `useCases` function in ARC agent the conditionals are provided as a parameter.
 
 ```kts
  useCases("use_cases.md", conditions = setOf("isBusinessCustomer"))
@@ -132,6 +133,57 @@ Provide the webpage https://www.example.com/business/reset-password.
 
 **Important** `Conditionals` are only supported in the body of `Steps`, `Solution`,
 `Alternative Solution` and `Fallback Solution`.
+
+
+#### Multiple Conditionals
+
+Multiple conditionals can be defined for each line. In this case all conditionals must be true for the line to be added.
+
+```markdown
+### UseCase: password_reset
+#### Description
+Customer has forgotten their password and needs to reset it.
+
+#### Solution
+<isBusinessCustomer, isBeta> Some solution for business customers.
+
+```
+
+In this case, the line is only supplied to the LLM when the conditionals
+isBusinessCustomer and isBeta is set.
+
+#### Negative Conditionals
+
+Any conditional can be negated by adding a "!".
+
+```markdown
+### UseCase: password_reset
+#### Description
+Customer has forgotten their password and needs to reset it.
+
+#### Solution
+<!isBusinessCustomer> Provide this line if the conditional is not set.
+
+```
+
+In this case, the line is only filtered when the `isBusinessCustomer` is set.
+
+
+### Comments
+
+Comments can be added to any part of the ADL use cases using "//".
+
+```markdown
+### UseCase: password_reset
+#### Description
+// this is a comment
+Customer has forgotten their password and needs to reset it.
+
+#### Solution
+// this is a comment.
+Provide the webpage https://www.example.com/reset-password.
+
+```
 
 
 ### Tool calls
