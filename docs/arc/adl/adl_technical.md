@@ -230,7 +230,7 @@ If the customer is a business customer, the use case #business_customer_support 
 
 ```
 
-### Flow Options (BETA)
+### Flow Options (WIP)
 
 Flow Options enables Use Case authors to express decision trees within the Use Case markdown.
 
