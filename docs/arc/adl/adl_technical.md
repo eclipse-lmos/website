@@ -137,7 +137,7 @@ Provide the webpage https://www.example.com/business/reset-password.
 
 #### Multiple Conditionals
 
-Multiple conditionals can be defined for each line. In this case all conditionals must be true for the line to be added.
+Multiple conditionals can be defined for each line. In this case, all conditionals must be true for the line to be submitted to the LLM.
 
 ```markdown
 ### UseCase: password_reset
