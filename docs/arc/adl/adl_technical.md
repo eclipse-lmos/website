@@ -259,7 +259,7 @@ is returned when the use case is triggered.
 Customer has forgotten their password and needs to reset it.
 
 #### Solution
-"This extact string will be the output."
+"This exact string will be the output."
 
 ```
 

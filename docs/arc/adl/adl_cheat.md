@@ -58,6 +58,17 @@ If business customer, follow #business_customer_support
 
 ----
 
+**Static response**
+
+```markdown
+
+#### Solution
+"This exact string will be the output."
+
+```
+
+----
+
 ✅ **Workflow in 15 minutes:**
 
 1. Define a **Use Case**.
