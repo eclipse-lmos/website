@@ -187,6 +187,39 @@ Customer has forgotten their password and needs to reset it.
 
 In this case, the line is only filtered when the `isBusinessCustomer` is set.
 
+#### "Or" Conditionals
+
+"Or" conditionals can be defined by using "or" between the conditionals.
+
+```markdown
+### UseCase: password_reset
+#### Description
+Customer has forgotten their password and needs to reset it.
+
+#### Solution
+<isMonday or isTuesday> Provide this line if either isMonday or isTuesday is set.
+
+```
+
+In this case, the line is submitted to if either `isMonday` or `isTuesday` is set.
+These statements can have any number of "or" conditionals, for example, `<cond1 or cond2 or cond3 or cond4>`.
+
+#### "Else" Conditional
+
+The "else" conditional is true when none of the other conditionals are true.
+
+```markdown
+### UseCase: password_reset
+#### Description
+Customer has forgotten their password and needs to reset it.
+
+#### Solution
+<isMonday> Provide this line if either isMonday is set.
+<isTuesday> Provide this line if either isTuesday is set.
+<else> Provide this line if neither isMonday nor isTuesday is not set.
+
+```
+
 
 #### Regex Conditionals
 
