@@ -238,6 +238,43 @@ Customer has forgotten their password and needs to reset it.
 
 In this case, the line is only submitted to the LLM when the input contains the phrase "business". 
 
+### Executable Code Blocks
+
+Use cases can include executable code blocks that run on every request.
+This allows for dynamic generation of responses based on real-time data or computations.
+
+#### Basic Syntax
+
+Code blocks are defined using standard markdown code fence syntax with a language identifier:
+
+````markdown
+### UseCase: current_time
+#### Description
+The customer wants to know the current time.
+
+#### Solution
+The current time is:
+```kotlin
+ time()
+```
+````
+
+#### Supported Languages
+
+The system uses the Java ServiceLoader mechanism to load available code runners.
+Currently supported languages include:
+
+- **Kotlin** - Built-in support via `arc-kotlin-runner` module.
+
+Other languages can be added by implementing the `CodeBlockRunner` interface
+and registering it using the ServiceLoader mechanism.
+
+#### How It Works
+
+1. The ADL compiler detects code blocks within use cases
+2. The appropriate code runner is selected based on the language identifier
+3. The code is executed in a sandboxed environment with timeout protection
+4. The result replaces the code block in the compiled output
 
 ### Comments
 
