@@ -2,14 +2,16 @@
 
 From version 0.122.0
 
-The Model Context Protocol (MCP) is an open protocol that enables the 
-integration of LLM Agents with external tools and data sources. 
+The Model Context Protocol (MCP) is an open protocol that enables the
+integration of LLM Agents with external tools and data sources.
+
+The following shows how the Arc Framework running in Spring Boot can be configured to utilize MCP.
 
 The Arc Framework makes use of the MCP in the following ways:
 
- - Integrates MPC hosted tools seamlessly into Arc Agents.
- - Enables the pulling of prompts from MCP enabled servers.
- - Exposes Arc Functions as MCP tools.
+- Integrates MPC hosted tools seamlessly into Arc Agents.
+- Enables the pulling of prompts from MCP enabled servers.
+- Exposes Arc Functions as MCP tools.
 
 ![MCP Diagram](/img/mcp.png)
 
@@ -43,7 +45,7 @@ agent {
 ### Arc as a MCP Server
 
 Arc can also function as a MCP server, exposing its tools to other agents.
-A pre-requisite for this is that Arc is running in Spring Boot server 
+A pre-requisite for this is that Arc is running in Spring Boot server
 and the Arc Spring Boot Starter is included in the project.
 
 Once that is set up, simply enable the feature by adding the following configuration to your `application.yml` file:
@@ -61,5 +63,27 @@ and add the Spring Boot MCP library to your project:
 implementation("org.springframework.ai:spring-ai-mcp-server-webmvc-spring-boot-starter:1.0.0-M6")
 ```
 
-See https://docs.spring.io/spring-ai/reference/api/mcp/mcp-server-boot-starter-docs.html#_webflux_server_configuration 
+See https://docs.spring.io/spring-ai/reference/api/mcp/mcp-server-boot-starter-docs.html#_webflux_server_configuration
 for some configuration options.
+
+### Error Handling with McpToolErrorHandler
+
+Starting from version 0.122.0, the MCP configuration supports integration of a custom error handler for tool calls.
+
+The `McpToolErrorHandler` interface allows you to handle errors that occur during a tool call and return custom error messages.
+
+**Example integration:**
+
+```kotlin
+@Bean
+fun myErrorHandler(): McpToolErrorHandler = object : McpToolErrorHandler {
+    override fun handleToolError(toolName: String, error: Exception): McpSchema.CallToolResult? {
+        // Custom error handling, e.g. logging or specific error message
+        return McpSchema.CallToolResult("Error in tool $toolName: ${error.message}", true)
+    }
+}
+```
+
+When an error occurs during a tool call, the system first checks if an error handler is present.#
+If so, its `handleToolError` method is called. If it returns `null`, the default error handling is used.
+
