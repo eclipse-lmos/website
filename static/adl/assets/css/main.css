@@ -5818,7 +5818,7 @@ input, select, textarea {
 	}
 
 	.spotlight.invert .image {
-		background-color: rgba(255, 255, 255, 0.125);
+		 background-color: transparent;
 	}
 
 	.spotlight.style3 .image {
@@ -8525,7 +8525,7 @@ input, select, textarea {
 			}
 
 			#wrapper > .invert .spotlight .image {
-				background-color: rgba(255, 255, 255, 0.125);
+			    background-color: transparent;
 			}
 
 			#wrapper > .invert .spotlight.style3 .image {
