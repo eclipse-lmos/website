@@ -593,6 +593,10 @@ docker run -p 8080:8080 \
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
                         Styled Output
                     </button>
+                    <button onclick="scrollToFeature('must-command')"
+                            class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
+                        Must Command
+                    </button>
                 </div>
 
                 <div class="flex overflow-x-auto gap-8 pb-6 snap-x relative" id="features-scroll-container">
@@ -891,7 +895,7 @@ docker run -p 8080:8080 \
                         </div>
                     </div>
 
-                    <div class="min-w-[500px] snap-start">
+                    <div class="min-w-[500px] snap-start border-r border-nature-border pr-8">
                         <h4 id="styled-output" class="font-bold text-nature-dark mb-2">Styled Output</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
                             <div class="text-nature-accent font-bold mb-1">UseCase: current_news</div>
@@ -917,6 +921,30 @@ docker run -p 8080:8080 \
                         <p class="text-sm text-stone-600 mb-2">Clients displaying this content should support Tailwind CSS to render the styles correctly.</p>
                         <p class="text-sm text-stone-600 mb-2">The template language Mustache is used for placeholders, allowing for simple variable interpolation. </p>
                         <p class="text-sm text-stone-600 mb-2">Html comments can be used to inform the system how to extract the variables form the generated output. </p>
+                    </div>
+
+                    <div class="min-w-[500px] snap-start">
+                        <h4 id="must-command" class="font-bold text-nature-dark mb-2">The MUST Command</h4>
+                        <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
+                            <div class="text-nature-accent font-bold mb-1">UseCase: secure_password</div>
+                            <div class="text-nature-light font-bold mb-1">Description</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
+                                Customer wants to set a new password.
+                            </div>
+                            <div class="text-nature-light font-bold mb-1">Solution</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700">
+                                 Use the <span class="text-nature-accent">@set_password()</span> tool to set the new password.<br>
+                                 You <span class="text-nature-accent">MUST</span> inform the customer that updating their password will take up to 24 hours to propagate across all systems.<br>
+                            </div>
+                        </div>
+                        <br>
+                        <p class="text-sm text-stone-600 mb-2">Precision in language is crucial for defining agent behavior. While "should" or "can" imply optionality, "MUST" is a definitive directive. In ADL, "MUST" is a reserved keyword that signifies a mandatory requirement.</p>
+                        <p class="text-sm text-stone-600 mb-2">The ADL Engine extracts these "MUST" instructions to:</p>
+                        <ul class="text-sm text-stone-600 space-y-1 list-disc ml-4 marker:text-nature-primary">
+                            <li>Reinforce agent behavior by prioritizing these instructions in the system prompt.</li>
+                            <li>Generate automatic evaluation criteria to verify that the output adheres to these mandatory constraints.</li>
+                            <li>Ensure critical business logic is never bypassed.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
