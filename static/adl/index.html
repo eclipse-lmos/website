@@ -85,6 +85,29 @@ SPDX-License-Identifier: CC-BY-4.0
             animation: slideUpFade 0.8s ease-out forwards;
             animation-delay: 0.5s; /* Delay so it appears after the main content */
         }
+
+        /* Supercharge Highlight Animation */
+        @keyframes highlight {
+            0%, 80% {
+                background-size: 0% 100%;
+                color: inherit;
+            }
+            10%, 70% {
+                background-size: 100% 100%;
+                color: #ffffff; /* Text turns white for better contrast on highlight */
+            }
+        }
+
+        .supercharge-highlight {
+            background-image: linear-gradient(120deg, #3a5a40 0%, #3a5a40 100%); /* nature-primary */
+            background-repeat: no-repeat;
+            background-size: 0% 100%;
+            background-position: 0 88%; /* Lower it slightly so it looks like an underline/highlight */
+            padding: 0 4px;
+            animation: highlight 8s ease-in-out infinite; /* 5s total cycle */
+            animation-delay: 3s;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body class="font-sans text-stone-600 antialiased selection:bg-nature-light selection:text-white bg-nature-page">
@@ -126,7 +149,7 @@ SPDX-License-Identifier: CC-BY-4.0
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
             <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
                 <h1 class="text-4xl tracking-tight font-extrabold text-nature-dark sm:text-5xl md:text-6xl">
-                    <span class="block">Supercharge your</span>
+                    <span class="block"><span class="supercharge-highlight">Supercharge</span> your</span>
                     <span class="block text-nature-accent accent-glow">Prompt Engineering</span>
                 </h1>
                 <p class="mt-3 text-base text-stone-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
@@ -139,7 +162,7 @@ SPDX-License-Identifier: CC-BY-4.0
                     </p>
                     <div class="mt-5 sm:flex sm:justify-center lg:justify-start gap-4">
                         <a href="#usecases"
-                           class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-nature-primary hover:bg-nature-light md:py-4 md:text-lg transition shadow-lg shadow-nature-primary/20">
+                           class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-nature-primary hover:bg-nature-light md:py-4 md:text-lg transition">
                             Learn ADL
                         </a>
                         <a href="#run-adl-server"
