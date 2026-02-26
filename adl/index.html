@@ -68,9 +68,50 @@ SPDX-License-Identifier: CC-BY-4.0
         .accent-glow {
             text-shadow: 0 0 20px rgba(212, 163, 115, 0.2);
         }
+
+        /* Animation for the News Card */
+        @keyframes slideUpFade {
+             from {
+                 opacity: 0;
+                 transform: translateY(20px);
+             }
+             to {
+                 opacity: 1;
+                 transform: translateY(0);
+             }
+        }
+
+        .animate-slide-up {
+            animation: slideUpFade 0.8s ease-out forwards;
+            animation-delay: 0.5s; /* Delay so it appears after the main content */
+        }
+
+        /* Supercharge Highlight Animation */
+        @keyframes highlight {
+            0%, 80% {
+                background-size: 0% 100%;
+                color: inherit;
+            }
+            10%, 70% {
+                background-size: 100% 100%;
+                color: #ffffff; /* Text turns white for better contrast on highlight */
+            }
+        }
+
+        .supercharge-highlight {
+            background-image: linear-gradient(120deg, #3a5a40 0%, #3a5a40 100%); /* nature-primary */
+            background-repeat: no-repeat;
+            background-size: 0% 100%;
+            background-position: 0 88%; /* Lower it slightly so it looks like an underline/highlight */
+            padding: 0 4px;
+            animation: highlight 8s ease-in-out infinite; /* 5s total cycle */
+            animation-delay: 3s;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body class="font-sans text-stone-600 antialiased selection:bg-nature-light selection:text-white bg-nature-page">
+
 
 <!-- Navbar -->
 <nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-nature-page/90 border-b border-nature-border">
@@ -108,7 +149,7 @@ SPDX-License-Identifier: CC-BY-4.0
         <div class="lg:grid lg:grid-cols-12 lg:gap-8">
             <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
                 <h1 class="text-4xl tracking-tight font-extrabold text-nature-dark sm:text-5xl md:text-6xl">
-                    <span class="block">Supercharge your</span>
+                    <span class="block"><span class="supercharge-highlight">Supercharge</span> your</span>
                     <span class="block text-nature-accent accent-glow">Prompt Engineering</span>
                 </h1>
                 <p class="mt-3 text-base text-stone-600 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
@@ -121,7 +162,7 @@ SPDX-License-Identifier: CC-BY-4.0
                     </p>
                     <div class="mt-5 sm:flex sm:justify-center lg:justify-start gap-4">
                         <a href="#usecases"
-                           class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-nature-primary hover:bg-nature-light md:py-4 md:text-lg transition shadow-lg shadow-nature-primary/20">
+                           class="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-nature-primary hover:bg-nature-light md:py-4 md:text-lg transition">
                             Learn ADL
                         </a>
                         <a href="#run-adl-server"
@@ -129,6 +170,38 @@ SPDX-License-Identifier: CC-BY-4.0
                             Try ADL Studio
                         </a>
                     </div>
+
+                    <!-- In the News Section - Animated Card -->
+                    <div class="mt-8 transform transition-all duration-1000 ease-out translate-y-4 opacity-0 animate-slide-up">
+                        <div class="bg-white/50 backdrop-blur-sm rounded-xl border border-stone-200 p-4 shadow-sm hover:shadow-md transition-shadow">
+                             <div class="flex items-center gap-2 mb-3">
+                                <div class="w-2 h-2 rounded-full bg-nature-primary animate-pulse"></div>
+                                <span class="text-xs font-bold text-nature-dark uppercase tracking-wider">In the news</span>
+                            </div>
+
+                            <div class="flex flex-wrap gap-3">
+                                <a href="https://newsroom.eclipse.org/news/announcements/eclipse-lmos-redefines-agentic-ai-industry%E2%80%99s-first-open-agent-definition"
+                                   target="_blank"
+                                   class="group flex items-center gap-2 px-3 py-1.5 bg-white rounded-md border border-stone-100 shadow-sm hover:border-nature-primary/30 hover:shadow transition">
+                                    <span class="bg-nature-dark text-white text-[9px] font-bold px-1.5 py-0.5 rounded">PRESS</span>
+                                    <span class="text-sm text-stone-600 group-hover:text-nature-primary transition">Eclipse Foundation</span>
+                                </a>
+
+                                <a href="https://thenewstack.io/eclipse-opens-up-enterprise-ai-agent-development-with-adl/"
+                                   target="_blank"
+                                   class="group flex items-center gap-2 px-3 py-1.5 bg-white rounded-md border border-stone-100 shadow-sm hover:border-nature-primary/30 hover:shadow transition">
+                                    <span class="text-sm text-stone-600 group-hover:text-nature-primary transition">The New Stack</span>
+                                </a>
+
+                                <a href="https://www.heise.de/news/Eclipse-ADL-Standardisierte-Sprache-fuer-Entwurf-und-Steuerung-von-KI-Agenten-10962462.html"
+                                   target="_blank"
+                                   class="group flex items-center gap-2 px-3 py-1.5 bg-white rounded-md border border-stone-100 shadow-sm hover:border-nature-primary/30 hover:shadow transition">
+                                    <span class="text-sm text-stone-600 group-hover:text-nature-primary transition">Heise.de</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
@@ -1104,7 +1177,6 @@ docker run -p 8080:8080 \
                                  stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                       d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                            </svg>
                         </div>
                         <h3 class="font-bold text-nature-dark text-lg">ADL Files</h3>
                         <p class="text-sm text-stone-500 mt-2">Structured agent definitions</p>
@@ -1168,7 +1240,6 @@ docker run -p 8080:8080 \
                             <svg class="w-6 h-6 text-stone-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
-                            </svg>
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-nature-dark text-sm">OpenAI Completions</div>
@@ -1182,7 +1253,6 @@ docker run -p 8080:8080 \
                             <svg class="w-6 h-6 text-stone-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-nature-dark text-sm">MCP Protocol</div>
@@ -1196,7 +1266,6 @@ docker run -p 8080:8080 \
                             <svg class="w-6 h-6 text-stone-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                       d="M4 6h16M4 12h16m-7 6h7"/>
-                            </svg>
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-nature-dark text-sm">REST / GraphQL</div>
