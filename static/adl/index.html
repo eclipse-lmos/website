@@ -420,81 +420,120 @@ docker run -p 8080:8080 \
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">In Action</h2>
-            <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
+             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
                 ADL Examples
             </p>
-            <p class="mt-4 max-w-2xl text-xl text-stone-600 lg:mx-auto">
+             <p class="mt-4 max-w-2xl text-xl text-stone-600 lg:mx-auto">
                 See the difference between standard LLM behavior and ADL's controlled execution.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <!-- Standard LLM -->
-            <div class="bg-nature-page rounded-2xl p-8 border border- nature-border">
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="p-2 bg-stone-200 rounded-lg">
-                        <svg class="w-6 h-6 text-stone-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-stone-700">Standard LLM</h3>
-                </div>
-                <div class="prose prose-stone text-stone-600 mb-6">
-                    <p class="text-sm">LLMs tend to aggressively complete tasks in a single turn, often overwhelming the user with multiple questions or information at once.</p>
-                </div>
+        <div class="flex overflow-x-auto gap-8 pb-8 snap-x relative">
 
-                <div class="bg-white rounded-xl border border-stone-200 shadow-sm overflow-hidden text-sm">
-                    <div class="p-4 border-b border-stone-100 bg-stone-50">
-                        <span class="font-bold text-stone-600">User:</span> I would like to buy a new car.
-                    </div>
-                    <div class="p-4 bg-white">
-                        <span class="font-bold text-nature-primary">Assistant:</span> Sure! What is your budget? And would you like to exchange your current car?
-                    </div>
-                </div>
-            </div>
-
-            <!-- ADL Steps -->
-            <div class="bg-nature-page rounded-2xl p-8 border border-nature-border relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-nature-primary/5 rounded-bl-full -mr-8 -mt-8"></div>
-
-                <div class="flex items-center gap-3 mb-6 relative z-10">
-                    <div class="p-2 bg-nature-primary/10 rounded-lg">
-                        <svg class="w-6 h-6 text-nature-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-nature-dark">With ADL "Steps"</h3>
-                </div>
-                <div class="prose prose-stone text-stone-600 mb-6 relative z-10">
-                    <p class="text-sm">ADL breaks down the interaction into discrete steps, ensuring a natural, stateful conversation flow.</p>
-                </div>
-
-                <div class="space-y-3 relative z-10 text-sm">
-                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm overflow-hidden">
-                        <div class="p-3 border-b border-stone-100 bg-stone-50">
-                            <span class="font-bold text-stone-600">User:</span> I would like to buy a new car.
+            <!-- Example 1: Steps -->
+            <div class="min-w-[80vw] lg:min-w-[1000px] snap-center bg-nature-page rounded-2xl border border-nature-border p-8 flex flex-col lg:flex-row gap-8">
+               <div class="lg:w-1/3 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-nature-primary/10 rounded-lg">
+                            <svg class="w-6 h-6 text-nature-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                            </svg>
                         </div>
-                        <div class="p-3">
-                            <span class="font-bold text-nature-primary">Assistant:</span> Sure! What is your budget?
+                        <h3 class="text-xl font-bold text-nature-dark">Steps vs. Monologue</h3>
+                    </div>
+                    <p class="text-stone-600 text-sm">LLMs often rush to complete tasks in a single turn. ADL's <strong>Steps</strong> break down interactions, creating natural, stateful conversations.</p>
+                       <div class="bg-white p-4 rounded-xl border border-stone-200">
+                        <h4 class="font-bold text-xs text-stone-500 uppercase tracking-wide mb-2">Scenario</h4>
+                        <p class="text-sm text-stone-700 italic">"Ask the customer for their budget and if they want to trade in their old car."</p>
+                    </div>
+               </div>
+
+                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <!-- Standard LLM -->
+                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm p-4 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 px-2 py-1 bg-stone-100 border-l border-b border-stone-200 rounded-bl-lg text-xs font-mono text-stone-500">Standard LLM</div>
+                        <div class="space-y-3 mt-4 text-sm">
+                            <div><span class="font-bold text-stone-600">User:</span> I want to buy a car.</div>
+                            <div><span class="font-bold text-red-600">Assistant:</span> Sure! What is your budget? And would you like to exchange your current car?</div>
+                        </div>
+                         <div class="mt-4 pt-4 border-t border-stone-100 text-xs text-red-600 font-medium">
+                            Response overload. Asks too many questions at once.
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm overflow-hidden transition opacity-80 hover:opacity-100">
-                        <div class="p-3 border-b border-stone-100 bg-stone-50">
-                            <span class="font-bold text-stone-600">User:</span> I am looking for something for around 20,000
+                    <!-- ADL Steps -->
+                    <div class="bg-white rounded-xl border-2 border-nature-primary/20 shadow-lg p-4 relative overflow-hidden">
+                         <div class="absolute top-0 right-0 px-2 py-1 bg-nature-primary text-white rounded-bl-lg text-xs font-bold">ADL</div>
+                         <div class="space-y-3 mt-4 text-sm">
+                            <div><span class="font-bold text-stone-600">User:</span> I want to buy a car.</div>
+                            <div><span class="font-bold text-nature-primary">Assistant:</span> Sure! What is your budget?</div>
+                            <div class="pl-2 border-l-2 border-stone-100 my-1 py-1 text-stone-400 text-xs italic">User replies...</div>
+                            <div><span class="font-bold text-nature-primary">Assistant:</span> Sounds good. Would you like to exchange your current car?</div>
                         </div>
-                        <div class="p-3">
-                            <span class="font-bold text-nature-primary">Assistant:</span> Sounds good. Would you like to exchange your current car?
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm overflow-hidden transition opacity-60 hover:opacity-100">
-                        <div class="p-3 border-b border-stone-100 bg-stone-50">
-                            <span class="font-bold text-stone-600">User:</span> Sure.
+                        <div class="mt-4 pt-4 border-t border-stone-100 text-xs text-nature-primary font-medium">
+                            Step-by-step execution. One question at a time.
                         </div>
                     </div>
                 </div>
             </div>
+
+             <!-- Example 2: Tool Calling -->
+            <div class="min-w-[80vw] lg:min-w-[1000px] snap-center bg-nature-page rounded-2xl border border-nature-border p-8 flex flex-col lg:flex-row gap-8">
+               <div class="lg:w-1/3 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-nature-primary/10 rounded-lg">
+                            <svg class="w-6 h-6 text-nature-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-nature-dark">Enforced Tool Use</h3>
+                    </div>
+                    <p class="text-stone-600 text-sm">LLMs are "lazy" and often skip invisible backend tasks if they feel the user doesn't need to know. ADL ensures tools are called <strong>every time</strong>.</p>
+                     <div class="bg-white p-4 rounded-xl border border-stone-200">
+                        <h4 class="font-bold text-xs text-stone-500 uppercase tracking-wide mb-2">Scenario</h4>
+                        <p class="text-sm text-stone-700 italic">"When a customer is interested, tell them to contact sales. Use <span class="font-mono text-nature-accent">inform_interest</span> to signal our department."</p>
+                    </div>
+               </div>
+
+                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <!-- Standard LLM -->
+                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm p-4 relative overflow-hidden flex flex-col justify-between">
+                         <div class="absolute top-0 right-0 px-2 py-1 bg-stone-100 border-l border-b border-stone-200 rounded-bl-lg text-xs font-mono text-stone-500">Standard LLM</div>
+                        <div class="space-y-3 mt-4 text-sm">
+                             <div><span class="font-bold text-stone-600">User:</span> I'd love to buy this car!</div>
+                             <div>
+                                <span class="font-bold text-red-600">Assistant:</span> Great! Please contact our sales department at 555-0123.
+                                <div class="mt-2 p-2 bg-stone-100 rounded text-xs text-stone-500 border border-stone-200 font-mono">
+                                    [Internal thought] User informed. No need to call tool.
+                                </div>
+                             </div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-stone-100 text-xs text-red-600 font-medium">
+                            Tool Skipped. The backend system was never notified.
+                        </div>
+                    </div>
+
+                    <!-- ADL Enforced -->
+                    <div class="bg-white rounded-xl border-2 border-nature-primary/20 shadow-lg p-4 relative overflow-hidden flex flex-col justify-between">
+                         <div class="absolute top-0 right-0 px-2 py-1 bg-nature-primary text-white rounded-bl-lg text-xs font-bold">ADL</div>
+                         <div class="space-y-3 mt-4 text-sm">
+                            <div><span class="font-bold text-stone-600">User:</span> I'd love to buy this car!</div>
+                            <div>
+                                <div class="mb-2 p-2 bg-nature-primary/10 rounded text-xs text-nature-dark border border-nature-primary/20 font-mono flex items-center gap-2">
+                                     <svg class="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                                    Executing: @inform_interest()
+                                </div>
+                                <span class="font-bold text-nature-primary">Assistant:</span> Great! Please contact our sales department at 555-0123.
+                            </div>
+                        </div>
+                         <div class="mt-4 pt-4 border-t border-stone-100 text-xs text-nature-primary font-medium">
+                            Tool Enforced. Sales team notified automatically.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
