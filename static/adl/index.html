@@ -383,12 +383,14 @@ SPDX-License-Identifier: CC-BY-4.0
         <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-2xl shadow-lg border border-nature-border p-8">
                 <p class="text-lg text-stone-600 mb-4">
-                    Run the latest version of the ADL Server using Docker. Be sure to replace <code>[OPENAI_API_KEY]</code> with your actual API key.
+                    Run the latest version of the ADL Server using Docker. Be sure to replace <code>[OPENAI_API_KEY]</code> with your actual API key and
+                    create a local directory called <code>my-adls</code> to mount as your ADL Storage.
                 </p>
 
                 <div class="bg-stone-900 p-6 rounded-lg overflow-x-auto mb-6">
 <pre class="text-sm font-mono text-stone-300">
 docker run -p 8080:8080 \
+  -v "./my-adls":/app/adls \
   -e <span class="text-nature-sky">ARC_AI_KEY</span>=<span class="text-nature-light">[OPENAI_API_KEY]</span> \
   -e <span class="text-nature-sky">ARC_MODEL</span>=<span class="text-nature-light">gpt-4o</span> \
   -e <span class="text-nature-sky">ARC_CLIENT</span>=<span class="text-nature-light">openai</span> \
