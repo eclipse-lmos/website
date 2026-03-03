@@ -220,7 +220,7 @@ SPDX-License-Identifier: CC-BY-4.0
                         </div>
                         <div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
-                            <div class="pl-4 text-stone-300">Customer wants to buy a car.</div>
+                            <div class="pl-4 text-stone-300">Customer would like to buy a new car.</div>
                         </div>
                         <div>
                             <div class="text-nature-light font-bold mb-1">Steps</div>
@@ -245,7 +245,7 @@ SPDX-License-Identifier: CC-BY-4.0
                         <div>
                             <div class="text-nature-light font-bold mb-1">Context</div>
                             <div class="pl-4 text-stone-300">Pete is our sales representative for car sales.  </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -399,28 +399,35 @@ docker run -p 8080:8080 \
 </pre>
                 </div>
 
+                <p class="text-sm text-stone-600 mb-4">
+                    Examples can be found here:
+                    <a href="https://github.com/eclipse-lmos/adl/tree/main/adl-examples" target="_blank" class="text-nature-primary hover:underline">https://github.com/eclipse-lmos/adl/tree/main/adl-examples</a>
+                </p>
+
+                <div class="bg-nature-page p-4 rounded-lg border border-nature-border mb-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-nature-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                            <p class="text-sm text-stone-600 mb-2">
+                                A test MCP server can be started with:
+                            </p>
+                            <div class="bg-stone-900 p-3 rounded-lg overflow-x-auto">
+<pre class="text-xs font-mono text-stone-300">docker pull ghcr.io/eclipse-lmos/demo-mcp:latest</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="bg-nature-page p-4 rounded-lg border border-nature-border">
                     <div class="flex items-start gap-3">
                         <svg class="w-6 h-6 text-nature-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <div>
-                            <p class="text-sm text-stone-600">
-                                <strong>Note:</strong> You may need to authenticate with GitHub Packages first.
-                                See the <a href="https://docs.github.com/de/packages/working-with-a-github-packages-registry/working-with-the-container-registry" target="_blank" class="text-nature-primary hover:underline">GitHub documentation</a> for instructions.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-nature-page p-4 rounded-lg border border-nature-border mt-4">
-                    <div class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-nature-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <div>
-                            <p class="text-sm text-stone-600">
-                                <strong>Beta Notice:</strong> The ADL Studio is still in the beta phase and may not completely implement all ADL features. We appreciate your feedback and patience as we continue to improve the platform.
+                            <p class="text-sm text-stone-600 mb-2">
+                                The ADL Studio is still in the beta phase and may not completely implement all ADL features. We appreciate your feedback and patience as we continue to improve the platform.
                             </p>
                         </div>
                     </div>
@@ -811,6 +818,10 @@ and works the way you expect.
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
                         Must Command
                     </button>
+                    <button onclick="scrollToFeature('variables')"
+                            class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
+                        Variables
+                    </button>
                 </div>
 
                 <div class="flex overflow-x-auto gap-8 pb-6 snap-x relative" id="features-scroll-container">
@@ -1137,7 +1148,7 @@ and works the way you expect.
                         <p class="text-sm text-stone-600 mb-2">Html comments can be used to inform the system how to extract the variables form the generated output. </p>
                     </div>
 
-                    <div class="min-w-[500px] snap-start">
+                    <div class="min-w-[500px] snap-start border-r border-nature-border pr-8">
                         <h4 id="must-command" class="font-bold text-nature-dark mb-2">The MUST Command</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
                             <div class="text-nature-accent font-bold mb-1">Skill: secure_password</div>
@@ -1159,6 +1170,34 @@ and works the way you expect.
                             <li>Generate automatic evaluation criteria to verify that the output adheres to these mandatory constraints.</li>
                             <li>Ensure critical business logic is never bypassed.</li>
                         </ul>
+                    </div>
+
+                    <div class="min-w-[500px] snap-start">
+                        <h4 id="variables" class="font-bold text-nature-dark mb-2">Variables</h4>
+                        <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
+                            <div class="text-nature-accent font-bold mb-1">Skill: greeting</div>
+                            <div class="text-nature-light font-bold mb-1">Description</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
+                                Greet the logged in user.
+                            </div>
+                            <div class="text-nature-light font-bold mb-1">Solution</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700">
+                                "Hello <span class="text-nature-accent">{{user.name}}</span>! How can I help you today?"
+                            </div>
+                        </div>
+                        <br>
+                        <p class="text-sm text-stone-600 mb-2">
+                             ADL supports Mustache variables to inject dynamic context into your instructions.
+                        </p>
+                        <p class="text-sm text-stone-600 mb-2">
+                             This allows you to reference user memory, profile information, or any other context variable directly within your Skill definition.
+                        </p>
+                         <p class="text-sm text-stone-600 mb-2">
+                            The ADL Engine resolves these variables before executing the agent logic, ensuring personalized and context-aware behavior.
+                        </p>
+                        <p class="text-sm text-stone-600 mb-2">
+                            Like Conditionals, these variables can be injected at runtime when calling the ADL engine.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1224,7 +1263,6 @@ and works the way you expect.
                                      stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                                </svg>
                             </div>
                             <h3 class="font-bold text-white text-xl">ADL Engine</h3>
                             <p class="text-sm text-stone-400 mt-2">Core execution runtime</p>
@@ -1347,8 +1385,7 @@ and works the way you expect.
 <span class="text-nature-accent">curl</span> https://adl-server/v1/chat/completions \
   -H <span class="text-nature-light">"Content-Type: application/json"</span> \
   -H <span class="text-nature-light">"Authorization: Bearer $KEY"</span> \
-  -d '{
-    <span class="text-nature-sky">"model"</span>: <span class="text-nature-light">"finance-agent"</span>,
+    -d '{
     <span class="text-nature-sky">"messages"</span>: [
       {
         <span class="text-nature-sky">"role"</span>: <span class="text-nature-light">"user"</span>,
