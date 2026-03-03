@@ -215,16 +215,12 @@ SPDX-License-Identifier: CC-BY-4.0
                     </div>
                     <div class="space-y-4">
                         <div>
-                            <span class="text-nature-accent font-bold text-lg">UseCase:</span> <span
-                                class="text-nature-sky">buy_a_car</span>
+                            <span class="text-nature-accent font-bold text-lg">Skill:</span> <span
+                                class="text-nature-sky">customer_wants_to_buy_a_car</span>
                         </div>
                         <div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <div class="pl-4 text-stone-300">Customer wants to buy a car.</div>
-                        </div>
-                        <div>
-                            <div class="text-nature-light font-bold mb-1">Context</div>
-                            <div class="pl-4 text-stone-300">The customer is currently driving a Tesla Model 3.</div>
                         </div>
                         <div>
                             <div class="text-nature-light font-bold mb-1">Steps</div>
@@ -245,6 +241,11 @@ SPDX-License-Identifier: CC-BY-4.0
                         <div class="pl-4 mt-4 text-stone-300">
                             <span class="text-nature-sky">&lt;is_weekend&gt;</span> As it is the weekend. Tell the
                             customer that they will receive a response on Monday.
+                        </div>
+                        <div>
+                            <div class="text-nature-light font-bold mb-1">Context</div>
+                            <div class="pl-4 text-stone-300">Pete is our sales representative for car sales.  </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -628,12 +629,12 @@ docker run -p 8080:8080 \
             <div class="lg:col-span-7">
                 <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">The Paradigm Shift</h2>
                 <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
-                    ADL UseCases
+                    ADL Skills
                 </h3>
                 <div class="mt-6 text-lg text-stone-600 space-y-6">
                     <p>
                         Instead of writing prompts and hoping the agent behaves correctly,
-                        you describe what you want in clear, structured UseCases.
+                        you describe what you want in clear, structured ADL Skills.
 
 
 
@@ -641,7 +642,7 @@ docker run -p 8080:8080 \
 
                     </p>
                     <p>
-                        ADL turns those UseCases into reliable behavior.
+                        ADL turns those ADL Skills into reliable behavior.
                     </p>
                     <p>
                         The agent follows your rules, keeps context,
@@ -670,9 +671,9 @@ and works the way you expect.
                                     </svg>
                                     Requirements
                                 </h4>
-                                <p class="text-xs text-stone-600"><span class="text-nature-accent">UseCase:</span>
+                                <p class="text-xs text-stone-600"><span class="text-nature-accent">Skill:</span>
                                     refund_customer</p>
-                                <p class="text-xs text-stone-600"><span class="text-nature-accent">UseCase:</span>
+                                <p class="text-xs text-stone-600"><span class="text-nature-accent">Skill:</span>
                                     upgrade_customer</p>
                             </div>
                             <div class="flex justify-center text-nature-accent">
@@ -710,7 +711,7 @@ and works the way you expect.
         <div class="text-center mb-12">
             <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">Technical Specification</h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
-                ADL UseCase Format & Capabilities
+                ADL Skill Format & Capabilities
             </p>
             <p class="mt-4 max-w-2xl text-xl text-stone-600 lg:mx-auto">
                 ADL separates agent behavior definition from LLM prompting, providing a structured format backed by
@@ -728,7 +729,7 @@ and works the way you expect.
                                   d="M4 6h16M4 12h16M4 18h7"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-nature-dark">UseCase Structure</h3>
+                    <h3 class="text-2xl font-bold text-nature-dark">ADL Skill Structure</h3>
                 </div>
                 <div class="prose prose-stone text-stone-600 max-w-none">
                     <p class="mb-4">Each use case defines how the agent responds to a specific scenario.</p>
@@ -816,7 +817,7 @@ and works the way you expect.
                     <div class="min-w-[500px] snap-start border-r border-nature-border pr-8" >
                         <h4 class="font-bold text-nature-dark mb-2" id="conditionals">Conditionals</h4>
                         <div class="mt-4 bg-nature-dark p-3 rounded-lg text-xs border border-stone-800">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: password_reset</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: password_reset</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <p class="text-stone-300 pl-2 border-l border-stone-700 font-mono">Customer needs to reset their password.</p>
                             <div class="text-nature-light font-bold mb-1">Solution</div>
@@ -859,7 +860,7 @@ and works the way you expect.
                         <br>
                         <p class="text-sm text-stone-600 mb-2">Multi-line conditionals are also supported:</p>
                         <div class="mt-4 bg-nature-dark p-3 rounded-lg text-xs border border-stone-800">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: password_reset</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: password_reset</div>
                             <div class="text-nature-light font-bold mb-1">Solution</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700 font-mono">
                                 <span class="text-nature-accent">
@@ -875,7 +876,7 @@ and works the way you expect.
                     <div class="min-w-[400px] border-r border-nature-border pr-8">
                         <h4 class="font-bold text-nature-dark mb-2 snap-start" id="executable-code">Executable Code</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs text-stone-300 font-mono border border-stone-800">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: current_news</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: current_news</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <p>Customer asks for the current news.</p>
                             <div class="text-nature-light font-bold mb-1">Solution</div>
@@ -887,7 +888,7 @@ and works the way you expect.
                         </div>
                         <br>
                         <p class="text-sm text-stone-600 mb-2">Use markdown coding blocks to insert code directly into
-                            your UseCase.</p>
+                            your Skill.</p>
                         <div class="mt-4">
                             <p class="text-xs font-bold text-nature-primary mb-2 uppercase tracking-wide">Predefined
                                 Functions</p>
@@ -914,7 +915,7 @@ and works the way you expect.
                     <div class="min-w-[400px] snap-start border-r border-nature-border pr-8">
                         <h4 id="tool-calls" class="font-bold text-nature-dark mb-2">Tool Calls</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 mb-4">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: password_reset</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: password_reset</div>
                             <div class="text-nature-light font-bold mb-1">Solution</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700">
                                 Call <span class="text-nature-accent">@password_reset_link()!</span> to generate a reset
@@ -949,7 +950,7 @@ and works the way you expect.
                     <div class="min-w-[400px] snap-start border-r border-nature-border pr-8">
                         <h4 id="static-responses" class="font-bold text-nature-dark mb-2">Static Responses</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 mb-4">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: greeting</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: greeting</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
                                 Customer is saying hello or greeting the agent.
@@ -974,7 +975,7 @@ and works the way you expect.
                         <div class="grid grid-cols-1 gap-8">
                             <!-- Code Example -->
                             <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
-                                <div class="text-nature-accent font-bold mb-1">UseCase: buy_a_new_phone</div>
+                                <div class="text-nature-accent font-bold mb-1">Skill: buy_a_new_phone</div>
                                 <div class="text-nature-light font-bold mb-1">Description</div>
                                 <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
                                     Customer wants to buy a new phone.
@@ -1008,11 +1009,11 @@ and works the way you expect.
                             </div>
                             <p class="text-sm text-stone-600">Conversation flows enable the author to convey decision
                                 trees in their use cases.</p>
-                            <p class="text-sm text-stone-600">The UseCase above describes a simple conversation flow with multiple branches.
-                                The ADL Engine will parse the UseCase and ensure that the Agent follows the defined flow,
-                                allowing at the same time the user to jump to other UseCases if needed.
+                            <p class="text-sm text-stone-600">The Skill above describes a simple conversation flow with multiple branches.
+                                The ADL Engine will parse the Skill and ensure that the Agent follows the defined flow,
+                                allowing at the same time the user to jump to other Skills if needed.
                             </p>
-                            <p class="text-sm text-stone-600">UseCase presented as a decision tree:</p>
+                            <p class="text-sm text-stone-600">Skill presented as a decision tree:</p>
 
                             <!-- Diagram -->
                             <div class="bg-white p-4 rounded-lg border border-stone-200 flex items-center justify-center overflow-hidden">
@@ -1111,7 +1112,7 @@ and works the way you expect.
                     <div class="min-w-[500px] snap-start border-r border-nature-border pr-8">
                         <h4 id="styled-output" class="font-bold text-nature-dark mb-2">Styled Output</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: current_news</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: current_news</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
                                 Customer asks for the current news.
@@ -1128,7 +1129,7 @@ and works the way you expect.
                             </div>
                         </div>
                         <br>
-                        <p class="text-sm text-stone-600 mb-2">HTML templates can be defined in the UseCase, allowing you to create rich, styled responses that go beyond plain text.
+                        <p class="text-sm text-stone-600 mb-2">HTML templates can be defined in the Skill, allowing you to create rich, styled responses that go beyond plain text.
                             By using placeholders for dynamic content, you can ensure that your agents deliver visually appealing and contextually relevant information.</p>
                         <p class="text-sm text-stone-600 mb-2">In the example above, the agent will return a styled HTML snippet with the title of the top news article. The placeholder <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">&lt;news.title&gt;</code> will be replaced with the actual title retrieved by the <code class="bg-nature-page px-1 rounded text-nature-accent font-mono text-xs">@get_news()</code> tool.</p>
                         <p class="text-sm text-stone-600 mb-2">Clients displaying this content should support Tailwind CSS to render the styles correctly.</p>
@@ -1139,7 +1140,7 @@ and works the way you expect.
                     <div class="min-w-[500px] snap-start">
                         <h4 id="must-command" class="font-bold text-nature-dark mb-2">The MUST Command</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: secure_password</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: secure_password</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
                                 Customer wants to set a new password.
@@ -1408,8 +1409,8 @@ and works the way you expect.
                             </li>
                             <li>
                                 <span class="text-nature-primary font-bold">search</span>(conversation: [Message], ...):
-                                [UseCaseMatch]
-                                <p class="text-xs text-stone-500 font-sans mt-1">Find ADL UseCases matching a conversation
+                                [SkillMatch]
+                                <p class="text-xs text-stone-500 font-sans mt-1">Find ADL Skills matching a conversation
                                     context.</p>
                             </li>
                             <li>
@@ -1425,7 +1426,7 @@ and works the way you expect.
                         <h4 class="font-bold text-nature-dark mb-2">Eval & Tests</h4>
                         <ul class="space-y-3 text-sm text-stone-600 font-mono">
                             <li>
-                                <span class="text-nature-accent font-bold">createTests</span>(useCase: String):
+                                <span class="text-nature-accent font-bold">createTests</span>(Skill: String):
                                 [TestCase]
                                 <p class="text-xs text-stone-500 font-sans mt-1">Auto-generate test cases.</p>
                             </li>
@@ -1476,7 +1477,7 @@ and works the way you expect.
                                 <p class="text-xs text-stone-500 font-sans mt-1">Generate the full system prompt.</p>
                             </li>
                             <li>
-                                <span class="text-nature-accent font-bold">improveUseCase</span>(useCase: String):
+                                <span class="text-nature-accent font-bold">improveSkill</span>(Skill: String):
                                 ImprovementResponse
                                 <p class="text-xs text-stone-500 font-sans mt-1">Get AI-suggested improvements.</p>
                             </li>
