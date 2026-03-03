@@ -215,16 +215,12 @@ SPDX-License-Identifier: CC-BY-4.0
                     </div>
                     <div class="space-y-4">
                         <div>
-                            <span class="text-nature-accent font-bold text-lg">UseCase:</span> <span
-                                class="text-nature-sky">buy_a_car</span>
+                            <span class="text-nature-accent font-bold text-lg">Skill:</span> <span
+                                class="text-nature-sky">customer_wants_to_buy_a_car</span>
                         </div>
                         <div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
-                            <div class="pl-4 text-stone-300">Customer wants to buy a car.</div>
-                        </div>
-                        <div>
-                            <div class="text-nature-light font-bold mb-1">Context</div>
-                            <div class="pl-4 text-stone-300">The customer is currently driving a Tesla Model 3.</div>
+                            <div class="pl-4 text-stone-300">Customer would like to buy a new car.</div>
                         </div>
                         <div>
                             <div class="text-nature-light font-bold mb-1">Steps</div>
@@ -245,6 +241,11 @@ SPDX-License-Identifier: CC-BY-4.0
                         <div class="pl-4 mt-4 text-stone-300">
                             <span class="text-nature-sky">&lt;is_weekend&gt;</span> As it is the weekend. Tell the
                             customer that they will receive a response on Monday.
+                        </div>
+                        <div>
+                            <div class="text-nature-light font-bold mb-1">Context</div>
+                            <div class="pl-4 text-stone-300">Pete is our sales representative for car sales.  </div>
+
                         </div>
                     </div>
                 </div>
@@ -383,17 +384,40 @@ SPDX-License-Identifier: CC-BY-4.0
         <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-2xl shadow-lg border border-nature-border p-8">
                 <p class="text-lg text-stone-600 mb-4">
-                    Run the latest version of the ADL Server using Docker. Be sure to replace <code>[OPENAI_API_KEY]</code> with your actual API key.
+                    Run the latest version of the ADL Server using Docker. Be sure to replace <code>[OPENAI_API_KEY]</code> with your actual API key and
+                    create a local directory called <code>my-adls</code> to mount as your ADL Storage.
                 </p>
 
                 <div class="bg-stone-900 p-6 rounded-lg overflow-x-auto mb-6">
 <pre class="text-sm font-mono text-stone-300">
 docker run -p 8080:8080 \
+  -v "./my-adls":/app/adls \
   -e <span class="text-nature-sky">ARC_AI_KEY</span>=<span class="text-nature-light">[OPENAI_API_KEY]</span> \
   -e <span class="text-nature-sky">ARC_MODEL</span>=<span class="text-nature-light">gpt-4o</span> \
   -e <span class="text-nature-sky">ARC_CLIENT</span>=<span class="text-nature-light">openai</span> \
   ghcr.io/eclipse-lmos/adl-server:latest
 </pre>
+                </div>
+
+                <p class="text-sm text-stone-600 mb-4">
+                    Examples can be found here:
+                    <a href="https://github.com/eclipse-lmos/adl/tree/main/adl-examples" target="_blank" class="text-nature-primary hover:underline">https://github.com/eclipse-lmos/adl/tree/main/adl-examples</a>
+                </p>
+
+                <div class="bg-nature-page p-4 rounded-lg border border-nature-border mb-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-nature-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div>
+                            <p class="text-sm text-stone-600 mb-2">
+                                A test MCP server can be started with:
+                            </p>
+                            <div class="bg-stone-900 p-3 rounded-lg overflow-x-auto">
+<pre class="text-xs font-mono text-stone-300">docker pull ghcr.io/eclipse-lmos/demo-mcp:latest</pre>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="bg-nature-page p-4 rounded-lg border border-nature-border">
@@ -402,22 +426,8 @@ docker run -p 8080:8080 \
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <div>
-                            <p class="text-sm text-stone-600">
-                                <strong>Note:</strong> You may need to authenticate with GitHub Packages first.
-                                See the <a href="https://docs.github.com/de/packages/working-with-a-github-packages-registry/working-with-the-container-registry" target="_blank" class="text-nature-primary hover:underline">GitHub documentation</a> for instructions.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-nature-page p-4 rounded-lg border border-nature-border mt-4">
-                    <div class="flex items-start gap-3">
-                        <svg class="w-6 h-6 text-nature-primary flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <div>
-                            <p class="text-sm text-stone-600">
-                                <strong>Beta Notice:</strong> The ADL Studio is still in the beta phase and may not completely implement all ADL features. We appreciate your feedback and patience as we continue to improve the platform.
+                            <p class="text-sm text-stone-600 mb-2">
+                                The ADL Studio is still in the beta phase and may not completely implement all ADL features. We appreciate your feedback and patience as we continue to improve the platform.
                             </p>
                         </div>
                     </div>
@@ -626,12 +636,12 @@ docker run -p 8080:8080 \
             <div class="lg:col-span-7">
                 <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">The Paradigm Shift</h2>
                 <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
-                    ADL UseCases
+                    ADL Skills
                 </h3>
                 <div class="mt-6 text-lg text-stone-600 space-y-6">
                     <p>
                         Instead of writing prompts and hoping the agent behaves correctly,
-                        you describe what you want in clear, structured UseCases.
+                        you describe what you want in clear, structured ADL Skills.
 
 
 
@@ -639,7 +649,7 @@ docker run -p 8080:8080 \
 
                     </p>
                     <p>
-                        ADL turns those UseCases into reliable behavior.
+                        ADL turns those ADL Skills into reliable behavior.
                     </p>
                     <p>
                         The agent follows your rules, keeps context,
@@ -668,9 +678,9 @@ and works the way you expect.
                                     </svg>
                                     Requirements
                                 </h4>
-                                <p class="text-xs text-stone-600"><span class="text-nature-accent">UseCase:</span>
+                                <p class="text-xs text-stone-600"><span class="text-nature-accent">Skill:</span>
                                     refund_customer</p>
-                                <p class="text-xs text-stone-600"><span class="text-nature-accent">UseCase:</span>
+                                <p class="text-xs text-stone-600"><span class="text-nature-accent">Skill:</span>
                                     upgrade_customer</p>
                             </div>
                             <div class="flex justify-center text-nature-accent">
@@ -708,7 +718,7 @@ and works the way you expect.
         <div class="text-center mb-12">
             <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">Technical Specification</h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
-                ADL UseCase Format & Capabilities
+                ADL Skill Format & Capabilities
             </p>
             <p class="mt-4 max-w-2xl text-xl text-stone-600 lg:mx-auto">
                 ADL separates agent behavior definition from LLM prompting, providing a structured format backed by
@@ -726,7 +736,7 @@ and works the way you expect.
                                   d="M4 6h16M4 12h16M4 18h7"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-nature-dark">UseCase Structure</h3>
+                    <h3 class="text-2xl font-bold text-nature-dark">ADL Skill Structure</h3>
                 </div>
                 <div class="prose prose-stone text-stone-600 max-w-none">
                     <p class="mb-4">Each use case defines how the agent responds to a specific scenario.</p>
@@ -808,13 +818,17 @@ and works the way you expect.
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
                         Must Command
                     </button>
+                    <button onclick="scrollToFeature('variables')"
+                            class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
+                        Variables
+                    </button>
                 </div>
 
                 <div class="flex overflow-x-auto gap-8 pb-6 snap-x relative" id="features-scroll-container">
                     <div class="min-w-[500px] snap-start border-r border-nature-border pr-8" >
                         <h4 class="font-bold text-nature-dark mb-2" id="conditionals">Conditionals</h4>
                         <div class="mt-4 bg-nature-dark p-3 rounded-lg text-xs border border-stone-800">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: password_reset</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: password_reset</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <p class="text-stone-300 pl-2 border-l border-stone-700 font-mono">Customer needs to reset their password.</p>
                             <div class="text-nature-light font-bold mb-1">Solution</div>
@@ -857,7 +871,7 @@ and works the way you expect.
                         <br>
                         <p class="text-sm text-stone-600 mb-2">Multi-line conditionals are also supported:</p>
                         <div class="mt-4 bg-nature-dark p-3 rounded-lg text-xs border border-stone-800">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: password_reset</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: password_reset</div>
                             <div class="text-nature-light font-bold mb-1">Solution</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700 font-mono">
                                 <span class="text-nature-accent">
@@ -873,7 +887,7 @@ and works the way you expect.
                     <div class="min-w-[400px] border-r border-nature-border pr-8">
                         <h4 class="font-bold text-nature-dark mb-2 snap-start" id="executable-code">Executable Code</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs text-stone-300 font-mono border border-stone-800">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: current_news</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: current_news</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <p>Customer asks for the current news.</p>
                             <div class="text-nature-light font-bold mb-1">Solution</div>
@@ -885,7 +899,7 @@ and works the way you expect.
                         </div>
                         <br>
                         <p class="text-sm text-stone-600 mb-2">Use markdown coding blocks to insert code directly into
-                            your UseCase.</p>
+                            your Skill.</p>
                         <div class="mt-4">
                             <p class="text-xs font-bold text-nature-primary mb-2 uppercase tracking-wide">Predefined
                                 Functions</p>
@@ -912,7 +926,7 @@ and works the way you expect.
                     <div class="min-w-[400px] snap-start border-r border-nature-border pr-8">
                         <h4 id="tool-calls" class="font-bold text-nature-dark mb-2">Tool Calls</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 mb-4">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: password_reset</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: password_reset</div>
                             <div class="text-nature-light font-bold mb-1">Solution</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700">
                                 Call <span class="text-nature-accent">@password_reset_link()!</span> to generate a reset
@@ -947,7 +961,7 @@ and works the way you expect.
                     <div class="min-w-[400px] snap-start border-r border-nature-border pr-8">
                         <h4 id="static-responses" class="font-bold text-nature-dark mb-2">Static Responses</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 mb-4">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: greeting</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: greeting</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
                                 Customer is saying hello or greeting the agent.
@@ -972,7 +986,7 @@ and works the way you expect.
                         <div class="grid grid-cols-1 gap-8">
                             <!-- Code Example -->
                             <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
-                                <div class="text-nature-accent font-bold mb-1">UseCase: buy_a_new_phone</div>
+                                <div class="text-nature-accent font-bold mb-1">Skill: buy_a_new_phone</div>
                                 <div class="text-nature-light font-bold mb-1">Description</div>
                                 <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
                                     Customer wants to buy a new phone.
@@ -1006,11 +1020,11 @@ and works the way you expect.
                             </div>
                             <p class="text-sm text-stone-600">Conversation flows enable the author to convey decision
                                 trees in their use cases.</p>
-                            <p class="text-sm text-stone-600">The UseCase above describes a simple conversation flow with multiple branches.
-                                The ADL Engine will parse the UseCase and ensure that the Agent follows the defined flow,
-                                allowing at the same time the user to jump to other UseCases if needed.
+                            <p class="text-sm text-stone-600">The Skill above describes a simple conversation flow with multiple branches.
+                                The ADL Engine will parse the Skill and ensure that the Agent follows the defined flow,
+                                allowing at the same time the user to jump to other Skills if needed.
                             </p>
-                            <p class="text-sm text-stone-600">UseCase presented as a decision tree:</p>
+                            <p class="text-sm text-stone-600">Skill presented as a decision tree:</p>
 
                             <!-- Diagram -->
                             <div class="bg-white p-4 rounded-lg border border-stone-200 flex items-center justify-center overflow-hidden">
@@ -1109,7 +1123,7 @@ and works the way you expect.
                     <div class="min-w-[500px] snap-start border-r border-nature-border pr-8">
                         <h4 id="styled-output" class="font-bold text-nature-dark mb-2">Styled Output</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: current_news</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: current_news</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
                                 Customer asks for the current news.
@@ -1126,7 +1140,7 @@ and works the way you expect.
                             </div>
                         </div>
                         <br>
-                        <p class="text-sm text-stone-600 mb-2">HTML templates can be defined in the UseCase, allowing you to create rich, styled responses that go beyond plain text.
+                        <p class="text-sm text-stone-600 mb-2">HTML templates can be defined in the Skill, allowing you to create rich, styled responses that go beyond plain text.
                             By using placeholders for dynamic content, you can ensure that your agents deliver visually appealing and contextually relevant information.</p>
                         <p class="text-sm text-stone-600 mb-2">In the example above, the agent will return a styled HTML snippet with the title of the top news article. The placeholder <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">&lt;news.title&gt;</code> will be replaced with the actual title retrieved by the <code class="bg-nature-page px-1 rounded text-nature-accent font-mono text-xs">@get_news()</code> tool.</p>
                         <p class="text-sm text-stone-600 mb-2">Clients displaying this content should support Tailwind CSS to render the styles correctly.</p>
@@ -1134,10 +1148,10 @@ and works the way you expect.
                         <p class="text-sm text-stone-600 mb-2">Html comments can be used to inform the system how to extract the variables form the generated output. </p>
                     </div>
 
-                    <div class="min-w-[500px] snap-start">
+                    <div class="min-w-[500px] snap-start border-r border-nature-border pr-8">
                         <h4 id="must-command" class="font-bold text-nature-dark mb-2">The MUST Command</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
-                            <div class="text-nature-accent font-bold mb-1">UseCase: secure_password</div>
+                            <div class="text-nature-accent font-bold mb-1">Skill: secure_password</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
                                 Customer wants to set a new password.
@@ -1156,6 +1170,34 @@ and works the way you expect.
                             <li>Generate automatic evaluation criteria to verify that the output adheres to these mandatory constraints.</li>
                             <li>Ensure critical business logic is never bypassed.</li>
                         </ul>
+                    </div>
+
+                    <div class="min-w-[500px] snap-start">
+                        <h4 id="variables" class="font-bold text-nature-dark mb-2">Variables</h4>
+                        <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
+                            <div class="text-nature-accent font-bold mb-1">Skill: greeting</div>
+                            <div class="text-nature-light font-bold mb-1">Description</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
+                                Greet the logged in user.
+                            </div>
+                            <div class="text-nature-light font-bold mb-1">Solution</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700">
+                                "Hello <span class="text-nature-accent">{{user.name}}</span>! How can I help you today?"
+                            </div>
+                        </div>
+                        <br>
+                        <p class="text-sm text-stone-600 mb-2">
+                             ADL supports Mustache variables to inject dynamic context into your instructions.
+                        </p>
+                        <p class="text-sm text-stone-600 mb-2">
+                             This allows you to reference user memory, profile information, or any other context variable directly within your Skill definition.
+                        </p>
+                         <p class="text-sm text-stone-600 mb-2">
+                            The ADL Engine resolves these variables before executing the agent logic, ensuring personalized and context-aware behavior.
+                        </p>
+                        <p class="text-sm text-stone-600 mb-2">
+                            Like Conditionals, these variables can be injected at runtime when calling the ADL engine.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1221,7 +1263,6 @@ and works the way you expect.
                                      stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                           d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-                                </svg>
                             </div>
                             <h3 class="font-bold text-white text-xl">ADL Engine</h3>
                             <p class="text-sm text-stone-400 mt-2">Core execution runtime</p>
@@ -1344,8 +1385,7 @@ and works the way you expect.
 <span class="text-nature-accent">curl</span> https://adl-server/v1/chat/completions \
   -H <span class="text-nature-light">"Content-Type: application/json"</span> \
   -H <span class="text-nature-light">"Authorization: Bearer $KEY"</span> \
-  -d '{
-    <span class="text-nature-sky">"model"</span>: <span class="text-nature-light">"finance-agent"</span>,
+    -d '{
     <span class="text-nature-sky">"messages"</span>: [
       {
         <span class="text-nature-sky">"role"</span>: <span class="text-nature-light">"user"</span>,
@@ -1406,8 +1446,8 @@ and works the way you expect.
                             </li>
                             <li>
                                 <span class="text-nature-primary font-bold">search</span>(conversation: [Message], ...):
-                                [UseCaseMatch]
-                                <p class="text-xs text-stone-500 font-sans mt-1">Find ADL UseCases matching a conversation
+                                [SkillMatch]
+                                <p class="text-xs text-stone-500 font-sans mt-1">Find ADL Skills matching a conversation
                                     context.</p>
                             </li>
                             <li>
@@ -1423,7 +1463,7 @@ and works the way you expect.
                         <h4 class="font-bold text-nature-dark mb-2">Eval & Tests</h4>
                         <ul class="space-y-3 text-sm text-stone-600 font-mono">
                             <li>
-                                <span class="text-nature-accent font-bold">createTests</span>(useCase: String):
+                                <span class="text-nature-accent font-bold">createTests</span>(Skill: String):
                                 [TestCase]
                                 <p class="text-xs text-stone-500 font-sans mt-1">Auto-generate test cases.</p>
                             </li>
@@ -1474,7 +1514,7 @@ and works the way you expect.
                                 <p class="text-xs text-stone-500 font-sans mt-1">Generate the full system prompt.</p>
                             </li>
                             <li>
-                                <span class="text-nature-accent font-bold">improveUseCase</span>(useCase: String):
+                                <span class="text-nature-accent font-bold">improveSkill</span>(Skill: String):
                                 ImprovementResponse
                                 <p class="text-xs text-stone-500 font-sans mt-1">Get AI-suggested improvements.</p>
                             </li>
