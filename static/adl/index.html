@@ -623,6 +623,58 @@ docker run -p 8080:8080 \
                 </div>
             </div>
 
+             <!-- Example 3: Loop Detection -->
+            <div class="bg-nature-page rounded-2xl border border-nature-border p-8 flex flex-col lg:flex-row gap-8">
+               <div class="lg:w-1/3 space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-nature-primary/10 rounded-lg">
+                            <div class="w-6 h-6 rounded bg-nature-primary/20"></div>
+                        </div>
+                        <h3 class="text-xl font-bold text-nature-dark">Loop Detection</h3>
+                    </div>
+                    <p class="text-stone-600 text-sm">LLM agents can get stuck in repetitive loops. ADL Skills detect these loops and resolve them automatically so the conversation can progress safely.</p>
+                     <div class="bg-white p-4 rounded-xl border border-stone-200">
+                        <h4 class="font-bold text-xs text-stone-500 uppercase tracking-wide mb-2">Scenario</h4>
+                        <p class="text-sm text-stone-700 italic">"Help the customer reset access after a failed login while asking for confirmation only once."</p>
+                    </div>
+               </div>
+
+                <div class="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <!-- Standard LLM -->
+                    <div class="bg-white rounded-xl border border-stone-200 shadow-sm p-4 relative overflow-hidden flex flex-col justify-between">
+                         <div class="absolute top-0 right-0 px-2 py-1 bg-stone-100 border-l border-b border-stone-200 rounded-bl-lg text-xs font-mono text-stone-500">Standard LLM</div>
+                        <div class="space-y-3 mt-4 text-sm">
+                             <div><span class="font-bold text-stone-600">User:</span> I cannot log in.</div>
+                             <div><span class="font-bold text-red-600">Assistant:</span> Please confirm your email address.</div>
+                             <div><span class="font-bold text-stone-600">User:</span> jane@example.com</div>
+                             <div><span class="font-bold text-red-600">Assistant:</span> Please confirm your email address.</div>
+                             <div><span class="font-bold text-stone-600">User:</span> jane@example.com</div>
+                             <div><span class="font-bold text-red-600">Assistant:</span> Please confirm your email address.</div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-stone-100 text-xs text-red-600 font-medium">
+                            Endless loop detected too late. The conversation stalls.
+                        </div>
+                    </div>
+
+                    <!-- ADL -->
+                    <div class="bg-white rounded-xl border-2 border-nature-primary/20 shadow-lg p-4 relative overflow-hidden flex flex-col justify-between">
+                         <div class="absolute top-0 right-0 px-2 py-1 bg-nature-primary text-white rounded-bl-lg text-xs font-bold">ADL</div>
+                         <div class="space-y-3 mt-4 text-sm">
+                            <div><span class="font-bold text-stone-600">User:</span> I cannot log in.</div>
+                            <div><span class="font-bold text-nature-primary">Assistant:</span> Please confirm your email address.</div>
+                            <div><span class="font-bold text-stone-600">User:</span> jane@example.com</div>
+                            <div class="p-2 bg-nature-primary/10 rounded text-xs text-nature-dark border border-nature-primary/20 font-mono">
+                                Loop detected: repeated prompt pattern - applying recovery step.
+                            </div>
+                            <div><span class="font-bold text-nature-primary">Assistant:</span> Thanks. I have verified your email and sent a reset link. Please check your inbox.</div>
+                        </div>
+                         <div class="mt-4 pt-4 border-t border-stone-100 text-xs text-nature-primary font-medium">
+                            Loop automatically detected and resolved by ADL Skills.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
