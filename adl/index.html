@@ -836,7 +836,7 @@ and works the way you expect.
                                   d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-nature-dark">Dynamic Features</h3>
+                    <h3 class="text-2xl font-bold text-nature-dark">Features</h3>
                 </div>
 
                 <div class="flex flex-wrap gap-2 mb-6">
@@ -871,6 +871,10 @@ and works the way you expect.
                     <button onclick="scrollToFeature('variables')"
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
                         Variables
+                    </button>
+                    <button onclick="scrollToFeature('comments')"
+                            class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
+                        Comments
                     </button>
                 </div>
 
@@ -1247,6 +1251,29 @@ and works the way you expect.
                         </p>
                         <p class="text-sm text-stone-600 mb-2">
                             Like Conditionals, these variables can be injected at runtime when calling the ADL engine.
+                        </p>
+                    </div>
+
+                    <div class="min-w-[500px] snap-start">
+                        <h4 id="comments" class="font-bold text-nature-dark mb-2">Comments</h4>
+                        <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
+                            <div class="text-nature-accent font-bold mb-1">Skill: car_sales_intro</div>
+                            <div class="text-nature-light font-bold mb-1">Solution</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700 font-mono whitespace-pre-wrap">
+<span class="text-stone-500">// Internal note: keep this step short and polite</span><br>
+When a customer is interested in buying a car, ask for their budget first.<br>
+<span class="text-stone-500">// Internal note: this comment will not be sent to the agent</span>
+                            </div>
+                        </div>
+                        <br>
+                        <p class="text-sm text-stone-600 mb-2">
+                            Comments are a great way to add notes in ADL that are not fed to the agent.
+                        </p>
+                        <p class="text-sm text-stone-600 mb-2">
+                            In ADL, any line starting with <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">//</code> is treated as a comment.
+                        </p>
+                        <p class="text-sm text-stone-600 mb-2">
+                            The ADL engine removes these lines before passing the final instructions to the agent.
                         </p>
                     </div>
                 </div>
