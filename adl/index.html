@@ -779,47 +779,58 @@ and works the way you expect.
         <div class="flex flex-col gap-12">
             <!-- Breakdown of the Format -->
             <div class="bg-white rounded-2xl shadow-lg border border-nature-border p-8">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-10 h-10 rounded-full bg-nature-primary/10 flex items-center justify-center">
-                        <svg class="w-6 h-6 text-nature-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                  d="M4 6h16M4 12h16M4 18h7"/>
-                        </svg>
+                <div class="flex items-center justify-between gap-4 mb-6 flex-wrap">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-nature-primary/10 flex items-center justify-center">
+                            <svg class="w-6 h-6 text-nature-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M4 6h16M4 12h16M4 18h7"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-nature-dark">ADL Skill Structure</h3>
                     </div>
-                    <h3 class="text-2xl font-bold text-nature-dark">ADL Skill Structure</h3>
+                    <div class="inline-flex items-center gap-2 rounded-full border border-nature-border bg-nature-page px-3 py-1 text-xs">
+                        <span class="text-nature-primary font-semibold">Required</span>
+                        <span class="text-stone-300">|</span>
+                        <span class="text-stone-600">Optional</span>
+                    </div>
                 </div>
                 <div class="prose prose-stone text-stone-600 max-w-none">
                     <p class="mb-4">Each use case defines how the agent responds to a specific scenario.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <ul class="space-y-4 list-none p-0">
-                            <li class="flex gap-3">
-                                <span class="font-bold text-nature-primary min-w-[7rem]">Name</span>
+                        <ul class="space-y-3 list-none p-4 rounded-xl border border-nature-border bg-nature-page/40">
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Name</span>
                                 <span>Unique identifier (lowercase with underscores).</span>
                             </li>
-                            <li class="flex gap-3">
-                                <span class="font-bold text-nature-primary min-w-[7rem]">Description</span>
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Description</span>
                                 <span>Detailed explanation of the scenario.</span>
                             </li>
-                            <li class="flex gap-3">
-                                <span class="font-bold text-nature-primary min-w-[7rem]">Context</span>
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Goal</span>
+                                <span>(Optional) The objective of the skill, useful for evals and tracking business objectives.</span>
+                            </li>
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Context</span>
                                 <span>(Optional) Extra information LLM may need to answer any questions the customer may have.</span>
                             </li>
-                            <li class="flex gap-3">
-                                <span class="font-bold text-nature-primary min-w-[7rem]">Steps</span>
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Steps</span>
                                 <span>The Steps block lists a set of instructions that is fed to the Agent one at the time with the ADL skipping steps that do not apply.</span>
                             </li>
                         </ul>
-                        <ul class="space-y-4 list-none p-0">
-                            <li class="flex gap-3">
-                                <span class="font-bold text-nature-primary min-w-[7rem]">Solution</span>
+                        <ul class="space-y-3 list-none p-4 rounded-xl border border-nature-border bg-nature-page/40">
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Solution</span>
                                 <span>The recommended resolution path.</span>
                             </li>
-                            <li class="flex gap-3">
-                                <span class="font-bold text-nature-primary min-w-[7rem]">Alternative Solution</span>
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Alternative Solution</span>
                                 <span>(Optional) Logic that is activated after the primary solution was used.</span>
                             </li>
-                            <li class="flex gap-3">
-                                <span class="font-bold text-nature-primary min-w-[7rem]">Fallback</span>
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Fallback</span>
                                 <span>(Optional) Logic that is activated when the primary and fallback solution does not work.</span>
                             </li>
                         </ul>
