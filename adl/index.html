@@ -108,6 +108,45 @@ SPDX-License-Identifier: CC-BY-4.0
             animation-delay: 3s;
             border-radius: 5px;
         }
+
+        @keyframes titleCaretBlink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        [data-typing-title] {
+            display: inline-block;
+        }
+
+        [data-typing-title].typing-pending {
+            visibility: hidden;
+        }
+
+        [data-typing-title].typing-active,
+        [data-typing-title].typing-done {
+            visibility: visible;
+        }
+
+        [data-typing-title].typing-active::after {
+            content: "";
+            display: inline-block;
+            width: 0.08em;
+            height: 0.9em;
+            margin-left: 0.08em;
+            background: currentColor;
+            vertical-align: -0.08em;
+            animation: titleCaretBlink 0.9s steps(1, end) infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            [data-typing-title].typing-pending {
+                visibility: visible;
+            }
+
+            [data-typing-title].typing-active::after {
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body class="font-sans text-stone-600 antialiased selection:bg-nature-light selection:text-white bg-nature-page">
@@ -260,7 +299,7 @@ SPDX-License-Identifier: CC-BY-4.0
 <section id="adl-studio" class="py-16 bg-gradient-to-br from-nature-page to-white border-t border-nature-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">The Face</h2>
+            <h2 data-typing-title class="text-base text-nature-primary font-semibold tracking-wide uppercase">The Face</h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
                 ADL Studio
             </p>
@@ -369,7 +408,7 @@ SPDX-License-Identifier: CC-BY-4.0
 <section id="run-adl-server" class="py-16 bg-nature-page border-t border-nature-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold text-nature-dark tracking-tight">Run ADL Server + Studio</h2>
+            <h2 data-typing-title class="text-3xl font-extrabold text-nature-dark tracking-tight">Run ADL Server + Studio</h2>
             <p class="mt-4 text-xl text-stone-600 lg:mx-auto">
                 Get up and running quickly with Docker.
             </p>
@@ -442,7 +481,7 @@ docker run -p 8080:8080 \
 <section id="philosophy" class="py-16 bg-white border-t border-nature-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center">
-            <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">Core Philosophy</h2>
+            <h2 data-typing-title class="text-base text-nature-primary font-semibold tracking-wide uppercase">Core Philosophy</h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
                 Why Agent Programming?
             </p>
@@ -508,7 +547,7 @@ docker run -p 8080:8080 \
 <section id="adl-example" class="py-16 bg-white border-t border-nature-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">In Action</h2>
+            <h2 data-typing-title class="text-base text-nature-primary font-semibold tracking-wide uppercase">In Action</h2>
              <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
                 ADL Examples
             </p>
@@ -684,7 +723,7 @@ docker run -p 8080:8080 \
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
             <div class="lg:col-span-7">
-                <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">The Paradigm Shift</h2>
+                <h2 data-typing-title class="text-base text-nature-primary font-semibold tracking-wide uppercase">The Paradigm Shift</h2>
                 <h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
                     ADL Skills
                 </h3>
@@ -766,7 +805,7 @@ and works the way you expect.
 <section id="technical-spec" class="py-16 bg-nature-page border-t border-nature-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">Technical Specification</h2>
+            <h2 data-typing-title class="text-base text-nature-primary font-semibold tracking-wide uppercase">Technical Specification</h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
                 ADL Skill Format & Capabilities
             </p>
@@ -810,6 +849,18 @@ and works the way you expect.
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
                                 <span class="font-semibold text-nature-primary min-w-[7rem]">Goal</span>
                                 <span>(Optional) The objective of the skill, useful for evals and tracking business objectives.</span>
+                            </li>
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Examples</span>
+                                <span>
+                                    (Optional) Defines a list of utterances that trigger the skill.
+                                    <span class="block mt-1 text-stone-500">For example:</span>
+                                    <ul class="list-disc list-inside mt-1 space-y-1 text-stone-500">
+                                        <li>i would like to know the weather</li>
+                                        <li>weather?</li>
+                                        <li>what is the weather forecast for my area?</li>
+                                    </ul>
+                                </span>
                             </li>
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
                                 <span class="font-semibold text-nature-primary min-w-[7rem]">Context</span>
@@ -1298,7 +1349,7 @@ When a customer is interested in buying a car, ask for their budget first.<br>
 <section id="architecture" class="py-20 bg-white border-t border-nature-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-base text-nature-primary font-semibold tracking-wide uppercase">Integration</h2>
+            <h2 data-typing-title class="text-base text-nature-primary font-semibold tracking-wide uppercase">Integration</h2>
             <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-nature-dark sm:text-4xl">
                 Connect Anywhere
             </p>
@@ -1427,7 +1478,7 @@ When a customer is interested in buying a car, ask for their budget first.<br>
         <div class="overflow-x-auto pb-2">
             <div class="flex items-start gap-16 min-w-[1240px]">
                 <div class="w-[520px] shrink-0">
-                    <h2 class="text-3xl font-extrabold text-nature-dark tracking-tight">OpenAI Compatible Endpoint</h2>
+                    <h2 data-typing-title class="text-3xl font-extrabold text-nature-dark tracking-tight">OpenAI Compatible Endpoint</h2>
                     <p class="mt-4 text-lg text-stone-600">
                         Integration is effortless. ADL Server exposes a standard <code class="text-nature-primary">/v1/chat/completions</code>
                         endpoint.
@@ -1540,7 +1591,7 @@ When a customer is interested in buying a car, ask for their budget first.<br>
 <section id="graphql-api" class="py-16 bg-white border-t border-nature-border">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
-            <h2 class="text-3xl font-extrabold text-nature-dark tracking-tight">GraphQL API</h2>
+            <h2 data-typing-title class="text-3xl font-extrabold text-nature-dark tracking-tight">GraphQL API</h2>
             <p class="mt-4 text-xl text-stone-600 lg:mx-auto">
                 Comprehensive API for managing, compiling, testing, and evaluating your ADLs.
             </p>
@@ -1696,6 +1747,82 @@ When a customer is interested in buying a car, ask for their budget first.<br>
         </div>
     </div>
 </footer>
+
+<script>
+    (function () {
+        const titles = Array.from(document.querySelectorAll('[data-typing-title]'));
+        if (!titles.length) return;
+
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const showFinalTitle = (el) => {
+            const fullText = el.dataset.fullText || el.textContent || '';
+            el.textContent = fullText;
+            el.classList.remove('typing-pending', 'typing-active');
+            el.classList.add('typing-done');
+        };
+
+        const typeTitle = (el) => {
+            if (el.dataset.typed === 'true') return;
+            const fullText = el.dataset.fullText || '';
+            const speed = Number(el.dataset.typingSpeed || 28);
+
+            el.dataset.typed = 'true';
+            el.textContent = '';
+            el.classList.remove('typing-pending');
+            el.classList.add('typing-active');
+
+            let index = 0;
+            const step = () => {
+                index += 1;
+                el.textContent = fullText.slice(0, index);
+
+                if (index < fullText.length) {
+                    window.setTimeout(step, speed);
+                    return;
+                }
+
+                el.classList.remove('typing-active');
+                el.classList.add('typing-done');
+            };
+
+            step();
+        };
+
+        titles.forEach((el) => {
+            el.dataset.fullText = (el.textContent || '').trim();
+
+            if (reducedMotion) {
+                showFinalTitle(el);
+            } else {
+                el.classList.add('typing-pending');
+            }
+        });
+
+        if (reducedMotion) return;
+
+        if (!('IntersectionObserver' in window)) {
+            titles.forEach(showFinalTitle);
+            return;
+        }
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (!entry.isIntersecting) return;
+                    typeTitle(entry.target);
+                    observer.unobserve(entry.target);
+                });
+            },
+            {
+                threshold: 0.35,
+                rootMargin: '0px 0px -10% 0px'
+            }
+        );
+
+        titles.forEach((title) => observer.observe(title));
+    })();
+</script>
 
 <script src="/lmos/arc2/assets/js/cookieconsent.min.js"></script>
 
