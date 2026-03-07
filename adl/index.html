@@ -914,6 +914,10 @@ and works the way you expect.
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
                         Tool Calls
                     </button>
+                    <button onclick="scrollToFeature('skill-limits')"
+                            class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
+                        Skill Limits
+                    </button>
                     <button onclick="scrollToFeature('static-responses')"
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
                         Static Responses
@@ -1051,7 +1055,7 @@ and works the way you expect.
                             </div>
                         </div>
                         <p class="text-sm text-stone-600 mb-3">Empower your agents to take action. Define tools inline,
-                            and the ADL Engine will handle the orchestration—calling the function securely and feeding
+                            and the ADL Engine will handle the orchestration-calling the function securely and feeding
                             the result back to the agent.</p>
 
                         <div class="space-y-2 mb-4 text-xs font-mono">
@@ -1073,6 +1077,30 @@ and works the way you expect.
                             <li>Validates availability.</li>
                             <li>Ensures execution.</li>
                         </ul>
+                    </div>
+                    <div class="min-w-[460px] snap-start border-r border-nature-border pr-8">
+                        <h4 id="skill-limits" class="font-bold text-nature-dark mb-2">Skill Limits</h4>
+                        <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 mb-4">
+                            <div class="text-nature-accent font-bold mb-1">Skill: reset_password (1)</div>
+                            <div class="text-nature-light font-bold mb-1">Description</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
+                                Customer has forgotten their password.
+                            </div>
+                            <div class="text-nature-light font-bold mb-1">Solution</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700 mb-2">
+                                Ask the customer to click "Reset password" on the login page.
+                            </div>
+                            <div class="text-nature-light font-bold mb-1">Fallback Solution</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700">
+                                Contact support at xxx.
+                            </div>
+                        </div>
+                        <p class="text-sm text-stone-600 mb-2">Skill limits define how many times a Skill may run in one conversation before the engine stops reusing it.
+                            This helps prevent repetitive loops when the same approach is not resolving the issue.</p>
+                        <p class="text-sm text-stone-600 mb-2">To place a limit on a Skill, add a number in brackets directly after the Skill id,
+                            for example: <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">Skill: reset_password (1)</code>.</p>
+                        <p class="text-sm text-stone-600">When the limit is reached, the ADL engine runs the <strong>Fallback Solution</strong> if one exists.
+                            If no fallback is defined, the engine removes that Skill from the candidate set so the Agent can choose a different Skill.</p>
                     </div>
                     <div class="min-w-[400px] snap-start border-r border-nature-border pr-8">
                         <h4 id="static-responses" class="font-bold text-nature-dark mb-2">Static Responses</h4>
@@ -1436,7 +1464,7 @@ When a customer is interested in buying a car, ask for their budget first.<br>
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-nature-dark text-sm">OpenAI Completions</div>
-                            <div class="text-xs text-stone-500">Standard chat endpoint</div>
+                            <div class="text-xs text-stone-500 mt-2">Standard chat endpoint</div>
                         </div>
                     </div>
 
@@ -1449,7 +1477,7 @@ When a customer is interested in buying a car, ask for their budget first.<br>
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-nature-dark text-sm">MCP Protocol</div>
-                            <div class="text-xs text-stone-500">Tool & context bridge</div>
+                            <div class="text-xs text-stone-500 mt-2">Tool & context bridge</div>
                         </div>
                     </div>
 
@@ -1457,12 +1485,11 @@ When a customer is interested in buying a car, ask for their budget first.<br>
                     <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-nature-primary/50 transition duration-200 flex items-center gap-4">
                         <div class="flex-shrink-0 p-2 bg-nature-page rounded-lg">
                             <svg class="w-6 h-6 text-stone-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M4 6h16M4 12h16m-7 6h7"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-nature-dark text-sm">REST / GraphQL</div>
-                            <div class="text-xs text-stone-500">Management & Control</div>
+                            <div class="text-xs text-stone-500 mt-2">Management & Control</div>
                         </div>
                     </div>
 
