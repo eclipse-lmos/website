@@ -836,6 +836,7 @@ and works the way you expect.
                 </div>
                 <div class="prose prose-stone text-stone-600 max-w-none">
                     <p class="mb-4">Each ADL Skill defines how the agent responds to a specific scenario.</p>
+                    <p class="mb-4">ADL uses Markdown. You can keep Skills in plain <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">.md</code> files on your file system, or manage them in ADL Studio where they are persisted in a database.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <ul class="space-y-3 list-none p-4 rounded-xl border border-nature-border bg-nature-page/40">
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
@@ -864,7 +865,7 @@ and works the way you expect.
                             </li>
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
                                 <span class="font-semibold text-nature-primary min-w-[7rem]">Context</span>
-                                <span>(Optional) Extra background information the Agent can use while executing the Skill. This includes static guidance and MEMORIZEd facts associated with the user and Skill, which the ADL engine injects into this field.</span>
+                                <span>(Optional) Extra background information the Agent can use while executing the Skill. This includes static guidance and MEMORIZEd facts stored per user and per ADL Skill, which the ADL engine injects into this field at runtime.</span>
                             </li>
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
                                 <span class="font-semibold text-nature-primary min-w-[7rem]">Steps</span>
@@ -881,6 +882,18 @@ and works the way you expect.
                                 <span>(Optional) Logic that is activated when the primary and fallback solution does not work.</span>
                             </li>
                         </ul>
+                    </div>
+                    <p class="mt-6 mb-2">Markdown example:</p>
+                    <div class="mt-2 mb-2 bg-nature-dark p-4 rounded-lg border border-stone-800 overflow-x-auto">
+<pre class="text-xs text-stone-300 font-mono"><span class="text-nature-accent">### UseCase: greeting</span>
+
+<span class="text-nature-accent">#### Description</span>
+Customer is saying hello or greeting the agent.
+
+<span class="text-nature-accent">#### Solution</span>
+<span class="text-nature-light">"Hello </span><span class="text-nature-sky">{{user_name}}</span><span class="text-nature-light">! I am the ADL AI assistant. How can I assist you today?"</span>
+
+<span class="text-stone-500">----</span></pre>
                     </div>
                 </div>
             </div>
@@ -1096,8 +1109,8 @@ and works the way you expect.
                             </div>
                         </div>
                         <p class="text-sm text-stone-600 mb-2">Skill limits define how many times a Skill may run in one conversation before the engine stops reusing it.
-                            This helps prevent repetitive loops when the same approach is not resolving the issue.</p>
-                        <p class="text-sm text-stone-600 mb-2">To place a limit on a Skill, add a number in brackets directly after the Skill id,
+                            Repeated use of the same Skill can indicate that the current solution is not resolving the problem.</p>
+                        <p class="text-sm text-stone-600 mb-2">To place a limit on a Skill, add a number in brackets directly after the Skill ID,
                             for example: <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">Skill: reset_password (1)</code>.</p>
                         <p class="text-sm text-stone-600">When the limit is reached, the ADL engine runs the <strong>Fallback Solution</strong> if one exists.
                             If no fallback is defined, the engine removes that Skill from the candidate set so the Agent can choose a different Skill.</p>
@@ -1117,8 +1130,8 @@ and works the way you expect.
                             </div>
                         </div>
                         <p class="text-sm text-stone-600 mb-2">Memory is a great way of providing the Agent with extra context to improve responses.</p>
-                        <p class="text-sm text-stone-600 mb-2">Use <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">MEMORIZE</code> to store relevant information for later steps and follow-up Skills.</p>
-                        <p class="text-sm text-stone-600 mb-2">Stored values are associated with both the Skill and the user, so each conversation keeps its own memory scope.</p>
+                        <p class="text-sm text-stone-600 mb-2">Use <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">MEMORIZE</code> to store relevant information that can be retrieved in later steps and follow-up Skills.</p>
+                        <p class="text-sm text-stone-600 mb-2">MEMORIZEd data is associated with both the ADL Skill and the user, so each user-skill pair keeps its own memory scope.</p>
                         <p class="text-sm text-stone-600">The ADL engine injects MEMORIZEd values into the Skill <strong>Context</strong> field, allowing future Skill runs to retrieve and reuse what was learned earlier.</p>
                     </div>
                     <div class="min-w-[400px] snap-start border-r border-nature-border pr-8">
