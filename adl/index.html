@@ -864,7 +864,7 @@ and works the way you expect.
                             </li>
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
                                 <span class="font-semibold text-nature-primary min-w-[7rem]">Context</span>
-                                <span>(Optional) Extra information LLM may need to answer any questions the customer may have.</span>
+                                <span>(Optional) Extra background information the Agent can use while executing the Skill. This includes static guidance and MEMORIZEd facts associated with the user and Skill, which the ADL engine injects into this field.</span>
                             </li>
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
                                 <span class="font-semibold text-nature-primary min-w-[7rem]">Steps</span>
@@ -872,10 +872,6 @@ and works the way you expect.
                             </li>
                         </ul>
                         <ul class="space-y-3 list-none p-4 rounded-xl border border-nature-border bg-nature-page/40">
-                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
-                                <span class="font-semibold text-nature-primary min-w-[7rem]">Solution</span>
-                                <span>The recommended resolution path.</span>
-                            </li>
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
                                 <span class="font-semibold text-nature-primary min-w-[7rem]">Alternative Solution</span>
                                 <span>(Optional) Logic that is activated after the primary solution was used.</span>
@@ -918,6 +914,10 @@ and works the way you expect.
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
                         Skill Limits
                     </button>
+                    <button onclick="scrollToFeature('memorize')"
+                            class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
+                        MEMORIZE
+                    </button>
                     <button onclick="scrollToFeature('static-responses')"
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
                         Static Responses
@@ -932,7 +932,7 @@ and works the way you expect.
                     </button>
                     <button onclick="scrollToFeature('must-command')"
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
-                        Must Command
+                        MUST
                     </button>
                     <button onclick="scrollToFeature('variables')"
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
@@ -1101,6 +1101,25 @@ and works the way you expect.
                             for example: <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">Skill: reset_password (1)</code>.</p>
                         <p class="text-sm text-stone-600">When the limit is reached, the ADL engine runs the <strong>Fallback Solution</strong> if one exists.
                             If no fallback is defined, the engine removes that Skill from the candidate set so the Agent can choose a different Skill.</p>
+                    </div>
+                    <div class="min-w-[460px] snap-start border-r border-nature-border pr-8">
+                        <h4 id="memorize" class="font-bold text-nature-dark mb-2">MEMORIZE</h4>
+                        <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 mb-4">
+                            <div class="text-nature-accent font-bold mb-1">Skill: order_pizza</div>
+                            <div class="text-nature-light font-bold mb-1">Description</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700 mb-1">
+                                Customer wants to order a pizza.
+                            </div>
+                            <div class="text-nature-light font-bold mb-1">Solution</div>
+                            <div class="text-stone-300 pl-2 border-l border-stone-700">
+                                Instructions on how to handle the order process.<br>
+                                MEMORIZE the customer's address for future orders.
+                            </div>
+                        </div>
+                        <p class="text-sm text-stone-600 mb-2">Memory is a great way of providing the Agent with extra context to improve responses.</p>
+                        <p class="text-sm text-stone-600 mb-2">Use <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">MEMORIZE</code> to store relevant information for later steps and follow-up Skills.</p>
+                        <p class="text-sm text-stone-600 mb-2">Stored values are associated with both the Skill and the user, so each conversation keeps its own memory scope.</p>
+                        <p class="text-sm text-stone-600">The ADL engine injects MEMORIZEd values into the Skill <strong>Context</strong> field, allowing future Skill runs to retrieve and reuse what was learned earlier.</p>
                     </div>
                     <div class="min-w-[400px] snap-start border-r border-nature-border pr-8">
                         <h4 id="static-responses" class="font-bold text-nature-dark mb-2">Static Responses</h4>
@@ -1459,8 +1478,7 @@ When a customer is interested in buying a car, ask for their budget first.<br>
                     <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-nature-primary/50 transition duration-200 flex items-center gap-4">
                         <div class="flex-shrink-0 p-2 bg-nature-page rounded-lg">
                             <svg class="w-6 h-6 text-stone-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-nature-dark text-sm">OpenAI Completions</div>
@@ -1472,8 +1490,7 @@ When a customer is interested in buying a car, ask for their budget first.<br>
                     <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm hover:shadow-md hover:border-nature-primary/50 transition duration-200 flex items-center gap-4">
                         <div class="flex-shrink-0 p-2 bg-nature-page rounded-lg">
                             <svg class="w-6 h-6 text-stone-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                      d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                         </div>
                         <div class="text-left">
                             <div class="font-bold text-nature-dark text-sm">MCP Protocol</div>
