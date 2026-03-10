@@ -700,6 +700,16 @@ and works the way you expect.
                                 </span>
                             </li>
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Trigger</span>
+                                <span>
+                                    (Optional) Defines when a skill should be triggered. Most skills are triggered by user input, but ADL also supports automated triggers.
+                                    <span class="block mt-1 text-stone-500">For example:</span>
+                                    <span class="block mt-1 text-stone-500">- <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">cron: "0 */15 * * *"</code> (run every 15 minutes)</span>
+                                    <span class="block text-stone-500">- <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">event: CONVERSATION_START</code></span>
+                                    <span class="block mt-1 text-stone-500">If set on a skill, <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">CONVERSATION_START</code> runs that skill at the beginning of any conversation and takes precedence over other skills. This is useful for showing a disclaimer before users can use the system.</span>
+                                </span>
+                            </li>
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
                                 <span class="font-semibold text-nature-primary min-w-[7rem]">Context</span>
                                 <span>(Optional) Extra background information the Agent can use while executing the Skill. This includes static guidance and MEMORIZEd facts stored per user and per ADL Skill, which the ADL engine injects into this field at runtime.</span>
                             </li>
