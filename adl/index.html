@@ -721,6 +721,10 @@ and works the way you expect.
                         </ul>
                         <ul class="space-y-3 list-none p-4 rounded-xl border border-nature-border bg-nature-page/40">
                             <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
+                                <span class="font-semibold text-nature-primary min-w-[7rem]">Output</span>
+                                <span>(Optional) Defines the expected output format of the skill. You can use a Markdown code block with a JSON Schema to enforce structured responses.</span>
+                            </li>
+                            <li class="flex gap-3 items-start p-3 rounded-lg bg-white border border-nature-border/70">
                                 <span class="font-semibold text-nature-primary min-w-[7rem]">Alternative Solution</span>
                                 <span>(Optional) Logic that is activated after the primary solution was used.</span>
                             </li>
@@ -739,6 +743,19 @@ Customer is saying hello or greeting the agent.
 
 <span class="text-nature-accent">#### Solution</span>
 <span class="text-nature-light">"Hello </span><span class="text-nature-sky">{{user_name}}</span><span class="text-nature-light">! I am the ADL AI assistant. How can I assist you today?"</span>
+
+<span class="text-nature-accent">#### Output</span>
+<span class="text-stone-300">```json
+{
+  "type": "object",
+  "properties": {
+    "message": { "type": "string" },
+    "tone": { "type": "string" }
+  },
+  "required": ["message"],
+  "additionalProperties": false
+}
+```</span>
 
 <span class="text-stone-500">----</span></pre>
                     </div>
@@ -788,7 +805,7 @@ Customer is saying hello or greeting the agent.
                     </button>
                     <button onclick="scrollToFeature('styled-output')"
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
-                        Styled Output
+                        Output Block
                     </button>
                     <button onclick="scrollToFeature('must-command')"
                             class="px-3 py-1 rounded-full text-xs font-medium bg-nature-page text-nature-primary border border-nature-border hover:bg-nature-primary hover:text-white transition">
@@ -1144,7 +1161,7 @@ Customer is saying hello or greeting the agent.
                     </div>
 
                     <div class="min-w-[500px] snap-start border-r border-nature-border pr-8">
-                        <h4 id="styled-output" class="font-bold text-nature-dark mb-2">Styled Output</h4>
+                        <h4 id="styled-output" class="font-bold text-nature-dark mb-2">Output Block</h4>
                         <div class="bg-nature-dark p-3 rounded-lg text-xs border border-stone-800 h-fit">
                             <div class="text-nature-accent font-bold mb-1">Skill: current_news</div>
                             <div class="text-nature-light font-bold mb-1">Description</div>
@@ -1153,22 +1170,28 @@ Customer is saying hello or greeting the agent.
                             </div>
                             <div class="text-nature-light font-bold mb-1">Solution</div>
                             <div class="text-stone-300 pl-2 border-l border-stone-700 mb-2">
-                                Return the top article from <span class="text-nature-sky">http://news.com</span> using <span class="text-nature-accent">@get_new()</span>.
+                                Return the top article from <span class="text-nature-sky">http://news.com</span> using <span class="text-nature-accent">@get_news()</span>.
                             </div>
-                            <div class="text-xs font-mono text-stone-400 bg-stone-900/50 p-2 rounded border border-stone-700/50 mt-2 whitespace-pre-wrap"><span class="text-stone-500">```html</span><br>
-&lt;!-- news.title - The title of the new article --&gt;<br />
-&lt;div class="bg-blue-500 p-4 rounded-lg shadow-md max-w-md mx-auto"&gt;
-&lt;h2 class="text-xl font-semibold text-gray-800 mb-2"&gt;{{news.title}}&lt;/h2&gt;<br />&lt;/div&gt;
+                            <div class="text-nature-light font-bold mb-1">Output</div>
+                            <div class="text-xs font-mono text-stone-400 bg-stone-900/50 p-2 rounded border border-stone-700/50 mt-2 whitespace-pre-wrap"><span class="text-stone-500">```json</span><br>
+{<br>
+  "type": "object",<br>
+  "properties": {<br>
+    "title": { "type": "string" },<br>
+    "summary": { "type": "string" },<br>
+    "url": { "type": "string", "format": "uri" }<br>
+  },<br>
+  "required": ["title", "summary", "url"],<br>
+  "additionalProperties": false<br>
+}
 <span class="text-stone-500">```</span>
                             </div>
                         </div>
                         <br>
-                        <p class="text-sm text-stone-600 mb-2">HTML templates can be defined in the Skill, allowing you to create rich, styled responses that go beyond plain text.
-                            By using placeholders for dynamic content, you can ensure that your agents deliver visually appealing and contextually relevant information.</p>
-                        <p class="text-sm text-stone-600 mb-2">In the example above, the agent will return a styled HTML snippet with the title of the top news article. The placeholder <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">&lt;news.title&gt;</code> will be replaced with the actual title retrieved by the <code class="bg-nature-page px-1 rounded text-nature-accent font-mono text-xs">@get_news()</code> tool.</p>
-                        <p class="text-sm text-stone-600 mb-2">Clients displaying this content should support Tailwind CSS to render the styles correctly.</p>
-                        <p class="text-sm text-stone-600 mb-2">The template language Mustache is used for placeholders, allowing for simple variable interpolation. </p>
-                        <p class="text-sm text-stone-600 mb-2">Html comments can be used to inform the system how to extract the variables form the generated output. </p>
+                        <p class="text-sm text-stone-600 mb-2">Use the <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">Output</code> block to define a structured response contract for the skill.</p>
+                        <p class="text-sm text-stone-600 mb-2">In the example above, the JSON Schema defines exactly which fields the agent must return. This makes downstream parsing reliable and easier to validate.</p>
+                        <p class="text-sm text-stone-600 mb-2">The <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">required</code> list marks mandatory fields, while <code class="bg-nature-page px-1 rounded text-nature-primary font-mono text-xs">additionalProperties: false</code> prevents unexpected fields in the output.</p>
+                        <p class="text-sm text-stone-600 mb-2">This pattern is recommended when tool chains, APIs, or UI clients consume the skill output programmatically.</p>
                     </div>
 
                     <div class="min-w-[500px] snap-start border-r border-nature-border pr-8">
