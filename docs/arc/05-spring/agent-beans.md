@@ -16,17 +16,19 @@ The name of the bean and the name of the Agent may not be the same.
 For example,
 ```kotlin
 
-import io.github.lmos.arc.spring.Agents
-import io.github.lmos.arc.spring.Functions
+import org.eclipse.lmos.arc.spring.Agents
+import org.eclipse.lmos.arc.spring.Functions
+import org.eclipse.lmos.arc.spring.Skills
 
 @Configuration
 class Configuration {
     
    @Bean
    fun myAgent(agent: Agents) = agent {
-     name = "My Agent"
-     prompt { "you are a helpful weather agent." }
-     tools = listOf("get_weather")
+       name = "My Agent"
+       prompt { "you are a helpful weather agent." }
+       tools { +"get_weather" }
+       skills { +"writing" }
    }
 
   @Bean
@@ -38,9 +40,23 @@ class Configuration {
         The weather is good in Berlin. It is 20 degrees celsius.
     """
   }
+
+  @Bean
+  fun writingSkill(skill: Skills) = skill {
+    name = "writing"
+    description = "Writes concise answers."
+    "Use short paragraphs and clear headings."
+  }
   
 }
 ```
+
+Each `SkillDocument` bean is automatically added to the starter's single `SkillProvider`. Inline Spring skills are
+resolved before the default file/classpath fallback. An agent must still declare the skill source with
+`skills { +"writing" }` before it appears in `$SKILLS` and can be activated with `activate_skill`.
+
+If an application defines its own `SkillProvider` bean, the starter does not create a second provider. The application
+is then responsible for resolving any `SkillDocument` beans it wants to expose.
 
 Once declared as beans, the Agents can either be injected into other components or 
 retrieved from the `AgentProvider` (provided the `arc-spring-boot-starter` is used).

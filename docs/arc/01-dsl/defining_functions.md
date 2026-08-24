@@ -4,7 +4,7 @@ title: Defining Functions
 
 Functions are an important building block of Agents. They are used to access external services and data.
 An Agent can be assigned multiple functions. 
-Agents choose which functions to use based on the function description.
+The model can choose functions based on their names, descriptions, and parameter schemas.
 
 Under the hood, these functions translate to LLM Functions, for example,
 OpenAI functions (https://platform.openai.com/docs/guides/function-calling).
@@ -27,7 +27,27 @@ agent {
 }
 ```
 
-Example `weather.functions.kts`
+### Providing functions
+
+The names in an agent's `tools` block must be available from an `LLMFunctionProvider` when the agent executes.
+For a regular Kotlin application, define functions through the `functions` block of `agents`; see
+[Manual Setup](/docs/arc/manual_setup#defining-agents). For Spring Boot applications, register functions as
+`Functions` beans; see [Agent Beans](/docs/arc/spring/agent-beans).
+
+Once a function is provided, assign its name to an agent as shown above. If no provider can resolve an assigned name,
+the agent execution fails before calling the model.
+
+### Function arguments and schemas
+
+`types(...)` defines the JSON schema that is sent to the model. ARC passes the resulting argument values to the function
+lambda as a `List<Any?>` in the same order as the parameters declared in `types(...)`. Kotlin destructuring, such as
+`{ (location) -> ... }`, is a concise way to access those values. Optional parameters (`required = false`) and malformed
+model arguments can be `null` or have unexpected runtime types, so production functions should validate their inputs.
+
+The DSL supports `string`, `integer`, `number`, `boolean`, `array`, and `objectType` parameters. String and array
+parameters can also declare an `enum`; all parameter helpers accept `required = false` for optional input.
+
+Example function definition:
 
 ```kts
 function(
@@ -55,7 +75,7 @@ function(
     description = "Returns the sum of 2 numbers.",
     params = types(array("numbers", "The numbers to add.", itemType = "number"))
 ) { (numbers) ->
-    val toAdd = numbers as List<Int> 
+    val toAdd = (numbers as? List<*>)?.mapNotNull { (it as? Number)?.toInt() } ?: emptyList()
     val sum = toAdd.sumOf { it }
     "The sum of the numbers is $sum"
 }
@@ -99,3 +119,7 @@ agent {
 ```
 
 This will supply all functions that are available in the application to the Agent.
+`AllTools` is a wildcard for every function returned by the current `LLMFunctionProvider`; prefer explicitly named tools
+for production agents, especially when functions are sensitive or have side effects.
+
+See also [Defining Agents](/docs/arc/dsl/defining_agents) for assigning functions to an agent.
